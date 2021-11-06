@@ -1,0 +1,23 @@
+Instrucciones para crear castlevania 1
+
+-se maneja un sistema de guardado con el script AnkOfLife (llaves, objetos quebrables, objetos unicos de mapa)
+	a medida que se agregan mas cosas al juego, hay que añadirlas a este script
+	para guardarlo en los playerPrefs
+
+-para agregar mas secciones de mapa, debe agregarse en su respectivo boundary la pieza de mapa que se debe
+guardar en el AnkOfLife en la seccion de MAP PARTS
+
+-con las paredes que se rompen se utiliza un structureManager que controla las paredes que se rompen
+para no ponerlas nuevamente cuando el jugador vuelva a esa sala, los valores se guardan en el archivo AnkOfLife
+en la seccion BROKEN WALLS
+
+-los eventos de mapa, cambios en el mapa cuando se activan switches o se matan boss, se controlan desde el 
+EventManager y se guardan en el AnkOfLife en la seccion de EVENTOS
+
+-los Boss tambien se guardan en el AnkOfLife y tiene un BossMapManager para controlar su aparicion
+se guardan en la seccion BOSS
+
+-Items unicos del mapa se controlan con el ItemMapManager y se guardan en el AnkOfLife en la seccion
+ITEMS (lifemax o llaves del mapa)
+
+
