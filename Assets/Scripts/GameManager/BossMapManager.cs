@@ -5,34 +5,30 @@ using System;
 
 public class BossMapManager : MonoBehaviour
 {
+    DatosJugador datosJugador;
+
     public BossSpawner bossBat;
     public MedusaStatueController bossMedusa;
 
-    public bool bossBatDefeated;
-    public bool bossMedusaDefeated;
-
-    [Header("BOSS DEL MAPA SALVADOS")]
-    public bool bossBatSav;
-    public bool bossMedusaSav;
-
+    //a medida que se agregan mas boss al juego, tambien agregar sus respectivos estados en este archivo
+    //se deben agregar al CheckBoss(), BossMapOnLoadGame(), BossMapOnStartGame(), FindBossSpawner()
+    private void Start()
+    {
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+    }
 
     public void CheckBoss()
     {
-        bossBatDefeated = bossBat.isDead;
-        bossMedusaDefeated = bossMedusa.medusaDefeated;
+        datosJugador.bossBatDefeated = bossBat.isDead;
+        datosJugador.bossMedusaDefeated = bossMedusa.medusaDefeated;
     }
 
     public void BossMapOnLoadGame()
     {
         //primero localizamos a los Boss del mapa para ahi si pasarle caracteristicas de loadgame
         FindBossSpawner();
-        bossBat.isDead = Convert.ToBoolean(PlayerPrefs.GetInt("BossBat"));
-        bossMedusa.medusaDefeated = Convert.ToBoolean(PlayerPrefs.GetInt("BossMedusa"));
-
-        bossBatSav = Convert.ToBoolean(PlayerPrefs.GetInt("BossBat"));
-        bossMedusaSav = Convert.ToBoolean(PlayerPrefs.GetInt("BossMedusa"));
-
-        CheckBoss();
+        bossBat.isDead = datosJugador.bossBatDefeated;
+        bossMedusa.medusaDefeated = datosJugador.bossMedusaDefeated;
     }
 
     public void BossMapOnStartGame()
@@ -40,10 +36,7 @@ public class BossMapManager : MonoBehaviour
         //primero localizamos a los items del mapa que son unicos para ahi si pasarle caracteristicas de newgame
         FindBossSpawner();
         bossBat.isDead = false;
-        bossBatSav = bossBat.isDead;
-
         bossMedusa.medusaDefeated = false;
-        bossMedusaSav = bossMedusa.medusaDefeated;
 
         CheckBoss();
     }

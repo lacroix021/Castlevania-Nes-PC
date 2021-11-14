@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
 
     AudioSource aSource;
 
-    KeyChain keysPlayer;
+    DatosJugador datosJugador;
 
     GameManager gManager;
 
@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
         gManager = GameManager.gameManager;
         anim = GetComponent<Animator>();
         aSource = GetComponent<AudioSource>();
-        keysPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<KeyChain>();
+        datosJugador = gManager.GetComponent<DatosJugador>();
 
     }
 
@@ -45,27 +45,27 @@ public class Door : MonoBehaviour
                 keyNeeded = false;
                 break;
             case 1:
-                keyNeeded = keysPlayer.blueKey;
+                keyNeeded = datosJugador.blueKey;
                 gManager.doorMessajeTxt.text = "Need Blue key";
                 break;
             case 2:
-                keyNeeded = keysPlayer.cianKey;
+                keyNeeded = datosJugador.cianKey;
                 gManager.doorMessajeTxt.text = "Need Cian key";
                 break;
             case 3:
-                keyNeeded = keysPlayer.redKey;
+                keyNeeded = datosJugador.redKey;
                 gManager.doorMessajeTxt.text = "Need Red key";
                 break;
             case 4:
-                keyNeeded = keysPlayer.yellowKey;
+                keyNeeded = datosJugador.yellowKey;
                 gManager.doorMessajeTxt.text = "Need Yellow key";
                 break;
             case 5:
-                keyNeeded = keysPlayer.pinkKey;
+                keyNeeded = datosJugador.pinkKey;
                 gManager.doorMessajeTxt.text = "Need Pink key";
                 break;
             case 6:
-                keyNeeded = keysPlayer.greenKey;
+                keyNeeded = datosJugador.greenKey;
                 gManager.doorMessajeTxt.text = "Need Green key";
                 break;
         }

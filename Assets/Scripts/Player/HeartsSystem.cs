@@ -6,12 +6,17 @@ public class HeartsSystem : MonoBehaviour
 {
 
     public int MaxHearts;
-    public int currentHearts;
-
     
+
+    DatosJugador datosJugador;
+
+    private void Start()
+    {
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+    }
 
     public void CheckHearts()
     {
-        currentHearts = Mathf.Clamp(currentHearts, 0, MaxHearts);
+        datosJugador.currentHearts = Mathf.Clamp(datosJugador.currentHearts, 0, MaxHearts);
     } 
 }

@@ -37,24 +37,22 @@ public class ItemController : MonoBehaviour
     
 
     HeartsSystem hSystem;
-    TypeWhip typeWhip;
+    
     GameManager gManager;
+    DatosJugador datosJugador;
     HealthPlayer pHealth;
-    SubWeaponSystem subWeaponSys;
+    
     
 
     // Start is called before the first frame update
     void Start()
     {
         hSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<HeartsSystem>();
-        typeWhip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<TypeWhip>();
         gManager = GameManager.gameManager;
+        datosJugador = gManager.GetComponent<DatosJugador>();
 
         if (TypeItem == tipeItem.lifeMax || TypeItem == tipeItem.porkChop)
             pHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
-
-        if (TypeItem == tipeItem.subKnife || TypeItem == tipeItem.subAxe || TypeItem == tipeItem.subHolyWater || TypeItem == tipeItem.subCross || TypeItem == tipeItem.x2Pow || TypeItem == tipeItem.x3Pow)
-            subWeaponSys = GameObject.FindGameObjectWithTag("Player").GetComponent<SubWeaponSystem>();
     }
 
    
@@ -67,7 +65,7 @@ public class ItemController : MonoBehaviour
                 gManager.audioSource.clip = gManager.SoundTouchHeart;
                 gManager.audioSource.Play();
                 gManager.audioSource.loop = false;
-                hSystem.currentHearts += 5;
+                datosJugador.currentHearts += 5;
                 hSystem.CheckHearts();
             }
             else if (TypeItem == tipeItem.smallHeart)
@@ -75,41 +73,41 @@ public class ItemController : MonoBehaviour
                 gManager.audioSource.clip = gManager.SoundTouchHeart;
                 gManager.audioSource.Play();
                 gManager.audioSource.loop = false;
-                hSystem.currentHearts += 1;
+                datosJugador.currentHearts += 1;
                 hSystem.CheckHearts();
             }
             else if (TypeItem == tipeItem.whipItem)
             {
                 ItemProperties();
-                typeWhip.typeWhip += 1;
+                datosJugador.typeWhip += 1;
             }
             else if (TypeItem == tipeItem.goldRed)
             {
                 GoldProperties();
-                gManager.gold += goldRedV;
+                datosJugador.gold += goldRedV;
             }
             else if (TypeItem == tipeItem.goldPurple)
             {
                 GoldProperties();
-                gManager.gold += goldPurpleV;
+                datosJugador.gold += goldPurpleV;
             }
             else if (TypeItem == tipeItem.goldWhite)
             {
                 GoldProperties();
-                gManager.gold += goldWhiteV;
+                datosJugador.gold += goldWhiteV;
             }
             else if (TypeItem == tipeItem.chestGold)
             {
                 GoldProperties();
-                gManager.gold += chestGoldV;
+                datosJugador.gold += chestGoldV;
             }
             else if (TypeItem == tipeItem.lifeMax)
             {
                 gManager.audioSource.clip = gManager.soundGrabLifeMax;
                 gManager.audioSource.Play();
                 gManager.audioSource.loop = false;
-                pHealth.maxHealth += healthMaxV;
-                pHealth.vidaACurar = pHealth.maxHealth;
+                datosJugador.maxHealth += healthMaxV;
+                pHealth.vidaACurar = datosJugador.maxHealth;
                 pHealth.healing = true;
             }
             else if (TypeItem == tipeItem.porkChop)
@@ -123,46 +121,46 @@ public class ItemController : MonoBehaviour
             else if (TypeItem == tipeItem.subKnife)
             {
                 ItemProperties();
-                subWeaponSys.typeSub = 0;
-                subWeaponSys.haveSub = true;
+                datosJugador.typeSub = 0;
+                datosJugador.haveSub = true;
             }
             else if (TypeItem == tipeItem.subAxe)
             {
                 ItemProperties();
-                subWeaponSys.typeSub = 1;
-                subWeaponSys.haveSub = true;
+                datosJugador.typeSub = 1;
+                datosJugador.haveSub = true;
             }
             else if (TypeItem == tipeItem.subHolyWater)
             {
                 ItemProperties();
-                subWeaponSys.typeSub = 2;
-                subWeaponSys.haveSub = true;
+                datosJugador.typeSub = 2;
+                datosJugador.haveSub = true;
             }
             else if (TypeItem == tipeItem.subCross)
             {
                 ItemProperties();
-                subWeaponSys.typeSub = 3;
-                subWeaponSys.haveSub = true;
+                datosJugador.typeSub = 3;
+                datosJugador.haveSub = true;
             }
             else if(TypeItem == tipeItem.x2Pow)
             {
                 ItemProperties();
-                if (subWeaponSys.multiplierPow == 0)
-                    subWeaponSys.multiplierPow = 1;
-                else if (subWeaponSys.multiplierPow == 1)
-                    subWeaponSys.multiplierPow = 2;
-                else if (subWeaponSys.multiplierPow == 2)
-                    subWeaponSys.multiplierPow = 2;
+                if (datosJugador.multiplierPow == 0)
+                    datosJugador.multiplierPow = 1;
+                else if (datosJugador.multiplierPow == 1)
+                    datosJugador.multiplierPow = 2;
+                else if (datosJugador.multiplierPow == 2)
+                    datosJugador.multiplierPow = 2;
             }
             else if (TypeItem == tipeItem.x3Pow)
             {
                 ItemProperties();
-                if (subWeaponSys.multiplierPow == 0)
-                    subWeaponSys.multiplierPow = 2;
-                else if (subWeaponSys.multiplierPow == 1)
-                    subWeaponSys.multiplierPow = 2;
-                else if (subWeaponSys.multiplierPow == 2)
-                    subWeaponSys.multiplierPow = 2;
+                if (datosJugador.multiplierPow == 0)
+                    datosJugador.multiplierPow = 2;
+                else if (datosJugador.multiplierPow == 1)
+                    datosJugador.multiplierPow = 2;
+                else if (datosJugador.multiplierPow == 2)
+                    datosJugador.multiplierPow = 2;
             }
 
             Destroy(this.gameObject);

@@ -5,26 +5,28 @@ using System;
 
 public class EventManager : MonoBehaviour
 {
+    DatosJugador datosJugador;
+
     public PitEvent pitEvent;
 
-    public bool pitActive;
-
-    [Header("EVENTOS DEL MAPA SALVADOS")]
-    public bool pitActiveSav;
-
+    //a medida que se agregan mas eventos al juego, tambien agregar sus respectivos estados en este archivo
+    //se deben agregar al CheckEvents(), EventOnLoadGame(), EventOnStartGame(), FindEvents()
+    private void Start()
+    {
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+    }
 
     public void CheckEvents()
     {
-        pitActive = pitEvent.pitEnable;
+        datosJugador.pitActive = pitEvent.pitEnable;
     }
 
     public void EventOnLoadGame()
     {
         //primero localizamos los eventos del mapa para ahi si pasarle caracteristicas de loadgame
         FindEvents();
-        pitEvent.pitEnable = Convert.ToBoolean(PlayerPrefs.GetInt("PitEvent"));
-        pitActiveSav = Convert.ToBoolean(PlayerPrefs.GetInt("PitEvent"));
-        CheckEvents();
+        pitEvent.pitEnable = datosJugador.pitActive;
+        
     }
 
     public void EventOnStartGame()
@@ -32,7 +34,7 @@ public class EventManager : MonoBehaviour
         //primero localizamos a los items del mapa que son unicos para ahi si pasarle caracteristicas de newgame
         FindEvents();
         pitEvent.pitEnable = false;
-        pitActiveSav = pitEvent.pitEnable;
+        
         CheckEvents();
     }
 

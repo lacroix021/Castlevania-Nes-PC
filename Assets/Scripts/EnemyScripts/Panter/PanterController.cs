@@ -82,6 +82,18 @@ public class PanterController : MonoBehaviour
 
     void MoveEnemy()
     {
+        //limite de velocidad
+        if(rb.velocity.x > 1)
+        {
+            rb.velocity = new Vector2(1, rb.velocity.y);
+        }
+        else if(rb.velocity.x < -1)
+        {
+            rb.velocity = new Vector2(-1, rb.velocity.y);
+        }
+
+
+
         if (playerInRange)
         {
             rb.AddForce(new Vector2(dir * moveSpeed * Time.deltaTime, rb.velocity.y), ForceMode2D.Force);

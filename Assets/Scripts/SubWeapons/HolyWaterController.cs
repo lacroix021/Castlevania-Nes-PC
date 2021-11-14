@@ -10,6 +10,7 @@ public class HolyWaterController : MonoBehaviour
 
     //SoundsSimon soundSimon;
     SubWeaponSystem weaponSys;
+    DatosJugador datosJugador;
     Rigidbody2D rb;
     SpriteRenderer spr;
     BoxCollider2D bottleCol;
@@ -28,7 +29,7 @@ public class HolyWaterController : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         weaponSys = GameObject.FindGameObjectWithTag("Player").GetComponent<SubWeaponSystem>();
-        //soundSimon = GameObject.FindGameObjectWithTag("Player").GetComponent<SoundsSimon>();
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         dirBottle = weaponSys.direction;
         transform.localScale = new Vector3(dirBottle/2, 0.5f, 0.5f);
         boxCollision = GetComponent<BoxCollider2D>();
@@ -41,16 +42,9 @@ public class HolyWaterController : MonoBehaviour
         ImpulseBottle();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         CheckGround();
-
-        
     }
 
     void ImpulseBottle()
@@ -85,40 +79,22 @@ public class HolyWaterController : MonoBehaviour
 
     IEnumerator TimeSpawnFire()
     {
-        if (weaponSys.multiplierPow == 1 || weaponSys.multiplierPow == 2)
+        if (datosJugador.multiplierPow == 1 || datosJugador.multiplierPow == 2)
         {
             yield return new WaitForSeconds(0.1f);
             GameObject fireInstancedB = Instantiate(prefabFire, new Vector2(transform.position.x + 0.15f, transform.position.y + 0.01f), Quaternion.identity);
         }
-        /*
-        else if(weaponSys.multiplierPow == 2)
-        {
-            yield return new WaitForSeconds(0.1f);
-            GameObject fireInstancedB = Instantiate(prefabFire, new Vector2(transform.position.x + 0.15f, transform.position.y), Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
-            GameObject fireInstancedC = Instantiate(prefabFire, new Vector2(transform.position.x + 0.3f, transform.position.y), Quaternion.identity);
-        }
-        */
 
         Destroy(this.gameObject);
     }
 
     IEnumerator TimeSpawnFireB()
     {
-        if (weaponSys.multiplierPow == 1 || weaponSys.multiplierPow == 2)
+        if (datosJugador.multiplierPow == 1 || datosJugador.multiplierPow == 2)
         {
             yield return new WaitForSeconds(0.1f);
             GameObject fireInstancedB = Instantiate(prefabFire, new Vector2(transform.position.x - 0.15f, transform.position.y + 0.01f), Quaternion.identity);
         }
-        /*
-        else if (weaponSys.multiplierPow == 2)
-        {
-            yield return new WaitForSeconds(0.1f);
-            GameObject fireInstancedB = Instantiate(prefabFire, new Vector2(transform.position.x - 0.15f, transform.position.y), Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
-            GameObject fireInstancedC = Instantiate(prefabFire, new Vector2(transform.position.x - 0.3f, transform.position.y), Quaternion.identity);
-        }
-        */
             
         Destroy(this.gameObject);
     }

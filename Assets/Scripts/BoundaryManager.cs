@@ -48,6 +48,7 @@ public class BoundaryManager : MonoBehaviour
             //se agrego este partMap para crear el mapa del juego, se podria agregar un array manual en el GameManager para que cuente la totalidad de partMap y si al final tiene todo el mapa marque un 100%
             
             mapActive = true;
+            
             structureManager.CheckMap();
         }
         else

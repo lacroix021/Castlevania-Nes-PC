@@ -11,9 +11,11 @@ public class SubWeaponSystem : MonoBehaviour
     HeartsSystem heartsSys;
     SoundsSimon soundSimon;
 
-    public bool haveSub;
+    DatosJugador datosJugador;
 
-    public int typeSub = 0;
+    //public bool haveSub;
+
+    //public int typeSub = 0;
 
     public float direction;
 
@@ -22,7 +24,7 @@ public class SubWeaponSystem : MonoBehaviour
     public Transform subPos;
     public Transform subPosB;
 
-    public int multiplierPow;
+    //public int multiplierPow;
 
     /*
     type of subweapon
@@ -38,6 +40,7 @@ public class SubWeaponSystem : MonoBehaviour
         pController = GetComponent<SimonController>();
         heartsSys = GetComponent<HeartsSystem>();
         soundSimon = GetComponent<SoundsSimon>();
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
     }
 
     // Update is called once per frame
@@ -49,49 +52,49 @@ public class SubWeaponSystem : MonoBehaviour
 
     void InputSubWeapon()
     {
-        if (Input.GetButtonDown("Fire2") && haveSub && !pController.animSlide)
+        if (Input.GetButtonDown("Fire2") && datosJugador.haveSub && !pController.animSlide)
         {
             //Dagas y cooldown
-            if(typeSub == 0 && heartsSys.currentHearts >= 1)
+            if(datosJugador.typeSub == 0 && datosJugador.currentHearts >= 1)
             {
                 if (Time.time >= nextSubTime)
                 {
                     pController.anim.SetTrigger("Sub");
                     pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
-                    heartsSys.currentHearts -= 1;
+                    datosJugador.currentHearts -= 1;
                     nextSubTime = Time.time + 1f / subRate;
                 }
             }
             //achas y cooldown
-            else if(typeSub == 1 && heartsSys.currentHearts >= 2)
+            else if(datosJugador.typeSub == 1 && datosJugador.currentHearts >= 2)
             {
                 if (Time.time >= nextSubTime)
                 {
                     pController.anim.SetTrigger("Sub");
                     pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
-                    heartsSys.currentHearts -= 2;
+                    datosJugador.currentHearts -= 2;
                     nextSubTime = Time.time + 1f / subRate;
                 }
             }
             //agua bendita y cooldown
-            else if (typeSub == 2 && heartsSys.currentHearts >= 2)
+            else if (datosJugador.typeSub == 2 && datosJugador.currentHearts >= 2)
             {
                 if (Time.time >= nextSubTime)
                 {
                     pController.anim.SetTrigger("Sub");
                     pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
-                    heartsSys.currentHearts -= 2;
+                    datosJugador.currentHearts -= 2;
                     nextSubTime = Time.time + 1f / subRate;
                 }
             }
             //cruz y cooldown
-            else if (typeSub == 3 && heartsSys.currentHearts >= 2)
+            else if (datosJugador.typeSub == 3 && datosJugador.currentHearts >= 2)
             {
                 if (Time.time >= nextSubTime)
                 {
                     pController.anim.SetTrigger("Sub");
                     pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
-                    heartsSys.currentHearts -= 2;
+                    datosJugador.currentHearts -= 2;
                     nextSubTime = Time.time + 1f / subRate;
                 }
             }
@@ -104,53 +107,53 @@ public class SubWeaponSystem : MonoBehaviour
     {
         direction = transform.localScale.x;
 
-        if(multiplierPow == 0 || multiplierPow == 1)
+        if(datosJugador.multiplierPow == 0 || datosJugador.multiplierPow == 1)
         {
-            Instantiate(subWeapons[typeSub], subPos.position, Quaternion.identity);
+            Instantiate(subWeapons[datosJugador.typeSub], subPos.position, Quaternion.identity);
         }
-        else if(multiplierPow == 2)
+        else if(datosJugador.multiplierPow == 2)
         {
-            Instantiate(subWeapons[typeSub], subPos.position, Quaternion.identity);
-            Instantiate(subWeapons[typeSub], subPosB.position, Quaternion.identity);
+            Instantiate(subWeapons[datosJugador.typeSub], subPos.position, Quaternion.identity);
+            Instantiate(subWeapons[datosJugador.typeSub], subPosB.position, Quaternion.identity);
         }
     }
 
     void RateSubWeapons()
     {
-        if(typeSub == 0)
+        if(datosJugador.typeSub == 0)
         {
-            if (multiplierPow == 0)
+            if (datosJugador.multiplierPow == 0)
                 subRate = 0.8f;
-            else if (multiplierPow == 1)
+            else if (datosJugador.multiplierPow == 1)
                 subRate = 1.4f;
-            else if (multiplierPow == 2)
+            else if (datosJugador.multiplierPow == 2)
                 subRate = 1.8f;
         }
-        else if(typeSub == 1)
+        else if(datosJugador.typeSub == 1)
         {
-            if (multiplierPow == 0)
+            if (datosJugador.multiplierPow == 0)
                 subRate = 0.7f;
-            else if (multiplierPow == 1)
+            else if (datosJugador.multiplierPow == 1)
                 subRate = 1.4f;
-            else if (multiplierPow == 2)
+            else if (datosJugador.multiplierPow == 2)
                 subRate = 1.6f;
         }
-        else if(typeSub == 2)
+        else if(datosJugador.typeSub == 2)
         {
-            if (multiplierPow == 0)
+            if (datosJugador.multiplierPow == 0)
                 subRate = 0.7f;
-            else if (multiplierPow == 1)
+            else if (datosJugador.multiplierPow == 1)
                 subRate = 1.1f;
-            else if (multiplierPow == 2)
+            else if (datosJugador.multiplierPow == 2)
                 subRate = 1.3f;
         }
-        else if(typeSub == 3)
+        else if(datosJugador.typeSub == 3)
         {
-            if (multiplierPow == 0)
+            if (datosJugador.multiplierPow == 0)
                 subRate = 0.4f;
-            else if (multiplierPow == 1)
+            else if (datosJugador.multiplierPow == 1)
                 subRate = 0.7f;
-            else if (multiplierPow == 2)
+            else if (datosJugador.multiplierPow == 2)
                 subRate = 0.9f;
         }
     }

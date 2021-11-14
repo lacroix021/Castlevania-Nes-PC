@@ -8,18 +8,20 @@ public class ShadowKnife : MonoBehaviour
     private float shadowTimeCD;
     public float shadowTime;
     SubWeaponSystem weaponSys;
+    DatosJugador datosJugador;
 
     // Start is called before the first frame update
     void Start()
     {
         weaponSys = GameObject.FindGameObjectWithTag("Player").GetComponent<SubWeaponSystem>();
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         shadowTimeCD = shadowTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (weaponSys.multiplierPow == 2)
+        if (datosJugador.multiplierPow == 2)
         {
             if (shadowTimeCD > 0)
             {

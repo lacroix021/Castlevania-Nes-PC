@@ -8,6 +8,7 @@ public class KnifeController : MonoBehaviour
     private float dirKnife;
 
     SubWeaponSystem weaponSys;
+    DatosJugador datosJugador;
     Rigidbody2D rb;
 
     //160
@@ -19,6 +20,7 @@ public class KnifeController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         weaponSys = GameObject.FindGameObjectWithTag("Player").GetComponent<SubWeaponSystem>();
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         dirKnife = weaponSys.direction;
         transform.localScale = new Vector3(dirKnife, -1 , 1);
     }
@@ -30,17 +32,17 @@ public class KnifeController : MonoBehaviour
 
     void ImpulseKnife()
     {
-        if(weaponSys.multiplierPow == 0)
+        if(datosJugador.multiplierPow == 0)
         {
             speedKnife = 160;
             rb.velocity = new Vector2((dirKnife * -1) * speedKnife * Time.fixedDeltaTime, rb.velocity.y);
         }
-        else if (weaponSys.multiplierPow == 1)
+        else if (datosJugador.multiplierPow == 1)
         {
             speedKnife = 200;
             rb.velocity = new Vector2((dirKnife * -1) * speedKnife * Time.fixedDeltaTime, rb.velocity.y);
         }
-        else if (weaponSys.multiplierPow == 2)
+        else if (datosJugador.multiplierPow == 2)
         {
             speedKnife = 300;
             rb.velocity = new Vector2((dirKnife * -1) * speedKnife * Time.fixedDeltaTime, rb.velocity.y);

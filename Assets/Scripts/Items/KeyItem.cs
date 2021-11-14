@@ -18,13 +18,14 @@ public class KeyItem : MonoBehaviour
     public tipeKey TipeKey;
 
     GameManager gManager;
-    KeyChain keyChain;
+    DatosJugador datosJugador;
 
     // Start is called before the first frame update
     void Start()
     {
         gManager = GameManager.gameManager;
-        keyChain = GameObject.FindGameObjectWithTag("Player").GetComponent<KeyChain>();
+
+        datosJugador = gManager.GetComponent<DatosJugador>();
     }
 
     
@@ -40,37 +41,37 @@ public class KeyItem : MonoBehaviour
             if (TipeKey == tipeKey.blueKey)
             {
                 //añadir al llavero
-                keyChain.blueKey = true;
+                datosJugador.blueKey = true;
                 Destroy(this.gameObject);
             }
             else if (TipeKey == tipeKey.cianKey)
             {
                 //añadir al llavero
-                keyChain.cianKey = true;
+                datosJugador.cianKey = true;
                 Destroy(this.gameObject);
             }
             else if (TipeKey == tipeKey.redKey)
             {
                 //añadir al llavero
-                keyChain.redKey = true;
+                datosJugador.redKey = true;
                 Destroy(this.gameObject);
             }
             else if (TipeKey == tipeKey.yellowKey)
             {
                 //añadir al llavero
-                keyChain.yellowKey = true;
+                datosJugador.yellowKey = true;
                 Destroy(this.gameObject);
             }
             else if (TipeKey == tipeKey.pinkKey)
             {
                 //añadir al llavero
-                keyChain.pinkKey = true;
+                datosJugador.pinkKey = true;
                 Destroy(this.gameObject);
             }
             else if (TipeKey == tipeKey.greenKey)
             {
                 //añadir al llavero
-                keyChain.greenKey = true;
+                datosJugador.greenKey = true;
                 Destroy(this.gameObject);
             }
         }

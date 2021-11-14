@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthPlayer : MonoBehaviour
 {
     public float currentHealth;
-    public float maxHealth;
+    //public float maxHealth;
     public bool isDead;
     public bool isInvulnerable;
 
@@ -19,9 +19,8 @@ public class HealthPlayer : MonoBehaviour
     SoundsSimon soundSimon;
 
     GameManager gManager;
-    HeartsSystem heartsSys;
-    SubWeaponSystem weaponSys;
-    TypeWhip whipSys;
+
+    DatosJugador datosJugador;
 
     public float currentDamageTime;
     public float damageTime;
@@ -38,9 +37,7 @@ public class HealthPlayer : MonoBehaviour
         playerController = GetComponent<SimonController>();
         soundSimon = GetComponent<SoundsSimon>();
         gManager = GameManager.gameManager;
-        heartsSys = GetComponent<HeartsSystem>();
-        weaponSys = GetComponent<SubWeaponSystem>();
-        whipSys = GetComponentInChildren<TypeWhip>();
+        datosJugador = gManager.GetComponent<DatosJugador>();
         sprPlayer = GetComponent<SpriteRenderer>();
         /*********************/
         rend = GetComponent<Renderer>();
@@ -55,7 +52,7 @@ public class HealthPlayer : MonoBehaviour
 
     public void HealthCheck()
     {
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0, datosJugador.maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -84,15 +81,15 @@ public class HealthPlayer : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        if(gManager.Saves != 0 && gManager.gold >= gManager.costRespawn)
+        if(datosJugador.Saves != 0 && datosJugador.gold >= datosJugador.costRespawn)
         {
-            currentHealth = maxHealth;
+            currentHealth = datosJugador.maxHealth;
             transform.position = new Vector2(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"));
-            heartsSys.currentHearts = 0;
-            weaponSys.typeSub = 4;
-            weaponSys.haveSub = false;
-            weaponSys.multiplierPow = 0;
-            whipSys.typeWhip = 0;
+            datosJugador.currentHearts = 0;
+            datosJugador.typeSub = 4;
+            datosJugador.haveSub = false;
+            datosJugador.multiplierPow = 0;
+            datosJugador.typeWhip = 0;
             isDead = false;
             playerController.anim.SetBool("Die", isDead);
             isInvulnerable = false;
@@ -103,8 +100,8 @@ public class HealthPlayer : MonoBehaviour
             Physics2D.IgnoreLayerCollision(9, 10, false);
 
             //pierde oro al revivir
-            gManager.gold -= gManager.costRespawn;
-            gManager.costRespawn *= 2;
+            datosJugador.gold -= datosJugador.costRespawn;
+            datosJugador.costRespawn *= 2;
             //
         }
     }

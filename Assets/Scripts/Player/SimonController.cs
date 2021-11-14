@@ -168,7 +168,7 @@ public class SimonController : MonoBehaviour
             isCrouch = true;
             rb.velocity = new Vector2(0, rb.velocity.y);
 
-            if (Input.GetButtonDown("Jump") && !animCrouchAttack && !animAttack && !animSub && !healthPlayer.isInvulnerable)
+            if (Input.GetButtonDown("Jump") && !animCrouchAttack && !animAttack && !animSub)
             {
                 if (Time.time >= nextSlideTime)
                 {

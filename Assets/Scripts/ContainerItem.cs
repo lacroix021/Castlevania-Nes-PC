@@ -5,19 +5,18 @@ using UnityEngine;
 public class ContainerItem : MonoBehaviour
 {
     public GameObject EffectDestroy;
-    private GameObject EffectDestroyInstance;
+    
     public Transform placeDrop;
+        
+    DatosJugador datosJugador;
 
-    private GameObject itemInstanced;
-
-    GameManager gManager;
     LootContainer lootCont;
-    int num;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        gManager = GameManager.gameManager;
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         lootCont = GetComponentInParent<LootContainer>();
     }
 
@@ -27,36 +26,36 @@ public class ContainerItem : MonoBehaviour
         {
             int lootRarity = Random.Range(0, 101);
 
-            if(gManager.currentTypeWhip != 2)
+            if(datosJugador.typeWhip != 2)
             {
                 //si no tiene vampirekiller, dropeara latigo, si ya lo tiene dropeara corazonGrande
-                itemInstanced = Instantiate(lootCont.loot[0], placeDrop.position, Quaternion.identity);
+                Instantiate(lootCont.loot[0], placeDrop.position, Quaternion.identity);
             }
             else
             {
                 if(lootRarity >= 0 && lootRarity <= 50)
                 {
                     //50%
-                    itemInstanced = Instantiate(lootCont.loot[1], placeDrop.position, Quaternion.identity);
+                    Instantiate(lootCont.loot[1], placeDrop.position, Quaternion.identity);
                 }
                 else if(lootRarity > 50 && lootRarity <= 75)
                 {
                     //25%
-                    itemInstanced = Instantiate(lootCont.loot[2], placeDrop.position, Quaternion.identity);
+                    Instantiate(lootCont.loot[2], placeDrop.position, Quaternion.identity);
                 }
                 else if (lootRarity > 75 && lootRarity <= 92)
                 {
                     //17%
-                    itemInstanced = Instantiate(lootCont.loot[3], placeDrop.position, Quaternion.identity);
+                    Instantiate(lootCont.loot[3], placeDrop.position, Quaternion.identity);
                 }
                 else if (lootRarity > 92 && lootRarity <= 100)
                 {
                     //8%
-                    itemInstanced = Instantiate(lootCont.loot[4], placeDrop.position, Quaternion.identity);
+                    Instantiate(lootCont.loot[4], placeDrop.position, Quaternion.identity);
                 }
             }
 
-            EffectDestroyInstance = Instantiate(EffectDestroy, transform.position, Quaternion.identity);
+            Instantiate(EffectDestroy, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TypeWhip : MonoBehaviour
 {
-    public int typeWhip;
+    //public int typeWhip;
     public float DamageA;
     public float DamageB;
     public float DamageC;
@@ -43,8 +43,12 @@ public class TypeWhip : MonoBehaviour
     public Animator animWhipStandA;
     public Animator animWhipCrouchA;
 
+    DatosJugador datosJugador;
 
-    
+    private void Start()
+    {
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -54,9 +58,9 @@ public class TypeWhip : MonoBehaviour
     void ChangeWhip()
     {
         //limite de latigo para que no sume mas de 2
-        typeWhip = Mathf.Clamp(typeWhip, 0, 2);
+        datosJugador.typeWhip = Mathf.Clamp(datosJugador.typeWhip, 0, 2);
 
-        switch (typeWhip)
+        switch (datosJugador.typeWhip)
         {
             case 0:
                 //stand

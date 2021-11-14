@@ -6,49 +6,42 @@ using System;
 
 public class ItemMapManager : MonoBehaviour
 {
+    DatosJugador datosJugador;
 
     public SpawnUniqueItems spwnItemU1;
     public SpawnUniqueItems spwnItemU2;
 
-    public bool lifeMax1Taken;
-    public bool lifeMax2Taken;
 
-    [Header("ITEMS DEL MAPA SALVADOS")]
-    public bool lifeMax1Sav;
-    public bool lifeMax2Sav;
+    //a medida que se agregan mas items unicos nuevos, se deben poner tambien en este archivo y en el DatosJugador
+    //agregar en CheckItems(), ItemsMapOnLoadGame(), ItemsMapOnStartGame(), FindUniqueItems()
+    private void Start()
+    {
+        datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+    }
 
-    
     public void CheckItems()
     {
-        lifeMax1Taken = spwnItemU1.wasCaught;
-        lifeMax2Taken = spwnItemU2.wasCaught;
+        datosJugador.wasCaughtItem1 = spwnItemU1.wasCaught;
+        datosJugador.wasCaughtItem2 = spwnItemU2.wasCaught;
     }
     
     //incrementar este listado de items entre mas se agreguen al mapa
     public void ItemsMapOnLoadGame()
     {
-        //primero localizamos a los items del mapa que son unicos para ahi si pasarle caracteristicas de loadgame
         FindUniqueItems();
 
-        spwnItemU1.wasCaught = Convert.ToBoolean(PlayerPrefs.GetInt("LifeMax1"));
-        spwnItemU2.wasCaught = Convert.ToBoolean(PlayerPrefs.GetInt("LifeMax2"));
-
-        lifeMax1Sav = Convert.ToBoolean(PlayerPrefs.GetInt("LifeMax1"));
-        lifeMax2Sav = Convert.ToBoolean(PlayerPrefs.GetInt("LifeMax2"));
-        CheckItems();
+        spwnItemU1.wasCaught = datosJugador.wasCaughtItem1;
+        spwnItemU2.wasCaught = datosJugador.wasCaughtItem2;
     }
 
     //incrementar este listado de items entre mas se agreguen al mapa
     public void ItemsMapOnStartGame()
     {
-        //primero localizamos a los items del mapa que son unicos para ahi si pasarle caracteristicas de newgame
         FindUniqueItems();
-
+        //se reinician los items del mapa
         spwnItemU1.wasCaught = false;
         spwnItemU2.wasCaught = false;
 
-        lifeMax1Sav = spwnItemU1.wasCaught;
-        lifeMax2Sav = spwnItemU2.wasCaught;
         CheckItems();
     }
 

@@ -12,6 +12,8 @@ TagManager:
   - GrabChain
   - NoCollision
   - BreakWall
+  - UniqueItem
+  - map
   layers:
   - Default
   - TransparentFX

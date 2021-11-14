@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7c818ef7124b64987c30027cf7b4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 230
-  jumpForce: 110
-  impulseRate: 0.7
+  moveSpeed: 310
+  jumpForce: 95
+  impulseRate: 0.6
   playerInRange: 0
   isGrounded: 0
   isJump: 0
@@ -375,10 +375,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0

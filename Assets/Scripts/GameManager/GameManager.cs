@@ -19,25 +19,24 @@ public class GameManager : MonoBehaviour
 
     SimonController simonController;
     HealthPlayer playerHealth;
-    HeartsSystem playerHearts;
-    SubWeaponSystem weaponSystem;
-    public bool haveSubW;
-    TypeWhip whipMode;
-    KeyChain keyChain;
 
     ItemMapManager itemMapManager;
     BossMapManager bossManager;
     EventManager eventManager;
     StructureManager structureManager;
-    
+
+    /**/
+    GuardarCargar guardarCargar;
+    DatosJugador datosJugador;
+    /**/
+
 
     public Text healthText;
     public Text HeartsText;
 
     public Text weaponText;
     public Text goldText;
-    public int gold;
-    public int costRespawn = 1000;
+    
 
     public GameObject panelPause;
     public bool GamePaused;
@@ -82,40 +81,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject startGameFadeOut;
     public GameObject gameOverFadeIn;
-
-    [Header("SAVED DATA")]
-    public int Saves;
-    public float playerMaxHealthSav;
-    public float playerPosXSav;
-    public float playerPosYSav;
-    public int playerGoldSav;
-    public int costRespawnSav;
-    public int playerHeartsSav;
-    public int playerTypeSubSav;
-    public int playerMultiplierPowSav;
-    public bool playerHaveSub;
-    public int playerTypeWhipSav;
-    public bool BlueKeySav;
-    public bool CianKeySav;
-    public bool RedKeySav;
-    public bool YellowKeySav;
-    public bool PinkKeySav;
-    public bool GreenKeySav;
-
-    [Header("DATOS DEL JUGADOR")]    
-    public float currentMaxHealth;
-    public Vector2 posPlayer;
-    public int currentHearts;
-    public int currentTypeSub;
-    public int currentMultiplierPow;
-    public int currentTypeWhip;
-    public bool currentBKey;
-    public bool currentCKey;
-    public bool currentRKey;
-    public bool currentYKey;
-    public bool currentPKey;
-    public bool currentGKey;
-
+    
 
     public static GameManager gameManager;
 
@@ -131,8 +97,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    
 
     private void OnLevelWasLoaded(int level)
     {
@@ -155,6 +119,10 @@ public class GameManager : MonoBehaviour
         bossManager = GetComponentInChildren<BossMapManager>();
         eventManager = GetComponentInChildren<EventManager>();
         structureManager = GetComponentInChildren<StructureManager>();
+
+
+        guardarCargar = GetComponent<GuardarCargar>();
+        datosJugador = GetComponent<DatosJugador>();
     }
 
     // Update is called once per frame
@@ -169,10 +137,10 @@ public class GameManager : MonoBehaviour
             
 
             //esta linea es solo para encerrar el valor del oro en 0 y 999999999 para que no exceda ese limite
-            gold = Mathf.Clamp(gold, 0, 999999999);
+            datosJugador.gold = Mathf.Clamp(datosJugador.gold, 0, 999999999);
 
             healthText.text = playerHealth.currentHealth.ToString("F0");
-            HeartsText.text = playerHearts.currentHearts.ToString("F0");
+            HeartsText.text = datosJugador.currentHearts.ToString("F0");
             CurrentDataPlayer();
             InputKeysMenu();
             Paused();
@@ -228,35 +196,35 @@ public class GameManager : MonoBehaviour
 
     void WeaponCheck()
     {
-        if(whipMode.typeWhip == 0)
+        if(datosJugador.typeWhip == 0)
         {
             weaponText.text = "Leather Whip";
         }
-        else if(whipMode.typeWhip == 1)
+        else if(datosJugador.typeWhip == 1)
         {
             weaponText.text = "Chain Whip";
         }
-        else if (whipMode.typeWhip == 2)
+        else if (datosJugador.typeWhip == 2)
         {
             weaponText.text = "Vampire Killer";
         }
         //imagen del banner de estado
-        if(weaponSystem.typeSub == 0)
+        if(datosJugador.typeSub == 0)
         {
             imgSub.sprite = SubSprKnife;
             imgSub.enabled = true;
         }            
-        else if(weaponSystem.typeSub == 1)
+        else if(datosJugador.typeSub == 1)
         {
             imgSub.sprite = SubSprAxe;
             imgSub.enabled = true;
         }            
-        else if (weaponSystem.typeSub == 2)
+        else if (datosJugador.typeSub == 2)
         {
             imgSub.sprite = SubSprHolyWater;
             imgSub.enabled = true;
         }
-        else if (weaponSystem.typeSub == 3)
+        else if (datosJugador.typeSub == 3)
         {
             imgSub.sprite = SubSprCross;
             imgSub.enabled = true;
@@ -266,18 +234,18 @@ public class GameManager : MonoBehaviour
             imgSub.sprite = null;
             imgSub.enabled = false;
         }
-
-        if(weaponSystem.multiplierPow == 0)
+        //imagen del multiplicador
+        if(datosJugador.multiplierPow == 0)
         {
             imgPow.sprite = null;
             imgPow.enabled = false;
         }
-        else if(weaponSystem.multiplierPow == 1)
+        else if(datosJugador.multiplierPow == 1)
         {
             imgPow.sprite = x2Pow;
             imgPow.enabled = true;
         }
-        else if (weaponSystem.multiplierPow == 2)
+        else if (datosJugador.multiplierPow == 2)
         {
             imgPow.sprite = x3Pow;
             imgPow.enabled = true;
@@ -286,46 +254,76 @@ public class GameManager : MonoBehaviour
 
     void KeyCheck()
     {
-        if (keyChain.blueKey)
+        if (datosJugador.blueKey)
         {
             imgBlueKey.SetActive(true);
             imgBlueKey.GetComponent<Image>().sprite = blueKeySpr;
         }
+        else
+        {
+            imgBlueKey.SetActive(false);
+            imgBlueKey.GetComponent<Image>().sprite = null;
+        }
 
-         if (keyChain.cianKey)
+         if (datosJugador.cianKey)
         {
             imgCianKey.SetActive(true);
             imgCianKey.GetComponent<Image>().sprite = cianKeySpr;
         }
+        else
+        {
+            imgCianKey.SetActive(false);
+            imgCianKey.GetComponent<Image>().sprite = null;
+        }
 
-        if (keyChain.redKey)
+        if (datosJugador.redKey)
         {
             imgRedKey.SetActive(true);
             imgRedKey.GetComponent<Image>().sprite = redKeySpr;
         }
+        else
+        {
+            imgRedKey.SetActive(false);
+            imgRedKey.GetComponent<Image>().sprite = null;
+        }
 
-        if (keyChain.yellowKey)
+        if (datosJugador.yellowKey)
         {
             imgYellowKey.SetActive(true);
             imgYellowKey.GetComponent<Image>().sprite = yellowKeySpr;
         }
+        else
+        {
+            imgYellowKey.SetActive(false);
+            imgYellowKey.GetComponent<Image>().sprite = null;
+        }
 
-        if (keyChain.pinkKey)
+        if (datosJugador.pinkKey)
         {
             imgPinkKey.SetActive(true);
             imgPinkKey.GetComponent<Image>().sprite = pinkKeySpr;
         }
+        else
+        {
+            imgPinkKey.SetActive(false);
+            imgPinkKey.GetComponent<Image>().sprite = null;
+        }
 
-        if (keyChain.greenKey)
+        if (datosJugador.greenKey)
         {
             imgGreenKey.SetActive(true);
             imgGreenKey.GetComponent<Image>().sprite = greenKeySpr;
+        }
+        else
+        {
+            imgGreenKey.SetActive(false);
+            imgGreenKey.GetComponent<Image>().sprite = null;
         }
     }
 
     void ScorePoints()
     {
-        goldText.text = gold.ToString();
+        goldText.text = datosJugador.gold.ToString();
     }
 
     void Paused()
@@ -338,19 +336,7 @@ public class GameManager : MonoBehaviour
 
     void CurrentDataPlayer()
     {
-        currentMaxHealth = playerHealth.maxHealth;
-        posPlayer = instancePlayer.transform.position;
-        currentHearts = playerHearts.currentHearts;
-        currentTypeSub = weaponSystem.typeSub;
-        currentMultiplierPow = weaponSystem.multiplierPow;
-        currentTypeWhip = whipMode.typeWhip;
-        currentBKey = keyChain.blueKey;
-        currentCKey = keyChain.cianKey;
-        currentRKey = keyChain.redKey;
-        currentYKey = keyChain.yellowKey;
-        currentPKey = keyChain.pinkKey;
-        currentGKey = keyChain.greenKey;
-        haveSubW = weaponSystem.haveSub;
+        datosJugador.posPlayer = instancePlayer.transform.position;
     }
 
     public void BlinkControl()
@@ -361,7 +347,7 @@ public class GameManager : MonoBehaviour
     IEnumerator TimeBlink()
     {
         yield return new WaitForSeconds(3);
-        if(Saves != 0 && gold >= costRespawn)
+        if(datosJugador.Saves != 0 && datosJugador.gold >= datosJugador.costRespawn)
         {
             blink.SetActive(true);
         }
@@ -375,60 +361,24 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        //Carga de datos temporales
-        Saves = PlayerPrefs.GetInt("Saves");
-        playerMaxHealthSav = PlayerPrefs.GetFloat("PlayerMaxHealth");
-        playerPosXSav = PlayerPrefs.GetFloat("PlayerPosX");
-        playerPosYSav = PlayerPrefs.GetFloat("PlayerPosY");
-        playerGoldSav = PlayerPrefs.GetInt("PlayerGold");
-        costRespawnSav = PlayerPrefs.GetInt("CostRespawn");
-        playerHeartsSav = PlayerPrefs.GetInt("PlayerHearts");
+        guardarCargar.CargarInformacion();
 
         if (!instancePlayer)
         {
-            instancePlayer = Instantiate(playerPrefab, new Vector3(playerPosXSav, playerPosYSav, 0), Quaternion.identity);
+            instancePlayer = Instantiate(playerPrefab, datosJugador.posPlayer, Quaternion.identity);
             instancePlayer.name = playerPrefab.name;
 
             CargarComponentesInicio();
         }
-
-        playerTypeSubSav = weaponSystem.typeSub = PlayerPrefs.GetInt("PlayerTypeSub");
-        playerMultiplierPowSav = weaponSystem.multiplierPow = PlayerPrefs.GetInt("PlayerMultiplierPow");
-        playerHaveSub = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerHaveSub"));
-        playerTypeWhipSav = whipMode.typeWhip = PlayerPrefs.GetInt("PlayerTypeWhip");
 
         itemMapManager.ItemsMapOnLoadGame();
         bossManager.BossMapOnLoadGame();
         eventManager.EventOnLoadGame();
         structureManager.BrokenWallsOnLoadGame();
         structureManager.MapPartsLoadGame();
-
-        //carga de datos de llaves temporales
-        BlueKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerBKey"));
-        CianKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerCKey"));
-        RedKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerRKey"));
-        YellowKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerYKey"));
-        PinkKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerPKey"));
-        GreenKeySav = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerGKey"));
-
-        //Carga STATS BASE (vida maxima, posicion, oro, corazones, subArma, tipo de latigo)
-        playerHealth.maxHealth = PlayerPrefs.GetFloat("PlayerMaxHealth");
-        playerHealth.currentHealth = PlayerPrefs.GetFloat("PlayerMaxHealth");
+        
+        playerHealth.currentHealth = datosJugador.maxHealth;
         simonController.canMove = true;
-        gold = PlayerPrefs.GetInt("PlayerGold");
-        costRespawn = PlayerPrefs.GetInt("CostRespawn");
-        playerHearts.currentHearts = PlayerPrefs.GetInt("PlayerHearts");
-        weaponSystem.typeSub = PlayerPrefs.GetInt("PlayerTypeSub");
-        weaponSystem.haveSub = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerHaveSub"));
-        whipMode.typeWhip = PlayerPrefs.GetInt("PlayerTypeWhip");
-
-        //carga estado de llaves
-        keyChain.blueKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerBKey"));
-        keyChain.cianKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerCKey"));
-        keyChain.redKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerRKey"));
-        keyChain.yellowKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerYKey"));
-        keyChain.pinkKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerPKey"));
-        keyChain.greenKey = Convert.ToBoolean(PlayerPrefs.GetInt("PlayerGKey"));
     }
 
     
@@ -444,23 +394,26 @@ public class GameManager : MonoBehaviour
             CargarComponentesInicio();
             
             simonController.canMove = true;
-            costRespawn = 1000;
-            playerHealth.maxHealth = 20;
-            playerHealth.currentHealth = playerHealth.maxHealth;
-            playerHearts.currentHearts = 6;
-            weaponSystem.typeSub = 4;
-            weaponSystem.multiplierPow = 0;
-            weaponSystem.haveSub = false;
-            gold = 0;
-            keyChain.blueKey = false;
-            keyChain.cianKey = false;
-            keyChain.redKey = false;
-            keyChain.yellowKey = false;
-            keyChain.pinkKey = false;
-            keyChain.greenKey = false;
+            datosJugador.costRespawn = 600;
+            datosJugador.maxHealth = 20;
+            playerHealth.currentHealth = datosJugador.maxHealth;
+            datosJugador.currentHearts = 6;
+            datosJugador.typeSub = 4;
+            datosJugador.typeWhip = 0;
+            datosJugador.multiplierPow = 0;
+            datosJugador.haveSub = false;
+            datosJugador.gold = 0;
+            datosJugador.Saves = 0;
         }
 
         //items unicos del mapa restablecidos por defecto
+        datosJugador.blueKey = false;
+        datosJugador.cianKey = false;
+        datosJugador.redKey = false;
+        datosJugador.pinkKey = false;
+        datosJugador.yellowKey = false;
+        datosJugador.greenKey = false;
+
         itemMapManager.ItemsMapOnStartGame();
         bossManager.BossMapOnStartGame();
         eventManager.EventOnStartGame();
@@ -474,11 +427,7 @@ public class GameManager : MonoBehaviour
         instancePlayer = GameObject.FindGameObjectWithTag("Player");
         simonController = instancePlayer.GetComponent<SimonController>();
         playerHealth = instancePlayer.GetComponent<HealthPlayer>();
-        playerHearts = instancePlayer.GetComponent<HeartsSystem>();
-        weaponSystem = instancePlayer.GetComponent<SubWeaponSystem>();
-
-        whipMode = instancePlayer.GetComponentInChildren<TypeWhip>();
-        keyChain = instancePlayer.GetComponentInChildren<KeyChain>();
+        
         /************************/
     }
 }

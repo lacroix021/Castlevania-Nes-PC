@@ -13,10 +13,11 @@ public class SpawnUniqueItems : MonoBehaviour
     public bool wasCaught;
 
     ItemMapManager itemMapManager;
+    
 
     private void Awake()
     {
-        itemMapManager = GameObject.Find("GameManager").GetComponentInChildren<ItemMapManager>();
+        itemMapManager = GameManager.gameManager.GetComponentInChildren<ItemMapManager>();
     }
 
     private void Start()
