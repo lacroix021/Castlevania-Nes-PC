@@ -84,7 +84,7 @@ public class HealthPlayer : MonoBehaviour
         if(datosJugador.Saves != 0 && datosJugador.gold >= datosJugador.costRespawn)
         {
             currentHealth = datosJugador.maxHealth;
-            transform.position = new Vector2(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"));
+            transform.position = new Vector3(PlayerPrefs.GetFloat("LastPositionX"), PlayerPrefs.GetFloat("LastPositionY"), PlayerPrefs.GetFloat("LastPositionZ"));
             datosJugador.currentHearts = 0;
             datosJugador.typeSub = 4;
             datosJugador.haveSub = false;
@@ -188,22 +188,29 @@ public class HealthPlayer : MonoBehaviour
     void MakeHurtPlayer()
     {
         damaged = true;
-        playerController.canMove = false;
-        playerController.anim.SetBool("Hurting", true);
+
+        if (!playerController.isSlide)
+        {
+            playerController.canMove = false;
+            playerController.anim.SetBool("Hurting", true);
+        }
 
         SoundHurt();
 
         StartCoroutine(GetInvulnerable());
 
-        playerController.rb.velocity = Vector2.zero;
+        if (!playerController.isSlide)
+        {
+            playerController.rb.velocity = Vector2.zero;
 
-        if (colPosX > transform.position.x)
-        {
-            playerController.rb.AddForce(new Vector2(-forceKnockback * Time.fixedDeltaTime, 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
-        }
-        else if (colPosX < transform.position.x)
-        {
-            playerController.rb.AddForce(new Vector2(forceKnockback * Time.fixedDeltaTime, 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+            if (colPosX > transform.position.x)
+            {
+                playerController.rb.AddForce(new Vector2(-forceKnockback * Time.fixedDeltaTime, 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+            }
+            else if (colPosX < transform.position.x)
+            {
+                playerController.rb.AddForce(new Vector2(forceKnockback * Time.fixedDeltaTime, 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+            }
         }
 
         isInvulnerable = true;

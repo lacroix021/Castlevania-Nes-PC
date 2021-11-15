@@ -33,7 +33,7 @@ public class SimonController : MonoBehaviour
     public bool onSlope;
     [SerializeField] bool isAttack;
     public bool isCrouch;
-    [SerializeField] bool isSlide;
+    public bool isSlide;
     public bool canMove;
     public bool inStair;
     public bool climbing;
@@ -43,6 +43,7 @@ public class SimonController : MonoBehaviour
     bool animCrouchAttack;
     public bool animSlide;
     public bool animSub;
+    public bool animSubCrouch;
 
     /*****************************/
     public Transform feetPos;
@@ -50,6 +51,10 @@ public class SimonController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public BoxCollider2D ceilingCheck;
+    BoxCollider2D myCollider;
+    public PhysicsMaterial2D slide;
+    public PhysicsMaterial2D sticky;
+
 
     GameManager gameManager;
 
@@ -73,6 +78,7 @@ public class SimonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myCollider = GetComponent<BoxCollider2D>();
         gameManager = GameManager.gameManager;
         soundSimon = GetComponent<SoundsSimon>();
         moveSpeedBase = moveSpeed;
@@ -103,6 +109,8 @@ public class SimonController : MonoBehaviour
         animCrouchAttack = anim.GetCurrentAnimatorStateInfo(0).IsTag("CrouchAttack");
         animSlide = anim.GetCurrentAnimatorStateInfo(0).IsTag("Slide");
         animSub = anim.GetCurrentAnimatorStateInfo(0).IsTag("SubWeapon");
+        animSubCrouch = anim.GetCurrentAnimatorStateInfo(0).IsTag("SubWeaponCrouch");
+          
         
         //cambia la velocidad tan pronto entramos en una rampa
         if (onSlope)
@@ -122,6 +130,19 @@ public class SimonController : MonoBehaviour
         Slide();
         NormalizeSlope();
         ClimbingChain();
+
+        //cambio de material de fisicas
+        if(rb.velocity.x != 0 && !animSub)
+        {
+            if (onSlope)
+                myCollider.sharedMaterial = null;
+            else
+                myCollider.sharedMaterial = slide;
+        }
+        else
+        {
+            myCollider.sharedMaterial = sticky;
+        }
     }
 
     void InputManager()
@@ -162,13 +183,14 @@ public class SimonController : MonoBehaviour
 
         
         
-
+        
         if (v < 0 && isGrounded && !isSlide && canMove && !inStair)
         {
             isCrouch = true;
             rb.velocity = new Vector2(0, rb.velocity.y);
 
-            if (Input.GetButtonDown("Jump") && !animCrouchAttack && !animAttack && !animSub)
+            //slide
+            if (Input.GetButtonDown("Jump") && !animCrouchAttack && !animAttack && !animSub && !animSubCrouch)
             {
                 if (Time.time >= nextSlideTime)
                 {
@@ -289,20 +311,12 @@ public class SimonController : MonoBehaviour
     {
         if (isSlide)
         {
-            if (!healthPlayer.isInvulnerable)
-            {
-                rb.velocity = Vector2.zero;
-                if (transform.localScale.x == -1)
-                    rb.AddForce(new Vector2(slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
-                else if (transform.localScale.x == 1)
-                    rb.AddForce(new Vector2(-slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
-                StartCoroutine(StopSlide());
-            }
-            else
-            {
-                //correccion de bug para que no deslice mientras sufre daño
-                rb.velocity = Vector2.zero;
-            }
+            rb.velocity = Vector2.zero;
+            if (transform.localScale.x == -1)
+                rb.AddForce(new Vector2(slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
+            else if (transform.localScale.x == 1)
+                rb.AddForce(new Vector2(-slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
+            StartCoroutine(StopSlide());
         }
     }
 

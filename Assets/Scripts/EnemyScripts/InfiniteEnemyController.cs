@@ -136,7 +136,7 @@ public class InfiniteEnemyController : MonoBehaviour
                         nextSpawnTime = Time.time + 1f / spawnRate;
                     }
                 }
-                else if (bounds[4].activeInHierarchy == true || bounds[5].activeInHierarchy == true)
+                else if (bounds[4].activeInHierarchy == true || bounds[5].activeInHierarchy == true || bounds[6].activeInHierarchy == true)
                 {
                     //enemyPrefab = medusaHeadPrefab;
                     spawnRate = 0.3f;

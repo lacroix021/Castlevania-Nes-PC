@@ -69,6 +69,9 @@ public class AnkOfLife : MonoBehaviour
                 datosJugador.Saves += 1;
                 PlayerPrefs.SetInt("Saves", datosJugador.Saves);
                 PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);
+                PlayerPrefs.SetFloat("LastPositionX", datosJugador.posPlayer.x);
+                PlayerPrefs.SetFloat("LastPositionY", datosJugador.posPlayer.y);
+                PlayerPrefs.SetFloat("LastPositionZ", datosJugador.posPlayer.z);
                 timeSaveRate = Time.time + 1 / saveRate;
                 /**/
                 guardarCargar.GuardarInformacion();

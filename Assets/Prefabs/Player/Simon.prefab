@@ -193,8 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9317795df5d171841b6f7e5f0db278b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveSub: 0
-  typeSub: 4
   direction: 0
   subWeapons:
   - {fileID: 4305828628907698199, guid: 09d11e8f45c6afe4db56c4bdf8810cfb, type: 3}
@@ -203,7 +201,6 @@ MonoBehaviour:
   - {fileID: 4800595712746304914, guid: 6450ed76fd0d6ff4381976f51197281a, type: 3}
   subPos: {fileID: 8837055336107509172}
   subPosB: {fileID: 3421581225039596006}
-  multiplierPow: 0
 --- !u!114 &8837055334543314085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHearts: 100
-  currentHearts: 5
 --- !u!114 &8837055334543314090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7103627d169e9c442ba68a3eb85b8051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 1
+  currentHealth: 20
   isDead: 0
   isInvulnerable: 0
   forceKnockback: 50
@@ -273,17 +268,20 @@ MonoBehaviour:
   isAttack: 0
   isCrouch: 0
   isSlide: 0
-  canMove: 0
+  canMove: 1
   inStair: 0
   climbing: 0
   touchingCeiling: 0
   animSlide: 0
   animSub: 0
+  animSubCrouch: 0
   feetPos: {fileID: 8837055334729107992}
   colliderFeet: {fileID: 8837055334729107995}
   rb: {fileID: 8837055334543314092}
   anim: {fileID: 8837055334543314091}
   ceilingCheck: {fileID: 8837055335758887421}
+  slide: {fileID: 6200000, guid: 50dd2b5b6aba5374bb27dda7d7f71ae8, type: 2}
+  sticky: {fileID: 6200000, guid: d9219948c6850524d9f0fcbac1a3583d, type: 2}
 --- !u!212 &8837055334543314094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -563,7 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f084a2e1e99e3794cbec8f9fef0aaa57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeWhip: 0
   DamageA: 1
   DamageB: 2
   DamageC: 3

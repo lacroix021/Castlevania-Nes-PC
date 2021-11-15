@@ -41,6 +41,7 @@ public class DatosJugador : MonoBehaviour
     [Header("ITEMS UNICOS DEL MAPA")]
     public bool wasCaughtItem1;
     public bool wasCaughtItem2;
+    public bool wasCaughtItem3;
 
     
 
@@ -58,9 +59,17 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart9;
     public bool mapPart10;
     public bool mapPart11;
+    public bool mapPart11B;
     public bool mapPart12;
     public bool mapPart13;
     public bool mapPart14;
+    public bool mapPart15;
+    public bool mapPart16;
+    public bool mapPart17;
+    public bool mapPart18;
+    public bool mapPart19;
+    public bool mapPart20;
+    public bool mapPart21;
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]

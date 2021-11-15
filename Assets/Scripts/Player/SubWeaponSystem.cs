@@ -46,14 +46,21 @@ public class SubWeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         InputSubWeapon();
         RateSubWeapons();
     }
 
+    
+
     void InputSubWeapon()
     {
-        if (Input.GetButtonDown("Fire2") && datosJugador.haveSub && !pController.animSlide)
+        if (Input.GetButtonDown("Fire2") && datosJugador.haveSub)
         {
+            if (pController.isGrounded)
+            {
+                pController.rb.velocity = new Vector2(0, 0);
+            }
             //Dagas y cooldown
             if(datosJugador.typeSub == 0 && datosJugador.currentHearts >= 1)
             {
