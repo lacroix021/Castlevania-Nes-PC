@@ -9,6 +9,8 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject boundaryFather;
     GameObject instanceSpawned;
 
+    public bool instanceGhost;
+
     
     private void OnEnable()
     {
@@ -20,7 +22,16 @@ public class SpawnEnemy : MonoBehaviour
         else
         {
             instanceSpawned.transform.position = transform.position;
-            instanceSpawned.GetComponent<Health>().currentHealth = instanceSpawned.GetComponent<Health>().maxHealth;
+
+            if (instanceGhost)
+            {
+                instanceSpawned.GetComponentInChildren<Health>().currentHealth = instanceSpawned.GetComponentInChildren<Health>().maxHealth;
+            }
+            else
+            {
+                instanceSpawned.GetComponent<Health>().currentHealth = instanceSpawned.GetComponent<Health>().maxHealth;
+            }
+            
         }
     }
 }

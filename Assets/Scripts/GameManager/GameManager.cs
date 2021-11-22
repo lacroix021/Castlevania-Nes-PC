@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     
 
     [Header("COMPLEMENTOS")]
+    
     public AudioClip SoundTouchHeart;
     public AudioClip soundGrabItem;
     public AudioClip soundGrabGold;
@@ -133,6 +134,13 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            /*
+            if (!GamePaused)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            */
+
             BGUIPlayer.SetActive(true);
             
 
@@ -185,6 +193,8 @@ public class GameManager : MonoBehaviour
             {
                 panelPause.SetActive(true);
                 GamePaused = true;
+
+                /////////////////////////////////////////////////////////
             }
             else
             {

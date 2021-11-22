@@ -2817,6 +2817,7 @@ MonoBehaviour:
   multiplierPow: 0
   wasCaughtItem1: 0
   wasCaughtItem2: 0
+  wasCaughtItem3: 0
   mapPart0: 0
   mapPart1: 0
   mapPart2: 0
@@ -2829,9 +2830,17 @@ MonoBehaviour:
   mapPart9: 0
   mapPart10: 0
   mapPart11: 0
+  mapPart11B: 0
   mapPart12: 0
   mapPart13: 0
   mapPart14: 0
+  mapPart15: 0
+  mapPart16: 0
+  mapPart17: 0
+  mapPart18: 0
+  mapPart19: 0
+  mapPart20: 0
+  mapPart21: 0
   wallBroken1: 0
   wallBroken2: 0
   bossBatDefeated: 0
@@ -2992,6 +3001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spwnItemU1: {fileID: 0}
   spwnItemU2: {fileID: 0}
+  spwnItemU3: {fileID: 0}
 --- !u!4 &259618798616130746
 Transform:
   m_ObjectHideFlags: 0

@@ -92,6 +92,30 @@ TextureImporter:
   - first:
       213: 2667893630699500301
     second: enemies_Spr_29
+  - first:
+      213: -5940939149445475190
+    second: crow_0
+  - first:
+      213: -7066962671710584364
+    second: crow_1
+  - first:
+      213: 2422746675751876547
+    second: crow_2
+  - first:
+      213: -5691996775253757385
+    second: crow_3
+  - first:
+      213: -3714868374913460274
+    second: fleaman_0
+  - first:
+      213: -6422879075498626224
+    second: fleaman_1
+  - first:
+      213: -4420787350426037795
+    second: Ghost_0
+  - first:
+      213: 5589237845869680182
+    second: Ghost_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,8 +146,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -354,7 +378,7 @@ TextureImporter:
         x: 116
         y: 163
         width: 30
-        height: 16
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -818,7 +842,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -826,6 +850,174 @@ TextureImporter:
       bones: []
       spriteID: d03fe5c3f13460520800000000000000
       internalID: 2667893630699500301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow_0
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 100
+        width: 16
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84571de15b8d8da0800000000000000
+      internalID: -5940939149445475190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow_1
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 99
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1ceb774ea1ded90800000000000000
+      internalID: -7066962671710584364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 100
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7f2fce3435f9120800000000000000
+      internalID: 2422746675751876547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow_3
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 99
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.9, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732b4542717f101b0800000000000000
+      internalID: -5691996775253757385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleaman_0
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 99
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec753fd25e2227cc0800000000000000
+      internalID: -3714868374913460274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleaman_1
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 99
+        width: 15
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0537d9db2895dd6a0800000000000000
+      internalID: -6422879075498626224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 99
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd1d05eb35536a2c0800000000000000
+      internalID: -4420787350426037795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 99
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6365b303536f09d40800000000000000
+      internalID: 5589237845869680182
       vertices: []
       indices: 
       edges: []

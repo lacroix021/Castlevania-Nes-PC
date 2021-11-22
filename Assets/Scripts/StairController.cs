@@ -4,19 +4,47 @@ using UnityEngine;
 
 public class StairController : MonoBehaviour
 {
+    public bool playerAbove;
+    Collider2D thisCollider;
+    public LayerMask layerPlayer;
+    public float timesUp;
 
-    SimonController pController;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        pController = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
+        thisCollider = GetComponent<Collider2D>();
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void Update()
     {
-        if(other.gameObject.CompareTag("Player"))
+        playerAbove = Physics2D.IsTouchingLayers(thisCollider, layerPlayer);
+        
+        if (this.gameObject.activeSelf== true)
         {
-            pController.onSlope = true;
+            if (!playerAbove)
+            {
+                timesUp += Time.deltaTime;
+
+                if (timesUp > 0.3f)
+                {
+                    this.gameObject.SetActive(false);
+                    timesUp = 0;
+                }
+            }
+            else
+            {
+                timesUp = 0;
+            }
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.CompareTag("Player"))
+        {
+            playerAbove = false;
+            timesUp = 0;
+            this.gameObject.SetActive(false);
         }
     }
 }

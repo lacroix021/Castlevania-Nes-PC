@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ActivatorsUpDown : MonoBehaviour
+{
+    public bool up;
+    public bool down;
+
+    public GameObject stair;
+   
+
+    private void OnTriggerStay2D(Collider2D coll)
+    {
+        //para subir
+        if (coll.CompareTag("Player") && Input.GetAxisRaw("Vertical") > 0)
+        {
+            if (up)
+                stair.SetActive(true);
+        }
+
+        //para bajar
+        if (coll.CompareTag("Player") && Input.GetAxisRaw("Vertical") < 0)
+        {
+            if (down)
+                stair.SetActive(true);
+        }
+    }
+}
