@@ -56,8 +56,8 @@ public class GiantBatController : MonoBehaviour
         sprBoss = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        playerPos = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = playerPos.GetComponent<HealthPlayer>();
+        playerPos = GameObject.FindGameObjectWithTag("HeadPlayer");
+        playerHealth = playerPos.GetComponentInParent<HealthPlayer>();
         bossHealth = GetComponent<HealthBoss>();
         idle = false;
     }

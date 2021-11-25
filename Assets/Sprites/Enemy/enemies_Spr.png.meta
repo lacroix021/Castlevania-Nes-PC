@@ -116,6 +116,18 @@ TextureImporter:
   - first:
       213: 5589237845869680182
     second: Ghost_1
+  - first:
+      213: 1572017035779509456
+    second: skeleton_0
+  - first:
+      213: 5074372910684909985
+    second: skeleton_1
+  - first:
+      213: 1627747335046576826
+    second: skeleton_2
+  - first:
+      213: 1209948872414348002
+    second: skeleton_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1018,6 +1030,90 @@ TextureImporter:
       bones: []
       spriteID: 6365b303536f09d40800000000000000
       internalID: 5589237845869680182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_0
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 83
+        width: 19
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc00864a2de0d510800000000000000
+      internalID: 1572017035779509456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 82
+        width: 19
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a13d3fe64bcb6640800000000000000
+      internalID: 5074372910684909985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_2
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 92
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba3a89b39be69610800000000000000
+      internalID: 1627747335046576826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_3
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 93
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e244a0c61a9ac010800000000000000
+      internalID: 1209948872414348002
       vertices: []
       indices: 
       edges: []
