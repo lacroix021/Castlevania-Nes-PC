@@ -81,6 +81,8 @@ public class DatosJugador : MonoBehaviour
     [Header("BOSS UNICOS DEL MAPA")]
     public bool bossBatDefeated;
     public bool bossMedusaDefeated;
+    public bool bossMummyA;
+    public bool bossMummyB;
 
     //estado de eventos del mapa
     //cuando se agreguen mas eventos, tambien agregar su respectivo booleano

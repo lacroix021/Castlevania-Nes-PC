@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class LootBoss : MonoBehaviour
 {
+    public bool haveLoot;
     public GameObject lootPrefab;
-
 
 
     public void DropLoot()
     {
-        Instantiate(lootPrefab, transform.position, Quaternion.identity);
+        if (haveLoot)
+        {
+            Instantiate(lootPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

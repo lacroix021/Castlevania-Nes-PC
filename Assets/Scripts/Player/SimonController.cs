@@ -344,7 +344,7 @@ public class SimonController : MonoBehaviour
         {
             colliderFeet.enabled = false;
         }
-        else if(!isGrounded && rb.velocity.y < 0f)
+        else if(rb.velocity.y <= 0f)
         {
             colliderFeet.enabled = true;
         }

@@ -9,6 +9,7 @@ public class BossMapManager : MonoBehaviour
 
     public BossSpawner bossBat;
     public MedusaStatueController bossMedusa;
+    public CeilingSpawnerMummies ceilingMummies;
 
     //a medida que se agregan mas boss al juego, tambien agregar sus respectivos estados en este archivo
     //se deben agregar al CheckBoss(), BossMapOnLoadGame(), BossMapOnStartGame(), FindBossSpawner()
@@ -21,6 +22,8 @@ public class BossMapManager : MonoBehaviour
     {
         datosJugador.bossBatDefeated = bossBat.isDead;
         datosJugador.bossMedusaDefeated = bossMedusa.medusaDefeated;
+        datosJugador.bossMummyA = ceilingMummies.isDeadA;
+        datosJugador.bossMummyB = ceilingMummies.isDeadB;
     }
 
     public void BossMapOnLoadGame()
@@ -29,6 +32,9 @@ public class BossMapManager : MonoBehaviour
         FindBossSpawner();
         bossBat.isDead = datosJugador.bossBatDefeated;
         bossMedusa.medusaDefeated = datosJugador.bossMedusaDefeated;
+        ceilingMummies.isDeadA = datosJugador.bossMummyA;
+        ceilingMummies.isDeadB = datosJugador.bossMummyB;
+
     }
 
     public void BossMapOnStartGame()
@@ -37,6 +43,8 @@ public class BossMapManager : MonoBehaviour
         FindBossSpawner();
         bossBat.isDead = false;
         bossMedusa.medusaDefeated = false;
+        ceilingMummies.isDeadA = false;
+        ceilingMummies.isDeadB = false;
 
         CheckBoss();
     }
@@ -46,5 +54,6 @@ public class BossMapManager : MonoBehaviour
     {
         bossBat = GameObject.Find("BossSpawner1").GetComponent<BossSpawner>();
         bossMedusa = GameObject.Find("MedusaStatue").GetComponent<MedusaStatueController>();
+        ceilingMummies = GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>();
     }
 }

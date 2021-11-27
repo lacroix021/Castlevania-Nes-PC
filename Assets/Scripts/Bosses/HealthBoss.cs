@@ -7,7 +7,9 @@ public class HealthBoss : MonoBehaviour
     public enum typeBoss
     {
         BossGiantBat,
-        BossMedusa
+        BossMedusa,
+        BossMummyA,
+        BossMummyB
     };
 
     public typeBoss boss;
@@ -63,6 +65,18 @@ public class HealthBoss : MonoBehaviour
                 GameObject.Find("MedusaStatue").GetComponent<MedusaStatueController>().medusaDefeated = true;
                 bossManager.CheckBoss();
             }
+            else if(boss == typeBoss.BossMummyA)
+            {
+                isDead = true;
+                GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA = true;
+                bossManager.CheckBoss();
+            }
+            else if (boss == typeBoss.BossMummyB)
+            {
+                isDead = true;
+                GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB = true;
+                bossManager.CheckBoss();
+            }
         }
     }
 
@@ -85,7 +99,15 @@ public class HealthBoss : MonoBehaviour
             {
                 //poner evento de medusa aqui si lo hay
             }
-            
+            else if(boss == typeBoss.BossMummyA)
+            {
+                //poner evento de momia si lo hay
+            }
+            else if (boss == typeBoss.BossMummyB)
+            {
+                //poner evento de momia si lo hay
+            }
+
             //poner algo en el pit para que valga la pena el retroceso
 
             Destroy(this.gameObject);

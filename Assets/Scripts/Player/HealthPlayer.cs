@@ -5,7 +5,6 @@ using UnityEngine;
 public class HealthPlayer : MonoBehaviour
 {
     public float currentHealth;
-    //public float maxHealth;
     public bool isDead;
     public bool isInvulnerable;
 
@@ -31,6 +30,9 @@ public class HealthPlayer : MonoBehaviour
 
     float colPosX;
 
+    Collider2D mycollider;
+    Collider2D enemyCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class HealthPlayer : MonoBehaviour
         /*********************/
         rend = GetComponent<Renderer>();
         c = rend.material.color;
+
+        mycollider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -114,7 +118,7 @@ public class HealthPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.collider.CompareTag("Enemy") && currentHealth > 0)
+        if (col.collider.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
             dañoADisminuir = col.collider.GetComponent<DamageTouch>().damageTouch;
             colPosX = col.transform.position.x;
@@ -124,7 +128,7 @@ public class HealthPlayer : MonoBehaviour
     
     private void OnCollisionStay2D(Collision2D col)
     {
-        if (col.collider.CompareTag("Enemy") && currentHealth > 0)
+        if (col.collider.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
             dañoADisminuir = col.collider.GetComponent<DamageTouch>().damageTouch;
             colPosX = col.transform.position.x;
@@ -171,7 +175,7 @@ public class HealthPlayer : MonoBehaviour
 
     IEnumerator GetInvulnerable()
     {
-        
+       
         Physics2D.IgnoreLayerCollision(9, 10, true);
         c.a = 0.5f;
         rend.material.color = c;
@@ -188,6 +192,7 @@ public class HealthPlayer : MonoBehaviour
     void MakeHurtPlayer()
     {
         damaged = true;
+        isInvulnerable = true;
 
         if (!playerController.isSlide)
         {
@@ -213,7 +218,7 @@ public class HealthPlayer : MonoBehaviour
             }
         }
 
-        isInvulnerable = true;
+        
         HealthCheck();
         StartCoroutine(MoveAgain());
     }

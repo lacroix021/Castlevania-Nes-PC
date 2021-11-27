@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac60f3f985b4bae43aec518b304e898a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  haveLoot: 1
   lootPrefab: {fileID: 3440842619237841152, guid: d82f8f4eb496fd04d81e6b1cdaf51117,
     type: 3}
 --- !u!114 &5020345955399195103

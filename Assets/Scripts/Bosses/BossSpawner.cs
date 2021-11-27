@@ -17,6 +17,7 @@ public class BossSpawner : MonoBehaviour
 
     HealthBoss hBoss;
 
+    public int numMaxBossSpawned;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class BossSpawner : MonoBehaviour
     {
         if (!isDead)
         {
-            if (!bossSpawned && numSpawns < 1)
+            if (!bossSpawned && numSpawns < numMaxBossSpawned)
             {
                 numSpawns += 1;
                 bossSpawned = Instantiate(bossPrefab, transform.position, Quaternion.identity);
