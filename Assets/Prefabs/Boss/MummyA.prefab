@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac60f3f985b4bae43aec518b304e898a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 0}
   haveLoot: 0
+  lootPrefab: {fileID: 0}
 --- !u!114 &5475545210683101095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: 2
   currentHealth: 0
-  maxHealth: 70
+  maxHealth: 10
   isDead: 0
   deadEffect: {fileID: 4301122253200025113, guid: f6f1a8809f98f1c4fbaeddce0f85bcf5,
     type: 3}

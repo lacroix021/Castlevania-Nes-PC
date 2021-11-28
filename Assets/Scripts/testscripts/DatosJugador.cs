@@ -70,6 +70,8 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart19;
     public bool mapPart20;
     public bool mapPart21;
+    public bool mapPart22;
+    public bool mapPart23;
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]
@@ -88,4 +90,5 @@ public class DatosJugador : MonoBehaviour
     //cuando se agreguen mas eventos, tambien agregar su respectivo booleano
     [Header("EVENTOS DEL MAPA")]
     public bool pitActive;
+    public bool floorBrokenLevel3;
 }

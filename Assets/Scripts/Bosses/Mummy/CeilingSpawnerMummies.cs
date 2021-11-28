@@ -25,10 +25,25 @@ public class CeilingSpawnerMummies : MonoBehaviour
     public bool floorBroken;
     public Rigidbody2D[] breakeableFloor;
 
+    public GameObject platformBreakable;
+
+
+    BossMapManager bossManager;
+
+    [Header("COSAS DE LA TRAMPA")]
+    public bool interruptorOn;
+    public bool insideInterruptor;
+    public Collider2D colInterruptor;
+    //se usa tambien el layerplayer
+    public Animator animSwitch;
+
+
     // Start is called before the first frame update
 
     private void Start()
     {
+        bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
+
         if (isDeadA && isDeadB)
         {
             collActivator.enabled = false;
@@ -37,14 +52,14 @@ public class CeilingSpawnerMummies : MonoBehaviour
         {
             collActivator.enabled = true;
         }
-
-        
     }
 
     private void Update()
     {
         CheckActivator();
         ManagerControl();
+        SwitchCheck();
+
     }
 
     void CheckActivator()
@@ -88,17 +103,15 @@ public class CeilingSpawnerMummies : MonoBehaviour
 
         if (isDeadA && isDeadB)
         {
-            StartCoroutine(Sismo());
+            bossManager.CheckBoss();
+            
 
-            if (floorBroken)
+            if (interruptorOn)
             {
                 //ambas momias mueren, activar ruptura del piso
-                for (int i = 0; i < breakeableFloor.Length; i++)
-                {
-                    //corregir altura de collider ya que no permite caminar
-                    //y agregar una animacion de ruptura de piso mas creible, de momento cae todo el piso a la vez
-                    breakeableFloor[i].bodyType = RigidbodyType2D.Dynamic;
-                }
+                StartCoroutine(FallFloor());
+
+                platformBreakable.SetActive(false);
             }
             
             //esta estructura tambien debe ir registrada en el structure manager para el save y load
@@ -107,9 +120,50 @@ public class CeilingSpawnerMummies : MonoBehaviour
         }
     }
 
+    IEnumerator FallFloor()
+    {
+        breakeableFloor[8].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[9].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[7].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[10].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[6].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[11].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[5].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[12].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[4].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[13].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[3].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[14].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[2].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[15].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[1].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[16].bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(0.1f);
+        breakeableFloor[0].bodyType = RigidbodyType2D.Dynamic;
+        breakeableFloor[17].bodyType = RigidbodyType2D.Dynamic;
+    }
+
     IEnumerator Sismo()
     {
         yield return new WaitForSeconds(2);
-        floorBroken = true;
+        interruptorOn = true;
+    }
+
+    void SwitchCheck()
+    {
+        insideInterruptor = Physics2D.IsTouchingLayers(colInterruptor, layerPlayer);
+
+        if(insideInterruptor && Input.GetAxisRaw("Vertical") > 0)
+        {
+            animSwitch.SetBool("SwitchOn", true);
+            StartCoroutine(Sismo());
+        }
     }
 }

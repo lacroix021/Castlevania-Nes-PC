@@ -96,6 +96,8 @@ public class StructureManager : MonoBehaviour
         datosJugador.mapPart19 = mapParts[20].mapActive;
         datosJugador.mapPart20 = mapParts[21].mapActive;
         datosJugador.mapPart21 = mapParts[22].mapActive;
+        datosJugador.mapPart22 = mapParts[23].mapActive;
+        datosJugador.mapPart23 = mapParts[24].mapActive;
     }
 
     public void MapPartsLoadGame()
@@ -125,6 +127,8 @@ public class StructureManager : MonoBehaviour
         mapParts[20].mapActive = datosJugador.mapPart19;
         mapParts[21].mapActive = datosJugador.mapPart20;
         mapParts[22].mapActive = datosJugador.mapPart21;
+        mapParts[23].mapActive = datosJugador.mapPart22;
+        mapParts[24].mapActive = datosJugador.mapPart23;
     }
 
     public void MapPartsStartGame()

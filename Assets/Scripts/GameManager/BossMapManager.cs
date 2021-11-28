@@ -24,6 +24,7 @@ public class BossMapManager : MonoBehaviour
         datosJugador.bossMedusaDefeated = bossMedusa.medusaDefeated;
         datosJugador.bossMummyA = ceilingMummies.isDeadA;
         datosJugador.bossMummyB = ceilingMummies.isDeadB;
+        datosJugador.floorBrokenLevel3 = ceilingMummies.interruptorOn;
     }
 
     public void BossMapOnLoadGame()
@@ -34,6 +35,7 @@ public class BossMapManager : MonoBehaviour
         bossMedusa.medusaDefeated = datosJugador.bossMedusaDefeated;
         ceilingMummies.isDeadA = datosJugador.bossMummyA;
         ceilingMummies.isDeadB = datosJugador.bossMummyB;
+        ceilingMummies.interruptorOn = datosJugador.floorBrokenLevel3;
 
     }
 
@@ -45,6 +47,7 @@ public class BossMapManager : MonoBehaviour
         bossMedusa.medusaDefeated = false;
         ceilingMummies.isDeadA = false;
         ceilingMummies.isDeadB = false;
+        ceilingMummies.interruptorOn = false;     //evento de piso roto en nivel3
 
         CheckBoss();
     }
