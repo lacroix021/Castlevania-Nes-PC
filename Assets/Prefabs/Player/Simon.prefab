@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 45
-  jumpForce: 160
+  jumpForce: 145
   slideForce: 100
   thisGround:
     serializedVersion: 2

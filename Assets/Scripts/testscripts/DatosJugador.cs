@@ -91,4 +91,5 @@ public class DatosJugador : MonoBehaviour
     [Header("EVENTOS DEL MAPA")]
     public bool pitActive;
     public bool floorBrokenLevel3;
+    public bool wallBrokenLevel3;
 }

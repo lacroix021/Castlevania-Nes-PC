@@ -37,6 +37,8 @@ public class CeilingSpawnerMummies : MonoBehaviour
     //se usa tambien el layerplayer
     public Animator animSwitch;
 
+    public bool wallBroken;
+    public Rigidbody2D[] wallBreakable;
 
     // Start is called before the first frame update
 
@@ -104,7 +106,16 @@ public class CeilingSpawnerMummies : MonoBehaviour
         if (isDeadA && isDeadB)
         {
             bossManager.CheckBoss();
-            
+
+            //aqui poner que la pared se rompe...
+            wallBroken = true;
+
+            if (wallBroken)
+            {
+                wallBreakable[0].bodyType = RigidbodyType2D.Dynamic;
+                wallBreakable[1].bodyType = RigidbodyType2D.Dynamic;
+                wallBreakable[2].bodyType = RigidbodyType2D.Dynamic;
+            }
 
             if (interruptorOn)
             {

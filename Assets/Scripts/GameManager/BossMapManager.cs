@@ -25,6 +25,7 @@ public class BossMapManager : MonoBehaviour
         datosJugador.bossMummyA = ceilingMummies.isDeadA;
         datosJugador.bossMummyB = ceilingMummies.isDeadB;
         datosJugador.floorBrokenLevel3 = ceilingMummies.interruptorOn;
+        datosJugador.wallBrokenLevel3 = ceilingMummies.wallBroken;
     }
 
     public void BossMapOnLoadGame()
@@ -36,6 +37,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.isDeadA = datosJugador.bossMummyA;
         ceilingMummies.isDeadB = datosJugador.bossMummyB;
         ceilingMummies.interruptorOn = datosJugador.floorBrokenLevel3;
+        ceilingMummies.wallBroken = datosJugador.wallBrokenLevel3;
 
     }
 
@@ -48,6 +50,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.isDeadA = false;
         ceilingMummies.isDeadB = false;
         ceilingMummies.interruptorOn = false;     //evento de piso roto en nivel3
+        ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3
 
         CheckBoss();
     }
