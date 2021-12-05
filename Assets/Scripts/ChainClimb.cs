@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChainClimb : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class ChainClimb : MonoBehaviour
     Rigidbody2D rb;
     SimonController pController;
     Transform playerPos;
+
+    float v;
+    bool releaseChain;
+    bool grabChain;
 
     // Start is called before the first frame update
     void Start()
@@ -17,26 +22,29 @@ public class ChainClimb : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+    public void FallOfChain(InputAction.CallbackContext context)
     {
-        
+        releaseChain = context.performed;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("GrabChain") && Input.GetAxisRaw("Vertical") > 0)
+        if (collision.CompareTag("GrabChain") &&
+            collision.GetComponentInParent<SimonController>().activating && 
+            collision.GetComponentInParent<HealthPlayer>().currentHealth > 0)
         {
             pController.climbing = true;
             playerPos.position = new Vector3(transform.position.x, playerPos.position.y, 0);
-
-            
         }
 
-        if (Input.GetButtonDown("Jump") && pController.climbing)
+        /*
+        if (releaseChain && pController.climbing)
         {
             pController.climbing = false;
-        }
+        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)

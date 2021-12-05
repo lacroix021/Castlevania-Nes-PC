@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class SimonController : MonoBehaviour
 {
@@ -26,7 +28,8 @@ public class SimonController : MonoBehaviour
 
 
     [Header("VARIABLES INFORMATIVAS")]
-    [SerializeField] float h;
+    public bool activating;
+    public float h;
     public float v;
     [SerializeField] bool isJump;
     public bool isGrounded;
@@ -64,9 +67,11 @@ public class SimonController : MonoBehaviour
 
     public static SimonController instance;
 
+    public bool pauseGame;
+
     private void Awake()
     {
-        if(SimonController.instance == null)
+        if (SimonController.instance == null)
         {
             SimonController.instance = this;
         }
@@ -92,26 +97,27 @@ public class SimonController : MonoBehaviour
         //DESCOMENTAREAR ESTO DESPUES DE HACER PRUEBAS
         //Y COMENTAREAR EL Inputmanager() QUE ESTA SOLO EN EL UPDATE
 
-        
+
         if (!gameManager.GamePaused)
         {
             InputManager();
         }
-        
-        
+
+
         //InputManager();
 
         Animations();
         CheckGround();
-        Attack();
+        Attacking();
+        ClimbingChain();
 
         animAttack = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         animCrouchAttack = anim.GetCurrentAnimatorStateInfo(0).IsTag("CrouchAttack");
         animSlide = anim.GetCurrentAnimatorStateInfo(0).IsTag("Slide");
         animSub = anim.GetCurrentAnimatorStateInfo(0).IsTag("SubWeapon");
         animSubCrouch = anim.GetCurrentAnimatorStateInfo(0).IsTag("SubWeaponCrouch");
-          
-        
+
+
         //cambia la velocidad tan pronto entramos en una rampa
         if (onSlope)
         {
@@ -126,13 +132,13 @@ public class SimonController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        Jump();
+        JumpControll();
         Slide();
         NormalizeSlope();
-        ClimbingChain();
+        
 
         //cambio de material de fisicas
-        if(rb.velocity.x != 0 && !animSub)
+        if (rb.velocity.x != 0 && !animSub)
         {
             if (onSlope)
                 myCollider.sharedMaterial = null;
@@ -145,64 +151,103 @@ public class SimonController : MonoBehaviour
         }
     }
 
-    void InputManager()
+    //NEW INPUTS
+    public void Move(InputAction.CallbackContext context)
     {
-        if (canMove)
+        if (!gameManager.GamePaused)
         {
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
-        }
-        else
-        {
-            h = 0;
-            v = 0;
-        }
-        
-
-        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouch && canMove)
-        {
-            isJump = true;
-        }
-        //Ataque
-        if (Input.GetButtonDown("Fire1") && !animSlide && canMove && !climbing && !animSub)
-        {
-            if (Time.time >= nextAttackTime)
+            if (canMove)
             {
-                isAttack = true;
-                soundSimon.audioWhip.clip = soundSimon.noHit;
-                soundSimon.audioWhip.Play();
-                soundSimon.audioWhip.loop = false;
-
-                nextAttackTime = Time.time + 1f / attackRate;
+                h = context.ReadValue<Vector2>().x;
+                v = context.ReadValue<Vector2>().y;
+            }
+            else
+            {
+                h = 0;
+                v = 0;
             }
         }
+    }
 
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (!gameManager.GamePaused)
+        {
+            if (context.performed && isGrounded && !isCrouch && canMove)
+            {
+                isJump = true;
+            }
+            //salto controlado
+            if (context.canceled && rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
+            if (isCrouch && isGrounded && !isSlide && canMove && !inStair)
+            {
+                //slide
+                if (context.performed && !animCrouchAttack && !animAttack && !animSub && !animSubCrouch)
+                {
+                    if (Time.time >= nextSlideTime)
+                    {
+                        isSlide = true;
+                        nextSlideTime = Time.time + 1f / slideRate;
+                    }
+                }
+            }
+        }
+    }
+
+    public void ActiveMode(InputAction.CallbackContext context)
+    {
+        activating = context.performed;
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            gameManager.PauseGame();
+        }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (!gameManager.GamePaused)
+        {
+            if (context.performed && !animSlide && canMove && !climbing && !animSub)
+            {
+                if (Time.time >= nextAttackTime)
+                {
+                    isAttack = true;
+                    soundSimon.audioWhip.clip = soundSimon.noHit;
+                    soundSimon.audioWhip.Play();
+                    soundSimon.audioWhip.loop = false;
+
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
+        }
+    }
+
+
+    void InputManager()
+    {
         //agachado
 
         touchingCeiling = Physics2D.IsTouchingLayers(ceilingCheck, thisGround);
-
         
-        
-        
-        if (v < 0 && isGrounded && !isSlide && canMove && !inStair)
+        if (v < -0.2f && isGrounded && !isSlide && canMove && !inStair)
         {
             isCrouch = true;
             rb.velocity = new Vector2(0, rb.velocity.y);
-
-            //slide
-            if (Input.GetButtonDown("Jump") && !animCrouchAttack && !animAttack && !animSub && !animSubCrouch)
-            {
-                if (Time.time >= nextSlideTime)
-                {
-                    isSlide = true;
-                    nextSlideTime = Time.time + 1f / slideRate;
-                }
-            }
+            
         }
         else if ( v >= 0)
         {
             isCrouch = false;
         }
+        
 
         //Flip sprite
         if(h > 0 && canMove)
@@ -268,7 +313,7 @@ public class SimonController : MonoBehaviour
         anim.SetBool("Sliding", isSlide);
     }
 
-    void Jump()
+    void JumpControll()
     {
         if (isJump)
         {
@@ -277,21 +322,11 @@ public class SimonController : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
             isJump = false;
         }
-
-        //salto graduable de cuatro lineas
-        if (rb.velocity.y < 0 && !isGrounded)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump") && !isGrounded)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
     }
 
     void ClimbingChain()
     {
-        if (climbing)
+        if (climbing && activating)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, v * (moveSlopeSpeed -10) * Time.deltaTime);
@@ -302,7 +337,7 @@ public class SimonController : MonoBehaviour
         }
     }
 
-    void Attack()
+    void Attacking()
     {
         if (isAttack)
         {

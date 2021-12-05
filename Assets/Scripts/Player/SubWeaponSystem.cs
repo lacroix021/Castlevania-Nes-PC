@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SubWeaponSystem : MonoBehaviour
 {
@@ -47,12 +48,69 @@ public class SubWeaponSystem : MonoBehaviour
     void Update()
     {
         
-        InputSubWeapon();
+        //InputSubWeapon();
         RateSubWeapons();
     }
 
     
+    public void InputSubWep(InputAction.CallbackContext context)
+    {
+        if(context.performed && datosJugador.haveSub)
+        {
+            if (pController.isGrounded)
+            {
+                pController.rb.velocity = new Vector2(0, 0);
+            }
+            //Dagas y cooldown
+            if (datosJugador.typeSub == 0 && datosJugador.currentHearts >= 1)
+            {
+                if (Time.time >= nextSubTime)
+                {
+                    pController.anim.SetTrigger("Sub");
+                    pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
+                    datosJugador.currentHearts -= 1;
+                    nextSubTime = Time.time + 1f / subRate;
+                }
+            }
+            //achas y cooldown
+            else if (datosJugador.typeSub == 1 && datosJugador.currentHearts >= 2)
+            {
+                if (Time.time >= nextSubTime)
+                {
+                    pController.anim.SetTrigger("Sub");
+                    pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
+                    datosJugador.currentHearts -= 2;
+                    nextSubTime = Time.time + 1f / subRate;
+                }
+            }
+            //agua bendita y cooldown
+            else if (datosJugador.typeSub == 2 && datosJugador.currentHearts >= 2)
+            {
+                if (Time.time >= nextSubTime)
+                {
+                    pController.anim.SetTrigger("Sub");
+                    pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
+                    datosJugador.currentHearts -= 2;
+                    nextSubTime = Time.time + 1f / subRate;
+                }
+            }
+            //cruz y cooldown
+            else if (datosJugador.typeSub == 3 && datosJugador.currentHearts >= 2)
+            {
+                if (Time.time >= nextSubTime)
+                {
+                    pController.anim.SetTrigger("Sub");
+                    pController.rb.velocity = new Vector2(0, pController.rb.velocity.y);
+                    datosJugador.currentHearts -= 2;
+                    nextSubTime = Time.time + 1f / subRate;
+                }
+            }
 
+            heartsSys.CheckHearts();
+        }
+    }
+
+    /*
     void InputSubWeapon()
     {
         if (Input.GetButtonDown("Fire2") && datosJugador.haveSub)
@@ -109,6 +167,7 @@ public class SubWeaponSystem : MonoBehaviour
             heartsSys.CheckHearts();
         }
     }
+    */
 
     void InstantiateSubWeapon()
     {

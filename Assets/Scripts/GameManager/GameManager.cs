@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
@@ -126,6 +127,26 @@ public class GameManager : MonoBehaviour
         datosJugador = GetComponent<DatosJugador>();
     }
 
+    public void PauseGame()
+    {
+        if (playerHealth.currentHealth > 0)
+        {
+            if (panelPause.activeSelf == false)
+            {
+                panelPause.SetActive(true);
+                GamePaused = true;
+                Time.timeScale = 0;
+                /////////////////////////////////////////////////////////
+            }
+            else
+            {
+                Time.timeScale = 1;
+                panelPause.SetActive(false);
+                GamePaused = false;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -134,12 +155,6 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            /*
-            if (!GamePaused)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            */
 
             BGUIPlayer.SetActive(true);
             
@@ -150,8 +165,8 @@ public class GameManager : MonoBehaviour
             healthText.text = playerHealth.currentHealth.ToString("F0");
             HeartsText.text = datosJugador.currentHearts.ToString("F0");
             CurrentDataPlayer();
-            InputKeysMenu();
-            Paused();
+            //InputKeysMenu();
+            //Paused();
             WeaponCheck();
             ScorePoints();
             KeyCheck();
@@ -185,6 +200,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    
+    /*
     void InputKeysMenu()
     {
         if (Input.GetButtonDown("Start") && playerHealth.currentHealth > 0)
@@ -203,6 +220,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    */
 
     void WeaponCheck()
     {
@@ -336,6 +354,7 @@ public class GameManager : MonoBehaviour
         goldText.text = datosJugador.gold.ToString();
     }
 
+    /*
     void Paused()
     {
         if (GamePaused)
@@ -343,7 +362,7 @@ public class GameManager : MonoBehaviour
         else
             Time.timeScale = 1;
     }
-
+    */
     void CurrentDataPlayer()
     {
         datosJugador.posPlayer = instancePlayer.transform.position;

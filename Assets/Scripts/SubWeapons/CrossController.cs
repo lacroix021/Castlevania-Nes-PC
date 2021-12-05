@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CrossController : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class CrossController : MonoBehaviour
         ImpulseCross();
     }
 
+    public void VerticalCross(InputAction.CallbackContext context)
+    {
+        v = context.ReadValue<Vector2>().y;
+    }
+
     private void Update()
     {
-        v = Input.GetAxisRaw("WeaponVertical");
-
         rb.velocity = new Vector2(rb.velocity.x, v * (speedCrossX/9) * Time.fixedDeltaTime);
     }
 

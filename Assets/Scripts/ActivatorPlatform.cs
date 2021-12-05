@@ -8,7 +8,7 @@ public class ActivatorPlatform : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && Input.GetAxisRaw("Vertical") < 0)
+        if(collision.CompareTag("Player") && collision.GetComponent<SimonController>().v < 0)
         {
             Platform.SetActive(false);
         }

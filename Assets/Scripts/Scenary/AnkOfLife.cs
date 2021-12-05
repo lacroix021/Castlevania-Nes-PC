@@ -28,6 +28,7 @@ public class AnkOfLife : MonoBehaviour
     DatosJugador datosJugador;
 
     /**********************************/
+    
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class AnkOfLife : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D coll)
     {
-        if(coll.CompareTag("Player") && Input.GetAxisRaw("Vertical") > 0)
+        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().v > 0.8f)
         {
             if(Time.time >= timeSaveRate)
             {
@@ -75,6 +76,7 @@ public class AnkOfLife : MonoBehaviour
                 timeSaveRate = Time.time + 1 / saveRate;
                 /**/
                 guardarCargar.GuardarInformacion();
+                
                 /**/
             }
         }

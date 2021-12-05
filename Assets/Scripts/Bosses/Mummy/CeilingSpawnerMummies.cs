@@ -27,7 +27,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
 
     public GameObject platformBreakable;
 
-
+    SimonController playerController;
     BossMapManager bossManager;
 
     [Header("COSAS DE LA TRAMPA")]
@@ -45,6 +45,8 @@ public class CeilingSpawnerMummies : MonoBehaviour
     private void Start()
     {
         bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
+
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
 
         if (isDeadA && isDeadB)
         {
@@ -171,7 +173,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
     {
         insideInterruptor = Physics2D.IsTouchingLayers(colInterruptor, layerPlayer);
 
-        if(insideInterruptor && Input.GetAxisRaw("Vertical") > 0)
+        if(insideInterruptor && playerController.v > 0.7f)
         {
             animSwitch.SetBool("SwitchOn", true);
             StartCoroutine(Sismo());

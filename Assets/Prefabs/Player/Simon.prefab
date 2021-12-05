@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8837055334543314091}
   - component: {fileID: 8837055334543314087}
   - component: {fileID: 8837055334543314084}
+  - component: {fileID: 4178450349964426774}
   m_Layer: 10
   m_Name: Simon
   m_TagString: Player
@@ -280,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 45
-  jumpForce: 145
+  jumpForce: 155
   slideForce: 100
   thisGround:
     serializedVersion: 2
@@ -291,6 +292,7 @@ MonoBehaviour:
   slideRate: 1.4
   fallMultiplier: 0.5
   lowJumpMultiplier: 2.5
+  activating: 0
   h: 0
   v: 0
   isJump: 0
@@ -313,6 +315,7 @@ MonoBehaviour:
   ceilingCheck: {fileID: 8837055335758887421}
   slide: {fileID: 6200000, guid: 50dd2b5b6aba5374bb27dda7d7f71ae8, type: 2}
   sticky: {fileID: 6200000, guid: d9219948c6850524d9f0fcbac1a3583d, type: 2}
+  pauseGame: 0
 --- !u!212 &8837055334543314094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -543,6 +546,167 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4178450349964426774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837055334543314093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f92e292f7eb41024b9a87236ea3fd7be,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f66a5ce3-1cd9-47ae-8265-612ec932346c
+    m_ActionName: Player/Move[/DualShock3GamepadHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/DualShock3GamepadHID/dpad/up,/DualShock3GamepadHID/dpad/down,/DualShock3GamepadHID/dpad/left,/DualShock3GamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: da7c604c-cfc8-46a6-943b-e6918c634570
+    m_ActionName: Player/Fire[/DualShock3GamepadHID/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac8b832b-440a-4b62-bb62-5a879dea9ee2
+    m_ActionName: UI/Navigate[/DualShock3GamepadHID/leftStick/up,/DualShock3GamepadHID/rightStick/up,/DualShock3GamepadHID/leftStick/down,/DualShock3GamepadHID/rightStick/down,/DualShock3GamepadHID/leftStick/left,/DualShock3GamepadHID/rightStick/left,/DualShock3GamepadHID/leftStick/right,/DualShock3GamepadHID/rightStick/right,/DualShock3GamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db43f490-b3f7-43e4-ac2d-b92eab8a0bda
+    m_ActionName: UI/Submit[/Keyboard/enter,/DualShock3GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 516cb23c-30f7-4aa7-b5ca-2daa043d9b96
+    m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock3GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3d81215-e67b-4adf-bbe0-4e5207112320
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 829fb77c-5161-4bd5-a36b-97999406b140
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ced3666a-d81e-4813-822b-fe7ec5019295
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 839ce72e-c3e4-435d-aa1e-c375b04b35bf
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e0b2f48-8486-4e28-9d8e-97a3b3191b6f
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72a873e2-9ac3-4b1c-9d0a-49deb28276f5
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02ffc803-6f98-4685-9db6-a56b8ee3d9a7
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85723490-4a36-49ac-8945-ca1f9536d5a8
+    m_ActionName: Player/Jump[/Keyboard/space,/DualShock3GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314086}
+        m_MethodName: InputSubWep
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 365fea46-2633-4058-ac08-6540d98d2ef1
+    m_ActionName: Player/Fire2[/Mouse/rightButton,/DualShock3GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: PauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fd8ada37-9c02-4912-a308-68f18ab1e547
+    m_ActionName: Player/Pause[/Keyboard/p,/DualShock3GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: ActiveMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9123753a-f29e-486f-9016-85a366887b0d
+    m_ActionName: Player/ActivateMode[/DualShock3GamepadHID/leftShoulder,/Keyboard/leftCtrl]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &8837055334555189719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1394,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.010196196, y: 0.020080805}
+  m_Size: {x: 0.02865927, y: 0.020080805}
   m_EdgeRadius: 0
 --- !u!50 &5362676503812841605
 Rigidbody2D:
@@ -1251,7 +1415,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &8837055335630396235
 GameObject:

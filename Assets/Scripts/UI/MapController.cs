@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MapController : MonoBehaviour
 {
@@ -32,13 +33,19 @@ public class MapController : MonoBehaviour
         MovementCameraMap();
     }
 
+    public void MoveMap(InputAction.CallbackContext context)
+    {
+        h = context.ReadValue<Vector2>().x;
+        v = context.ReadValue<Vector2>().y;
+    }
+
+    public void ZoomMap(InputAction.CallbackContext context)
+    {
+        vMap = context.ReadValue<Vector2>().y;
+    }
+
     void MovementCameraMap()
     {
-        vMap = Input.GetAxisRaw("WeaponVertical");
-
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
-        
         if (transform.localPosition.x <= -683.1349f)
             transform.localPosition = new Vector3(-683.1349f, transform.localPosition.y, transform.localPosition.z);
         else if (transform.localPosition.x >= -587.1349f)
@@ -50,19 +57,19 @@ public class MapController : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, -339.6382f, transform.localPosition.z);
         
 
-        if (h > 0)
+        if (h > 0.8f)
         {
             transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
         }
-        else if(h < 0)
+        else if(h < -0.8f)
         {
             transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
         }
-        else if(v > 0)
+        else if(v > 0.8f)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
         }
-        else if(v < 0)
+        else if(v < -0.8f)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
         }
