@@ -12,13 +12,14 @@ public class MapController : MonoBehaviour
     float h, v;
 
     Transform player;
+    GameManager gManager;
 
     // Start is called before the first frame update
     void Start()
     {
         cameraMap = GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
-
+        gManager = GameManager.gameManager;
     }
 
     private void OnEnable()
@@ -55,36 +56,38 @@ public class MapController : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, -384.6382f, transform.localPosition.z);
         else if (transform.localPosition.y >= -339.6382f)
             transform.localPosition = new Vector3(transform.localPosition.x, -339.6382f, transform.localPosition.z);
-        
 
-        if (h > 0.8f)
+        if (gManager.navigationMode)
         {
-            transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
-        }
-        else if(h < -0.8f)
-        {
-            transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
-        }
-        else if(v > 0.8f)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
-        }
-        else if(v < -0.8f)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
-        }
+            if (h > 0.8f)
+            {
+                transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
+            }
+            else if (h < -0.8f)
+            {
+                transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
+            }
+            else if (v > 0.8f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
+            }
+            else if (v < -0.8f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
+            }
 
-        //distancia de mapa
-        cameraMap.orthographicSize = Mathf.Clamp(cameraMap.orthographicSize, 15, 35);
+            //distancia de mapa
+            cameraMap.orthographicSize = Mathf.Clamp(cameraMap.orthographicSize, 15, 35);
 
 
-        if (vMap > 0)
-        {
-            cameraMap.orthographicSize -= vMap;
-        }
-        else if(vMap < 0)
-        {
-            cameraMap.orthographicSize -= vMap;
+            if (vMap > 0)
+            {
+                cameraMap.orthographicSize -= vMap;
+            }
+            else if (vMap < 0)
+            {
+                cameraMap.orthographicSize -= vMap;
+            }
         }
     }
 }

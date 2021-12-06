@@ -65,6 +65,7 @@ public class HealthPlayer : MonoBehaviour
         else
         {
             isDead = false;
+            playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
         }
 
         DeathPlayer();
@@ -76,7 +77,6 @@ public class HealthPlayer : MonoBehaviour
         {
             playerController.anim.SetBool("Die", isDead);
             playerController.canMove = false;
-
             gManager.BlinkControl();
 
             StartCoroutine(TimeRespawn());
@@ -163,31 +163,7 @@ public class HealthPlayer : MonoBehaviour
         soundSimon.audioWhip.loop = false;
     }
 
-    IEnumerator MoveAgain()
-    {
-        yield return new WaitForSeconds(0.3f);
-        if (currentHealth > 0)
-        {
-            playerController.canMove = true;
-            playerController.anim.SetBool("Hurting", false);
-        }
-    }
-
-    IEnumerator GetInvulnerable()
-    {
-       
-        Physics2D.IgnoreLayerCollision(9, 10, true);
-        c.a = 0.5f;
-        rend.material.color = c;
-        yield return new WaitForSeconds(0.8f);
-        c.a = 1f;
-        rend.material.color = c;
-        if (currentHealth > 0)
-        {
-            Physics2D.IgnoreLayerCollision(9, 10, false);
-            isInvulnerable = false;
-        }
-    }
+    
 
     void MakeHurtPlayer()
     {
@@ -198,14 +174,7 @@ public class HealthPlayer : MonoBehaviour
         {
             playerController.canMove = false;
             playerController.anim.SetBool("Hurting", true);
-        }
 
-        SoundHurt();
-
-        StartCoroutine(GetInvulnerable());
-
-        if (!playerController.isSlide)
-        {
             playerController.rb.velocity = Vector2.zero;
 
             if (colPosX > transform.position.x)
@@ -218,9 +187,37 @@ public class HealthPlayer : MonoBehaviour
             }
         }
 
-        
+        SoundHurt();
+
+        StartCoroutine(GetInvulnerable());
         HealthCheck();
         StartCoroutine(MoveAgain());
+    }
+
+    IEnumerator MoveAgain()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (currentHealth > 0)
+        {
+            playerController.canMove = true;
+            playerController.anim.SetBool("Hurting", false);
+        }
+    }
+
+    IEnumerator GetInvulnerable()
+    {
+
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+        c.a = 0.5f;
+        rend.material.color = c;
+        yield return new WaitForSeconds(0.6f);
+        c.a = 1f;
+        rend.material.color = c;
+        if (currentHealth > 0)
+        {
+            Physics2D.IgnoreLayerCollision(9, 10, false);
+            isInvulnerable = false;
+        }
     }
 
     //recibir daño de forma progresiva

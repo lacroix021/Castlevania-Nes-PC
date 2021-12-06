@@ -11,6 +11,8 @@ public class StructureManager : MonoBehaviour
 
     public BrokenWallManager wallBrkn1;
     public BrokenWallManager wallBrkn2;
+    public BrokenWallManager wallBrkn3;
+    public BrokenWallManager wallBrkn4;
     
     public BoundaryManager[] mapParts;
     public Text percentMapTxt;
@@ -37,6 +39,8 @@ public class StructureManager : MonoBehaviour
     {
         datosJugador.wallBroken1 = wallBrkn1.wasBroken;
         datosJugador.wallBroken2 = wallBrkn2.wasBroken;
+        datosJugador.wallBroken3 = wallBrkn3.wasBroken;
+        datosJugador.wallBroken4 = wallBrkn4.wasBroken;
     }
 
     public void BrokenWallsOnLoadGame()
@@ -46,6 +50,8 @@ public class StructureManager : MonoBehaviour
 
         wallBrkn1.wasBroken = datosJugador.wallBroken1;
         wallBrkn2.wasBroken = datosJugador.wallBroken2;
+        wallBrkn3.wasBroken = datosJugador.wallBroken3;
+        wallBrkn4.wasBroken = datosJugador.wallBroken4;
     }
 
     public void BrokenWallsOnStartGame()
@@ -55,6 +61,8 @@ public class StructureManager : MonoBehaviour
 
         wallBrkn1.wasBroken = false;
         wallBrkn2.wasBroken = false;
+        wallBrkn3.wasBroken = false;
+        wallBrkn4.wasBroken = false;
         
         CheckWalls();
     }
@@ -63,6 +71,8 @@ public class StructureManager : MonoBehaviour
     {
         wallBrkn1 = GameObject.Find("BrokenWallManager").GetComponent<BrokenWallManager>();
         wallBrkn2 = GameObject.Find("BrokenWallManager2").GetComponent<BrokenWallManager>();
+        wallBrkn3 = GameObject.Find("BrokenWallManager3").GetComponent<BrokenWallManager>();
+        wallBrkn4 = GameObject.Find("BrokenWallManager4").GetComponent<BrokenWallManager>();
     }
 
     void FindMapParts()

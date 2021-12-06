@@ -77,6 +77,8 @@ public class DatosJugador : MonoBehaviour
     [Header("PAREDES ROMPIBLES DEL MAPA")]
     public bool wallBroken1;
     public bool wallBroken2;
+    public bool wallBroken3;
+    public bool wallBroken4;
 
     //estado de los boss del mapa
     //cuando se agreguen mas boss, tambien agregar su respectivo booleano

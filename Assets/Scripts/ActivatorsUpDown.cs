@@ -14,14 +14,14 @@ public class ActivatorsUpDown : MonoBehaviour
     private void OnTriggerStay2D(Collider2D coll)
     {
         //para subir
-        if (coll.CompareTag("Player") && coll.GetComponent<SimonController>().v > 0.8f)
+        if (coll.CompareTag("Player") && coll.GetComponent<SimonController>().v > 0.2f)
         {
             if (up)
                 stair.SetActive(true);
         }
 
         //para bajar
-        if (coll.CompareTag("Player") && coll.GetComponent<SimonController>().v < -0.8)
+        if (coll.CompareTag("Player") && coll.GetComponent<SimonController>().v < -0.2f)
         {
             if (down)
                 stair.SetActive(true);

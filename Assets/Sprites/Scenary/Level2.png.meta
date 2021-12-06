@@ -53,6 +53,9 @@ TextureImporter:
   - first:
       213: 8443939806907135443
     second: Level2_16
+  - first:
+      213: -952114897549635549
+    second: Level2_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -481,6 +484,48 @@ TextureImporter:
       bones: []
       spriteID: d3947c845786e3010800000000000000
       internalID: 1170487806104389949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level2_16
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 527
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d5fa773486ee2570800000000000000
+      internalID: 8443939806907135443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level2_17
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 527
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32052329b8869c2f0800000000000000
+      internalID: -952114897549635549
       vertices: []
       indices: 
       edges: []

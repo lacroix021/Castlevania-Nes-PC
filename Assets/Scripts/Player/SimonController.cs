@@ -101,12 +101,13 @@ public class SimonController : MonoBehaviour
         if (!gameManager.GamePaused)
         {
             InputManager();
+            Animations();
         }
 
 
         //InputManager();
 
-        Animations();
+        
         CheckGround();
         Attacking();
         ClimbingChain();
@@ -154,18 +155,15 @@ public class SimonController : MonoBehaviour
     //NEW INPUTS
     public void Move(InputAction.CallbackContext context)
     {
-        if (!gameManager.GamePaused)
+        if (canMove)
         {
-            if (canMove)
-            {
-                h = context.ReadValue<Vector2>().x;
-                v = context.ReadValue<Vector2>().y;
-            }
-            else
-            {
-                h = 0;
-                v = 0;
-            }
+            h = context.ReadValue<Vector2>().x;
+            v = context.ReadValue<Vector2>().y;
+        }
+        else
+        {
+            h = 0;
+            v = 0;
         }
     }
 
@@ -262,15 +260,18 @@ public class SimonController : MonoBehaviour
 
     void Movement()
     {
-        //detiene el deslizamiento si ibamos moviendonos y atacamos repentinamente
-        if (animAttack && isGrounded)
+        if (!gameManager.GamePaused)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-        //movimiento normal
-        if (!animAttack && !animCrouchAttack && !isCrouch && canMove && !animSub)
-        {
-            rb.velocity = new Vector2(h * moveSpeed * Time.deltaTime, rb.velocity.y);
+            //detiene el deslizamiento si ibamos moviendonos y atacamos repentinamente
+            if (animAttack && isGrounded)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+            //movimiento normal
+            if (!animAttack && !animCrouchAttack && !isCrouch && canMove && !animSub)
+            {
+                rb.velocity = new Vector2(h * moveSpeed * Time.deltaTime, rb.velocity.y);
+            }
         }
     }
 

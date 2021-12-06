@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
@@ -86,7 +85,13 @@ public class GameManager : MonoBehaviour
     
 
     public static GameManager gameManager;
+    
+    public Button buttonQuit;
+    public Button buttonNav;
+    public Button buttonBackMenu;
+    //public GameObject eventSystem;
 
+    public bool navigationMode;
     private void Awake()
     {
         if(GameManager.gameManager == null)
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         itemMapManager = GetComponentInChildren<ItemMapManager>();
         bossManager = GetComponentInChildren<BossMapManager>();
         eventManager = GetComponentInChildren<EventManager>();
@@ -133,16 +139,19 @@ public class GameManager : MonoBehaviour
         {
             if (panelPause.activeSelf == false)
             {
+                Time.timeScale = 0;
                 panelPause.SetActive(true);
                 GamePaused = true;
-                Time.timeScale = 0;
                 /////////////////////////////////////////////////////////
+                buttonNav.Select();
             }
             else
             {
                 Time.timeScale = 1;
                 panelPause.SetActive(false);
                 GamePaused = false;
+                navigationMode = false;
+                buttonQuit.enabled = true;
             }
         }
     }
@@ -155,9 +164,9 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-
             BGUIPlayer.SetActive(true);
-            
+
+            //eventSystem.SetActive(true);
 
             //esta linea es solo para encerrar el valor del oro en 0 y 999999999 para que no exceda ese limite
             datosJugador.gold = Mathf.Clamp(datosJugador.gold, 0, 999999999);
@@ -165,8 +174,6 @@ public class GameManager : MonoBehaviour
             healthText.text = playerHealth.currentHealth.ToString("F0");
             HeartsText.text = datosJugador.currentHearts.ToString("F0");
             CurrentDataPlayer();
-            //InputKeysMenu();
-            //Paused();
             WeaponCheck();
             ScorePoints();
             KeyCheck();
@@ -174,6 +181,7 @@ public class GameManager : MonoBehaviour
         else if(SceneManager.GetActiveScene().buildIndex != 1)
         {
             BGUIPlayer.SetActive(false);
+            //eventSystem.SetActive(false);
         }
     }
     
@@ -187,11 +195,25 @@ public class GameManager : MonoBehaviour
 
     public void QuitButton()
     {
-
-        SceneManager.LoadScene(0);
-        panelPause.SetActive(false);
-        startGame = false;
+        Time.timeScale = 1;
         GamePaused = false;
+        panelPause.SetActive(false);
+        SceneManager.LoadScene(0);
+        startGame = false;
+    }
+
+    public void Navigation()
+    {
+        if (!navigationMode)
+        {
+            navigationMode = true;
+            buttonQuit.enabled = false;
+        }
+        else
+        {
+            navigationMode = false;
+            buttonQuit.enabled = true;
+        }
     }
 
     IEnumerator ChangeMainMenu()
@@ -199,28 +221,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(0);
     }
-
     
-    /*
-    void InputKeysMenu()
-    {
-        if (Input.GetButtonDown("Start") && playerHealth.currentHealth > 0)
-        {
-            if (panelPause.activeSelf == false)
-            {
-                panelPause.SetActive(true);
-                GamePaused = true;
-
-                /////////////////////////////////////////////////////////
-            }
-            else
-            {
-                panelPause.SetActive(false);
-                GamePaused = false;
-            }
-        }
-    }
-    */
 
     void WeaponCheck()
     {
@@ -354,15 +355,7 @@ public class GameManager : MonoBehaviour
         goldText.text = datosJugador.gold.ToString();
     }
 
-    /*
-    void Paused()
-    {
-        if (GamePaused)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
-    }
-    */
+    
     void CurrentDataPlayer()
     {
         datosJugador.posPlayer = instancePlayer.transform.position;
@@ -384,6 +377,7 @@ public class GameManager : MonoBehaviour
         {
             //lanzar pantalla de gameover para ir al menu inicial
             gameOverScreen.SetActive(true);
+            buttonBackMenu.Select();
         }
     }
     

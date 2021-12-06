@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlMenu : MonoBehaviour
 {
+    public Button buttonStartGame;
     public GameObject buttonLoadGame;
     public GameObject buttonClearGame;
     public Text percentMap;
@@ -17,6 +18,7 @@ public class ControlMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        buttonStartGame.Select();
         gManager = GameManager.gameManager;
         datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         datosJugador.Saves = PlayerPrefs.GetInt("Saves");
@@ -55,6 +57,7 @@ public class ControlMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         datosJugador.Saves = 0;
+        buttonStartGame.Select();
     }
 
     public void ExitGameButton()

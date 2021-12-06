@@ -39,12 +39,6 @@ public class ChainClimb : MonoBehaviour
             pController.climbing = true;
             playerPos.position = new Vector3(transform.position.x, playerPos.position.y, 0);
         }
-
-        /*
-        if (releaseChain && pController.climbing)
-        {
-            pController.climbing = false;
-        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)
