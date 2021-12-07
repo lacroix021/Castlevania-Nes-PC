@@ -295,6 +295,8 @@ MonoBehaviour:
   activating: 0
   h: 0
   v: 0
+  hRStick: 0
+  vRStick: 0
   isJump: 0
   isGrounded: 0
   onSlope: 0
@@ -603,46 +605,6 @@ MonoBehaviour:
     m_ActionId: da7c604c-cfc8-46a6-943b-e6918c634570
     m_ActionName: Player/Fire[/DualShock3GamepadHID/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ac8b832b-440a-4b62-bb62-5a879dea9ee2
-    m_ActionName: UI/Navigate[/DualShock3GamepadHID/leftStick/up,/DualShock3GamepadHID/rightStick/up,/DualShock3GamepadHID/leftStick/down,/DualShock3GamepadHID/rightStick/down,/DualShock3GamepadHID/leftStick/left,/DualShock3GamepadHID/rightStick/left,/DualShock3GamepadHID/leftStick/right,/DualShock3GamepadHID/rightStick/right,/DualShock3GamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: db43f490-b3f7-43e4-ac2d-b92eab8a0bda
-    m_ActionName: UI/Submit[/Keyboard/enter,/DualShock3GamepadHID/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 516cb23c-30f7-4aa7-b5ca-2daa043d9b96
-    m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock3GamepadHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f3d81215-e67b-4adf-bbe0-4e5207112320
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 829fb77c-5161-4bd5-a36b-97999406b140
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ced3666a-d81e-4813-822b-fe7ec5019295
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 839ce72e-c3e4-435d-aa1e-c375b04b35bf
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6e0b2f48-8486-4e28-9d8e-97a3b3191b6f
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 72a873e2-9ac3-4b1c-9d0a-49deb28276f5
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 02ffc803-6f98-4685-9db6-a56b8ee3d9a7
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8837055334543314088}
         m_MethodName: Jump
@@ -702,6 +664,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9123753a-f29e-486f-9016-85a366887b0d
     m_ActionName: Player/ActivateMode[/DualShock3GamepadHID/leftShoulder,/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: RightStick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0da2c71-9b14-4457-aa3a-b906c45957a7
+    m_ActionName: Player/RightStick[/Keyboard/upArrow,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

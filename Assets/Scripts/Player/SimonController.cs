@@ -31,6 +31,8 @@ public class SimonController : MonoBehaviour
     public bool activating;
     public float h;
     public float v;
+    public float hRStick;
+    public float vRStick;
     [SerializeField] bool isJump;
     public bool isGrounded;
     public bool onSlope;
@@ -165,6 +167,12 @@ public class SimonController : MonoBehaviour
             h = 0;
             v = 0;
         }
+    }
+
+    public void RightStick(InputAction.CallbackContext context)
+    {
+        hRStick = context.ReadValue<Vector2>().x;
+        vRStick = context.ReadValue<Vector2>().y;
     }
 
     public void Jump(InputAction.CallbackContext context)

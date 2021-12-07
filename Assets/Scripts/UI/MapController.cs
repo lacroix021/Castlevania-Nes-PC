@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class MapController : MonoBehaviour
 {
@@ -14,16 +14,18 @@ public class MapController : MonoBehaviour
     Transform player;
     GameManager gManager;
 
+
+    SimonController playerController;
+
     // Start is called before the first frame update
-    void Start()
+    
+
+    private void OnEnable()
     {
         cameraMap = GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         gManager = GameManager.gameManager;
-    }
-
-    private void OnEnable()
-    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         transform.position = new Vector3(player.position.x, player.position.y, -10);
     }
@@ -32,17 +34,10 @@ public class MapController : MonoBehaviour
     void Update()
     {
         MovementCameraMap();
-    }
 
-    public void MoveMap(InputAction.CallbackContext context)
-    {
-        h = context.ReadValue<Vector2>().x;
-        v = context.ReadValue<Vector2>().y;
-    }
-
-    public void ZoomMap(InputAction.CallbackContext context)
-    {
-        vMap = context.ReadValue<Vector2>().y;
+        vMap = playerController.vRStick;
+        h = playerController.h;
+        v = playerController.v;
     }
 
     void MovementCameraMap()
@@ -59,19 +54,19 @@ public class MapController : MonoBehaviour
 
         if (gManager.navigationMode)
         {
-            if (h > 0.8f)
+            if (h > 0.5f)
             {
                 transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
             }
-            else if (h < -0.8f)
+            else if (h < -0.5f)
             {
                 transform.position = new Vector3(transform.position.x - h, transform.position.y, -10);
             }
-            else if (v > 0.8f)
+            else if (v > 0.5f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
             }
-            else if (v < -0.8f)
+            else if (v < -0.5f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - v, -10);
             }

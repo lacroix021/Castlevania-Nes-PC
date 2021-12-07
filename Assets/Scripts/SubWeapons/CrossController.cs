@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class CrossController : MonoBehaviour
 {
@@ -14,10 +14,12 @@ public class CrossController : MonoBehaviour
     
     SubWeaponSystem weaponSys;
     Rigidbody2D rb;
+    SimonController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
         rb = GetComponent<Rigidbody2D>();
         weaponSys = GameObject.FindGameObjectWithTag("Player").GetComponent<SubWeaponSystem>();        
         dirAxe = weaponSys.direction;
@@ -26,14 +28,12 @@ public class CrossController : MonoBehaviour
         ImpulseCross();
     }
 
-    public void VerticalCross(InputAction.CallbackContext context)
-    {
-        v = context.ReadValue<Vector2>().y;
-    }
+    
 
     private void Update()
     {
         rb.velocity = new Vector2(rb.velocity.x, v * (speedCrossX/9) * Time.fixedDeltaTime);
+        v = playerController.vRStick;
     }
 
     private void FixedUpdate()
@@ -55,7 +55,6 @@ public class CrossController : MonoBehaviour
     IEnumerator ReturnCross()
     {
         yield return new WaitForSeconds(0.3f);
-        //rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(dirAxe * 1.5f * Time.fixedDeltaTime, rb.velocity.y), ForceMode2D.Impulse);
     }
 }

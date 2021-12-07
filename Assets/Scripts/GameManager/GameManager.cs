@@ -82,16 +82,15 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject startGameFadeOut;
     public GameObject gameOverFadeIn;
-    
 
     public static GameManager gameManager;
     
     public Button buttonQuit;
     public Button buttonNav;
     public Button buttonBackMenu;
-    //public GameObject eventSystem;
 
     public bool navigationMode;
+
     private void Awake()
     {
         if(GameManager.gameManager == null)
@@ -127,8 +126,6 @@ public class GameManager : MonoBehaviour
         bossManager = GetComponentInChildren<BossMapManager>();
         eventManager = GetComponentInChildren<EventManager>();
         structureManager = GetComponentInChildren<StructureManager>();
-
-
         guardarCargar = GetComponent<GuardarCargar>();
         datosJugador = GetComponent<DatosJugador>();
     }
@@ -166,8 +163,6 @@ public class GameManager : MonoBehaviour
         {
             BGUIPlayer.SetActive(true);
 
-            //eventSystem.SetActive(true);
-
             //esta linea es solo para encerrar el valor del oro en 0 y 999999999 para que no exceda ese limite
             datosJugador.gold = Mathf.Clamp(datosJugador.gold, 0, 999999999);
 
@@ -181,7 +176,6 @@ public class GameManager : MonoBehaviour
         else if(SceneManager.GetActiveScene().buildIndex != 1)
         {
             BGUIPlayer.SetActive(false);
-            //eventSystem.SetActive(false);
         }
     }
     
@@ -369,6 +363,7 @@ public class GameManager : MonoBehaviour
     IEnumerator TimeBlink()
     {
         yield return new WaitForSeconds(3);
+
         if(datosJugador.Saves != 0 && datosJugador.gold >= datosJugador.costRespawn)
         {
             blink.SetActive(true);
