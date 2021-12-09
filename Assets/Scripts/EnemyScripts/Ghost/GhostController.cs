@@ -62,7 +62,7 @@ public class GhostController : MonoBehaviour
     {
         if (patrolling)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, moveSpeed * Time.deltaTime);
         }
         else
         {
@@ -87,7 +87,7 @@ public class GhostController : MonoBehaviour
         {
             if (Time.time >= nextPosTime)
             {
-                posX = Random.Range(-2.0f, 2.1f).ToString("F1");
+                posX = Random.Range(-2.5f, 2.5f).ToString("F1");
                 posY = Random.Range(-1.0f, 1.1f).ToString("F1");
                 target = new Vector3(float.Parse(posX), float.Parse(posY), 0);
 

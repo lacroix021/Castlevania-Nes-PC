@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46a4e6ed80492e4a8894992c43f59b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleBlock: {fileID: 2489938716608009241}
+  particleBlock: {fileID: 7594132701948040910, guid: 5d8381c2e491c5944a53b668c00879ab,
+    type: 3}
   partA: {fileID: 2489938718493470218}
   partB: {fileID: 2489938716863124239}
   partC: {fileID: 2489938717321349062}

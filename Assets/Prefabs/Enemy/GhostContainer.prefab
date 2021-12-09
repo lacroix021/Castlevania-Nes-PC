@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fde504b469e4064aa030244cddfd30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 0.4
   radius: 0.8
   playerLayer:
     serializedVersion: 2
