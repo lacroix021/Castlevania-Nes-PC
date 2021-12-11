@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 8837055335758887421}
   m_Layer: 0
   m_Name: CeilingCheck
-  m_TagString: Untagged
+  m_TagString: PosPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

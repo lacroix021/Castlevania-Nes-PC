@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e022e12c40b3c47b8d610257d1f968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   knife: 1
   axe: 0
   holyWater: 0

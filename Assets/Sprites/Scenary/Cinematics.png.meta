@@ -5,6 +5,18 @@ TextureImporter:
   - first:
       213: 7808177118762130051
     second: Cinematics_0
+  - first:
+      213: 7199797300275326534
+    second: Cinematics_1
+  - first:
+      213: 7221597875955365289
+    second: Cinematics_2
+  - first:
+      213: -3824885760624484790
+    second: Cinematics_3
+  - first:
+      213: -5754973280640005958
+    second: Cinematics_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,7 +122,7 @@ TextureImporter:
         width: 256
         height: 912
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -118,6 +130,90 @@ TextureImporter:
       bones: []
       spriteID: 38a562358b73c5c60800000000000000
       internalID: 7808177118762130051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cinematics_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 936
+        width: 256
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e2ab99f71dae360800000000000000
+      internalID: 7199797300275326534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cinematics_2
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 919
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5f80ba105483460800000000000000
+      internalID: 7221597875955365289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cinematics_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 928
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e17837aa64beac0800000000000000
+      internalID: -3824885760624484790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cinematics_4
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 928
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8869bda4a3220b0800000000000000
+      internalID: -5754973280640005958
       vertices: []
       indices: 
       edges: []

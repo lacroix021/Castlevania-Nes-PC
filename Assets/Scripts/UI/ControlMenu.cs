@@ -13,7 +13,9 @@ public class ControlMenu : MonoBehaviour
 
     GameManager gManager;
     DatosJugador datosJugador;
-   
+
+    public GameObject helpPanel;
+    public Button buttonBackHelpPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -39,18 +41,24 @@ public class ControlMenu : MonoBehaviour
             percentMap.text = PlayerPrefs.GetFloat("MapPercent").ToString("F0") + "%";
         }
     }
+
+    IEnumerator TimerChargeMap()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(1);
+    }
     public void StartGameButton()
     {
         gManager.startGame = true;
         gManager.loadGame = false;
-        SceneManager.LoadScene(1);
+        StartCoroutine(TimerChargeMap());
     }
 
     public void LoadGameButton()
     {
         gManager.startGame = false;
         gManager.loadGame = true;
-        SceneManager.LoadScene(1);
+        StartCoroutine(TimerChargeMap());
     }
 
     public void ClearData()
@@ -63,5 +71,30 @@ public class ControlMenu : MonoBehaviour
     public void ExitGameButton()
     {
         Application.Quit();
+    }
+
+    public void HelpButton()
+    {
+        helpPanel.SetActive(true);
+        buttonBackHelpPanel.Select();
+    }
+
+    public void BackButtonHelpPannel()
+    {
+        helpPanel.SetActive(false);
+        buttonStartGame.Select();
+    }
+
+    public void ButtonYoutube()
+    {
+        Application.OpenURL("https://www.youtube.com/channel/UC399HFBX_kKapEWh6jQ8GaA");
+    }
+    public void ButtonFacebook()
+    {
+        Application.OpenURL("https://www.facebook.com/RamshyCorp");
+    }
+    public void ButtonPaypal()
+    {
+        Application.OpenURL("https://www.paypal.com/paypalme/lacroixiscariot");
     }
 }

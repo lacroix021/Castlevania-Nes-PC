@@ -15,6 +15,7 @@ TagManager:
   - UniqueItem
   - map
   - HeadPlayer
+  - PosPlayer
   layers:
   - Default
   - TransparentFX

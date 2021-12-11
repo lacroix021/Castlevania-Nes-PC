@@ -7,6 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public CursorLockMode cursorState;
+
     public int EscenaActual;
     public bool startGame;
     public bool loadGame;
@@ -91,6 +93,8 @@ public class GameManager : MonoBehaviour
 
     public bool navigationMode;
 
+    
+
     private void Awake()
     {
         if(GameManager.gameManager == null)
@@ -121,7 +125,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = cursorState;
         itemMapManager = GetComponentInChildren<ItemMapManager>();
         bossManager = GetComponentInChildren<BossMapManager>();
         eventManager = GetComponentInChildren<EventManager>();

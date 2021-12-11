@@ -17,7 +17,7 @@ public class BoundaryManager : MonoBehaviour
         get
         {
             if (_player != null) return _player;
-            var go = GameObject.FindGameObjectWithTag("Player");
+            var go = GameObject.FindGameObjectWithTag("PosPlayer");
             _player = go == null ? null : go.transform;
             return _player;
         }
