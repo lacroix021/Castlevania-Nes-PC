@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 3891149123907930295}
   - component: {fileID: 6440670645779939579}
   - component: {fileID: 5601664015668229522}
-  - component: {fileID: 133461741310517181}
   - component: {fileID: 8539914711590838556}
   - component: {fileID: 6682798609451313968}
   - component: {fileID: 5567330957566894967}
-  - component: {fileID: 9210717284135139940}
+  - component: {fileID: 8216511560972602386}
   m_Layer: 0
   m_Name: SubAxe
   m_TagString: Weapon
@@ -85,19 +84,6 @@ MonoBehaviour:
   speedAxeX: 75
   speedAxeY: 180
   rotationSpeed: 800
---- !u!114 &133461741310517181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6058469653969716032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f225c6a4a0b3714eb3078747042277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestroy: 1
 --- !u!212 &8539914711590838556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,7 +187,7 @@ PolygonCollider2D:
       - {x: 0.0066184103, y: -0.0045406935}
       - {x: 0.056297354, y: 0.020256847}
       - {x: 0.0035676826, y: 0.07701351}
---- !u!82 &9210717284135139940
+--- !u!82 &8216511560972602386
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,10 +196,11 @@ AudioSource:
   m_GameObject: {fileID: 6058469653969716032}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: bf2ab96fe439e864db8cb2a1f08e13e1,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 2e16ef6b93867a442895cd0425c209e0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

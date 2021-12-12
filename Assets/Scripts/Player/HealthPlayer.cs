@@ -60,6 +60,7 @@ public class HealthPlayer : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioManager.instance.PlayAudio(AudioManager.instance.lifeLost);
             isDead = true;
         }
         else
@@ -174,7 +175,6 @@ public class HealthPlayer : MonoBehaviour
         {
             playerController.canMove = false;
             playerController.anim.SetBool("Hurting", true);
-
             playerController.rb.velocity = Vector2.zero;
 
             if (colPosX > transform.position.x)
@@ -197,6 +197,7 @@ public class HealthPlayer : MonoBehaviour
     IEnumerator MoveAgain()
     {
         yield return new WaitForSeconds(0.2f);
+
         if (currentHealth > 0)
         {
             playerController.canMove = true;
@@ -206,13 +207,13 @@ public class HealthPlayer : MonoBehaviour
 
     IEnumerator GetInvulnerable()
     {
-
         Physics2D.IgnoreLayerCollision(9, 10, true);
         c.a = 0.5f;
         rend.material.color = c;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
         c.a = 1f;
         rend.material.color = c;
+
         if (currentHealth > 0)
         {
             Physics2D.IgnoreLayerCollision(9, 10, false);

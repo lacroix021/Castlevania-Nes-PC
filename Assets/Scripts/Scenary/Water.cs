@@ -63,8 +63,8 @@ public class Water : MonoBehaviour
 
             //jugador muere
             other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            //other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             other.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            
         }
 
         if (other.gameObject.CompareTag("Enemy"))

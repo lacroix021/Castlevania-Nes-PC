@@ -58,6 +58,7 @@ public class HealthBoss : MonoBehaviour
             if(boss == typeBoss.BossGiantBat)
             {
                 isDead = true;
+                GameObject.Find("Stage1Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
             }
             else if(boss == typeBoss.BossMedusa)
             {
@@ -121,7 +122,7 @@ public class HealthBoss : MonoBehaviour
         if (col.CompareTag("Weapon") && currentHealth > 0 && col.GetComponent<DamagePlayer>())
         {
             //spawnear la chispa indicando que si hubo daño
-
+            AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
             GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
             Destroy(spark, 0.3f);
 
@@ -132,7 +133,7 @@ public class HealthBoss : MonoBehaviour
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
         {
             //spawnear la chispa indicando que si hubo daño
-
+            AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
             if (col.transform.position.x < mycollider.bounds.min.x)
                 boundX = col.transform.position.x + 0.1f;
             else if (col.transform.position.x > mycollider.bounds.min.x)
@@ -162,6 +163,8 @@ public class HealthBoss : MonoBehaviour
                 if (Time.time >= nextBurnHolyTime)
                 {
                     //spawnear la chispa indicando que si hubo daño
+
+                    AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
 
                     if (collision.transform.position.x < mycollider.bounds.min.x)
                         boundX = collision.transform.position.x + 0.1f;

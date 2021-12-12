@@ -173,7 +173,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
     {
         insideInterruptor = Physics2D.IsTouchingLayers(colInterruptor, layerPlayer);
 
-        if(insideInterruptor && playerController.v > 0.7f)
+        if(insideInterruptor && playerController.activating)
         {
             animSwitch.SetBool("SwitchOn", true);
             StartCoroutine(Sismo());

@@ -13,16 +13,12 @@ public class DamagePlayer : MonoBehaviour
     {
         if(collision.CompareTag("Enemy") || collision.CompareTag("Fireplace"))
         {
-            soundSimon.audioWhip.clip = soundSimon.hit;
-            soundSimon.audioWhip.Play();
-            soundSimon.audioWhip.loop = false;
+            AudioManager.instance.PlayAudio(AudioManager.instance.hit);
         }
 
         if (collision.CompareTag("BreakWall"))
         {
-            soundSimon.audioWhip.clip = soundSimon.breakWall;
-            soundSimon.audioWhip.Play();
-            soundSimon.audioWhip.loop = false;
+            AudioManager.instance.PlayAudio(AudioManager.instance.breakWall);
         }
     }
 }

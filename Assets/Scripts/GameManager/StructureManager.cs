@@ -29,7 +29,7 @@ public class StructureManager : MonoBehaviour
 
     private void Update()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if(SceneManager.GetActiveScene().buildIndex == 2)
         {
             ContarRooms();
         }

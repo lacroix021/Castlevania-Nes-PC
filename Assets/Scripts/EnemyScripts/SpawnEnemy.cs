@@ -10,6 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     GameObject instanceSpawned;
 
     public bool instanceGhost;
+    public bool obstacle;
 
     
     private void OnEnable()
@@ -26,6 +27,10 @@ public class SpawnEnemy : MonoBehaviour
             if (instanceGhost)
             {
                 instanceSpawned.GetComponentInChildren<Health>().currentHealth = instanceSpawned.GetComponentInChildren<Health>().maxHealth;
+            }
+            else if (obstacle)
+            {
+                return;
             }
             else
             {

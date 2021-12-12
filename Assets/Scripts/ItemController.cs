@@ -62,17 +62,13 @@ public class ItemController : MonoBehaviour
         {
             if (TypeItem == tipeItem.bigHeart)
             {
-                gManager.audioSource.clip = gManager.SoundTouchHeart;
-                gManager.audioSource.Play();
-                gManager.audioSource.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.grabHearts);
                 datosJugador.currentHearts += 5;
                 hSystem.CheckHearts();
             }
             else if (TypeItem == tipeItem.smallHeart)
             {
-                gManager.audioSource.clip = gManager.SoundTouchHeart;
-                gManager.audioSource.Play();
-                gManager.audioSource.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.grabHearts);
                 datosJugador.currentHearts += 1;
                 hSystem.CheckHearts();
             }
@@ -103,18 +99,14 @@ public class ItemController : MonoBehaviour
             }
             else if (TypeItem == tipeItem.lifeMax)
             {
-                gManager.audioSource.clip = gManager.soundGrabLifeMax;
-                gManager.audioSource.Play();
-                gManager.audioSource.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.lifeMax);
                 datosJugador.maxHealth += healthMaxV;
                 pHealth.vidaACurar = datosJugador.maxHealth;
                 pHealth.healing = true;
             }
             else if (TypeItem == tipeItem.porkChop)
             {
-                gManager.audioSource.clip = gManager.soundGrabLifeMax;
-                gManager.audioSource.Play();
-                gManager.audioSource.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.lifeMax);
                 pHealth.vidaACurar = porkHealthV;
                 pHealth.healing = true;
             }
@@ -169,15 +161,11 @@ public class ItemController : MonoBehaviour
 
     void ItemProperties()
     {
-        gManager.audioSource.clip = gManager.soundGrabItem;
-        gManager.audioSource.Play();
-        gManager.audioSource.loop = false;
+        AudioManager.instance.PlayAudio(AudioManager.instance.grabItem);
     }
 
     void GoldProperties()
     {
-        gManager.audioSource.clip = gManager.soundGrabGold;
-        gManager.audioSource.Play();
-        gManager.audioSource.loop = false;
+        AudioManager.instance.PlayAudio(AudioManager.instance.grabGold);
     }
 }

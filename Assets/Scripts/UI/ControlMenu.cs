@@ -17,6 +17,16 @@ public class ControlMenu : MonoBehaviour
     public GameObject helpPanel;
     public Button buttonBackHelpPanel;
 
+    public GameObject DeletePanel;
+    public Button noButton;
+
+    public GameObject gamePadInput;
+    public Button pcInputButton;
+
+    public GameObject pcInput;
+    public Button gamePadButton;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +57,13 @@ public class ControlMenu : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(1);
     }
+
+    IEnumerator TimerChargeMap2()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(2);
+    }
+
     public void StartGameButton()
     {
         gManager.startGame = true;
@@ -58,13 +75,26 @@ public class ControlMenu : MonoBehaviour
     {
         gManager.startGame = false;
         gManager.loadGame = true;
-        StartCoroutine(TimerChargeMap());
+        StartCoroutine(TimerChargeMap2());
     }
 
     public void ClearData()
     {
+        DeletePanel.SetActive(true);
+        noButton.Select();
+    }
+
+    public void YesButton()
+    {
         PlayerPrefs.DeleteAll();
         datosJugador.Saves = 0;
+        DeletePanel.SetActive(false);
+        buttonStartGame.Select();
+    }
+
+    public void NoButton()
+    {
+        DeletePanel.SetActive(false);
         buttonStartGame.Select();
     }
 
@@ -77,6 +107,26 @@ public class ControlMenu : MonoBehaviour
     {
         helpPanel.SetActive(true);
         buttonBackHelpPanel.Select();
+    }
+
+    public void InputButton()
+    {
+        gamePadInput.SetActive(true);
+        pcInput.SetActive(false);
+        pcInputButton.Select();
+    }
+
+    public void PCInputButton()
+    {
+        pcInput.SetActive(true);
+        gamePadInput.SetActive(false);
+        gamePadButton.Select();
+    }
+    public void BackButtonInputPages()
+    {
+        pcInput.SetActive(false);
+        gamePadInput.SetActive(false);
+        buttonStartGame.Select();
     }
 
     public void BackButtonHelpPannel()
@@ -95,6 +145,6 @@ public class ControlMenu : MonoBehaviour
     }
     public void ButtonPaypal()
     {
-        Application.OpenURL("https://www.paypal.com/paypalme/lacroixiscariot");
+        Application.OpenURL("https://paypal.me/RamshyCorp");
     }
 }

@@ -306,37 +306,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "c32e80a7-87ee-46cc-9302-f1cafb51a043",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "38f1ef1e-5818-457a-b73a-92dc7e420fdf",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "",
+                    "processors": "ScaleVector2(x=0.02,y=0.02)",
+                    "groups": "Keyboard&Mouse",
                     "action": "RightStick",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "c360c445-d461-4610-8596-7c364fccf724",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "RightStick",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "95926745-c337-4cb9-8b50-3a0ba8c397f4",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "RightStick",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

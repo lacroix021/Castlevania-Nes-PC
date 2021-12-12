@@ -62,8 +62,7 @@ public class SimonController : MonoBehaviour
 
 
     GameManager gameManager;
-
-    SoundsSimon soundSimon;
+    
     HealthPlayer healthPlayer;
 
 
@@ -87,7 +86,6 @@ public class SimonController : MonoBehaviour
     {
         myCollider = GetComponent<BoxCollider2D>();
         gameManager = GameManager.gameManager;
-        soundSimon = GetComponent<SoundsSimon>();
         moveSpeedBase = moveSpeed;
         moveSlopeSpeed = moveSpeed / 1.3f;
         healthPlayer = GetComponent<HealthPlayer>();
@@ -226,9 +224,7 @@ public class SimonController : MonoBehaviour
                 if (Time.time >= nextAttackTime)
                 {
                     isAttack = true;
-                    soundSimon.audioWhip.clip = soundSimon.noHit;
-                    soundSimon.audioWhip.Play();
-                    soundSimon.audioWhip.loop = false;
+                    AudioManager.instance.PlayAudio(AudioManager.instance.attack);
 
                     nextAttackTime = Time.time + 1f / attackRate;
                 }
@@ -388,7 +384,7 @@ public class SimonController : MonoBehaviour
         {
             colliderFeet.enabled = false;
         }
-        else if(rb.velocity.y <= 0f)
+        else if(rb.velocity.y <= 0f || onSlope)
         {
             colliderFeet.enabled = true;
         }

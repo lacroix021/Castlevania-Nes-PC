@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3899174258007883960}
   - component: {fileID: 3899174258007883961}
   - component: {fileID: 3899174258007884614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MummyB
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: 3
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 50
   isDead: 0
   deadEffect: {fileID: 4301122253200025113, guid: f6f1a8809f98f1c4fbaeddce0f85bcf5,
     type: 3}

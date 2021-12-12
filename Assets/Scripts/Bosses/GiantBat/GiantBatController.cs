@@ -83,6 +83,7 @@ public class GiantBatController : MonoBehaviour
         {
             idle = false;
             healing = false;
+            GameObject.Find("Stage1Music").GetComponent<ActivateMusic>().battle = true; // se puso esto para controlar la musica del nivel y cambiarla a la de Boss
             //vida mayor del 40% y el jugador no esta muerto
             if (bossHealth.currentHealth > 40 * bossHealth.maxHealth / 100 && !playerHealth.isDead)
             {
@@ -118,9 +119,9 @@ public class GiantBatController : MonoBehaviour
             //el jugador murio y esta en rango
             else if (playerHealth.isDead)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.92f, 0), moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.8f, 0), moveSpeed * Time.deltaTime);
                 num = 6;
-                if (transform.position.y == 0.92f)
+                if (transform.position.y == 0.8f)
                 {
                     idle = true;
 
@@ -137,9 +138,9 @@ public class GiantBatController : MonoBehaviour
             //el jugador no esta muerto
             if (!playerHealth.isDead)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.92f, 0), moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.8f, 0), moveSpeed * Time.deltaTime);
                 num = 6;
-                if(transform.position.y == 0.92f)
+                if(transform.position.y == 0.8f)
                 {
                     idle = true;
 
@@ -151,9 +152,9 @@ public class GiantBatController : MonoBehaviour
             }
             else if (playerHealth.isDead && num == 6)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.92f, 0), moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0.8f, 0), moveSpeed * Time.deltaTime);
 
-                if (transform.position.y == 0.92f)
+                if (transform.position.y == 0.8f)
                 {
                     idle = true;
 
@@ -274,6 +275,7 @@ public class GiantBatController : MonoBehaviour
         if (Time.time >= nextFireTime)
         {
             PlayerPlace();
+            AudioManager.instance.PlayAudio(AudioManager.instance.bulletFire);
             bulletSpawned = Instantiate(prefabBullet, fireSpawner.position, Quaternion.identity);
             nextFireTime = Time.time + 1f / fireRate;
         }

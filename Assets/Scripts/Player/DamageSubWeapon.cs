@@ -6,8 +6,6 @@ public class DamageSubWeapon : MonoBehaviour
 {
     public float damage;
 
-    SoundsSimon soundSimon;
-
     public bool knife;
     public bool axe;
     public bool holyWater;
@@ -19,7 +17,11 @@ public class DamageSubWeapon : MonoBehaviour
 
     private void Start()
     {
-        soundSimon = GameObject.FindGameObjectWithTag("Player").GetComponent<SoundsSimon>();
+        if (holyFire)
+        {
+            AudioManager.instance.PlayAudio(AudioManager.instance.holyWater);
+            AudioManager.instance.PlayAudio(AudioManager.instance.burnHoly);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,24 +30,18 @@ public class DamageSubWeapon : MonoBehaviour
         {
             if (knife)
             {
-                soundSimon.audioWhip.clip = soundSimon.hit;
-                soundSimon.audioWhip.Play();
-                soundSimon.audioWhip.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.hit);
                 Destroy(this.gameObject);
             }
             else if (axe || holyWater || cross)
             {
-                soundSimon.audioWhip.clip = soundSimon.hit;
-                soundSimon.audioWhip.Play();
-                soundSimon.audioWhip.loop = false;
+                AudioManager.instance.PlayAudio(AudioManager.instance.hit);
             }
         }
 
         if (collision.CompareTag("BreakWall"))
         {
-            soundSimon.audioWhip.clip = soundSimon.breakWall;
-            soundSimon.audioWhip.Play();
-            soundSimon.audioWhip.loop = false;
+            AudioManager.instance.PlayAudio(AudioManager.instance.breakWall);
         }
     }
 
@@ -57,9 +53,7 @@ public class DamageSubWeapon : MonoBehaviour
             {
                 if (Time.time >= nextBurnHolyTime)
                 {
-                    soundSimon.audioWhip.clip = soundSimon.hit;
-                    soundSimon.audioWhip.Play();
-                    soundSimon.audioWhip.loop = false;
+                    AudioManager.instance.PlayAudio(AudioManager.instance.hit);
                     nextBurnHolyTime = Time.time + 1f / burnRate;
                 }
             }
@@ -67,9 +61,7 @@ public class DamageSubWeapon : MonoBehaviour
 
         if (collision.CompareTag("BreakWall"))
         {
-            soundSimon.audioWhip.clip = soundSimon.breakWall;
-            soundSimon.audioWhip.Play();
-            soundSimon.audioWhip.loop = false;
+            AudioManager.instance.PlayAudio(AudioManager.instance.breakWall);
         }
     }
 }

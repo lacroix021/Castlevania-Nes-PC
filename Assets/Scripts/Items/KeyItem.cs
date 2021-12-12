@@ -34,9 +34,7 @@ public class KeyItem : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            gManager.audioSource.clip = gManager.soundGrabItem;
-            gManager.audioSource.Play();
-            gManager.audioSource.loop = false;
+            AudioManager.instance.PlayAudio(AudioManager.instance.grabItem);
 
             if (TipeKey == tipeKey.blueKey)
             {

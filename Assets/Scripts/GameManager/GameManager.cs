@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("POSICION INICIAL JUGADOR Y OBJETOS")]
     public GameObject playerPrefab;
     private Transform startPositionPlayer;
-    GameObject instancePlayer;
+    public GameObject instancePlayer;
 
     SimonController simonController;
     HealthPlayer playerHealth;
@@ -42,15 +42,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject panelPause;
     public bool GamePaused;
-    
-
-    [Header("COMPLEMENTOS")]
-    
-    public AudioClip SoundTouchHeart;
-    public AudioClip soundGrabItem;
-    public AudioClip soundGrabGold;
-    public AudioClip soundGrabLifeMax;
-    public AudioSource audioSource;
 
     [Header("SPRITES COMPLEMENTO")]
     public Image imgSub;
@@ -110,12 +101,12 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (level == 1 && startGame)
+        if (level == 2 && startGame)
         {
             StartGame();
             startGameFadeOut.SetActive(true);
         }
-        else if (level == 1 && loadGame)
+        else if (level == 2 && loadGame)
         {
             LoadGame();
             startGameFadeOut.SetActive(true);
@@ -163,7 +154,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             BGUIPlayer.SetActive(true);
 
@@ -177,7 +168,7 @@ public class GameManager : MonoBehaviour
             ScorePoints();
             KeyCheck();
         }
-        else if(SceneManager.GetActiveScene().buildIndex != 1)
+        else if(SceneManager.GetActiveScene().buildIndex != 2)
         {
             BGUIPlayer.SetActive(false);
         }

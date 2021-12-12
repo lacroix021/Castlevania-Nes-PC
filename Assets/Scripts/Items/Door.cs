@@ -17,8 +17,6 @@ public class Door : MonoBehaviour
 
     Animator anim;
 
-    AudioSource aSource;
-
     DatosJugador datosJugador;
 
     GameManager gManager;
@@ -31,7 +29,6 @@ public class Door : MonoBehaviour
     {
         gManager = GameManager.gameManager;
         anim = GetComponent<Animator>();
-        aSource = GetComponent<AudioSource>();
         datosJugador = gManager.GetComponent<DatosJugador>();
 
     }
@@ -68,6 +65,10 @@ public class Door : MonoBehaviour
                 keyNeeded = datosJugador.greenKey;
                 gManager.doorMessajeTxt.text = "Need Green key";
                 break;
+            case 7:
+                keyNeeded = datosJugador.underConstruction;
+                gManager.doorMessajeTxt.text = "Area under construction";
+                break;
         }
     }
 
@@ -89,9 +90,8 @@ public class Door : MonoBehaviour
                 {
                     transform.localScale = new Vector3(-1.5f, 1, 1);
                 }
-
+                AudioManager.instance.PlayAudio(AudioManager.instance.door);
                 anim.SetTrigger("OpenDoor");
-                aSource.Play();
             }
             else
             {
@@ -111,8 +111,8 @@ public class Door : MonoBehaviour
                 transform.localScale = new Vector3(-1.5f, 1, 1);
             }
 
+            AudioManager.instance.PlayAudio(AudioManager.instance.door);
             anim.SetTrigger("OpenDoor");
-            aSource.Play();
         }
     }
 }

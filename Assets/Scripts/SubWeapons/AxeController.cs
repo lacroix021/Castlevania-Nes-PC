@@ -22,6 +22,7 @@ public class AxeController : MonoBehaviour
         transform.localScale = new Vector3(dirAxe, -1, 1);
 
         ImpulseAxe();
+        Destroy(this.gameObject, 1);
     }
 
     private void FixedUpdate()
