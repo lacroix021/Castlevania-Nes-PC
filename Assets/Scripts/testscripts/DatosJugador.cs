@@ -43,6 +43,7 @@ public class DatosJugador : MonoBehaviour
     public bool wasCaughtItem1;
     public bool wasCaughtItem2;
     public bool wasCaughtItem3;
+    public bool wasCaughtItem4;
 
     
 
@@ -66,6 +67,7 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart14;
     public bool mapPart15;
     public bool mapPart16;
+    public bool mapPart16B;
     public bool mapPart17;
     public bool mapPart18;
     public bool mapPart19;

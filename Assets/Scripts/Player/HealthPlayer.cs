@@ -15,8 +15,6 @@ public class HealthPlayer : MonoBehaviour
     Renderer rend;
     Color c;
 
-    SoundsSimon soundSimon;
-
     GameManager gManager;
 
     DatosJugador datosJugador;
@@ -30,22 +28,16 @@ public class HealthPlayer : MonoBehaviour
 
     float colPosX;
 
-    Collider2D mycollider;
-    Collider2D enemyCollider;
-
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<SimonController>();
-        soundSimon = GetComponent<SoundsSimon>();
         gManager = GameManager.gameManager;
         datosJugador = gManager.GetComponent<DatosJugador>();
         sprPlayer = GetComponent<SpriteRenderer>();
         /*********************/
         rend = GetComponent<Renderer>();
         c = rend.material.color;
-
-        mycollider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -66,7 +58,6 @@ public class HealthPlayer : MonoBehaviour
         else
         {
             isDead = false;
-            playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
         }
 
         DeathPlayer();
@@ -78,6 +69,7 @@ public class HealthPlayer : MonoBehaviour
         {
             playerController.anim.SetBool("Die", isDead);
             playerController.canMove = false;
+            playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
             gManager.BlinkControl();
 
             StartCoroutine(TimeRespawn());
@@ -157,15 +149,6 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-    void SoundHurt()
-    {
-        soundSimon.audioWhip.clip = soundSimon.hurt;
-        soundSimon.audioWhip.Play();
-        soundSimon.audioWhip.loop = false;
-    }
-
-    
-
     void MakeHurtPlayer()
     {
         damaged = true;
@@ -187,16 +170,16 @@ public class HealthPlayer : MonoBehaviour
             }
         }
 
-        SoundHurt();
+        AudioManager.instance.PlayAudio(AudioManager.instance.simonHurt);
 
+        StartCoroutine(MoveAgain());
         StartCoroutine(GetInvulnerable());
         HealthCheck();
-        StartCoroutine(MoveAgain());
     }
 
     IEnumerator MoveAgain()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         if (currentHealth > 0)
         {

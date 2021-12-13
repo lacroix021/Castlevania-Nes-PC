@@ -61,6 +61,8 @@ public class BossMedusaController : MonoBehaviour
         }
         else
         {
+            GameObject.Find("Stage2Music").GetComponent<ActivateMusic>().battle = true;
+
             if (Time.time >= nextAttackTime)
             {
                 typeMove = Random.Range(0, 2);

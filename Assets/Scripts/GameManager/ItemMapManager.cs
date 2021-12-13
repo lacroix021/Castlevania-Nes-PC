@@ -11,6 +11,7 @@ public class ItemMapManager : MonoBehaviour
     public SpawnUniqueItems spwnItemU1;
     public SpawnUniqueItems spwnItemU2;
     public SpawnUniqueItems spwnItemU3;
+    public SpawnUniqueItems spwnItemU4;
 
 
     //a medida que se agregan mas items unicos nuevos, se deben poner tambien en este archivo y en el DatosJugador
@@ -25,6 +26,7 @@ public class ItemMapManager : MonoBehaviour
         datosJugador.wasCaughtItem1 = spwnItemU1.wasCaught;
         datosJugador.wasCaughtItem2 = spwnItemU2.wasCaught;
         datosJugador.wasCaughtItem3 = spwnItemU3.wasCaught;
+        datosJugador.wasCaughtItem4 = spwnItemU4.wasCaught;
     }
     
     //incrementar este listado de items entre mas se agreguen al mapa
@@ -35,6 +37,7 @@ public class ItemMapManager : MonoBehaviour
         spwnItemU1.wasCaught = datosJugador.wasCaughtItem1;
         spwnItemU2.wasCaught = datosJugador.wasCaughtItem2;
         spwnItemU3.wasCaught = datosJugador.wasCaughtItem3;
+        spwnItemU4.wasCaught = datosJugador.wasCaughtItem4;
     }
 
     //incrementar este listado de items entre mas se agreguen al mapa
@@ -45,6 +48,7 @@ public class ItemMapManager : MonoBehaviour
         spwnItemU1.wasCaught = false;
         spwnItemU2.wasCaught = false;
         spwnItemU3.wasCaught = false;
+        spwnItemU4.wasCaught = false;
 
         CheckItems();
     }
@@ -54,5 +58,6 @@ public class ItemMapManager : MonoBehaviour
         spwnItemU1 = GameObject.Find("ItemSpawnerOnly1").GetComponent<SpawnUniqueItems>();
         spwnItemU2 = GameObject.Find("ItemSpawnerOnly2").GetComponent<SpawnUniqueItems>();
         spwnItemU3 = GameObject.Find("ItemSpawnerOnly3").GetComponent<SpawnUniqueItems>();
+        spwnItemU4 = GameObject.Find("ItemSpawnerOnly4").GetComponent<SpawnUniqueItems>();
     }
 }

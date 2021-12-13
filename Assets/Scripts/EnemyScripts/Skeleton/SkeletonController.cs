@@ -175,16 +175,6 @@ public class SkeletonController : MonoBehaviour
             {
                 direction = 1;
             }
-            
-
-            if (playerPos.position.x < transform.position.x)
-            {
-                direction = -1;
-            }
-            else if(playerPos.position.x > transform.position.x)
-            {
-                direction = 1;
-            }
         }
     }
 
@@ -201,6 +191,9 @@ public class SkeletonController : MonoBehaviour
         }
 
         isGrounded = Physics2D.IsTouchingLayers(feetPos, layerGround);
+        if(isGrounded)
+            moveSpeed = 25f;
+
         noHole = Physics2D.IsTouchingLayers(holeDetector, layerGround);
         thereIsWall = Physics2D.IsTouchingLayers(wallDetector, layerGround);
         inRange = Physics2D.OverlapCircle(transform.position, radius, layerPlayer);
@@ -215,6 +208,7 @@ public class SkeletonController : MonoBehaviour
             if (!noHole && isGrounded)
             {
                 isJump = false;
+                moveSpeed = 70f;
                 rb.velocity = Vector2.zero;
                 rb.AddForce(new Vector2(rb.velocity.x, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
             }

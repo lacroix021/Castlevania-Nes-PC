@@ -8,6 +8,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public CursorLockMode cursorState;
+    
+    
 
     public int EscenaActual;
     public bool startGame;
@@ -131,6 +133,9 @@ public class GameManager : MonoBehaviour
         {
             if (panelPause.activeSelf == false)
             {
+                AudioManager.instance.PlayAudio(AudioManager.instance.pause);
+                AudioManager.instance.masterVol = -20;
+                AudioManager.instance.effectsVol = -20;
                 Time.timeScale = 0;
                 panelPause.SetActive(true);
                 GamePaused = true;
@@ -139,6 +144,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PlayAudio(AudioManager.instance.pause);
+                AudioManager.instance.masterVol = 0;
+                AudioManager.instance.effectsVol = -2;
                 Time.timeScale = 1;
                 panelPause.SetActive(false);
                 GamePaused = false;
@@ -152,6 +160,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Application.targetFrameRate = 60;
+
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -177,6 +186,8 @@ public class GameManager : MonoBehaviour
     
     public void BackMainMenuButton()
     {
+        AudioManager.instance.masterVol = 0;
+        AudioManager.instance.effectsVol = -2;
         gameOverFadeIn.SetActive(true);
         gameOverScreen.SetActive(false);
         StartCoroutine(ChangeMainMenu());
@@ -185,6 +196,8 @@ public class GameManager : MonoBehaviour
     public void QuitButton()
     {
         Time.timeScale = 1;
+        AudioManager.instance.masterVol = 0;
+        AudioManager.instance.effectsVol = -2;
         GamePaused = false;
         panelPause.SetActive(false);
         SceneManager.LoadScene(0);

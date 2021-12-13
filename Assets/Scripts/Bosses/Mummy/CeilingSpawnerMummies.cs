@@ -82,6 +82,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
         if (!isDeadA || !isDeadB)
         {
             yield return new WaitForSeconds(2.6f);
+            GameObject.Find("Stage3Music").GetComponent<ActivateMusic>().battle = true;
             bossSpawnedA = Instantiate(mummyAPrefab, spawnA.position, Quaternion.identity);
             bossSpawnedA.name = mummyAPrefab.name;
             mummyAspawned = true;
@@ -108,6 +109,8 @@ public class CeilingSpawnerMummies : MonoBehaviour
         if (isDeadA && isDeadB)
         {
             bossManager.CheckBoss();
+
+            GameObject.Find("Stage3Music").GetComponent<ActivateMusic>().battle = false;    // para desactivar la musica de batalla
 
             //aqui poner que la pared se rompe...
             wallBroken = true;

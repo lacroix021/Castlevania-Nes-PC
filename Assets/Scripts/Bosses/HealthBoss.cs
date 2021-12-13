@@ -64,16 +64,19 @@ public class HealthBoss : MonoBehaviour
             {
                 isDead = true;
                 GameObject.Find("MedusaStatue").GetComponent<MedusaStatueController>().medusaDefeated = true;
+                GameObject.Find("Stage2Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
                 bossManager.CheckBoss();
             }
             else if(boss == typeBoss.BossMummyA)
             {
+                //el control de musica apagada se realiza desde el spawner de las momias
                 isDead = true;
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA = true;
                 bossManager.CheckBoss();
             }
             else if (boss == typeBoss.BossMummyB)
             {
+                //el control de musica apagada se realiza desde el spawner de las momias
                 isDead = true;
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB = true;
                 bossManager.CheckBoss();

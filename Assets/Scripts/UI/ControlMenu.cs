@@ -143,8 +143,13 @@ public class ControlMenu : MonoBehaviour
     {
         Application.OpenURL("https://www.facebook.com/RamshyCorp");
     }
+    public void ButtonBetaTesters()
+    {
+        Application.OpenURL("https://www.facebook.com/groups/betatestersramshycorp");
+    }
     public void ButtonPaypal()
     {
         Application.OpenURL("https://paypal.me/RamshyCorp");
     }
+    
 }

@@ -10,14 +10,9 @@ public class SubWeaponSystem : MonoBehaviour
 
     SimonController pController;
     HeartsSystem heartsSys;
-    SoundsSimon soundSimon;
 
     DatosJugador datosJugador;
     GameManager gmanager;
-
-    //public bool haveSub;
-
-    //public int typeSub = 0;
 
     public float direction;
 
@@ -25,8 +20,6 @@ public class SubWeaponSystem : MonoBehaviour
 
     public Transform subPos;
     public Transform subPosB;
-
-    //public int multiplierPow;
 
     /*
     type of subweapon
@@ -41,7 +34,6 @@ public class SubWeaponSystem : MonoBehaviour
     {
         pController = GetComponent<SimonController>();
         heartsSys = GetComponent<HeartsSystem>();
-        soundSimon = GetComponent<SoundsSimon>();
         datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         gmanager = GameManager.gameManager;
     }

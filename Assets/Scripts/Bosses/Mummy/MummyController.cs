@@ -91,7 +91,7 @@ public class MummyController : MonoBehaviour
 
     void Movement()
     {
-        rb.MovePosition(new Vector2(transform.position.x + (direction * moveSpeed* Time.deltaTime), transform.position.y));
+        rb.MovePosition(new Vector2(transform.position.x + (direction * moveSpeed * Time.deltaTime), transform.position.y));
     }
 
     void TypeMove()

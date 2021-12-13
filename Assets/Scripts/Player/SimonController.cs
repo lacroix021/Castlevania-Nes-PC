@@ -155,16 +155,8 @@ public class SimonController : MonoBehaviour
     //NEW INPUTS
     public void Move(InputAction.CallbackContext context)
     {
-        if (canMove)
-        {
-            h = context.ReadValue<Vector2>().x;
-            v = context.ReadValue<Vector2>().y;
-        }
-        else
-        {
-            h = 0;
-            v = 0;
-        }
+        h = context.ReadValue<Vector2>().x;
+        v = context.ReadValue<Vector2>().y;
     }
 
     public void RightStick(InputAction.CallbackContext context)

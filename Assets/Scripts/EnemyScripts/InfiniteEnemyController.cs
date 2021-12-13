@@ -159,6 +159,30 @@ public class InfiniteEnemyController : MonoBehaviour
                         nextSpawnTime = Time.time + 1f / spawnRate;
                     }
                 }
+                else if(bounds[7].activeInHierarchy == true || bounds[8].activeInHierarchy == true || bounds[9].activeInHierarchy == true)
+                {
+                    //enemyPrefab = medusaHeadPrefab;
+                    spawnRate = 0.5f;
+
+                    if (Time.time >= nextSpawnTime)
+                    {
+                        int num = Random.Range(0, 2);
+
+                        if (num == 0)
+                        {
+                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                            instancedEnemy.transform.parent = fatherBound;
+                        }
+                        else if (num == 1)
+                        {
+                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                            instancedEnemy.transform.parent = fatherBound;
+                        }
+
+                        nextSpawnTime = Time.time + 1f / spawnRate;
+                    }
+                }
+
                 //aqui agregaria otro tipo de enemigos dependiendo el bound, tener en cuenta el numero de bound en el array hecho manualmente
 
             }

@@ -42,6 +42,11 @@ public class DamageSubWeapon : MonoBehaviour
         if (collision.CompareTag("BreakWall"))
         {
             AudioManager.instance.PlayAudio(AudioManager.instance.breakWall);
+
+            if (knife)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

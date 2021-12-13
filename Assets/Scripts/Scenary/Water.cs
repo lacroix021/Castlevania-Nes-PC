@@ -17,11 +17,6 @@ public class Water : MonoBehaviour
     private float nextSpawnTime;
     public GameObject boundaryFather;
 
-    [Header("SONIDOS")]
-    AudioSource aSource;
-    public AudioClip inWater;
-    public AudioClip outWater;
-
     [Header("CONTADORES")]
     public int limitMermans;
     [SerializeField] int numMermans;
@@ -30,7 +25,6 @@ public class Water : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aSource = GetComponent<AudioSource>();
         colliderWater = GetComponent<BoxCollider2D>();
     }
 
@@ -46,9 +40,7 @@ public class Water : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            aSource.clip = outWater;
-            aSource.loop = false;
-            aSource.Play();
+            AudioManager.instance.PlayAudio(AudioManager.instance.inWater);
 
             instancedBubbleL = Instantiate(bubblePrefab, other.transform.position, Quaternion.identity);
             instancedBubbleL.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10 * Time.deltaTime, 40 * Time.deltaTime), ForceMode2D.Impulse);
@@ -69,9 +61,7 @@ public class Water : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            aSource.clip = outWater;
-            aSource.loop = false;
-            aSource.Play();
+            AudioManager.instance.PlayAudio(AudioManager.instance.inWater);
 
             instancedBubbleL = Instantiate(bubblePrefab, other.transform.position, Quaternion.identity);
             instancedBubbleL.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10 * Time.deltaTime, 40 * Time.deltaTime), ForceMode2D.Impulse);
@@ -91,9 +81,7 @@ public class Water : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            aSource.clip = outWater;
-            aSource.loop = false;
-            aSource.Play();
+            AudioManager.instance.PlayAudio(AudioManager.instance.outWater);
 
             instancedBubbleL = Instantiate(bubblePrefab, other.transform.position, Quaternion.identity);
             instancedBubbleL.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10 * Time.deltaTime, 40 * Time.deltaTime), ForceMode2D.Impulse);

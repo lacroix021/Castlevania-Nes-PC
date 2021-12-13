@@ -103,7 +103,7 @@ MonoBehaviour:
   mummyA: 1
   mummyB: 0
   typeMove: 0
-  moveSpeed: 0.3
+  moveSpeed: 0.02
   direction: 0
   posCheckRate: 1
   blockPrefab: {fileID: 9098725467671704756, guid: 1ceb36a0d024c1549bda2e81371fe639,

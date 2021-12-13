@@ -101,13 +101,14 @@ public class StructureManager : MonoBehaviour
         datosJugador.mapPart14 = mapParts[15].mapActive;
         datosJugador.mapPart15 = mapParts[16].mapActive;
         datosJugador.mapPart16 = mapParts[17].mapActive;
-        datosJugador.mapPart17 = mapParts[18].mapActive;
-        datosJugador.mapPart18 = mapParts[19].mapActive;
-        datosJugador.mapPart19 = mapParts[20].mapActive;
-        datosJugador.mapPart20 = mapParts[21].mapActive;
-        datosJugador.mapPart21 = mapParts[22].mapActive;
-        datosJugador.mapPart22 = mapParts[23].mapActive;
-        datosJugador.mapPart23 = mapParts[24].mapActive;
+        datosJugador.mapPart16B = mapParts[18].mapActive;   //zona extra
+        datosJugador.mapPart17 = mapParts[19].mapActive;
+        datosJugador.mapPart18 = mapParts[20].mapActive;
+        datosJugador.mapPart19 = mapParts[21].mapActive;
+        datosJugador.mapPart20 = mapParts[22].mapActive;
+        datosJugador.mapPart21 = mapParts[23].mapActive;
+        datosJugador.mapPart22 = mapParts[24].mapActive;
+        datosJugador.mapPart23 = mapParts[25].mapActive;
     }
 
     public void MapPartsLoadGame()
@@ -132,13 +133,14 @@ public class StructureManager : MonoBehaviour
         mapParts[15].mapActive = datosJugador.mapPart14;
         mapParts[16].mapActive = datosJugador.mapPart15;
         mapParts[17].mapActive = datosJugador.mapPart16;
-        mapParts[18].mapActive = datosJugador.mapPart17;
-        mapParts[19].mapActive = datosJugador.mapPart18;
-        mapParts[20].mapActive = datosJugador.mapPart19;
-        mapParts[21].mapActive = datosJugador.mapPart20;
-        mapParts[22].mapActive = datosJugador.mapPart21;
-        mapParts[23].mapActive = datosJugador.mapPart22;
-        mapParts[24].mapActive = datosJugador.mapPart23;
+        mapParts[18].mapActive = datosJugador.mapPart16B;   //zona extra
+        mapParts[19].mapActive = datosJugador.mapPart17;
+        mapParts[20].mapActive = datosJugador.mapPart18;
+        mapParts[21].mapActive = datosJugador.mapPart19;
+        mapParts[22].mapActive = datosJugador.mapPart20;
+        mapParts[23].mapActive = datosJugador.mapPart21;
+        mapParts[24].mapActive = datosJugador.mapPart22;
+        mapParts[25].mapActive = datosJugador.mapPart23;
     }
 
     public void MapPartsStartGame()
