@@ -83,32 +83,35 @@ public class StructureManager : MonoBehaviour
     //agregar mas partes de mapa a medida que se va creando mas
     public void CheckMap()
     {
-        datosJugador.mapPart0 = mapParts[0].mapActive;
-        datosJugador.mapPart1 = mapParts[1].mapActive;
-        datosJugador.mapPart2 = mapParts[2].mapActive;
-        datosJugador.mapPart3 = mapParts[3].mapActive;
-        datosJugador.mapPart4 = mapParts[4].mapActive;
-        datosJugador.mapPart5 = mapParts[5].mapActive;
-        datosJugador.mapPart6 = mapParts[6].mapActive;
-        datosJugador.mapPart7 = mapParts[7].mapActive;
-        datosJugador.mapPart8 = mapParts[8].mapActive;
-        datosJugador.mapPart9 = mapParts[9].mapActive;
-        datosJugador.mapPart10 = mapParts[10].mapActive;
-        datosJugador.mapPart11 = mapParts[11].mapActive;
-        datosJugador.mapPart11B = mapParts[12].mapActive;   //zona extra
-        datosJugador.mapPart12 = mapParts[13].mapActive;
-        datosJugador.mapPart13 = mapParts[14].mapActive;
-        datosJugador.mapPart14 = mapParts[15].mapActive;
-        datosJugador.mapPart15 = mapParts[16].mapActive;
-        datosJugador.mapPart16 = mapParts[17].mapActive;
-        datosJugador.mapPart16B = mapParts[18].mapActive;   //zona extra
-        datosJugador.mapPart17 = mapParts[19].mapActive;
-        datosJugador.mapPart18 = mapParts[20].mapActive;
-        datosJugador.mapPart19 = mapParts[21].mapActive;
-        datosJugador.mapPart20 = mapParts[22].mapActive;
-        datosJugador.mapPart21 = mapParts[23].mapActive;
-        datosJugador.mapPart22 = mapParts[24].mapActive;
-        datosJugador.mapPart23 = mapParts[25].mapActive;
+        if (!GameManager.gameManager.debugMode)
+        {
+            datosJugador.mapPart0 = mapParts[0].mapActive;
+            datosJugador.mapPart1 = mapParts[1].mapActive;
+            datosJugador.mapPart2 = mapParts[2].mapActive;
+            datosJugador.mapPart3 = mapParts[3].mapActive;
+            datosJugador.mapPart4 = mapParts[4].mapActive;
+            datosJugador.mapPart5 = mapParts[5].mapActive;
+            datosJugador.mapPart6 = mapParts[6].mapActive;
+            datosJugador.mapPart7 = mapParts[7].mapActive;
+            datosJugador.mapPart8 = mapParts[8].mapActive;
+            datosJugador.mapPart9 = mapParts[9].mapActive;
+            datosJugador.mapPart10 = mapParts[10].mapActive;
+            datosJugador.mapPart11 = mapParts[11].mapActive;
+            datosJugador.mapPart11B = mapParts[12].mapActive;   //zona extra
+            datosJugador.mapPart12 = mapParts[13].mapActive;
+            datosJugador.mapPart13 = mapParts[14].mapActive;
+            datosJugador.mapPart14 = mapParts[15].mapActive;
+            datosJugador.mapPart15 = mapParts[16].mapActive;
+            datosJugador.mapPart16 = mapParts[17].mapActive;
+            datosJugador.mapPart16B = mapParts[18].mapActive;   //zona extra
+            datosJugador.mapPart17 = mapParts[19].mapActive;
+            datosJugador.mapPart18 = mapParts[20].mapActive;
+            datosJugador.mapPart19 = mapParts[21].mapActive;
+            datosJugador.mapPart20 = mapParts[22].mapActive;
+            datosJugador.mapPart21 = mapParts[23].mapActive;
+            datosJugador.mapPart22 = mapParts[24].mapActive;
+            datosJugador.mapPart23 = mapParts[25].mapActive;
+        }
     }
 
     public void MapPartsLoadGame()

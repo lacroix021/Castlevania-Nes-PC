@@ -81,6 +81,11 @@ public class HealthBoss : MonoBehaviour
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB = true;
                 bossManager.CheckBoss();
             }
+            else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
+                GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB)
+            {
+                GameObject.Find("Stage3Music").GetComponent<ActivateMusic>().battle = false;
+            }
         }
     }
 

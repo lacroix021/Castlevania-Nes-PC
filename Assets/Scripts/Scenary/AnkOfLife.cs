@@ -59,7 +59,7 @@ public class AnkOfLife : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D coll)
     {
-        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().v > 0.8f)
+        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().activating)
         {
             if(Time.time >= timeSaveRate)
             {

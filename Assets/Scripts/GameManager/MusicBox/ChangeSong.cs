@@ -29,7 +29,8 @@ public class ChangeSong : MonoBehaviour
             audioSource.loop = true;
             audioSource.Play();
         }
-        else if (level3)
+        
+        if (level3)
         {
             yield return new WaitForSeconds(22.635f);
             audioSource.clip = loop;

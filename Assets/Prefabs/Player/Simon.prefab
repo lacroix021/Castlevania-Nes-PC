@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8837055334543314091}
   - component: {fileID: 8837055334543314087}
   - component: {fileID: 8837055334543314084}
-  - component: {fileID: 4178450349964426774}
+  - component: {fileID: 2976793782317400040}
   m_Layer: 10
   m_Name: Simon
   m_TagString: Player
@@ -579,7 +579,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4178450349964426774
+--- !u!114 &2976793782317400040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: f92e292f7eb41024b9a87236ea3fd7be,
+  m_Actions: {fileID: -944628639613478452, guid: 86d1a4603059b6a4c86a164cd315b667,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -618,23 +618,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: f66a5ce3-1cd9-47ae-8265-612ec932346c
-    m_ActionName: Player/Move[/DualShock3GamepadHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/DualShock3GamepadHID/dpad/up,/DualShock3GamepadHID/dpad/down,/DualShock3GamepadHID/dpad/left,/DualShock3GamepadHID/dpad/right]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8837055334543314088}
-        m_MethodName: Attack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: da7c604c-cfc8-46a6-943b-e6918c634570
-    m_ActionName: Player/Fire[/DualShock3GamepadHID/rightTrigger,/Mouse/leftButton]
+    m_ActionId: 10f8a3a3-b013-48ec-8d28-c90fffd3bbd5
+    m_ActionName: Controller/Movement[/DualShock3GamepadHID/leftStick,/DualShock3GamepadHID/dpad/up,/DualShock3GamepadHID/dpad/down,/DualShock3GamepadHID/dpad/left,/DualShock3GamepadHID/dpad/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8837055334543314088}
@@ -648,8 +633,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 85723490-4a36-49ac-8945-ca1f9536d5a8
-    m_ActionName: Player/Jump[/Keyboard/space,/DualShock3GamepadHID/buttonSouth]
+    m_ActionId: 032e2d7a-a774-4f4d-b09f-70c424d9998f
+    m_ActionName: Controller/Jump[/DualShock3GamepadHID/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a550a885-e00b-4c2c-8ec3-7780a91a7461
+    m_ActionName: Controller/Fire1[/DualShock3GamepadHID/buttonWest,/Keyboard/z]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8837055334543314086}
@@ -663,23 +663,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 365fea46-2633-4058-ac08-6540d98d2ef1
-    m_ActionName: Player/Fire2[/Mouse/rightButton,/DualShock3GamepadHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8837055334543314088}
-        m_MethodName: PauseGame
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: fd8ada37-9c02-4912-a308-68f18ab1e547
-    m_ActionName: Player/Pause[/Keyboard/p,/DualShock3GamepadHID/start]
+    m_ActionId: 7e233212-62db-426b-9f4e-962b401bd909
+    m_ActionName: Controller/Fire2[/DualShock3GamepadHID/buttonEast,/Keyboard/x]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8837055334543314088}
@@ -693,8 +678,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9123753a-f29e-486f-9016-85a366887b0d
-    m_ActionName: Player/ActivateMode[/DualShock3GamepadHID/leftShoulder,/Keyboard/leftCtrl]
+    m_ActionId: f7be3ee2-9302-475b-a2da-1210499dd954
+    m_ActionName: Controller/Activate[/DualShock3GamepadHID/leftTrigger,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: PauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d8984bc-121e-4b45-8418-a871fc4c9b04
+    m_ActionName: Controller/Pause[/DualShock3GamepadHID/start,/Keyboard/p]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8837055334543314088}
@@ -708,11 +708,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c0da2c71-9b14-4457-aa3a-b906c45957a7
-    m_ActionName: Player/RightStick[/Keyboard/upArrow,/Keyboard/downArrow]
+    m_ActionId: f695cc99-af49-44f4-aa74-d66e9911b4f4
+    m_ActionName: Controller/YAxisCross[/DualShock3GamepadHID/rightStick,/Keyboard/leftShift,/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Controller
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &8837055334555189719
@@ -902,7 +902,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.008476496}
+  m_Offset: {x: 0.00014019012, y: -0.008476496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -913,7 +913,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.06783862, y: 0.031101406}
+  m_Size: {x: 0.077653885, y: 0.031101406}
   m_EdgeRadius: 0
 --- !u!1 &8837055334937369622
 GameObject:

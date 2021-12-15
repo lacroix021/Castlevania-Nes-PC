@@ -8,7 +8,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public CursorLockMode cursorState;
-    
+    public bool debugMode;
     
 
     public int EscenaActual;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     
 
     [Header("POSICION INICIAL JUGADOR Y OBJETOS")]
-    public GameObject playerPrefab;
+    //public GameObject playerPrefab;
     private Transform startPositionPlayer;
     public GameObject instancePlayer;
 
@@ -141,6 +141,12 @@ public class GameManager : MonoBehaviour
                 GamePaused = true;
                 /////////////////////////////////////////////////////////
                 buttonNav.Select();
+
+                GameObject[] audios = GameObject.FindGameObjectsWithTag("MusicBox");
+                foreach (GameObject a in audios)
+                {
+                    a.GetComponent<AudioSource>().Pause();
+                }
             }
             else
             {
@@ -152,6 +158,12 @@ public class GameManager : MonoBehaviour
                 GamePaused = false;
                 navigationMode = false;
                 buttonQuit.enabled = true;
+
+                GameObject[] audios = GameObject.FindGameObjectsWithTag("MusicBox");
+                foreach (GameObject a in audios)
+                {
+                    a.GetComponent<AudioSource>().Play();
+                }
             }
         }
     }
@@ -391,9 +403,11 @@ public class GameManager : MonoBehaviour
 
         if (!instancePlayer)
         {
-            instancePlayer = Instantiate(playerPrefab, datosJugador.posPlayer, Quaternion.identity);
-            instancePlayer.name = playerPrefab.name;
-
+            //instancePlayer = Instantiate(playerPrefab, datosJugador.posPlayer, Quaternion.identity);
+            //instancePlayer.name = playerPrefab.name;
+            instancePlayer = GameObject.FindGameObjectWithTag("Player");
+            instancePlayer.transform.position = datosJugador.posPlayer;
+            instancePlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             CargarComponentesInicio();
         }
 
@@ -414,9 +428,11 @@ public class GameManager : MonoBehaviour
 
         if (!instancePlayer)
         {
-            instancePlayer = Instantiate(playerPrefab, startPositionPlayer.position, Quaternion.identity);
-            instancePlayer.name = playerPrefab.name;
-
+            //instancePlayer = Instantiate(playerPrefab, startPositionPlayer.position, Quaternion.identity);
+            //instancePlayer.name = playerPrefab.name;
+            instancePlayer = GameObject.FindGameObjectWithTag("Player");
+            instancePlayer.transform.position = startPositionPlayer.position;
+            instancePlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             CargarComponentesInicio();
             
             simonController.canMove = true;
@@ -450,7 +466,7 @@ public class GameManager : MonoBehaviour
     void CargarComponentesInicio()
     {
         /*********como si fuera el start de C# *********/
-        instancePlayer = GameObject.FindGameObjectWithTag("Player");
+        //instancePlayer = GameObject.FindGameObjectWithTag("Player");
         simonController = instancePlayer.GetComponent<SimonController>();
         playerHealth = instancePlayer.GetComponent<HealthPlayer>();
         

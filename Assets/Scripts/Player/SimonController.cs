@@ -94,10 +94,6 @@ public class SimonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DESCOMENTAREAR ESTO DESPUES DE HACER PRUEBAS
-        //Y COMENTAREAR EL Inputmanager() QUE ESTA SOLO EN EL UPDATE
-
-
         if (!gameManager.GamePaused)
         {
             InputManager();
@@ -108,7 +104,7 @@ public class SimonController : MonoBehaviour
         //InputManager();
 
         
-        CheckGround();
+        
         Attacking();
         ClimbingChain();
 
@@ -136,7 +132,7 @@ public class SimonController : MonoBehaviour
         JumpControll();
         Slide();
         NormalizeSlope();
-        
+        CheckGround();
 
         //cambio de material de fisicas
         if (rb.velocity.x != 0 && !animSub)
@@ -153,6 +149,7 @@ public class SimonController : MonoBehaviour
     }
 
     //NEW INPUTS
+        
     public void Move(InputAction.CallbackContext context)
     {
         h = context.ReadValue<Vector2>().x;

@@ -2620,8 +2620,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 259618796973145424}
-  m_RootOrder: 5
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &532589012
 PrefabInstance:
@@ -4234,7 +4234,7 @@ Transform:
   - {fileID: 1599550816}
   - {fileID: 36537329}
   m_Father: {fileID: 259618796973145424}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &753874627
 MonoBehaviour:
@@ -15092,7 +15092,6 @@ Transform:
   - {fileID: 1139128777}
   - {fileID: 532640337}
   - {fileID: 539734515}
-  - {fileID: 530803215}
   - {fileID: 753874626}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -15110,11 +15109,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorState: 1
+  debugMode: 0
   EscenaActual: 0
   startGame: 0
   loadGame: 0
-  playerPrefab: {fileID: 8837055334543314093, guid: ed57dce7df1c7114fb0c93fb8a8d1da1,
-    type: 3}
   instancePlayer: {fileID: 0}
   healthText: {fileID: 2710965188467102390}
   HeartsText: {fileID: 2710965188401196142}

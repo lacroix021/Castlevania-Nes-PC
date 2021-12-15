@@ -338,10 +338,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317723963527994017, guid: b603a6672f2eca14b853d7cb6b41b8eb,
         type: 3}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317723963527994017, guid: b603a6672f2eca14b853d7cb6b41b8eb,
+        type: 3}
       propertyPath: enemyToSpawn
       value: 
       objectReference: {fileID: 3532082165296373909, guid: 09cc7b0ad7670b9469af8cac26ab9c59,
         type: 3}
+    - target: {fileID: 3317723963527994017, guid: b603a6672f2eca14b853d7cb6b41b8eb,
+        type: 3}
+      propertyPath: instanceGhost
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3317723963527994017, guid: b603a6672f2eca14b853d7cb6b41b8eb,
         type: 3}
       propertyPath: boundaryFather
@@ -950,6 +960,7 @@ MonoBehaviour:
   spwnItemU1: {fileID: 0}
   spwnItemU2: {fileID: 0}
   spwnItemU3: {fileID: 0}
+  spwnItemU4: {fileID: 0}
 --- !u!1 &466557885
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,8 +4574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fad7ecc05b7fcb4683af3787e135b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 24100000, guid: d7ac7be530e15884386d045b0c4b5d1e, type: 2}
-  effects: {fileID: 24100000, guid: bf2ab96fe439e864db8cb2a1f08e13e1, type: 2}
+  masterVol: 0
+  effectsVol: 0
+  musicMixer: {fileID: 24100000, guid: d7ac7be530e15884386d045b0c4b5d1e, type: 2}
+  effectsMixer: {fileID: 24100000, guid: bf2ab96fe439e864db8cb2a1f08e13e1, type: 2}
   attack: {fileID: 657698380}
   hit: {fileID: 1451600974}
   breakWall: {fileID: 466557887}
@@ -4730,7 +4743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1341506160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4767,7 +4780,7 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
 --- !u!114 &1341506161
 MonoBehaviour:
@@ -8887,6 +8900,7 @@ MonoBehaviour:
   wasCaughtItem1: 0
   wasCaughtItem2: 0
   wasCaughtItem3: 0
+  wasCaughtItem4: 0
   mapPart0: 0
   mapPart1: 0
   mapPart2: 0
@@ -8905,6 +8919,7 @@ MonoBehaviour:
   mapPart14: 0
   mapPart15: 0
   mapPart16: 0
+  mapPart16B: 0
   mapPart17: 0
   mapPart18: 0
   mapPart19: 0
@@ -8935,7 +8950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c79e0de1a0cb74db8034bdc0100959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorState: 1
+  cursorState: 0
+  debugMode: 1
   EscenaActual: 0
   startGame: 0
   loadGame: 0

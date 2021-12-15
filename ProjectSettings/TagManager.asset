@@ -16,6 +16,7 @@ TagManager:
   - map
   - HeadPlayer
   - PosPlayer
+  - MusicBox
   layers:
   - Default
   - TransparentFX
