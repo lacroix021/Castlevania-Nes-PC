@@ -15646,7 +15646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c79e0de1a0cb74db8034bdc0100959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorState: 1
+  cursorState: 0
   debugMode: 0
   EscenaActual: 0
   startGame: 0
@@ -15699,6 +15699,7 @@ MonoBehaviour:
   buttonNav: {fileID: 1321252215}
   buttonBackMenu: {fileID: 1112233410}
   navigationMode: 0
+  musicMap: []
 --- !u!1 &259618796973145426
 GameObject:
   m_ObjectHideFlags: 0

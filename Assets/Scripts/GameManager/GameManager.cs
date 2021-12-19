@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
 
     public bool navigationMode;
 
-    
+
+    public ActivateMusic[] musicMap;
 
     private void Awake()
     {
@@ -173,10 +174,13 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+        
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
+            
+
             BGUIPlayer.SetActive(true);
 
             //esta linea es solo para encerrar el valor del oro en 0 y 999999999 para que no exceda ese limite
@@ -387,6 +391,7 @@ public class GameManager : MonoBehaviour
         if(datosJugador.Saves != 0 && datosJugador.gold >= datosJugador.costRespawn)
         {
             blink.SetActive(true);
+            RespawnMusic();
         }
         else
         {
@@ -471,5 +476,21 @@ public class GameManager : MonoBehaviour
         playerHealth = instancePlayer.GetComponent<HealthPlayer>();
         
         /************************/
+    }
+
+    public void RespawnMusic()
+    {
+        //restablecer musica a la normalidad al respawnear
+        musicMap = GameObject.FindObjectsOfType<ActivateMusic>();
+
+        for (int i = 0; i < musicMap.Length; i++)
+        {
+            musicMap[i].GetComponent<ActivateMusic>().battle = false;
+
+            if (musicMap[i].GetComponentInChildren<ChangeSong>())
+            {
+                musicMap[i].GetComponentInChildren<ChangeSong>().OnRespawnMusic();
+            }
+        }
     }
 }

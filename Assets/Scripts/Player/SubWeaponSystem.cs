@@ -49,7 +49,7 @@ public class SubWeaponSystem : MonoBehaviour
     {
         if (!gmanager.GamePaused)
         {
-            if (context.performed && datosJugador.haveSub)
+            if (context.performed && datosJugador.haveSub && pController.canMove)
             {
                 if (pController.isGrounded)
                 {
@@ -111,11 +111,11 @@ public class SubWeaponSystem : MonoBehaviour
     {
         direction = transform.localScale.x;
 
-        if(datosJugador.multiplierPow == 0 || datosJugador.multiplierPow == 1)
+        if (datosJugador.multiplierPow == 0 || datosJugador.multiplierPow == 1)
         {
             Instantiate(subWeapons[datosJugador.typeSub], subPos.position, Quaternion.identity);
         }
-        else if(datosJugador.multiplierPow == 2)
+        else if (datosJugador.multiplierPow == 2)
         {
             Instantiate(subWeapons[datosJugador.typeSub], subPos.position, Quaternion.identity);
             Instantiate(subWeapons[datosJugador.typeSub], subPosB.position, Quaternion.identity);

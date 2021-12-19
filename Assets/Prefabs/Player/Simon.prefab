@@ -346,6 +346,7 @@ MonoBehaviour:
   rb: {fileID: 8837055334543314092}
   anim: {fileID: 8837055334543314091}
   ceilingCheck: {fileID: 8837055335758887421}
+  myCollider: {fileID: 8837055334543314095}
   slide: {fileID: 6200000, guid: 50dd2b5b6aba5374bb27dda7d7f71ae8, type: 2}
   sticky: {fileID: 6200000, guid: d9219948c6850524d9f0fcbac1a3583d, type: 2}
   pauseGame: 0

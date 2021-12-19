@@ -56,7 +56,7 @@ public class SimonController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public BoxCollider2D ceilingCheck;
-    BoxCollider2D myCollider;
+    public BoxCollider2D myCollider;
     public PhysicsMaterial2D slide;
     public PhysicsMaterial2D sticky;
 
@@ -84,7 +84,6 @@ public class SimonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myCollider = GetComponent<BoxCollider2D>();
         gameManager = GameManager.gameManager;
         moveSpeedBase = moveSpeed;
         moveSlopeSpeed = moveSpeed / 1.3f;

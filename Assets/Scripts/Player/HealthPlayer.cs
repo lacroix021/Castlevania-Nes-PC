@@ -28,6 +28,9 @@ public class HealthPlayer : MonoBehaviour
 
     float colPosX;
 
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,9 +74,17 @@ public class HealthPlayer : MonoBehaviour
             playerController.canMove = false;
             playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
             gManager.BlinkControl();
+            StartCoroutine(ChangeRb());
 
             StartCoroutine(TimeRespawn());
         }
+    }
+
+    IEnumerator ChangeRb()
+    {
+        yield return new WaitUntil(() => playerController.isGrounded);
+        playerController.rb.bodyType = RigidbodyType2D.Static;
+        playerController.myCollider.enabled = false;
     }
 
     public void RespawnPlayer()
@@ -94,6 +105,7 @@ public class HealthPlayer : MonoBehaviour
             playerController.canMove = true;
             sprPlayer.enabled = true;
             playerController.rb.bodyType = RigidbodyType2D.Dynamic;
+            playerController.myCollider.enabled = true;
             Physics2D.IgnoreLayerCollision(9, 10, false);
 
             //pierde oro al revivir

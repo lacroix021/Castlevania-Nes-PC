@@ -28,6 +28,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
     public GameObject platformBreakable;
 
     SimonController playerController;
+    HealthPlayer playerHealth;
     BossMapManager bossManager;
 
     [Header("COSAS DE LA TRAMPA")]
@@ -40,6 +41,8 @@ public class CeilingSpawnerMummies : MonoBehaviour
     public bool wallBroken;
     public Rigidbody2D[] wallBreakable;
 
+    public Transform boundaryFather;
+
     // Start is called before the first frame update
 
     private void Start()
@@ -47,6 +50,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
         bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
 
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
 
         if (isDeadA && isDeadB)
         {
@@ -63,7 +67,26 @@ public class CeilingSpawnerMummies : MonoBehaviour
         CheckActivator();
         ManagerControl();
         SwitchCheck();
+        PlayerDie();
+    }
 
+    void PlayerDie()
+    {
+        if(playerHealth.currentHealth <= 0)
+        {
+            //pendiente corregir, que no desaparezcan de golpe
+            //que primero las momias hagan una animacion para ahi si desaparecer
+            Destroy(bossSpawnedA, 4);
+            Destroy(bossSpawnedB, 4);
+            StartCoroutine(Timer());
+        }
+    }
+
+    IEnumerator Timer()
+    {
+        //activar nuevamente el activador de enemigo
+        yield return new WaitForSeconds(2);
+        collActivator.enabled = true;
     }
 
     void CheckActivator()
@@ -83,13 +106,21 @@ public class CeilingSpawnerMummies : MonoBehaviour
         {
             yield return new WaitForSeconds(2.6f);
             GameObject.Find("Stage3Music").GetComponent<ActivateMusic>().battle = true;
-            bossSpawnedA = Instantiate(mummyAPrefab, spawnA.position, Quaternion.identity);
-            bossSpawnedA.name = mummyAPrefab.name;
-            mummyAspawned = true;
+            if (!bossSpawnedA)
+            {
+                bossSpawnedA = Instantiate(mummyAPrefab, spawnA.position, Quaternion.identity);
+                bossSpawnedA.transform.parent = boundaryFather.transform;
+                bossSpawnedA.name = mummyAPrefab.name;
+                mummyAspawned = true;
+            }
 
-            bossSpawnedB = Instantiate(mummyBPrefab, spawnB.position, Quaternion.identity);
-            bossSpawnedB.name = mummyBPrefab.name;
-            mummyBspawned = true;
+            if (!bossSpawnedB)
+            {
+                bossSpawnedB = Instantiate(mummyBPrefab, spawnB.position, Quaternion.identity);
+                bossSpawnedB.transform.parent = boundaryFather.transform;
+                bossSpawnedB.name = mummyBPrefab.name;
+                mummyBspawned = true;
+            }
         }
     }
 

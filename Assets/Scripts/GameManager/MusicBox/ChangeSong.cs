@@ -38,4 +38,10 @@ public class ChangeSong : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    public void OnRespawnMusic()
+    {
+        audioSource.clip = intro;
+        audioSource.loop = false;
+    }
 }
