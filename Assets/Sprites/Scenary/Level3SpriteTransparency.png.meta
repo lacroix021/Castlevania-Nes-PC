@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: 2643910172166363295
     second: Level3SpriteTransparency_9
+  - first:
+      213: 7097437319297050080
+    second: Level3SpriteTransparency_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -334,6 +337,27 @@ TextureImporter:
       bones: []
       spriteID: f9894062b4e01b420800000000000000
       internalID: 2643910172166363295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3SpriteTransparency_10
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 216
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e52d4853a92f7260800000000000000
+      internalID: 7097437319297050080
       vertices: []
       indices: 
       edges: []

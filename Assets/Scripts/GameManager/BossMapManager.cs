@@ -24,8 +24,8 @@ public class BossMapManager : MonoBehaviour
         datosJugador.bossMedusaDefeated = bossMedusa.medusaDefeated;
         datosJugador.bossMummyA = ceilingMummies.isDeadA;
         datosJugador.bossMummyB = ceilingMummies.isDeadB;
-        datosJugador.floorBrokenLevel3 = ceilingMummies.interruptorOn;
-        datosJugador.wallBrokenLevel3 = ceilingMummies.wallBroken;
+        datosJugador.floorBrokenLevel3 = ceilingMummies.interruptorOn;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
+        datosJugador.wallBrokenLevel3 = ceilingMummies.wallBroken;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
     }
 
     public void BossMapOnLoadGame()
@@ -36,8 +36,8 @@ public class BossMapManager : MonoBehaviour
         bossMedusa.medusaDefeated = datosJugador.bossMedusaDefeated;
         ceilingMummies.isDeadA = datosJugador.bossMummyA;
         ceilingMummies.isDeadB = datosJugador.bossMummyB;
-        ceilingMummies.interruptorOn = datosJugador.floorBrokenLevel3;
-        ceilingMummies.wallBroken = datosJugador.wallBrokenLevel3;
+        ceilingMummies.interruptorOn = datosJugador.floorBrokenLevel3; //SE DEBE MIGRAR AL STRUCTURE MANAGER
+        ceilingMummies.wallBroken = datosJugador.wallBrokenLevel3;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
 
     }
 
@@ -49,8 +49,8 @@ public class BossMapManager : MonoBehaviour
         bossMedusa.medusaDefeated = false;
         ceilingMummies.isDeadA = false;
         ceilingMummies.isDeadB = false;
-        ceilingMummies.interruptorOn = false;     //evento de piso roto en nivel3
-        ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3
+        ceilingMummies.interruptorOn = false;     //evento de piso roto en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER
+        ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER
 
         CheckBoss();
     }

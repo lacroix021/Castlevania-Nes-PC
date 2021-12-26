@@ -111,6 +111,7 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart21 = mapParts[23].mapActive;
             datosJugador.mapPart22 = mapParts[24].mapActive;
             datosJugador.mapPart23 = mapParts[25].mapActive;
+            datosJugador.mapPart24 = mapParts[26].mapActive;    //precipicio saveroom
         }
     }
 
@@ -144,6 +145,7 @@ public class StructureManager : MonoBehaviour
         mapParts[23].mapActive = datosJugador.mapPart21;
         mapParts[24].mapActive = datosJugador.mapPart22;
         mapParts[25].mapActive = datosJugador.mapPart23;
+        mapParts[26].mapActive = datosJugador.mapPart24;    //precipicio saveroom
     }
 
     public void MapPartsStartGame()

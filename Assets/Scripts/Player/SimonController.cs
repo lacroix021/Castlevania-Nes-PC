@@ -265,6 +265,11 @@ public class SimonController : MonoBehaviour
                 rb.velocity = new Vector2(h * moveSpeed * Time.deltaTime, rb.velocity.y);
             }
         }
+        //limitador de velocidad de caida PROBAR EN SALTOS NORMALES YA QUE SE PROBO CON EL PRECIPICIO DE NIVEL 3
+        if(rb.velocity.y <= -4)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -4);
+        }
     }
 
     void NormalizeSlope()
