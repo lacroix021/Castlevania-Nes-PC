@@ -76,6 +76,14 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart22;
     public bool mapPart23;
     public bool mapPart24;  ////precipicio saveroom
+    public bool mapPart25;  
+    public bool mapPart26;
+    public bool mapPart27;
+    public bool mapPart28;  //saveRoom level5
+    public bool mapPart29;  
+    public bool mapPart30;  
+    public bool mapPart31;  
+    public bool mapPart32;  
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]

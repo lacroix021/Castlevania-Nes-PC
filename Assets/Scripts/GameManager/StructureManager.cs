@@ -112,6 +112,14 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart22 = mapParts[24].mapActive;
             datosJugador.mapPart23 = mapParts[25].mapActive;
             datosJugador.mapPart24 = mapParts[26].mapActive;    //precipicio saveroom
+            datosJugador.mapPart25 = mapParts[27].mapActive;    
+            datosJugador.mapPart26 = mapParts[28].mapActive;    
+            datosJugador.mapPart27 = mapParts[29].mapActive;    
+            datosJugador.mapPart28 = mapParts[30].mapActive;    //saveRoom Level5
+            datosJugador.mapPart29 = mapParts[31].mapActive;    
+            datosJugador.mapPart30 = mapParts[32].mapActive;    
+            datosJugador.mapPart31 = mapParts[33].mapActive;    
+            datosJugador.mapPart32 = mapParts[34].mapActive;    
         }
     }
 
@@ -146,6 +154,14 @@ public class StructureManager : MonoBehaviour
         mapParts[24].mapActive = datosJugador.mapPart22;
         mapParts[25].mapActive = datosJugador.mapPart23;
         mapParts[26].mapActive = datosJugador.mapPart24;    //precipicio saveroom
+        mapParts[27].mapActive = datosJugador.mapPart25;    
+        mapParts[28].mapActive = datosJugador.mapPart26;    
+        mapParts[29].mapActive = datosJugador.mapPart27;    
+        mapParts[30].mapActive = datosJugador.mapPart28;    //saveRoom Level5
+        mapParts[31].mapActive = datosJugador.mapPart29;    
+        mapParts[32].mapActive = datosJugador.mapPart30;    
+        mapParts[33].mapActive = datosJugador.mapPart31;    
+        mapParts[34].mapActive = datosJugador.mapPart32;    
     }
 
     public void MapPartsStartGame()
