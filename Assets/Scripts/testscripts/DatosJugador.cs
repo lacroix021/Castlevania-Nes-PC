@@ -84,6 +84,8 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart30;  
     public bool mapPart31;  
     public bool mapPart32;  
+    public bool mapPart33;  
+    public bool mapPart34;  
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]

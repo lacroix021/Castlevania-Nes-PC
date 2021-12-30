@@ -42,15 +42,15 @@ public class MapController : MonoBehaviour
 
     void MovementCameraMap()
     {
-        if (transform.localPosition.x <= -683.1349f)
-            transform.localPosition = new Vector3(-683.1349f, transform.localPosition.y, transform.localPosition.z);
-        else if (transform.localPosition.x >= -587.1349f)
-            transform.localPosition = new Vector3(-587.1349f, transform.localPosition.y, transform.localPosition.z);
+        if (transform.localPosition.x <= -666.1349f)
+            transform.localPosition = new Vector3(-666.1349f, transform.localPosition.y, transform.localPosition.z);
+        else if (transform.localPosition.x >= -517.1349f)
+            transform.localPosition = new Vector3(-517.1349f, transform.localPosition.y, transform.localPosition.z);
         
-        if (transform.localPosition.y <= -384.6382f)
-            transform.localPosition = new Vector3(transform.localPosition.x, -384.6382f, transform.localPosition.z);
-        else if (transform.localPosition.y >= -339.6382f)
-            transform.localPosition = new Vector3(transform.localPosition.x, -339.6382f, transform.localPosition.z);
+        if (transform.localPosition.y <= -370f)
+            transform.localPosition = new Vector3(transform.localPosition.x, -370f, transform.localPosition.z);
+        else if (transform.localPosition.y >= -328f)
+            transform.localPosition = new Vector3(transform.localPosition.x, -328f, transform.localPosition.z);
 
         if (gManager.navigationMode)
         {
