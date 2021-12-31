@@ -122,6 +122,10 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart32 = mapParts[34].mapActive;    
             datosJugador.mapPart33 = mapParts[35].mapActive;    
             datosJugador.mapPart34 = mapParts[36].mapActive;    
+            datosJugador.mapPart35 = mapParts[37].mapActive;    //saveRoom level6
+            datosJugador.mapPart36 = mapParts[38].mapActive;    
+            datosJugador.mapPart37 = mapParts[39].mapActive;    
+            datosJugador.mapPart38 = mapParts[40].mapActive;    
         }
     }
 
@@ -166,6 +170,10 @@ public class StructureManager : MonoBehaviour
         mapParts[34].mapActive = datosJugador.mapPart32;    
         mapParts[35].mapActive = datosJugador.mapPart33;    
         mapParts[36].mapActive = datosJugador.mapPart34;    
+        mapParts[37].mapActive = datosJugador.mapPart35;    //saveRoom level6
+        mapParts[38].mapActive = datosJugador.mapPart36;    
+        mapParts[39].mapActive = datosJugador.mapPart37;    
+        mapParts[40].mapActive = datosJugador.mapPart38;    
     }
 
     public void MapPartsStartGame()
