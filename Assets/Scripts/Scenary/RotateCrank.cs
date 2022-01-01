@@ -5,18 +5,11 @@ using UnityEngine;
 public class RotateCrank : MonoBehaviour
 {
     public float rotation;
-    float newRotation;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        newRotation = newRotation + (rotation * Time.deltaTime);
-        transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.z + newRotation);
+        transform.rotation = Quaternion.AngleAxis(Time.time * rotation, new Vector3(0, 0, 1));
     }
 }

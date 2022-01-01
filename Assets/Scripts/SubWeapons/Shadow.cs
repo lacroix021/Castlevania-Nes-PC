@@ -39,13 +39,18 @@ public class Shadow : MonoBehaviour
         currentShadow.GetComponent<SpriteRenderer>().sprite = transform.GetComponent<SpriteRenderer>().sprite;
         Destroy(currentShadow, 0.568f);
 
-        if(datosJugador.multiplierPow == 2)
+        if(datosJugador.multiplierPow == 2 && datosJugador.typeSub == 1)
         {
             currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(10, 0, 0, 0.6f);
         }
         else
         {
             currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(10, 0, 10, 0.3f);
+        }
+
+        if(datosJugador.typeSub == 3)
+        {
+            currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(0.3f, 0.5f, 1, 0.6f);
         }
     }
 }
