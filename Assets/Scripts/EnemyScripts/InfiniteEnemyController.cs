@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InfiniteEnemyController : MonoBehaviour
 {
+    public bool debug;
     float nextSpawnTime;
     public float spawnRate;
 
@@ -11,6 +12,7 @@ public class InfiniteEnemyController : MonoBehaviour
     public GameObject zombiePrefab;
     public GameObject redBatPrefab;
     public GameObject medusaHeadPrefab;
+    public GameObject hawkPrefab;
 
     GameObject enemyPrefab;
 
@@ -20,6 +22,8 @@ public class InfiniteEnemyController : MonoBehaviour
     public Transform posAUp;
     public Transform posB;
     public Transform posBUp;
+    public Transform posCUp;
+    public Transform posDUp;
 
     [Header("BOUNDARY TO ACTIVE")]
     public GameObject [] bounds;
@@ -34,157 +38,182 @@ public class InfiniteEnemyController : MonoBehaviour
 
     void SpawnRandomly()
     {
-        for (int i = 0; i < bounds.Length; i++)
+        if (!debug)
         {
-            
-            if (bounds[i].activeInHierarchy == true)
+            for (int i = 0; i < bounds.Length; i++)
             {
-                fatherBound = bounds[i].transform;
 
-                if (bounds[0].activeInHierarchy == true)
+                if (bounds[i].activeInHierarchy == true)
                 {
-                    //enemyPrefab = zombiePrefab;
-                    spawnRate = 0.6f;
+                    fatherBound = bounds[i].transform;
 
-                    if (Time.time >= nextSpawnTime)
+                    if (bounds[0].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = zombiePrefab;
+                        spawnRate = 0.6f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(zombiePrefab, posA.position, Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(zombiePrefab, posB.position, Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(zombiePrefab, posA.position, Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(zombiePrefab, posB.position, Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
-                }
 
-                else if (bounds[1].activeInHierarchy == true)
-                {
-                    //enemyPrefab = redBatPrefab;
-                    spawnRate = 0.3f;
-
-                    if (Time.time >= nextSpawnTime)
+                    else if (bounds[1].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = redBatPrefab;
+                        spawnRate = 0.3f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
-                }
 
-                else if (bounds[2].activeInHierarchy == true)
-                {
-                    //enemyPrefab = redBatPrefab;
-                    spawnRate = 0.5f;
-
-                    if (Time.time >= nextSpawnTime)
+                    else if (bounds[2].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = redBatPrefab;
+                        spawnRate = 0.5f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(redBatPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
-                }
 
-                else if (bounds[3].activeInHierarchy == true)
-                {
-                    //enemyPrefab = medusaHeadPrefab;
-                    spawnRate = 0.9f;
-
-                    if (Time.time >= nextSpawnTime)
+                    else if (bounds[3].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = medusaHeadPrefab;
+                        spawnRate = 0.9f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
-                }
-                else if (bounds[4].activeInHierarchy == true || bounds[5].activeInHierarchy == true || bounds[6].activeInHierarchy == true)
-                {
-                    //enemyPrefab = medusaHeadPrefab;
-                    spawnRate = 0.3f;
-
-                    if (Time.time >= nextSpawnTime)
+                    else if (bounds[4].activeInHierarchy == true || bounds[5].activeInHierarchy == true || bounds[6].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = medusaHeadPrefab;
+                        spawnRate = 0.3f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
-                }
-                else if(bounds[7].activeInHierarchy == true || bounds[8].activeInHierarchy == true || bounds[9].activeInHierarchy == true)
-                {
-                    //enemyPrefab = medusaHeadPrefab;
-                    spawnRate = 0.5f;
-
-                    if (Time.time >= nextSpawnTime)
+                    else if (bounds[7].activeInHierarchy == true || bounds[8].activeInHierarchy == true || bounds[9].activeInHierarchy == true)
                     {
-                        int num = Random.Range(0, 2);
+                        //enemyPrefab = medusaHeadPrefab;
+                        spawnRate = 0.5f;
 
-                        if (num == 0)
+                        if (Time.time >= nextSpawnTime)
                         {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
-                        else if (num == 1)
-                        {
-                            GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
-                            instancedEnemy.transform.parent = fatherBound;
-                        }
+                            int num = Random.Range(0, 2);
 
-                        nextSpawnTime = Time.time + 1f / spawnRate;
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posAUp.position.x, posAUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(medusaHeadPrefab, new Vector2(posBUp.position.x, posBUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
                     }
+                    else if (bounds[10].activeInHierarchy == true)
+                    {
+                        //enemyPrefab = Hawk;
+                        spawnRate = 0.4f;
+
+                        if (Time.time >= nextSpawnTime)
+                        {
+                            int num = Random.Range(0, 2);
+
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(hawkPrefab, new Vector2(posCUp.position.x, posCUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(hawkPrefab, new Vector2(posDUp.position.x, posDUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
+                    }
+                    //aqui agregaria otro tipo de enemigos dependiendo el bound, tener en cuenta el numero de bound en el array hecho manualmente
+                    //agregar los halcones en su respectivo boundary con los puntos C y D que son spawners exclusivos para ellos
                 }
-
-                //aqui agregaria otro tipo de enemigos dependiendo el bound, tener en cuenta el numero de bound en el array hecho manualmente
-
             }
         }
     }
