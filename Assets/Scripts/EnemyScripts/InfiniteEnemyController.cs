@@ -191,7 +191,7 @@ public class InfiniteEnemyController : MonoBehaviour
                     else if (bounds[10].activeInHierarchy == true)
                     {
                         //enemyPrefab = Hawk;
-                        spawnRate = 0.4f;
+                        spawnRate = 0.6f;
 
                         if (Time.time >= nextSpawnTime)
                         {

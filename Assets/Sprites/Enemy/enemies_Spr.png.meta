@@ -134,6 +134,15 @@ TextureImporter:
   - first:
       213: 1746474806919181632
     second: hawk_1
+  - first:
+      213: -768465640740748758
+    second: SerpentSkull_0
+  - first:
+      213: 4970780779415712203
+    second: SerpentSkull_1
+  - first:
+      213: -3545883120016252782
+    second: SerpentSkull_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1162,6 +1171,69 @@ TextureImporter:
       bones: []
       spriteID: 045369b6599bc3810800000000000000
       internalID: 1746474806919181632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SerpentSkull_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 52
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a220e8d329cd555f0800000000000000
+      internalID: -768465640740748758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SerpentSkull_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 52
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1b96558c2cbf440800000000000000
+      internalID: 4970780779415712203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SerpentSkull_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 52
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290a068d61e7acec0800000000000000
+      internalID: -3545883120016252782
       vertices: []
       indices: 
       edges: []
