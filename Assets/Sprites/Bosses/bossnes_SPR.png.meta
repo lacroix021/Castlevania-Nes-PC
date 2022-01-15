@@ -68,6 +68,24 @@ TextureImporter:
   - first:
       213: 4943033858912064575
     second: fragment
+  - first:
+      213: 853016254887211840
+    second: franken_0
+  - first:
+      213: -7432719163119501616
+    second: franken_1
+  - first:
+      213: 139497878195218205
+    second: franken_2
+  - first:
+      213: -1722836247667679535
+    second: igor_0
+  - first:
+      213: -8395170679163527137
+    second: igor_1
+  - first:
+      213: -6502544794946733651
+    second: igor_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -593,7 +611,7 @@ TextureImporter:
         width: 8
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -614,7 +632,7 @@ TextureImporter:
         width: 3
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -622,6 +640,132 @@ TextureImporter:
       bones: []
       spriteID: f349e29fa1f299440800000000000000
       internalID: 4943033858912064575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: franken_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 170
+        width: 16
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043bf2ca3c586db00800000000000000
+      internalID: 853016254887211840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: franken_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 170
+        width: 14
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0def5072d4da9d890800000000000000
+      internalID: -7432719163119501616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: franken_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 170
+        width: 16
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d172fb4c4989fe100800000000000000
+      internalID: 139497878195218205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igor_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 202
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ded99b8f814718e0800000000000000
+      internalID: -1722836247667679535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igor_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 202
+        width: 15
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f10eeaf2fbc5e7b80800000000000000
+      internalID: -8395170679163527137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igor_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 180
+        width: 18
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9722106f152c5a0800000000000000
+      internalID: -6502544794946733651
       vertices: []
       indices: 
       edges: []
