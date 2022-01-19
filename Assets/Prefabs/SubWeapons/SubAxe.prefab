@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e022e12c40b3c47b8d610257d1f968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeSup: 1
   damage: 3
   knife: 0
   axe: 1
@@ -82,7 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedAxeX: 75
-  speedAxeY: 180
   rotationSpeed: 800
 --- !u!212 &8539914711590838556
 SpriteRenderer:

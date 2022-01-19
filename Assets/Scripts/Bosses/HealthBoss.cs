@@ -166,7 +166,7 @@ public class HealthBoss : MonoBehaviour
     {
         if (collision.CompareTag("Weapon") && currentHealth > 0 && collision.gameObject.GetComponent<DamageSubWeapon>())
         {
-            if (collision.gameObject.GetComponent<DamageSubWeapon>().holyFire || collision.gameObject.GetComponent<DamageSubWeapon>().cross)
+            if (collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire || collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross)
             {
                 if (Time.time >= nextBurnHolyTime)
                 {

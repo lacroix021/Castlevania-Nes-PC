@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class DamageSubWeapon : MonoBehaviour
 {
-    public float damage;
+    public enum typeSub
+    {
+        knife,
+        axe,
+        holyWater,
+        holyFire,
+        cross
+    };
 
-    public bool knife;
-    public bool axe;
-    public bool holyWater;
-    public bool holyFire;
-    public bool cross;
+    public typeSub TypeSup;
+
+    public float damage;
 
     private float nextBurnHolyTime;
     private float burnRate = 3;
-
+    
     private void Start()
     {
-        if (holyFire)
+        if (TypeSup == typeSub.holyFire)
         {
             AudioManager.instance.PlayAudio(AudioManager.instance.holyWater);
             AudioManager.instance.PlayAudio(AudioManager.instance.burnHoly);
@@ -28,12 +33,12 @@ public class DamageSubWeapon : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Fireplace"))
         {
-            if (knife)
+            if (TypeSup == typeSub.knife)
             {
                 AudioManager.instance.PlayAudio(AudioManager.instance.hit);
                 Destroy(this.gameObject);
             }
-            else if (axe || holyWater || cross)
+            else if (TypeSup == typeSub.axe || TypeSup == typeSub.holyWater || TypeSup == typeSub.cross)
             {
                 AudioManager.instance.PlayAudio(AudioManager.instance.hit);
             }
@@ -43,7 +48,7 @@ public class DamageSubWeapon : MonoBehaviour
         {
             AudioManager.instance.PlayAudio(AudioManager.instance.breakWall);
 
-            if (knife)
+            if (TypeSup == typeSub.knife)
             {
                 Destroy(this.gameObject);
             }
@@ -54,7 +59,7 @@ public class DamageSubWeapon : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Fireplace"))
         {
-            if (holyFire || cross)
+            if (TypeSup == typeSub.holyFire || TypeSup == typeSub.cross)
             {
                 if (Time.time >= nextBurnHolyTime)
                 {

@@ -3380,7 +3380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &893031001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9456,7 +9456,7 @@ MonoBehaviour:
   greenKey: 0
   underConstruction: 0
   typeWhip: 0
-  typeSub: 3
+  typeSub: 0
   haveSub: 1
   multiplierPow: 2
   wasCaughtItem1: 0
