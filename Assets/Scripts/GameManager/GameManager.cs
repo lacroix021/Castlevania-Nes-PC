@@ -367,7 +367,7 @@ public class GameManager : MonoBehaviour
             imgGreenKey.GetComponent<Image>().sprite = null;
         }
     }
-
+    
     void ScorePoints()
     {
         goldText.text = datosJugador.gold.ToString();

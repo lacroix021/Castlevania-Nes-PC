@@ -61,5 +61,6 @@ public class BossMapManager : MonoBehaviour
         bossBat = GameObject.Find("BossSpawner1").GetComponent<BossSpawner>();
         bossMedusa = GameObject.Find("MedusaStatue").GetComponent<MedusaStatueController>();
         ceilingMummies = GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>();
+        
     }
 }
