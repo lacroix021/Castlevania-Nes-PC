@@ -21,14 +21,16 @@ public class BatBossController : MonoBehaviour
     public float bigRange;
     public LayerMask layerPlayer;
     Animator anim;
+    SpriteRenderer sprBoss;
 
 
     //disparo
     public GameObject bulletPrefab;
     public Transform fireEmiter;
     float nextAttackTime;
-    public float attackRate;
+    public float attackRate;    //0.7f
     public float Force;
+    float initialForce;
     Transform playerPos;
     public Vector3 targetOrientation;
 
@@ -48,8 +50,14 @@ public class BatBossController : MonoBehaviour
     public Transform pointB;
     public GameObject batPrefab;
     float nextInvokeTime;
-    public float invokeRate;
+    public float invokeRate;    //0.7f
 
+    //healing
+    public bool healing;
+    float currentDamageTime;
+    public float damageTime;    //0.8f
+    HealthBoss bossHealth;
+    float vidaACurar;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +67,9 @@ public class BatBossController : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("HeadPlayer").transform;
         startPosition = transform.position;
         speed = moveSpeed;
+        bossHealth = GetComponent<HealthBoss>();
+        sprBoss = GetComponent<SpriteRenderer>();
+        initialForce = Force;
     }
     //ponerle vida, depronto una dificultad, entre menos vida tenga mas rapido castee los poderes
     //agregar los colliders y triggers respectivos
@@ -70,17 +81,14 @@ public class BatBossController : MonoBehaviour
     {
         GeneratorMovement();
         DetectorRange();
-
+        HealingBoss();
+        ColorControl();
 
         if (inRange)
         {
             if (typeMove <= 4)
             {
                 Movement();
-            }
-            else if (typeMove > 4 && typeMove <= 9)
-            {
-                Fire();
             }
             else if (typeMove > 9 && typeMove <= 14)
             {
@@ -96,14 +104,27 @@ public class BatBossController : MonoBehaviour
             ReturnStartPosition();
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (inRange)
+        {
+            if (typeMove > 4 && typeMove <= 9)
+            {
+                Fire();
+            }
+        }
+    }
     void DetectorRange()
     {
         inRange = Physics2D.OverlapCircle(transform.position, rangeLive, layerPlayer);
 
         if (inRange)
         {
+            healing = false;
             rangeLive = bigRange;
             anim.SetBool("Idle", false);
+            GameObject.Find("Stage1Music").GetComponent<ActivateMusic>().battle = true;
         }
     }
 
@@ -166,8 +187,8 @@ public class BatBossController : MonoBehaviour
 
         if (Time.time >= nextMotionTime)
         {
-            randX = Random.Range(-1.325f, 2.192f);
-            randY = Random.Range(-0.498f, 0.588f);
+            randX = Random.Range(-1.325f, 2f);
+            randY = Random.Range(-0.498f, 0.488f);
 
             nextMotionTime = Time.time + 1f / motionRate;
         }
@@ -202,6 +223,7 @@ public class BatBossController : MonoBehaviour
         {
             anim.SetBool("Idle", true);
             rangeLive = range;
+            healing = true;
         }
     }
 
@@ -215,6 +237,48 @@ public class BatBossController : MonoBehaviour
 
                 nextMoveTime = Time.time + 1f / moveRate;
             }
+        }
+    }
+
+    void HealingBoss()
+    {
+        if (healing)
+        {
+            currentDamageTime += Time.deltaTime;
+
+            if (currentDamageTime > damageTime)
+            {
+                bossHealth.currentHealth++;
+                vidaACurar--;
+
+                currentDamageTime = 0;
+            }
+
+            vidaACurar = bossHealth.maxHealth;
+            bossHealth.HealthCheck();
+        }
+        else
+        {
+            vidaACurar = 0;
+        }
+
+        if (vidaACurar == 0 || bossHealth.currentHealth == bossHealth.maxHealth)
+        {
+            healing = false;
+        }
+    }
+
+    void ColorControl()
+    {
+        if (bossHealth.currentHealth < 40 * bossHealth.maxHealth / 100)
+        {
+            sprBoss.color = Color.red;
+            Force = 2000;
+        }
+        else if (bossHealth.currentHealth > 40 * bossHealth.maxHealth / 100)
+        {
+            sprBoss.color = Color.white;
+            Force = initialForce;
         }
     }
 }

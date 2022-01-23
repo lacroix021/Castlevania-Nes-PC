@@ -49,12 +49,12 @@ public class PurpleBatController : MonoBehaviour
             //flip
             if(posPlayer.x > transform.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                 direction = 1;
             }
             else if(posPlayer.x < transform.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                 direction = -1;
             }
 

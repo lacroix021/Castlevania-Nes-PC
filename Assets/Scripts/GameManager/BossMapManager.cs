@@ -10,6 +10,7 @@ public class BossMapManager : MonoBehaviour
     public BossSpawner bossBat;
     public MedusaStatueController bossMedusa;
     public CeilingSpawnerMummies ceilingMummies;
+    public BossSpawner frankenSpawner;
 
     //a medida que se agregan mas boss al juego, tambien agregar sus respectivos estados en este archivo
     //se deben agregar al CheckBoss(), BossMapOnLoadGame(), BossMapOnStartGame(), FindBossSpawner()
@@ -26,6 +27,7 @@ public class BossMapManager : MonoBehaviour
         datosJugador.bossMummyB = ceilingMummies.isDeadB;
         datosJugador.floorBrokenLevel3 = ceilingMummies.interruptorOn;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
         datosJugador.wallBrokenLevel3 = ceilingMummies.wallBroken;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
+        datosJugador.bossFranken = frankenSpawner.isDead;
     }
 
     public void BossMapOnLoadGame()
@@ -38,7 +40,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.isDeadB = datosJugador.bossMummyB;
         ceilingMummies.interruptorOn = datosJugador.floorBrokenLevel3; //SE DEBE MIGRAR AL STRUCTURE MANAGER
         ceilingMummies.wallBroken = datosJugador.wallBrokenLevel3;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
-
+        frankenSpawner.isDead = datosJugador.bossFranken;
     }
 
     public void BossMapOnStartGame()
@@ -50,7 +52,8 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.isDeadA = false;
         ceilingMummies.isDeadB = false;
         ceilingMummies.interruptorOn = false;     //evento de piso roto en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER
-        ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER
+        ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER}
+        frankenSpawner.isDead = false;
 
         CheckBoss();
     }
@@ -58,9 +61,9 @@ public class BossMapManager : MonoBehaviour
 
     void FindBossSpawner()
     {
-        bossBat = GameObject.Find("BossSpawner1").GetComponent<BossSpawner>();
+        bossBat = GameObject.Find("BossBatSpawner").GetComponent<BossSpawner>();
         bossMedusa = GameObject.Find("MedusaStatue").GetComponent<MedusaStatueController>();
         ceilingMummies = GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>();
-        
+        frankenSpawner = GameObject.Find("BossFrankenSpawner").GetComponent<BossSpawner>();
     }
 }

@@ -9,7 +9,8 @@ public class HealthBoss : MonoBehaviour
         BossGiantBat,
         BossMedusa,
         BossMummyA,
-        BossMummyB
+        BossMummyB,
+        BossFranky
     };
 
     public typeBoss boss;
@@ -28,8 +29,8 @@ public class HealthBoss : MonoBehaviour
 
     private BoxCollider2D mycollider;
 
-    public float boundX;
-    public float boundY;
+    float boundX;
+    float boundY;
 
     BossMapManager bossManager;
 
@@ -81,6 +82,20 @@ public class HealthBoss : MonoBehaviour
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB = true;
                 bossManager.CheckBoss();
             }
+            else if (boss == typeBoss.BossFranky)
+            {
+                isDead = true;
+                
+                if (GetComponentInParent<FrankenController>().igorBossInstance)
+                {
+                    GetComponentInParent<FrankenController>().igorBossInstance.GetComponent<Health>().currentHealth = 0;
+                    GetComponentInParent<FrankenController>().igorBossInstance.GetComponent<Health>().HealthCheck();
+                }
+                else
+                    return;
+                
+                GameObject.Find("Stage4BMusic").GetComponent<ActivateMusic>().battle = false;  //descomentar al poner en el nivel real
+            }
             else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB)
             {
@@ -118,7 +133,7 @@ public class HealthBoss : MonoBehaviour
             }
 
             //poner algo en el pit para que valga la pena el retroceso
-
+            
             Destroy(this.gameObject);
         }
     }

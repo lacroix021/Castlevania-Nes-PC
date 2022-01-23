@@ -9,7 +9,6 @@ public class FrankenController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
-
     Transform playerPos;
 
     public float distanceFromPlayer;
@@ -18,6 +17,9 @@ public class FrankenController : MonoBehaviour
     public float RangeAttack;
     public bool moving;
 
+    public GameObject igorSprite;
+    public GameObject igorBoss;
+    public GameObject igorBossInstance;
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +46,20 @@ public class FrankenController : MonoBehaviour
         distanceFromPlayer = Vector2.Distance(playerPos.position, rb.position);
         if(distanceFromPlayer < visionRange && distanceFromPlayer > visionRangeReverse && distanceFromPlayer > RangeAttack)
         {
+            GameObject.Find("Stage4BMusic").GetComponent<ActivateMusic>().battle = true;
             Vector2 nuevaPos = Vector2.MoveTowards(rb.position, new Vector2(playerPos.position.x, transform.position.y), moveSpeed * Time.deltaTime);
             rb.MovePosition(nuevaPos);
             moving = true;
         }
         else if(distanceFromPlayer < visionRange && distanceFromPlayer > visionRangeReverse && distanceFromPlayer <= RangeAttack)
         {
+            igorSprite.SetActive(false);
+
+            if (!igorBossInstance)
+            {
+                igorBossInstance = Instantiate(igorBoss, igorSprite.transform.position, Quaternion.identity);
+            }
+
             Vector2 nuevaPos = Vector2.MoveTowards(rb.position, new Vector2(playerPos.position.x, transform.position.y), 0 * Time.deltaTime);
             rb.MovePosition(nuevaPos);
             moving = false;

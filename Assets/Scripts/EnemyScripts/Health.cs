@@ -35,6 +35,8 @@ public class Health : MonoBehaviour
             
             isDead = true;
         }
+
+        Death();
     }
 
     void Death()
@@ -60,7 +62,7 @@ public class Health : MonoBehaviour
 
             currentHealth -= col.GetComponent<DamagePlayer>().damage;
             HealthCheck();
-            Death();
+            
         }
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
         {

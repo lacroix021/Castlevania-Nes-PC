@@ -21,7 +21,7 @@ public class BossSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossManager = GameObject.Find("GameManager").GetComponentInChildren<BossMapManager>();
+        bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
         numSpawns = 0;
     }
 

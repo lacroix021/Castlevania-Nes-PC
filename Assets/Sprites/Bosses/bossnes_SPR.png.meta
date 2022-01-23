@@ -95,6 +95,60 @@ TextureImporter:
   - first:
       213: 4372388597840015138
     second: bossnes_SPR_30
+  - first:
+      213: 2796553961792302192
+    second: igor_3
+  - first:
+      213: -7332845147023113412
+    second: igor_4
+  - first:
+      213: 3889457130055570715
+    second: igorBullet_0
+  - first:
+      213: -4597184974629898831
+    second: igorBullet_1
+  - first:
+      213: -8956021135810675673
+    second: igorBullet_2
+  - first:
+      213: -257237710985310273
+    second: igorBullet_3
+  - first:
+      213: 2817158585479176179
+    second: Igor_bottle0
+  - first:
+      213: -5938083029823418392
+    second: IgorFireA0
+  - first:
+      213: 3882924050907323845
+    second: IgorFireA1
+  - first:
+      213: 5735962752825636626
+    second: Igor_bottle1
+  - first:
+      213: 2238377633624047435
+    second: Igor_bottle2
+  - first:
+      213: 5830268769997972158
+    second: Igor_bottle3
+  - first:
+      213: -2746518181403524012
+    second: IgorFireB0
+  - first:
+      213: 6253786985298392988
+    second: IgorFireB1
+  - first:
+      213: -7624929957971560220
+    second: IgorFireC0
+  - first:
+      213: 7947517735906815343
+    second: IgorFireC1
+  - first:
+      213: -1441305721570016939
+    second: IgorFireD0
+  - first:
+      213: 4842064889584348471
+    second: IgorFireD1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -838,6 +892,384 @@ TextureImporter:
       bones: []
       spriteID: 22fe83a8348ddac30800000000000000
       internalID: 4372388597840015138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igor_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 230
+        width: 18
+        height: 19
+      alignment: 9
+      pivot: {x: 0.555, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07c67dfe20b5fc620800000000000000
+      internalID: 2796553961792302192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igor_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 266
+        width: 20
+        height: 16
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c338dba90308c3a90800000000000000
+      internalID: -7332845147023113412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igorBullet_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 185
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15921e07a02af530800000000000000
+      internalID: 3889457130055570715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igorBullet_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 185
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5fb6c5f948330c0800000000000000
+      internalID: -4597184974629898831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igorBullet_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 180
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c3d1f5a32d5b380800000000000000
+      internalID: -8956021135810675673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: igorBullet_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 180
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfc2ed2aab1e6cf0800000000000000
+      internalID: -257237710985310273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Igor_bottle0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 168
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff9d6bbece881720800000000000000
+      internalID: 2817158585479176179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireA0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 153
+        width: 16
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef899812f0b79da0800000000000000
+      internalID: -5938083029823418392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireA1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 153
+        width: 14
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cdd6280adae2e530800000000000000
+      internalID: 3882924050907323845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Igor_bottle1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 168
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2173b07bbbb3a9f40800000000000000
+      internalID: 5735962752825636626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Igor_bottle2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 168
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f375d2990501f10800000000000000
+      internalID: 2238377633624047435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Igor_bottle3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 168
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb268c46e8649e050800000000000000
+      internalID: 5830268769997972158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireB0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 152
+        width: 16
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4548a44044862e9d0800000000000000
+      internalID: -2746518181403524012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireB1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 152
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97fbaf012ae9c650800000000000000
+      internalID: 6253786985298392988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireC0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 152
+        width: 16
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8fed11a9ece2690800000000000000
+      internalID: -7624929957971560220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireC1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 152
+        width: 14
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6da7d6e5414b4e60800000000000000
+      internalID: 7947517735906815343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireD0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 152
+        width: 16
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551c41525147ffbe0800000000000000
+      internalID: -1441305721570016939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IgorFireD1
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 152
+        width: 14
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73de01bdc58723340800000000000000
+      internalID: 4842064889584348471
       vertices: []
       indices: 
       edges: []

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ChangeSong : MonoBehaviour
 {
-    public bool level2;
-    public bool level3;
+    public enum levels
+    {
+        level2,
+        level3,
+        level4
+    };
+    public levels Level;
 
     public AudioClip intro;
     public AudioClip loop;
@@ -22,7 +27,7 @@ public class ChangeSong : MonoBehaviour
 
     IEnumerator StartLoop()
     {
-        if (level2)
+        if (Level == levels.level2)
         {
             yield return new WaitForSeconds(4.427f);
             audioSource.clip = loop;
@@ -30,9 +35,17 @@ public class ChangeSong : MonoBehaviour
             audioSource.Play();
         }
         
-        if (level3)
+        if (Level == levels.level3)
         {
             yield return new WaitForSeconds(22.635f);
+            audioSource.clip = loop;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+        if (Level == levels.level4)
+        {
+            yield return new WaitForSeconds(23.350f);
             audioSource.clip = loop;
             audioSource.loop = true;
             audioSource.Play();
