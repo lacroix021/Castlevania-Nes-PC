@@ -245,6 +245,18 @@ TextureImporter:
   - first:
       213: -9145671184256000149
     second: simon_belmont_Spr_6
+  - first:
+      213: -6424547703628573405
+    second: simon_belmont_Spr_7
+  - first:
+      213: 437080687274905446
+    second: simon_belmont_Spr_8
+  - first:
+      213: -9150967290863352457
+    second: simon_belmont_Spr_9
+  - first:
+      213: -1683622448972634484
+    second: simon_belmont_Spr_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -275,8 +287,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -2050,6 +2062,90 @@ TextureImporter:
       bones: []
       spriteID: b6f15e5838c041180800000000000000
       internalID: -9145671184256000149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simon_belmont_Spr_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 319
+        width: 14
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325daaaf6eb67d6a0800000000000000
+      internalID: -6424547703628573405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simon_belmont_Spr_8
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 319
+        width: 24
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f443fb192d01600800000000000000
+      internalID: 437080687274905446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simon_belmont_Spr_9
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 319
+        width: 14
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7750fdc9bbb310180800000000000000
+      internalID: -9150967290863352457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simon_belmont_Spr_10
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 323
+        width: 17
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86ec198d4292a8e0800000000000000
+      internalID: -1683622448972634484
       vertices: []
       indices: 
       edges: []

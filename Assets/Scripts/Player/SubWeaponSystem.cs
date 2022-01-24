@@ -10,6 +10,7 @@ public class SubWeaponSystem : MonoBehaviour
 
     SimonController pController;
     HeartsSystem heartsSys;
+    HealthPlayer health;
 
     DatosJugador datosJugador;
     GameManager gmanager;
@@ -20,6 +21,10 @@ public class SubWeaponSystem : MonoBehaviour
 
     public Transform subPos;
     public Transform subPosB;
+    public bool canCrush = false;
+    float nextCrushTime;
+    public float crushRate = 0.2f;
+    ParticleSystem psAxe;
 
     /*
     type of subweapon
@@ -29,6 +34,8 @@ public class SubWeaponSystem : MonoBehaviour
     3 = Cross
     */
 
+    List<ParticleCollisionEvent> eventCol = new List<ParticleCollisionEvent>(); //lista de eventos del PS
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +43,8 @@ public class SubWeaponSystem : MonoBehaviour
         heartsSys = GetComponent<HeartsSystem>();
         datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         gmanager = GameManager.gameManager;
+        health = GetComponent<HealthPlayer>();
+        psAxe = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -56,7 +65,7 @@ public class SubWeaponSystem : MonoBehaviour
                     pController.rb.velocity = new Vector2(0, 0);
                 }
                 //Dagas y cooldown
-                if (datosJugador.typeSub == 0 && datosJugador.currentHearts >= 1)
+                if (datosJugador.typeSub == 0 && datosJugador.currentHearts >= 1 && pController.v < 0.1f)
                 {
                     if (Time.time >= nextSubTime)
                     {
@@ -67,7 +76,7 @@ public class SubWeaponSystem : MonoBehaviour
                     }
                 }
                 //achas y cooldown
-                else if (datosJugador.typeSub == 1 && datosJugador.currentHearts >= 2)
+                else if (datosJugador.typeSub == 1 && datosJugador.currentHearts >= 2 && pController.v < 0.1f)
                 {
                     if (Time.time >= nextSubTime)
                     {
@@ -78,7 +87,7 @@ public class SubWeaponSystem : MonoBehaviour
                     }
                 }
                 //agua bendita y cooldown
-                else if (datosJugador.typeSub == 2 && datosJugador.currentHearts >= 2)
+                else if (datosJugador.typeSub == 2 && datosJugador.currentHearts >= 2 && pController.v < 0.1f)
                 {
                     if (Time.time >= nextSubTime)
                     {
@@ -89,7 +98,7 @@ public class SubWeaponSystem : MonoBehaviour
                     }
                 }
                 //cruz y cooldown
-                else if (datosJugador.typeSub == 3 && datosJugador.currentHearts >= 2)
+                else if (datosJugador.typeSub == 3 && datosJugador.currentHearts >= 2 && pController.v < 0.1f)
                 {
                     if (Time.time >= nextSubTime)
                     {
@@ -102,10 +111,42 @@ public class SubWeaponSystem : MonoBehaviour
 
                 heartsSys.CheckHearts();
             }
+
+            if (canCrush && context.performed && pController.v > 0 && datosJugador.haveSub && datosJugador.currentHearts >= 20 && pController.canMove)
+            {
+                if (Time.time >= nextCrushTime)
+                {
+                    health.isInvulnerable = true;
+                    Physics2D.IgnoreLayerCollision(9, 10, true);
+                    pController.rb.velocity = Vector2.zero;
+                    pController.rb.AddForce(Vector2.up * 100 * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                    StartCoroutine(MidAir());
+                    pController.anim.SetTrigger("ItemCrush");
+                    datosJugador.currentHearts -= 20;
+                    pController.canMove = false;
+                    StartCoroutine(PostItemCrush());
+                    ParticleCrush();
+                    nextCrushTime = Time.time + 1f / crushRate;
+                } 
+            }
         }
     }
 
+    IEnumerator PostItemCrush()
+    {
+        yield return new WaitForSeconds(1.8f);
+        pController.canMove = true;
+        health.isInvulnerable = false;
+        Physics2D.IgnoreLayerCollision(9, 10, false);
+    }
     
+    IEnumerator MidAir()
+    {
+        yield return new WaitForSeconds(0.2f);
+        pController.rb.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(0.7f);
+        pController.rb.bodyType = RigidbodyType2D.Dynamic;
+    }
 
     void InstantiateSubWeapon()
     {
@@ -159,6 +200,39 @@ public class SubWeaponSystem : MonoBehaviour
                 subRate = 0.7f;
             else if (datosJugador.multiplierPow == 2)
                 subRate = 0.9f;
+        }
+    }
+
+    void ParticleCrush()
+    {
+        if(datosJugador.typeSub == 1)
+        {
+            psAxe.Play();
+        }
+    }
+
+    private void OnParticleCollision(GameObject enemy)
+    {
+        int events = psAxe.GetCollisionEvents(enemy, eventCol); //tamaño de eventos
+
+        for (int i = 0; i < events; i++)
+        {
+            print(enemy.name + " con collider");
+            //quitarle vida al enemigo colisionado
+            //ver si esto funciona con triggers ya que la particula no debe tocar objetos solo enemigos
+        }
+    }
+
+    //on particle trigger no funciona pasandole valores, corregir!
+    private void OnParticleTrigger( GameObject enemy)
+    {
+        int events = psAxe.GetCollisionEvents(enemy, eventCol); //tamaño de eventos
+
+        for (int i = 0; i < events; i++)
+        {
+            print(enemy.name + " con trigger");
+            //quitarle vida al enemigo colisionado
+            //ver si esto funciona con triggers ya que la particula no debe tocar objetos solo enemigos
         }
     }
 }

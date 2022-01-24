@@ -63,7 +63,7 @@ public class SimonController : MonoBehaviour
 
     GameManager gameManager;
     
-    HealthPlayer healthPlayer;
+    
 
 
     public static SimonController instance;
@@ -87,7 +87,7 @@ public class SimonController : MonoBehaviour
         gameManager = GameManager.gameManager;
         moveSpeedBase = moveSpeed;
         moveSlopeSpeed = moveSpeed / 1.3f;
-        healthPlayer = GetComponent<HealthPlayer>();
+        
     }
 
     // Update is called once per frame
@@ -98,11 +98,6 @@ public class SimonController : MonoBehaviour
             InputManager();
             Animations();
         }
-
-
-        //InputManager();
-
-        
         
         Attacking();
         ClimbingChain();
