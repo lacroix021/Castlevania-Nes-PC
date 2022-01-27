@@ -21,11 +21,8 @@ public class SubWeaponSystem : MonoBehaviour
 
     public Transform subPos;
     public Transform subPosB;
-    public bool canCrush = false;
-    float nextCrushTime;
-    public float crushRate = 0.2f;
-    ParticleSystem psAxe;
 
+   
     /*
     type of subweapon
     0 = knife
@@ -34,7 +31,15 @@ public class SubWeaponSystem : MonoBehaviour
     3 = Cross
     */
 
-    List<ParticleCollisionEvent> eventCol = new List<ParticleCollisionEvent>(); //lista de eventos del PS
+    public bool canCrush = false;
+    float nextCrushTime;
+    public float crushRate = 0.2f;
+    ParticleSystem psAxe;
+    public Transform crushPos;
+    public GameObject prefabICrushAxe;
+    GameObject instanceCrush;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +61,7 @@ public class SubWeaponSystem : MonoBehaviour
     
     public void InputSubWep(InputAction.CallbackContext context)
     {
+
         if (!gmanager.GamePaused)
         {
             if (context.performed && datosJugador.haveSub && pController.canMove)
@@ -112,6 +118,7 @@ public class SubWeaponSystem : MonoBehaviour
                 heartsSys.CheckHearts();
             }
 
+            //item crush
             if (canCrush && context.performed && pController.v > 0 && datosJugador.haveSub && datosJugador.currentHearts >= 20 && pController.canMove)
             {
                 if (Time.time >= nextCrushTime)
@@ -127,26 +134,11 @@ public class SubWeaponSystem : MonoBehaviour
                     StartCoroutine(PostItemCrush());
                     ParticleCrush();
                     nextCrushTime = Time.time + 1f / crushRate;
-                } 
+                }
             }
         }
     }
 
-    IEnumerator PostItemCrush()
-    {
-        yield return new WaitForSeconds(1.8f);
-        pController.canMove = true;
-        health.isInvulnerable = false;
-        Physics2D.IgnoreLayerCollision(9, 10, false);
-    }
-    
-    IEnumerator MidAir()
-    {
-        yield return new WaitForSeconds(0.2f);
-        pController.rb.bodyType = RigidbodyType2D.Static;
-        yield return new WaitForSeconds(0.7f);
-        pController.rb.bodyType = RigidbodyType2D.Dynamic;
-    }
 
     void InstantiateSubWeapon()
     {
@@ -205,34 +197,26 @@ public class SubWeaponSystem : MonoBehaviour
 
     void ParticleCrush()
     {
-        if(datosJugador.typeSub == 1)
+        if (datosJugador.typeSub == 1)
         {
-            psAxe.Play();
+            if (!instanceCrush)
+                instanceCrush = Instantiate(prefabICrushAxe, crushPos.position, Quaternion.identity);
         }
     }
 
-    private void OnParticleCollision(GameObject enemy)
+    IEnumerator PostItemCrush()
     {
-        int events = psAxe.GetCollisionEvents(enemy, eventCol); //tamaño de eventos
-
-        for (int i = 0; i < events; i++)
-        {
-            print(enemy.name + " con collider");
-            //quitarle vida al enemigo colisionado
-            //ver si esto funciona con triggers ya que la particula no debe tocar objetos solo enemigos
-        }
+        yield return new WaitForSeconds(1.8f);
+        pController.canMove = true;
+        health.isInvulnerable = false;
+        Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 
-    //on particle trigger no funciona pasandole valores, corregir!
-    private void OnParticleTrigger( GameObject enemy)
+    IEnumerator MidAir()
     {
-        int events = psAxe.GetCollisionEvents(enemy, eventCol); //tamaño de eventos
-
-        for (int i = 0; i < events; i++)
-        {
-            print(enemy.name + " con trigger");
-            //quitarle vida al enemigo colisionado
-            //ver si esto funciona con triggers ya que la particula no debe tocar objetos solo enemigos
-        }
+        yield return new WaitForSeconds(0.2f);
+        pController.rb.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(0.7f);
+        pController.rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

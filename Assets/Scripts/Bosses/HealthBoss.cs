@@ -138,7 +138,13 @@ public class HealthBoss : MonoBehaviour
         }
     }
 
-
+    public void TakeDamage(float damage)
+    {
+        GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+        Destroy(spark, 0.3f);
+        currentHealth -= damage;
+        HealthCheck();
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -146,11 +152,8 @@ public class HealthBoss : MonoBehaviour
         {
             //spawnear la chispa indicando que si hubo daño
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
-            GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-            Destroy(spark, 0.3f);
-
-            currentHealth -= col.GetComponent<DamagePlayer>().damage;
-            HealthCheck();
+            
+            TakeDamage(col.GetComponent<DamagePlayer>().damage);
             Death();
         }
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
@@ -169,9 +172,8 @@ public class HealthBoss : MonoBehaviour
 
             GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
             Destroy(spark, 0.3f);
-
-            currentHealth -= col.GetComponent<DamageSubWeapon>().damage;
-            HealthCheck();
+            
+            TakeDamage(col.GetComponent<DamageSubWeapon>().damage);
             Death();
         }
     }
@@ -202,8 +204,7 @@ public class HealthBoss : MonoBehaviour
                     GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
                     Destroy(spark, 0.3f);
 
-                    currentHealth -= collision.GetComponent<DamageSubWeapon>().damage;
-                    HealthCheck();
+                    TakeDamage(collision.GetComponent<DamageSubWeapon>().damage);
                     Death();
                     nextBurnHolyTime = Time.time + 1f / burnRate;
                 }
