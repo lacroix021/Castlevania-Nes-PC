@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class BoneScript : MonoBehaviour
 {
-    float z;
-    public float rotation;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float rotation = 500f;
 
     // Update is called once per frame
     void Update()
     {
-        z += rotation * Time.deltaTime;
-
-        transform.localRotation = Quaternion.EulerRotation(0, 0, z);
+        transform.rotation = Quaternion.AngleAxis(rotation * Time.time, new Vector3(0, 0, 1));
     }
 }
