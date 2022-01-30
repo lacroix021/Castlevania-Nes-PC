@@ -125,9 +125,7 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.collider.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
-            dañoADisminuir = col.collider.GetComponent<DamageTouch>().damageTouch;
-            colPosX = col.transform.position.x;
-            MakeHurtPlayer();
+            Herido(col.collider.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
         }
     }
     
@@ -135,9 +133,7 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.collider.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
-            dañoADisminuir = col.collider.GetComponent<DamageTouch>().damageTouch;
-            colPosX = col.transform.position.x;
-            MakeHurtPlayer();
+            Herido(col.collider.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
         }
     }
    
@@ -145,9 +141,7 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
-            dañoADisminuir = col.GetComponent<DamageTouch>().damageTouch;
-            colPosX = col.transform.position.x;
-            MakeHurtPlayer();
+            Herido(col.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
         }
     }
     
@@ -155,10 +149,15 @@ public class HealthPlayer : MonoBehaviour
     {
         if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
         {
-            dañoADisminuir = col.GetComponent<DamageTouch>().damageTouch;
-            colPosX = col.transform.position.x;
-            MakeHurtPlayer();
+            Herido(col.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
         }
+    }
+
+    public void Herido(float value, float posiX)
+    {
+        dañoADisminuir = value;
+        colPosX = posiX;
+        MakeHurtPlayer();
     }
 
     void MakeHurtPlayer()

@@ -261,7 +261,7 @@ public class SimonController : MonoBehaviour
             }
         }
         //limitador de velocidad de caida PROBAR EN SALTOS NORMALES YA QUE SE PROBO CON EL PRECIPICIO DE NIVEL 3
-        if(rb.velocity.y <= -4)
+        if(rb.velocity.y <= -5 && !isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, -4);
         }
@@ -366,7 +366,7 @@ public class SimonController : MonoBehaviour
     void CheckGround()
     {
         isGrounded = Physics2D.IsTouchingLayers(colliderFeet, thisGround);
-
+        
         //se inactiva el detector de piso cuando se salta y se activa nuevamente cuando va cayendo el jugador
         if(!isGrounded && rb.velocity.y > 0)
         {

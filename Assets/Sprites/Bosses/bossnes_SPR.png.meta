@@ -149,6 +149,12 @@ TextureImporter:
   - first:
       213: 4842064889584348471
     second: IgorFireD1
+  - first:
+      213: -91046253147140925
+    second: Death_0
+  - first:
+      213: -6568183116899429346
+    second: Death_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1270,6 +1276,48 @@ TextureImporter:
       bones: []
       spriteID: 73de01bdc58723340800000000000000
       internalID: 4842064889584348471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_0
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 170
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ccc8074ae98cbef0800000000000000
+      internalID: -91046253147140925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_1
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 202
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14dd71414029d4a0800000000000000
+      internalID: -6568183116899429346
       vertices: []
       indices: 
       edges: []

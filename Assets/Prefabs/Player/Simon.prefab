@@ -264,7 +264,6 @@ MonoBehaviour:
   - {fileID: 4800595712746304914, guid: 6450ed76fd0d6ff4381976f51197281a, type: 3}
   subPos: {fileID: 8837055336107509172}
   subPosB: {fileID: 3421581225039596006}
-  pressedFire2: 0
   canCrush: 0
   crushRate: 0.42
   crushPos: {fileID: 8837055335599203320}
@@ -875,6 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837055334729107992}
   - component: {fileID: 8837055334729107995}
+  - component: {fileID: 6007427037391521999}
   m_Layer: 0
   m_Name: CheckGround
   m_TagString: Untagged
@@ -922,6 +922,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07426691, y: 0.031101406}
   m_EdgeRadius: 0
+--- !u!50 &6007427037391521999
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837055334729107993}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8837055334937369622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837055335758887420}
   - component: {fileID: 8837055335758887421}
+  - component: {fileID: 1052809537782894416}
   m_Layer: 0
   m_Name: CeilingCheck
   m_TagString: Untagged
@@ -1859,6 +1881,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.044602923, y: 0.033080522}
   m_EdgeRadius: 0
+--- !u!50 &1052809537782894416
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837055335758887394}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8837055335922996007
 GameObject:
   m_ObjectHideFlags: 0
