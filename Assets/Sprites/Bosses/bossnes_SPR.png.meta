@@ -155,6 +155,15 @@ TextureImporter:
   - first:
       213: -6568183116899429346
     second: Death_1
+  - first:
+      213: 8924714484811580735
+    second: Dracula_0
+  - first:
+      213: -1362467261867625880
+    second: Dracula_1
+  - first:
+      213: -2279940142855650
+    second: Dracula_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1289,7 +1298,7 @@ TextureImporter:
         width: 39
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1310,7 +1319,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1318,6 +1327,69 @@ TextureImporter:
       bones: []
       spriteID: e14dd71414029d4a0800000000000000
       internalID: -6568183116899429346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dracula_0
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 170
+        width: 24
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f354afce984fadb70800000000000000
+      internalID: 8924714484811580735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dracula_1
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 170
+        width: 32
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 862f7467e3b871de0800000000000000
+      internalID: -1362467261867625880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dracula_2
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 203
+        width: 8
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1a0da11866e7fff0800000000000000
+      internalID: -2279940142855650
       vertices: []
       indices: 
       edges: []

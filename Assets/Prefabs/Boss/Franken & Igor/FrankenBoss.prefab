@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: 4
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 200
   isDead: 0
   deadEffect: {fileID: 4301122253200025113, guid: f6f1a8809f98f1c4fbaeddce0f85bcf5,
     type: 3}

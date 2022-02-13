@@ -46,6 +46,7 @@ public class FrankenController : MonoBehaviour
         distanceFromPlayer = Vector2.Distance(playerPos.position, rb.position);
         if(distanceFromPlayer < visionRange && distanceFromPlayer > visionRangeReverse && distanceFromPlayer > RangeAttack)
         {
+            //si esta el jugador en rango
             GameObject.Find("Stage4BMusic").GetComponent<ActivateMusic>().battle = true;
             Vector2 nuevaPos = Vector2.MoveTowards(rb.position, new Vector2(playerPos.position.x, transform.position.y), moveSpeed * Time.deltaTime);
             rb.MovePosition(nuevaPos);
@@ -53,6 +54,7 @@ public class FrankenController : MonoBehaviour
         }
         else if(distanceFromPlayer < visionRange && distanceFromPlayer > visionRangeReverse && distanceFromPlayer <= RangeAttack)
         {
+            //si el jugador esta en rango de ataque
             igorSprite.SetActive(false);
 
             if (!igorBossInstance)
@@ -66,12 +68,23 @@ public class FrankenController : MonoBehaviour
         }
         else if(distanceFromPlayer < visionRangeReverse)
         {
+            //si el jugador esta muy cerca, retrocede
             Vector2 nuevaPos = Vector2.MoveTowards(rb.position, new Vector2(playerPos.position.x, transform.position.y), moveSpeedReverse * Time.deltaTime);
             rb.MovePosition(nuevaPos);
             moving = true;
         }
         else
         {
+            //si el jugador no esta en rango
+            if(GetComponent<HealthBoss>().currentHealth < GetComponent<HealthBoss>().maxHealth)
+            {
+                GetComponent<HealthBoss>().currentHealth += 1 * Time.deltaTime;
+            }
+            else
+            {
+                GetComponent<HealthBoss>().currentHealth = GetComponent<HealthBoss>().maxHealth;
+            }
+            
             moving = false;
         }
     }

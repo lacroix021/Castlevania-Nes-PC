@@ -60,11 +60,7 @@ public class SimonController : MonoBehaviour
     public PhysicsMaterial2D slide;
     public PhysicsMaterial2D sticky;
 
-
     GameManager gameManager;
-    
-    
-
 
     public static SimonController instance;
 
@@ -152,8 +148,8 @@ public class SimonController : MonoBehaviour
 
     public void RightStick(InputAction.CallbackContext context)
     {
-        hRStick = context.ReadValue<Vector2>().x;
-        vRStick = context.ReadValue<Vector2>().y;
+        hRStick = context.ReadValue<Vector2>().normalized.x;
+        vRStick = context.ReadValue<Vector2>().normalized.y;
     }
 
     public void Jump(InputAction.CallbackContext context)
