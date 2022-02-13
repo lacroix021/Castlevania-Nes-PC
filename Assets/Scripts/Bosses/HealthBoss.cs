@@ -10,7 +10,8 @@ public class HealthBoss : MonoBehaviour
         BossMedusa,
         BossMummyA,
         BossMummyB,
-        BossFranky
+        BossFranky,
+        BossDeath
     };
 
     public typeBoss boss;
@@ -95,6 +96,12 @@ public class HealthBoss : MonoBehaviour
                     return;
                 
                 GameObject.Find("Stage4BMusic").GetComponent<ActivateMusic>().battle = false;  //descomentar al poner en el nivel real
+            }
+            else if (boss == typeBoss.BossDeath)
+            {
+                isDead = true;
+                GameObject.Find("Stage5Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
+
             }
             else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB)

@@ -146,8 +146,8 @@ public class SimonController : MonoBehaviour
         
     public void Move(InputAction.CallbackContext context)
     {
-        h = context.ReadValue<Vector2>().x;
-        v = context.ReadValue<Vector2>().y;
+        h = context.ReadValue<Vector2>().normalized.x;
+        v = context.ReadValue<Vector2>().normalized.y;
     }
 
     public void RightStick(InputAction.CallbackContext context)
