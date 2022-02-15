@@ -57,6 +57,7 @@ public class DeathController : MonoBehaviour
     Vector3 targetOrientationF;
     Vector3 targetOrientationG;
     Vector3 targetOrientationH;
+    //Vector3 targetOrientationNew;
     
 
     float nextAttackTime;
@@ -127,6 +128,9 @@ public class DeathController : MonoBehaviour
     {
         if (visible)
         {
+            //NewAttack();
+
+            
             targetOrientationA = directionA.position - hozEmiterA.position;
             targetOrientationB = directionB.position - hozEmiterB.position;
             targetOrientationC = directionC.position - hozEmiterC.position;
@@ -166,6 +170,7 @@ public class DeathController : MonoBehaviour
 
                 nextAttackTime = Time.time + 1f / attackRate;
             }
+            
         }
     }
 
@@ -245,4 +250,31 @@ public class DeathController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, radius);
     }
+
+    /*
+    void NewAttack()
+    {
+        //x: -1.477
+        //x: 1.404
+        //y: 0.62
+        //y: -0.771
+
+        if (Time.time >= nextAttackTime)
+        {
+            StartCoroutine(ImpulseWait());
+
+            nextAttackTime = Time.time + 1f / attackRate;
+        }
+    }
+
+    IEnumerator ImpulseWait()
+    {
+        Vector3 newPos = new Vector3(Random.Range(-1.477f, 1.404f), Random.Range(-0.771f, 0.62f), 0);
+        GameObject bulletInstNew = Instantiate(hozPrefab, newPos, Quaternion.identity);
+        yield return new WaitForSeconds(1.5f);
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        targetOrientationNew = newPos - playerPos.position;
+        bulletInstNew.GetComponent<Rigidbody2D>().AddForce(targetOrientationNew * force * Time.deltaTime);
+    }
+    */
 }
