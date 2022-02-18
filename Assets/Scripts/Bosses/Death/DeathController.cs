@@ -129,7 +129,6 @@ public class DeathController : MonoBehaviour
         if (visible)
         {
             //NewAttack();
-
             
             targetOrientationA = directionA.position - hozEmiterA.position;
             targetOrientationB = directionB.position - hozEmiterB.position;
@@ -227,7 +226,7 @@ public class DeathController : MonoBehaviour
     void RangeDetector()
     {
         inRange = Physics2D.OverlapCircle(transform.position, radius, layerPlayer);
-        //sie ljugador no esta en rango se empezara a curar, cuando tenga su maxima vida, asimmilara el valor maximo exacto
+        //si el jugador no esta en rango se empezara a curar, cuando tenga su maxima vida, asimmilara el valor maximo exacto
         if (!inRange)
         {
             if(bossHealth.currentHealth < bossHealth.maxHealth)
