@@ -26,10 +26,10 @@ public class AudioManager : MonoBehaviour
         pause, 
         simonHurt,
         dagger, 
-        holyWater,         
-        stage1Loop,
+        holyWater,
         lifeLost,
-        bossMusicLoop;
+        batsFlying,
+        slide;
 
     public static AudioManager instance;
 

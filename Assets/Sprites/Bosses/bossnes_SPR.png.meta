@@ -164,6 +164,24 @@ TextureImporter:
   - first:
       213: -2279940142855650
     second: Dracula_2
+  - first:
+      213: -8041004066178382292
+    second: Death_2
+  - first:
+      213: 3298460735468053628
+    second: Death_3
+  - first:
+      213: -6235782811379029801
+    second: Death_4
+  - first:
+      213: -1423476570485881836
+    second: Dracula_BulletB_0
+  - first:
+      213: 6482924125483352594
+    second: Dracula_BulletB_1
+  - first:
+      213: -6496751716893348256
+    second: BesatDracul_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1360,8 +1378,8 @@ TextureImporter:
         y: 170
         width: 32
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1390,6 +1408,132 @@ TextureImporter:
       bones: []
       spriteID: e1a0da11866e7fff0800000000000000
       internalID: -2279940142855650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 4
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2647f5a76d986090800000000000000
+      internalID: -8041004066178382292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_3
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 4
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74a52b109c76cd20800000000000000
+      internalID: 3298460735468053628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_4
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 4
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d82447529c0679a0800000000000000
+      internalID: -6235782811379029801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dracula_BulletB_0
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 164
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414091ed99bce3ce0800000000000000
+      internalID: -1423476570485881836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dracula_BulletB_1
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 164
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212ce35e429f7f950800000000000000
+      internalID: 6482924125483352594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BesatDracul_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 80
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ea9a81cb6e6d5a0800000000000000
+      internalID: -6496751716893348256
       vertices: []
       indices: 
       edges: []

@@ -11,7 +11,9 @@ public class HealthBoss : MonoBehaviour
         BossMummyA,
         BossMummyB,
         BossFranky,
-        BossDeath
+        BossDeath,
+        BossDracula,
+        BeastDracula
     };
 
     public typeBoss boss;
@@ -103,6 +105,20 @@ public class HealthBoss : MonoBehaviour
                 GameObject.Find("Stage5Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
 
             }
+            else if (boss == typeBoss.BossDracula)
+            {
+                //descomentar la linea de abajo ya que esta desactiva la musica de batalla cuando se finalicen las pruebas
+               
+                isDead = true;
+                //GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
+            }
+            else if (boss == typeBoss.BeastDracula)
+            {
+                isDead = true;
+                //se apaga el modo batalla para que la musica vuelva a la normalidad
+                //GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;
+
+            }
             else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB)
             {
@@ -134,21 +150,41 @@ public class HealthBoss : MonoBehaviour
             {
                 //poner evento de momia si lo hay
             }
+            else if (boss == typeBoss.BossDracula)
+            {
+                //minievento para que la cabeza de dracula salga volando al morir el cuerpo
+                //e inmediatamente se invoque el boss final dracula en modo bestia desde el script de dracula controller
+                //con la funcion BodyDead
+                GetComponent<DraculaController>().BodyDead();
+                float direction = 0;
+
+                if (transform.eulerAngles.y == 180)
+                    direction = -1;
+                else
+                    direction = 1;
+
+                GameObject headDracula = GameObject.Find("HeadDracula");
+                headDracula.transform.parent = null;
+                headDracula.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                headDracula.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                headDracula.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction * 250 * Time.fixedDeltaTime, 250 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+
+            }
             else if (boss == typeBoss.BossMummyB)
             {
                 //poner evento de momia si lo hay
             }
+            
 
             //poner algo en el pit para que valga la pena el retroceso
-            
+
             Destroy(this.gameObject);
         }
     }
 
     public void TakeDamage(float damage)
     {
-        GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-        Destroy(spark, 0.3f);
+        
         currentHealth -= damage;
         HealthCheck();
     }
@@ -157,10 +193,20 @@ public class HealthBoss : MonoBehaviour
     {
         if (col.CompareTag("Weapon") && currentHealth > 0 && col.GetComponent<DamagePlayer>())
         {
-            //spawnear la chispa indicando que si hubo daño
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
             
             TakeDamage(col.GetComponent<DamagePlayer>().damage);
+            //spawnear la chispa indicando que si hubo daño
+            //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+            boundX = mycollider.bounds.min.x - col.transform.position.x / 100;
+
+            if (col.transform.position.y < mycollider.bounds.min.y)
+                boundY = mycollider.bounds.min.y - col.transform.position.y / 48;
+            else if (col.transform.position.y > mycollider.bounds.min.y)
+                boundY = col.transform.position.y + 0.2f;
+
+            GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
+            Destroy(spark, 0.3f);
             Death();
         }
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())

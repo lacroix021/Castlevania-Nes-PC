@@ -67,11 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeSup: 4
   damage: 2
-  knife: 0
-  axe: 0
-  holyWater: 0
-  holyFire: 0
-  cross: 1
 --- !u!114 &-2613025463433492452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +212,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bbeed590662162f499f1a8e693b149a6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 0.9
   Loop: 1
   Mute: 0

@@ -170,6 +170,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
         }
     }
 
+    /*
     IEnumerator FallFloor()
     {
         for (int i = 0; i < breakeableFloor.Length; i++)
@@ -205,6 +206,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
             }
         }
     }
+    */
 
     IEnumerator Sismo()
     {

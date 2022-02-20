@@ -174,6 +174,7 @@ public class SimonController : MonoBehaviour
                     if (Time.time >= nextSlideTime)
                     {
                         isSlide = true;
+                        AudioManager.instance.PlayAudio(AudioManager.instance.slide);
                         nextSlideTime = Time.time + 1f / slideRate;
                     }
                 }
@@ -341,6 +342,7 @@ public class SimonController : MonoBehaviour
         if (isSlide)
         {
             rb.velocity = Vector2.zero;
+            
             if (transform.localScale.x == -1)
                 rb.AddForce(new Vector2(slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
             else if (transform.localScale.x == 1)
@@ -366,11 +368,11 @@ public class SimonController : MonoBehaviour
         //se inactiva el detector de piso cuando se salta y se activa nuevamente cuando va cayendo el jugador
         if(!isGrounded && rb.velocity.y > 0)
         {
-            colliderFeet.enabled = false;
+            colliderFeet.gameObject.SetActive(false);
         }
         else if(rb.velocity.y <= 0f || onSlope)
         {
-            colliderFeet.enabled = true;
+            colliderFeet.gameObject.SetActive(true);
         }
     }
 }

@@ -145,6 +145,7 @@ public class BatBossController : MonoBehaviour
 
             if (Time.time >= nextAttackTime)
             {
+                AudioManager.instance.PlayAudio(AudioManager.instance.bulletFire);
                 GameObject bulletInst = Instantiate(bulletPrefab, fireEmiter.position, Quaternion.identity);
                 bulletInst.GetComponent<Rigidbody2D>().AddForce(targetOrientation * Force * Time.deltaTime);
                 

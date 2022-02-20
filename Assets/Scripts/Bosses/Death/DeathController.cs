@@ -5,10 +5,6 @@ using UnityEngine;
 public class DeathController : MonoBehaviour
 {
     public int typeMove;
-    Rigidbody2D rb;
-
-    //X -1.32f, 1.32f
-    //Y -0.56f, 0.56f
 
     [SerializeField] float posX;
     [SerializeField] float posY;
@@ -26,61 +22,25 @@ public class DeathController : MonoBehaviour
     float nextTypeMoveTime;
     public float typeMoveRate;
 
-    //attack
-    public GameObject hozPrefab;
-
-    public Transform hozEmiterA;
-    public Transform hozEmiterB;
-    public Transform hozEmiterC;
-    public Transform hozEmiterD;
-    public Transform hozEmiterE;
-    public Transform hozEmiterF;
-    public Transform hozEmiterG;
-    public Transform hozEmiterH;
-
-
-    public Transform directionA;
-    public Transform directionB;
-    public Transform directionC;
-    public Transform directionD;
-    public Transform directionE;
-    public Transform directionF;
-    public Transform directionG;
-    public Transform directionH;
-
-
-    Vector3 targetOrientationA;
-    Vector3 targetOrientationB;
-    Vector3 targetOrientationC;
-    Vector3 targetOrientationD;
-    Vector3 targetOrientationE;
-    Vector3 targetOrientationF;
-    Vector3 targetOrientationG;
-    Vector3 targetOrientationH;
-    //Vector3 targetOrientationNew;
-    
-
-    float nextAttackTime;
-    public float attackRate;
-    public float force;
-
-
     //range detector
     public bool inRange;
     public LayerMask layerPlayer;
     public float radius;
     HealthBoss bossHealth;
 
+    //emiters
+    public GameObject hozEmiterA;
+    public GameObject hozEmiterB;
+    public GameObject hozEmiterC;
+    public GameObject hozEmiterD;
+
     // Start is called before the first frame update
     void Start()
     {
         t = 0;
-
-        rb = GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         spr = GetComponent<SpriteRenderer>();
         myColl = GetComponent<Collider2D>();
-        boundaryFather = GameObject.Find("Boundary").transform;
         bossHealth = GetComponent<HealthBoss>();
     }
 
@@ -91,13 +51,8 @@ public class DeathController : MonoBehaviour
         Invisible();
         ControlVisibility();
         TypeMovement();
-
-        if (inRange)
-        {
-            Attack();
-        }
-        
         RangeDetector();
+        ActiveEmiters();
     }
 
     void RandomPos()
@@ -105,7 +60,7 @@ public class DeathController : MonoBehaviour
         if (Time.time >= nextRandomPosTime)
         {
             string tempPosX = Random.Range(-1.32f, 1.33f).ToString("F2");
-            string tempPosY = Random.Range(-0.56f, 0.57f).ToString("F2");
+            string tempPosY = Random.Range(-0.56f, 0.45f).ToString("F2");
 
             posX = float.Parse(tempPosX);
             posY = float.Parse(tempPosY);
@@ -121,55 +76,6 @@ public class DeathController : MonoBehaviour
         {
             RandomPos();
             transform.localPosition = new Vector3(posX, posY, 0);
-        }
-    }
-
-    void Attack()
-    {
-        if (visible)
-        {
-            //NewAttack();
-            
-            targetOrientationA = directionA.position - hozEmiterA.position;
-            targetOrientationB = directionB.position - hozEmiterB.position;
-            targetOrientationC = directionC.position - hozEmiterC.position;
-            targetOrientationD = directionD.position - hozEmiterD.position;
-            targetOrientationE = directionE.position - hozEmiterE.position;
-            targetOrientationF = directionF.position - hozEmiterF.position;
-            targetOrientationG = directionG.position - hozEmiterG.position;
-            targetOrientationH = directionH.position - hozEmiterH.position;
-
-            
-
-            if (Time.time >= nextAttackTime)
-            {
-                GameObject bulletInstA = Instantiate(hozPrefab, hozEmiterA.position, Quaternion.identity);
-                bulletInstA.GetComponent<Rigidbody2D>().AddForce(targetOrientationA * force * Time.deltaTime);
-
-                GameObject bulletInstB = Instantiate(hozPrefab, hozEmiterB.position, Quaternion.identity);
-                bulletInstB.GetComponent<Rigidbody2D>().AddForce(targetOrientationB * force * Time.deltaTime);
-
-                GameObject bulletInstC = Instantiate(hozPrefab, hozEmiterC.position, Quaternion.identity);
-                bulletInstC.GetComponent<Rigidbody2D>().AddForce(targetOrientationC * force * Time.deltaTime);
-
-                GameObject bulletInstD = Instantiate(hozPrefab, hozEmiterD.position, Quaternion.identity);
-                bulletInstD.GetComponent<Rigidbody2D>().AddForce(targetOrientationD * force * Time.deltaTime);
-
-                GameObject bulletInstE = Instantiate(hozPrefab, hozEmiterE.position, Quaternion.identity);
-                bulletInstE.GetComponent<Rigidbody2D>().AddForce(targetOrientationE * force * Time.deltaTime);
-
-                GameObject bulletInstF = Instantiate(hozPrefab, hozEmiterF.position, Quaternion.identity);
-                bulletInstF.GetComponent<Rigidbody2D>().AddForce(targetOrientationF * force * Time.deltaTime);
-
-                GameObject bulletInstG = Instantiate(hozPrefab, hozEmiterG.position, Quaternion.identity);
-                bulletInstG.GetComponent<Rigidbody2D>().AddForce(targetOrientationG * force * Time.deltaTime);
-
-                GameObject bulletInstH = Instantiate(hozPrefab, hozEmiterH.position, Quaternion.identity);
-                bulletInstH.GetComponent<Rigidbody2D>().AddForce(targetOrientationH * force * Time.deltaTime);
-
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-            
         }
     }
 
@@ -245,35 +151,39 @@ public class DeathController : MonoBehaviour
         }
     }
 
+
+    void ActiveEmiters()
+    {
+        if(bossHealth.currentHealth < 70 * bossHealth.maxHealth / 100)
+        {
+            //print("menos del 70%");
+            hozEmiterB.SetActive(true);
+        }
+
+        if(bossHealth.currentHealth < 50 * bossHealth.maxHealth / 100)
+        {
+            //print("menos del 50%");
+            hozEmiterC.SetActive(true);
+        }
+        
+        if(bossHealth.currentHealth < 30 * bossHealth.maxHealth / 100)
+        {
+            //print("menos del 30%");
+            hozEmiterD.SetActive(true);
+            spr.color = new Color(255,0,0,t);
+        }
+        if(bossHealth.currentHealth > 70 * bossHealth.maxHealth / 100)
+        {
+            //full life
+            spr.color = new Color(255, 255, 255, t);
+            hozEmiterB.SetActive(false);
+            hozEmiterC.SetActive(false);
+            hozEmiterD.SetActive(false);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
     }
-
-    /*
-    void NewAttack()
-    {
-        //x: -1.477
-        //x: 1.404
-        //y: 0.62
-        //y: -0.771
-
-        if (Time.time >= nextAttackTime)
-        {
-            StartCoroutine(ImpulseWait());
-
-            nextAttackTime = Time.time + 1f / attackRate;
-        }
-    }
-
-    IEnumerator ImpulseWait()
-    {
-        Vector3 newPos = new Vector3(Random.Range(-1.477f, 1.404f), Random.Range(-0.771f, 0.62f), 0);
-        GameObject bulletInstNew = Instantiate(hozPrefab, newPos, Quaternion.identity);
-        yield return new WaitForSeconds(1.5f);
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        targetOrientationNew = newPos - playerPos.position;
-        bulletInstNew.GetComponent<Rigidbody2D>().AddForce(targetOrientationNew * force * Time.deltaTime);
-    }
-    */
 }
