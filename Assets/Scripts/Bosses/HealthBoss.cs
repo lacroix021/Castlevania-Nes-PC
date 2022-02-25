@@ -131,7 +131,10 @@ public class HealthBoss : MonoBehaviour
     {
         if (isDead)
         {
-            GameObject instance = Instantiate(deadEffect, transform.position, Quaternion.identity);
+            if(boss != typeBoss.BossDracula)
+            {
+                GameObject instance = Instantiate(deadEffect, transform.position, Quaternion.identity);
+            }
 
             GetComponent<LootBoss>().DropLoot();
             //activador de evento de Pit
@@ -155,7 +158,6 @@ public class HealthBoss : MonoBehaviour
                 //minievento para que la cabeza de dracula salga volando al morir el cuerpo
                 //e inmediatamente se invoque el boss final dracula en modo bestia desde el script de dracula controller
                 //con la funcion BodyDead
-                GetComponent<DraculaController>().BodyDead();
                 float direction = 0;
 
                 if (transform.eulerAngles.y == 180)
@@ -168,6 +170,7 @@ public class HealthBoss : MonoBehaviour
                 headDracula.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 headDracula.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 headDracula.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction * 250 * Time.fixedDeltaTime, 250 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+                GetComponent<DraculaController>().BodyDead();
 
             }
             else if (boss == typeBoss.BossMummyB)
@@ -178,7 +181,10 @@ public class HealthBoss : MonoBehaviour
 
             //poner algo en el pit para que valga la pena el retroceso
 
-            Destroy(this.gameObject);
+            if(boss != typeBoss.BossDracula)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

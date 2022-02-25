@@ -11,7 +11,8 @@
                     "id": "10f8a3a3-b013-48ec-8d28-c90fffd3bbd5",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "032e2d7a-a774-4f4d-b09f-70c424d9998f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Fire1",
@@ -27,7 +29,8 @@
                     "id": "a550a885-e00b-4c2c-8ec3-7780a91a7461",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Fire2",
@@ -35,7 +38,8 @@
                     "id": "7e233212-62db-426b-9f4e-962b401bd909",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Activate",
@@ -43,7 +47,8 @@
                     "id": "f7be3ee2-9302-475b-a2da-1210499dd954",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -51,7 +56,8 @@
                     "id": "3d8984bc-121e-4b45-8418-a871fc4c9b04",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "YAxisCross",
@@ -59,25 +65,15 @@
                     "id": "f695cc99-af49-44f4-aa74-d66e9911b4f4",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "e29a6c2a-dfbd-4159-a30e-c9218f4ef17c",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "D-Pad",
                     "id": "1d53ff8e-8b6c-44f3-9a6c-50dd89d3da90",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -132,7 +128,7 @@
                 {
                     "name": "2D Vector",
                     "id": "62d9cde2-e1f3-4e9a-b8dc-f7e194d84752",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

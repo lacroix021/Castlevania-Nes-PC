@@ -37,6 +37,9 @@ public class DraculaController : MonoBehaviour
     public GameObject beastPrefab;
     public Transform internalPos;
 
+    //dead
+    public GameObject dracFragPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,12 +53,15 @@ public class DraculaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invisible();
-        ControlVisibility();
-        TypeMovement();
-        //RangeDetector();
-        //ActiveEmiters();
-        //BodyDead();
+        if (!healthBoss.isDead)
+        {
+            Invisible();
+            ControlVisibility();
+            TypeMovement();
+            //RangeDetector();
+            //ActiveEmiters();
+            //BodyDead();
+        }
     }
 
     void Invisible()
@@ -193,7 +199,39 @@ public class DraculaController : MonoBehaviour
 
     public void BodyDead()
     {
-        Vector2 lastPos = internalPos.position;
-        GameObject beast = Instantiate(beastPrefab, lastPos, Quaternion.identity);
+        if (healthBoss.isDead)
+        {
+            myColl.enabled = false;
+            StartCoroutine(DestroyBody());
+        }
+    }
+
+    IEnumerator DestroyBody()
+    {
+        yield return new WaitForSeconds(2);
+        //instanciar los gragmentos de dracula explotando para aparecer la bestia
+        LanzarALaMierdaTodo();
+        GameObject beast = Instantiate(beastPrefab, internalPos.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+    void LanzarALaMierdaTodo()
+    {
+        GameObject fragLeftTop = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragLeftTop.GetComponent<Rigidbody2D>().AddForce(new Vector2(-150 * Time.deltaTime, 120 * Time.deltaTime), ForceMode2D.Impulse);
+        GameObject fragLeftMid = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragLeftMid.GetComponent<Rigidbody2D>().AddForce(new Vector2(-150 * Time.deltaTime, 0 * Time.deltaTime), ForceMode2D.Impulse);
+        GameObject fragLeftBot = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragLeftBot.GetComponent<Rigidbody2D>().AddForce(new Vector2(-150 * Time.deltaTime, -120 * Time.deltaTime), ForceMode2D.Impulse);
+
+
+        GameObject fragRightTop = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragRightTop.transform.eulerAngles = new Vector3(0, 180, 0);
+        fragRightTop.GetComponent<Rigidbody2D>().AddForce(new Vector2(150 * Time.deltaTime, 120 * Time.deltaTime), ForceMode2D.Impulse);
+        GameObject fragRightMid = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragRightMid.transform.eulerAngles = new Vector3(0, 180, 0);
+        fragRightMid.GetComponent<Rigidbody2D>().AddForce(new Vector2(150 * Time.deltaTime, 0 * Time.deltaTime), ForceMode2D.Impulse);
+        GameObject fragRightBot = Instantiate(dracFragPrefab, internalPos.position, Quaternion.identity);
+        fragRightBot.transform.eulerAngles = new Vector3(0, 180, 0);
+        fragRightBot.GetComponent<Rigidbody2D>().AddForce(new Vector2(150 * Time.deltaTime, -120 * Time.deltaTime), ForceMode2D.Impulse);
     }
 }

@@ -142,14 +142,14 @@ public class SimonController : MonoBehaviour
         
     public void Move(InputAction.CallbackContext context)
     {
-        h = context.ReadValue<Vector2>().normalized.x;
-        v = context.ReadValue<Vector2>().normalized.y;
+        h = context.ReadValue<Vector2>().x;
+        v = context.ReadValue<Vector2>().y;
     }
 
     public void RightStick(InputAction.CallbackContext context)
     {
-        hRStick = context.ReadValue<Vector2>().normalized.x;
-        vRStick = context.ReadValue<Vector2>().normalized.y;
+        hRStick = context.ReadValue<Vector2>().x;
+        vRStick = context.ReadValue<Vector2>().y;
     }
 
     public void Jump(InputAction.CallbackContext context)
