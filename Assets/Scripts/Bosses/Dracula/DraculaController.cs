@@ -44,6 +44,8 @@ public class DraculaController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        t = 0;
+        visible = false;
         myColl = GetComponent<Collider2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();

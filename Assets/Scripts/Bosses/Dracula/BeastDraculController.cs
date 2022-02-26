@@ -25,6 +25,20 @@ public class BeastDraculController : MonoBehaviour
     float nextSpitTime;
     public float spitRate;
 
+    //Fire
+    public float radius;
+    public bool inRange;
+    public LayerMask layerPlayer;
+    public Transform fireEmiter;
+    float nextFireTime;
+    public float fireRate;
+    public GameObject firePrefab;
+    public float force;
+
+    //type movements
+    float typeMoveTime;
+    public float moveRate;
+    public int typeMove;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +53,24 @@ public class BeastDraculController : MonoBehaviour
     {
         Animations();
         Flip();
-        Inputs();
-        Spit();
+        RangeDetector();
+
+        if(Time.time >= typeMoveTime)
+        {
+            typeMove = Random.Range(0, 3);
+
+            typeMoveTime = Time.time + 1 / moveRate;
+        }
+
+        if(typeMove == 0 || typeMove == 1)
+        {
+            Inputs();
+            Spit();
+        }
+        else if(typeMove == 2)
+        {
+            Fire();
+        }
     }
 
     private void FixedUpdate()
@@ -111,5 +141,45 @@ public class BeastDraculController : MonoBehaviour
                 nextSpitTime = Time.time + 1f/ spitRate;
             }
         }
+    }
+
+    void Fire()
+    {
+        Vector3 targetOrientation = playerPos.position - fireEmiter.position;
+
+        if (inRange)
+        {
+            Debug.DrawRay(transform.position, targetOrientation, Color.green);
+
+            if (Time.time >= nextFireTime)
+            {
+                anim.SetTrigger("Fire");
+                AudioManager.instance.PlayAudio(AudioManager.instance.bulletFire);
+                GameObject bulletInst = Instantiate(firePrefab, fireEmiter.position, Quaternion.Euler(0,0,-90));
+                bulletInst.GetComponent<Rigidbody2D>().AddForce(targetOrientation * force * Time.fixedDeltaTime);
+                if(direction == 1)
+                {
+                    bulletInst.transform.eulerAngles = new Vector3(0, 0, 90);
+                }
+
+                nextFireTime = Time.time + 1f / fireRate;
+            }
+        }
+    }
+
+    void RangeDetector()
+    {
+        inRange = Physics2D.OverlapCircle(transform.position, radius, layerPlayer);
+
+        if (inRange)
+        {
+            //activar la musica de batalla final
+            GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().complete = true;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

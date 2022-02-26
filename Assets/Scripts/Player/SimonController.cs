@@ -267,7 +267,7 @@ public class SimonController : MonoBehaviour
     void NormalizeSlope()
     {
         // Attempt vertical normalization
-        if (isGrounded)
+        if (isGrounded && canMove)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, thisGround);
             Debug.DrawRay(transform.position, Vector2.down * 0.2f, Color.green);

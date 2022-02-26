@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
 
             healthText.text = playerHealth.currentHealth.ToString("F0");
             HeartsText.text = datosJugador.currentHearts.ToString("F0");
-            CurrentDataPlayer();
+            //CurrentDataPlayer();
             WeaponCheck();
             ScorePoints();
             KeyCheck();
@@ -373,11 +373,12 @@ public class GameManager : MonoBehaviour
         goldText.text = datosJugador.gold.ToString();
     }
 
-    
+    /*
     void CurrentDataPlayer()
     {
         datosJugador.posPlayer = instancePlayer.transform.position;
     }
+    */
 
     public void BlinkControl()
     {
@@ -410,8 +411,9 @@ public class GameManager : MonoBehaviour
         {
             //instancePlayer = Instantiate(playerPrefab, datosJugador.posPlayer, Quaternion.identity);
             //instancePlayer.name = playerPrefab.name;
+            Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat("LastPositionX"), PlayerPrefs.GetFloat("LastPositionY"));
             instancePlayer = GameObject.FindGameObjectWithTag("Player");
-            instancePlayer.transform.position = datosJugador.posPlayer;
+            instancePlayer.transform.position = loadPos;
             instancePlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             CargarComponentesInicio();
         }

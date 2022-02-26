@@ -10,7 +10,7 @@ public class ChangeSong : MonoBehaviour
         level3,
         level4,
         level5,
-        level8
+        level7
     };
     public levels Level;
 
@@ -61,7 +61,7 @@ public class ChangeSong : MonoBehaviour
             audioSource.Play();
         }
 
-        if(Level == levels.level8)
+        if(Level == levels.level7)
         {
             yield return new WaitForSeconds(1.599f);
             audioSource.clip = loop;
@@ -72,7 +72,15 @@ public class ChangeSong : MonoBehaviour
 
     public void OnRespawnMusic()
     {
-        audioSource.clip = intro;
-        audioSource.loop = false;
+        if(Level != levels.level7)
+        {
+            audioSource.clip = intro;
+            audioSource.loop = false;
+        }
+        else
+        {
+            audioSource.clip = intro;
+            audioSource.loop = true;
+        }
     }
 }

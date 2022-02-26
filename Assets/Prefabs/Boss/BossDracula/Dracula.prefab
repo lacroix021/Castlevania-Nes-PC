@@ -108,8 +108,8 @@ MonoBehaviour:
   sprBody: {fileID: 6112987666637969447}
   sprHead: {fileID: 6112987667248643607}
   typeMoveRate: 0.4
-  posXMin: -1.376
-  posXMax: 1.359
+  posXMin: -3.79
+  posXMax: -0.87
   particleSys: {fileID: 6112987668416985083}
   attackRate: 0.2
   firePrefab: {fileID: 2893796421159446775, guid: e940fcd14927d0449b7b09fce1e317b5,
@@ -120,7 +120,7 @@ MonoBehaviour:
   firePosB: {fileID: 6112987667557390078}
   firePosC: {fileID: 6112987667456381771}
   headDracula: {fileID: 6112987667248643601}
-  beastPrefab: {fileID: 7403968338952829622, guid: ebb9e6b088b94f54ea467ddf585a574b,
+  beastPrefab: {fileID: 1102503954580088662, guid: ebb9e6b088b94f54ea467ddf585a574b,
     type: 3}
   internalPos: {fileID: 6112987666833915755}
   dracFragPrefab: {fileID: 153448292094617017, guid: 34f2e3476ffe8ea4f9872fab920f5725,
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 8924714484811580735, guid: a26b431de41c3e847bab6c3ca199176a,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -202,7 +202,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6112987666637969440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -374,7 +374,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2279940142855650, guid: a26b431de41c3e847bab6c3ca199176a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

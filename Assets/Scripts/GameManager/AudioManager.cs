@@ -29,7 +29,8 @@ public class AudioManager : MonoBehaviour
         holyWater,
         lifeLost,
         batsFlying,
-        slide;
+        slide,
+        end;
 
     public static AudioManager instance;
 

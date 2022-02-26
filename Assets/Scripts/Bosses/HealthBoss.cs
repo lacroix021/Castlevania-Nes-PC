@@ -107,16 +107,13 @@ public class HealthBoss : MonoBehaviour
             }
             else if (boss == typeBoss.BossDracula)
             {
-                //descomentar la linea de abajo ya que esta desactiva la musica de batalla cuando se finalicen las pruebas
-               
                 isDead = true;
-                //GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;    //se apaga el modo batalla para que la musica vuelva a la normalidad
             }
             else if (boss == typeBoss.BeastDracula)
             {
                 isDead = true;
                 //se apaga el modo batalla para que la musica vuelva a la normalidad
-                //GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;
+                GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;
 
             }
             else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
@@ -202,16 +199,11 @@ public class HealthBoss : MonoBehaviour
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
             
             TakeDamage(col.GetComponent<DamagePlayer>().damage);
+            //cambiar la chispa de daño por un shader que
+            //vuelva blanco al sprite y lo retorne a la normalidad
             //spawnear la chispa indicando que si hubo daño
-            //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-            boundX = mycollider.bounds.min.x - col.transform.position.x / 100;
+            GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
 
-            if (col.transform.position.y < mycollider.bounds.min.y)
-                boundY = mycollider.bounds.min.y - col.transform.position.y / 48;
-            else if (col.transform.position.y > mycollider.bounds.min.y)
-                boundY = col.transform.position.y + 0.2f;
-
-            GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
             Destroy(spark, 0.3f);
             Death();
         }

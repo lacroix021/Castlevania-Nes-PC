@@ -7,9 +7,11 @@ public class ActivateMusic : MonoBehaviour
 {
     public GameObject musicLevel;
     public GameObject bossMusic;
+    public AudioSource completeMusic;
     
     private HealthPlayer healthPlayer;
     public bool battle;
+    public bool complete;
 
     private void Update()
     {
@@ -29,26 +31,38 @@ public class ActivateMusic : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!battle)
+            if (!complete)
             {
-                if (collision.GetComponent<HealthPlayer>().currentHealth > 0)
+                if (!battle)
                 {
-                    musicLevel.SetActive(true);
-                    bossMusic.SetActive(false);
+                    if (collision.GetComponent<HealthPlayer>().currentHealth > 0)
+                    {
+                        musicLevel.SetActive(true);
+                        bossMusic.SetActive(false);
+                        completeMusic.enabled = false;
+                    }
+                    else
+                    {
+                        musicLevel.SetActive(false);
+                        bossMusic.SetActive(false);
+                        completeMusic.enabled = false;
+                    }
                 }
                 else
                 {
+                    bossMusic.SetActive(true);
                     musicLevel.SetActive(false);
-                    bossMusic.SetActive(false);
+                    completeMusic.enabled = false;
                 }
             }
             else
             {
-                bossMusic.SetActive(true);
+                //corregir esta mierda por que la musica se aloco, hay que darle orden
+                completeMusic.enabled = true;
                 musicLevel.SetActive(false);
+                bossMusic.SetActive(false);
             }
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)

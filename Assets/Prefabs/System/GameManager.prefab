@@ -2457,6 +2457,134 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5900560756726633482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3776939492992784687}
+  - component: {fileID: 8670987698556120858}
+  m_Layer: 0
+  m_Name: End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3776939492992784687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900560756726633482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7568301097592922856}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8670987698556120858
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900560756726633482}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: bf2ab96fe439e864db8cb2a1f08e13e1,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: dce9ac72b065c644f959eaccac71cb73, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6266976167796349677
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,6 +6105,7 @@ Transform:
   - {fileID: 7568301096968067035}
   - {fileID: 3349358778417073411}
   - {fileID: 3898178985149437358}
+  - {fileID: 3776939492992784687}
   m_Father: {fileID: 7679297433986115962}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6016,6 +6145,7 @@ MonoBehaviour:
   lifeLost: {fileID: 7568301097514271626}
   batsFlying: {fileID: 2626493091148023223}
   slide: {fileID: 2377181604002698386}
+  end: {fileID: 8670987698556120858}
 --- !u!1 &7568301097601024758
 GameObject:
   m_ObjectHideFlags: 0
@@ -6838,6 +6968,7 @@ MonoBehaviour:
   bossMedusa: {fileID: 0}
   ceilingMummies: {fileID: 0}
   frankenSpawner: {fileID: 0}
+  deathSpawner: {fileID: 0}
 --- !u!1 &7679297433986115960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7030,6 +7161,7 @@ MonoBehaviour:
   bossMummyA: 0
   bossMummyB: 0
   bossFranken: 0
+  bossDeath: 0
   pitActive: 0
   floorBrokenLevel3: 0
   wallBrokenLevel3: 0
@@ -7185,15 +7317,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc9f3fe975bb5d489597bb617a040af, type: 3}
---- !u!224 &5435790729721370295 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2479178138642622423, guid: 3fc9f3fe975bb5d489597bb617a040af,
-    type: 3}
-  m_PrefabInstance: {fileID: 7568301096311091552}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5435790729721370294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2479178138642622422, guid: 3fc9f3fe975bb5d489597bb617a040af,
+    type: 3}
+  m_PrefabInstance: {fileID: 7568301096311091552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5435790729721370295 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2479178138642622423, guid: 3fc9f3fe975bb5d489597bb617a040af,
     type: 3}
   m_PrefabInstance: {fileID: 7568301096311091552}
   m_PrefabAsset: {fileID: 0}

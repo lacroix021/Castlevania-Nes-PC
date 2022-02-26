@@ -14,7 +14,7 @@ public class DatosJugador : MonoBehaviour
     public int Saves;
     public float percentMap;
     //posicion del jugador
-    public Vector3 posPlayer;
+    //public Vector3 posPlayer;
     //vida maxima y corazones actuales
     public float maxHealth;
     public int currentHearts;
@@ -109,6 +109,7 @@ public class DatosJugador : MonoBehaviour
     public bool bossMummyA;
     public bool bossMummyB;
     public bool bossFranken;
+    public bool bossDeath;
 
     //estado de eventos del mapa
     //cuando se agreguen mas eventos, tambien agregar su respectivo booleano
