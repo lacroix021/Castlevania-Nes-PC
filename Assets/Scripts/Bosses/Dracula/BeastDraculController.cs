@@ -174,7 +174,7 @@ public class BeastDraculController : MonoBehaviour
         if (inRange)
         {
             //activar la musica de batalla final
-            GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().complete = true;
+            GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = true;
         }
     }
 

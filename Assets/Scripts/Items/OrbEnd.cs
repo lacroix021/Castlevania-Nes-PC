@@ -26,7 +26,7 @@ public class OrbEnd : MonoBehaviour
             spr.enabled = false;
             rb.bodyType = RigidbodyType2D.Static;
             myColl.enabled = false;
-            GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().completeMusic.Play();
+            GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().completeMusic.GetComponent<AudioSource>().Play();
             LastSave();
             StartCoroutine(WaitEnd());
         }
@@ -42,6 +42,9 @@ public class OrbEnd : MonoBehaviour
     void LastSave()
     {
         guardarCargar.GuardarInformacion();
+        PlayerPrefs.SetFloat("TimePlayed", Time.time);
+        PlayerPrefs.SetInt("GoldPlayer", datosJugador.gold);
+        PlayerPrefs.SetInt("Saves", datosJugador.Saves);
         PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);
     }
 }

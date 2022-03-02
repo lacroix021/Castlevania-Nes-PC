@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
 
     public ActivateMusic[] musicMap;
+    public GameObject[] audios;
 
     private void Awake()
     {
@@ -160,10 +161,13 @@ public class GameManager : MonoBehaviour
                 navigationMode = false;
                 buttonQuit.enabled = true;
 
-                GameObject[] audios = GameObject.FindGameObjectsWithTag("MusicBox");
+                audios = GameObject.FindGameObjectsWithTag("MusicBox");
                 foreach (GameObject a in audios)
                 {
-                    a.GetComponent<AudioSource>().Play();
+                    if (a.activeInHierarchy)
+                    {
+                        a.GetComponent<AudioSource>().Play();
+                    }
                 }
             }
         }

@@ -170,10 +170,15 @@ public class HealthBoss : MonoBehaviour
                 GetComponent<DraculaController>().BodyDead();
 
             }
+            else if(boss == typeBoss.BeastDracula)
+            {
+                GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().complete = true;
+            }
             else if (boss == typeBoss.BossMummyB)
             {
                 //poner evento de momia si lo hay
             }
+            
             
 
             //poner algo en el pit para que valga la pena el retroceso

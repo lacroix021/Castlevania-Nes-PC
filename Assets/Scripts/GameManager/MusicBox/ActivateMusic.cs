@@ -7,7 +7,7 @@ public class ActivateMusic : MonoBehaviour
 {
     public GameObject musicLevel;
     public GameObject bossMusic;
-    public AudioSource completeMusic;
+    public GameObject completeMusic;
     
     private HealthPlayer healthPlayer;
     public bool battle;
@@ -39,26 +39,26 @@ public class ActivateMusic : MonoBehaviour
                     {
                         musicLevel.SetActive(true);
                         bossMusic.SetActive(false);
-                        completeMusic.enabled = false;
+                        completeMusic.SetActive(false);
                     }
                     else
                     {
                         musicLevel.SetActive(false);
                         bossMusic.SetActive(false);
-                        completeMusic.enabled = false;
+                        completeMusic.SetActive(false);
                     }
                 }
                 else
                 {
                     bossMusic.SetActive(true);
                     musicLevel.SetActive(false);
-                    completeMusic.enabled = false;
+                    completeMusic.SetActive(false);
                 }
             }
             else
             {
                 //corregir esta mierda por que la musica se aloco, hay que darle orden
-                completeMusic.enabled = true;
+                completeMusic.SetActive(true);
                 musicLevel.SetActive(false);
                 bossMusic.SetActive(false);
             }
