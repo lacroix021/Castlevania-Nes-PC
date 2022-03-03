@@ -22,7 +22,12 @@ public class EndingController : MonoBehaviour
 
     public Text numSavesTxt;
     public Text numGoldTxt;
-    public Text numTimeTxt;
+    public Text secondsTimeTxt;
+    public Text minutesTimeTxt;
+    public Text hoursTimeTxt;
+
+    //
+    public Animator blackscreenAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +59,8 @@ public class EndingController : MonoBehaviour
         scoreObj.SetActive(true);
         FixValuesPlayer();
         yield return new WaitForSeconds(8f);
+        blackscreenAnim.SetBool("FadeIn", true);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
     }
 
@@ -61,7 +68,9 @@ public class EndingController : MonoBehaviour
     {
         numSavesTxt.text = PlayerPrefs.GetInt("Saves").ToString();
         numGoldTxt.text = PlayerPrefs.GetInt("GoldPlayer").ToString();
-        numTimeTxt.text = PlayerPrefs.GetFloat("TimePlayed").ToString();
+        secondsTimeTxt.text = PlayerPrefs.GetFloat("Seconds")<10? "0" + PlayerPrefs.GetFloat("Seconds").ToString("F0"): PlayerPrefs.GetFloat("Seconds").ToString("F0");
+        minutesTimeTxt.text = PlayerPrefs.GetFloat("Minutes")<10? "0" + PlayerPrefs.GetFloat("Minutes").ToString("F0"): PlayerPrefs.GetFloat("Minutes").ToString("F0");
+        hoursTimeTxt.text = PlayerPrefs.GetFloat("Hours")<10? "0" + PlayerPrefs.GetFloat("Hours").ToString("F0"): PlayerPrefs.GetFloat("Hours").ToString("F0");
     }
 
     //pendiente agregar los nombres de los creditos

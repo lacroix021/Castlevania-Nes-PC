@@ -7020,6 +7020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c79e0de1a0cb74db8034bdc0100959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seconds: 0
+  minutes: 0
+  hours: 0
   cursorState: 0
   debugMode: 0
   EscenaActual: 0
@@ -7074,6 +7077,7 @@ MonoBehaviour:
   buttonBackMenu: {fileID: 7568301095888208360}
   navigationMode: 0
   musicMap: []
+  audios: []
 --- !u!114 &7679297433986115966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7088,7 +7092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Saves: 0
   percentMap: 0
-  posPlayer: {x: 0, y: 0, z: 0}
   maxHealth: 0
   currentHearts: 0
   gold: 0

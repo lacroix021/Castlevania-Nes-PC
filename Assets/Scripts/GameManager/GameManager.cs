@@ -7,6 +7,13 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    //public Text timeHHTxt;
+    //public Text timeMMTxt;
+    //public Text timeSSTxt;
+    public float seconds;
+    public float minutes;
+    public float hours;
+
     public CursorLockMode cursorState;
     public bool debugMode;
     
@@ -177,9 +184,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Application.targetFrameRate = 60;
-
-        
+        TimeClock();
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
+        
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
@@ -375,14 +382,7 @@ public class GameManager : MonoBehaviour
     void ScorePoints()
     {
         goldText.text = datosJugador.gold.ToString();
-    }
-
-    /*
-    void CurrentDataPlayer()
-    {
-        datosJugador.posPlayer = instancePlayer.transform.position;
-    }
-    */
+    }   
 
     public void BlinkControl()
     {
@@ -417,6 +417,9 @@ public class GameManager : MonoBehaviour
             //instancePlayer.name = playerPrefab.name;
             Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat("LastPositionX"), PlayerPrefs.GetFloat("LastPositionY"));
             instancePlayer = GameObject.FindGameObjectWithTag("Player");
+            seconds = PlayerPrefs.GetFloat("Seconds");
+            minutes = PlayerPrefs.GetFloat("Minutes");
+            hours = PlayerPrefs.GetFloat("Hours");
             instancePlayer.transform.position = loadPos;
             instancePlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             CargarComponentesInicio();
@@ -436,7 +439,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         startPositionPlayer = GameObject.Find("StartSpawn").GetComponent<Transform>();
-
+        
         if (!instancePlayer)
         {
             //instancePlayer = Instantiate(playerPrefab, startPositionPlayer.position, Quaternion.identity);
@@ -457,6 +460,9 @@ public class GameManager : MonoBehaviour
             datosJugador.haveSub = false;
             datosJugador.gold = 0;
             datosJugador.Saves = 0;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
         }
 
         //items unicos del mapa restablecidos por defecto
@@ -498,5 +504,27 @@ public class GameManager : MonoBehaviour
                 musicMap[i].GetComponentInChildren<ChangeSong>().OnRespawnMusic();
             }
         }
+    }
+
+    public void TimeClock()
+    {
+        float timeBase = Time.deltaTime;
+        seconds += timeBase;
+
+        if(seconds >= 60)
+        {
+            minutes += 1;
+            seconds = 0;
+        }
+
+        if(minutes >= 60)
+        {
+            hours += 1;
+            minutes = 0;
+        }
+
+        //timeSSTxt.text = seconds.ToString("F0");
+        //timeMMTxt.text = minutes.ToString("F0");
+        //timeHHTxt.text = hours.ToString("F0");
     }
 }

@@ -68,7 +68,9 @@ public class AnkOfLife : MonoBehaviour
                 //funcion de guardado
                 SaveGame();
                 datosJugador.Saves += 1;
-                PlayerPrefs.SetFloat("TimePlayed", Time.time);
+                PlayerPrefs.SetFloat("Seconds", gManager.seconds);
+                PlayerPrefs.SetFloat("Minutes", gManager.minutes);
+                PlayerPrefs.SetFloat("Hours", gManager.hours);
                 PlayerPrefs.SetInt("GoldPlayer", datosJugador.gold);
                 PlayerPrefs.SetInt("Saves", datosJugador.Saves);
                 PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);

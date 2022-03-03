@@ -47,6 +47,15 @@ public class HealthPlayer : MonoBehaviour
     {
         RecibeDaño();
         CuraDaño();
+
+        if (isInvulnerable)
+        {
+            Physics2D.IgnoreLayerCollision(9, 10, true);
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(9, 10, false);
+        }
     }
 
     public void HealthCheck()
@@ -72,7 +81,11 @@ public class HealthPlayer : MonoBehaviour
         {
             playerController.anim.SetBool("Die", isDead);
             playerController.canMove = false;
-            playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
+            if(playerController.rb.bodyType == RigidbodyType2D.Dynamic)
+            {
+                playerController.rb.velocity = new Vector2(0, playerController.rb.velocity.y);
+            }
+
             gManager.BlinkControl();
             StartCoroutine(ChangeRb());
 
@@ -201,7 +214,7 @@ public class HealthPlayer : MonoBehaviour
 
     IEnumerator GetInvulnerable()
     {
-        Physics2D.IgnoreLayerCollision(9, 10, true);
+        //Physics2D.IgnoreLayerCollision(9, 10, true);
         c.a = 0.5f;
         rend.material.color = c;
         yield return new WaitForSeconds(0.8f);
@@ -210,7 +223,7 @@ public class HealthPlayer : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            Physics2D.IgnoreLayerCollision(9, 10, false);
+            //Physics2D.IgnoreLayerCollision(9, 10, false);
             isInvulnerable = false;
         }
     }
