@@ -60,7 +60,7 @@ public class DeathController : MonoBehaviour
         if (Time.time >= nextRandomPosTime)
         {
             string tempPosX = Random.Range(-1.32f, 1.33f).ToString("F2");
-            string tempPosY = Random.Range(-0.56f, 0.45f).ToString("F2");
+            string tempPosY = Random.Range(-0.56f, 0.35f).ToString("F2");
 
             posX = float.Parse(tempPosX);
             posY = float.Parse(tempPosY);

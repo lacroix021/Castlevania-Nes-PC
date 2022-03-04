@@ -404,6 +404,7 @@ RectTransform:
   - {fileID: 1291055392}
   - {fileID: 2029471477}
   - {fileID: 445225556}
+  - {fileID: 670935061}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -436,6 +437,27 @@ MonoBehaviour:
   minutesTimeTxt: {fileID: 782486913}
   hoursTimeTxt: {fileID: 1684300024}
   blackscreenAnim: {fileID: 445225557}
+  names: {fileID: 670935057}
+  credits:
+  - Directed by            Ramshy
+  - Screenplay by           Vram Stoker              music by                  James
+    banana
+  - The Cast                     Dracula                      Ramshy
+  - Death                            Belo Lugosi                              Frankenstein                         
+    Boris Karloffice
+  - Mummyman                             Love Chaney Jr                                
+    Medusa                          Barber Sherry
+  - Vampire Bat                             Mix Schrecks                                
+    HunchBack                          Love Chaney
+  - FishMan                             Green Stranger                                
+    Armor                          Cafebar Read
+  - Skeleton                             Andre Moral                                
+    Zombie                          Jone Candies
+  - And the hero                             Simon Belmondo
+  - You played the greatest role in this story.
+  - Thank you                                   for playing.
+  num: 0
+  changeNameRate: 0.183
 --- !u!1 &435768764
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +646,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445225555}
   m_CullTransparentMesh: 0
+--- !u!1 &670935057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670935061}
+  - component: {fileID: 670935060}
+  - component: {fileID: 670935058}
+  - component: {fileID: 670935059}
+  m_Layer: 5
+  m_Name: CreditsNames
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &670935058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670935057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: a0663d9dde5e931448d6531b7a0e4711, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 70
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Nombres
+--- !u!114 &670935059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670935057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.7372549}
+  m_EffectDistance: {x: 5, y: -2}
+  m_UseGraphicAlpha: 1
+--- !u!222 &670935060
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670935057}
+  m_CullTransparentMesh: 0
+--- !u!224 &670935061
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670935057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 313196686}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -315, y: 44.9}
+  m_SizeDelta: {x: 594.5364, y: 334.19724}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &730790407
 GameObject:
   m_ObjectHideFlags: 0

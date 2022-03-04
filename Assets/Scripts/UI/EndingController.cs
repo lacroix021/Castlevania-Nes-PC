@@ -29,17 +29,28 @@ public class EndingController : MonoBehaviour
     //
     public Animator blackscreenAnim;
 
+    //Credits
+    [Header("CREDITS")]
+    public GameObject names;
+    public string[] credits;
+    public int num;
+    float nextChangeName;
+    public float changeNameRate;
+
     // Start is called before the first frame update
     void Start()
     {
+        num = 0;
         posX = castleImg.transform.localPosition.x;
         StartCoroutine(StopDestroy());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         CastleDestroy();
+        Credits();
     }
 
     void CastleDestroy()
@@ -77,4 +88,84 @@ public class EndingController : MonoBehaviour
     //pendiente poner una transicion mas suave de el nivel de juego a el ending
     //poner un sistema de rango al finalizar el juego que dependa del tiempo y el numero de saves, tal vez del gold
 
+
+    void Credits()
+    {
+        if(Time.time >= nextChangeName)
+        {
+            switch (num)
+            {
+                case 0:
+                    names.GetComponent<Text>().text = credits[0];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 1:
+                    names.GetComponent<Text>().text = credits[1];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 2:
+                    names.GetComponent<Text>().text = credits[2];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 3:
+                    names.GetComponent<Text>().text = credits[3];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 4:
+                    names.GetComponent<Text>().text = credits[4];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 5:
+                    names.GetComponent<Text>().text = credits[5];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 6:
+                    names.GetComponent<Text>().text = credits[6];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 7:
+                    names.GetComponent<Text>().text = credits[7];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 8:
+                    names.GetComponent<Text>().text = credits[8];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 9:
+                    names.GetComponent<Text>().text = credits[9];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 10:
+                    names.GetComponent<Text>().text = credits[10];
+                    num += 1;
+                    StartCoroutine(Fades());
+                    break;
+                case 11:
+                    names.SetActive(false);
+                    break;
+            }
+
+            
+
+            nextChangeName = Time.time + 1 / changeNameRate;
+        }
+
+    }
+
+    IEnumerator Fades()
+    {
+        names.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        names.SetActive(false);
+    }
 }
