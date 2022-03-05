@@ -25,11 +25,11 @@ public class SpitController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         rb.AddForce(transform.right * direction * moveAttackX * Time.deltaTime, ForceMode2D.Impulse);
         rb.AddForce(transform.up * moveAttackY * Time.deltaTime, ForceMode2D.Impulse);
     }
     
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Weapon"))
@@ -37,6 +37,7 @@ public class SpitController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    */
 
     void Flip()
     {

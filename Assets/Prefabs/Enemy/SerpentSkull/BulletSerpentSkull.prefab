@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5536481139907756043}
+  - component: {fileID: 4434896306481302781}
   - component: {fileID: 508784829594321338}
-  - component: {fileID: 6870651931543970075}
   - component: {fileID: 8061663507569758579}
   - component: {fileID: 5342118504124422952}
   - component: {fileID: 3033039897691423398}
-  - component: {fileID: 282373208443443528}
+  - component: {fileID: 4539638003580359412}
   m_Layer: 9
   m_Name: BulletSerpentSkull
   m_TagString: Enemy
@@ -36,6 +36,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4434896306481302781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857245098860434752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3e8d8637ef6694294c3aa9c45de0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 1
+  isDead: 0
+  deadEffect: {fileID: 4426222619085448371, guid: 5aa3b75c2630ee540852bde2ad67d014,
+    type: 3}
+  sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
+    type: 3}
 --- !u!114 &508784829594321338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,21 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTouch: 2
---- !u!114 &6870651931543970075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857245098860434752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f202580a1031c04a82735ddd6ec2ee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAttackX: 0.9
-  moveAttackY: 0.6
-  direction: 0
 --- !u!114 &8061663507569758579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +119,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6023706832743255453, guid: a0f8bffe781238241a1fb7d56a18ba3b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -143,14 +147,14 @@ Rigidbody2D:
   m_Mass: 0.6
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0.1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &282373208443443528
-CircleCollider2D:
+--- !u!61 &4539638003580359412
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -163,5 +167,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.07, y: 0.06}
+    newSize: {x: 0.07, y: 0.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.022165477
+  m_Size: {x: 0.050938424, y: 0.046267822}
+  m_EdgeRadius: 0

@@ -43,13 +43,20 @@ public class SerpentSkullController : MonoBehaviour
     public float myDirecton;
     Vector3 newPos;
 
+    //
+    public Vector3 targetOrientation;
+    Transform playerPos;
+    public bool inRange;
+    public float range;
+    public float force;
+    public LayerMask layerPlayer;
 
-    
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerPos = GameObject.FindGameObjectWithTag("HeadPlayer").transform;
 
         moveY = 0;
         moveX = 0;
@@ -76,7 +83,7 @@ public class SerpentSkullController : MonoBehaviour
             nextTypeMoveTime = Time.time + 1f / typeMoveRate;
         }
 
-        
+        RangeDetector();
     }
 
     private void FixedUpdate()
@@ -137,18 +144,43 @@ public class SerpentSkullController : MonoBehaviour
     
     void Attack()
     {
-        if (Time.time >= nextAttackTime)
+        if (inRange)
         {
-            anim.SetTrigger("Attack");
-            nextAttackTime = Time.time + 1f / attackRate;
+            if (Time.time >= nextAttackTime)
+            {
+                anim.SetTrigger("Attack");
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
+    /*
     public void SpitFire()
     {
         AudioManager.instance.PlayAudio(AudioManager.instance.bulletFire);
 
         instanceBullet = Instantiate(bulletPrefab, fangsPos.position, Quaternion.identity);
         instanceBullet.GetComponent<SpitController>().direction = myDirecton;
+    }
+    */
+
+    public void Fire()
+    {
+        targetOrientation = playerPos.position - fangsPos.position;
+        Debug.DrawRay(transform.position, targetOrientation, Color.green);
+
+        AudioManager.instance.PlayAudio(AudioManager.instance.bulletFire);
+        instanceBullet = Instantiate(bulletPrefab, fangsPos.position, Quaternion.identity);
+        instanceBullet.GetComponent<Rigidbody2D>().AddForce(targetOrientation * force * Time.deltaTime);
+    }
+
+    void RangeDetector()
+    {
+        inRange = Physics2D.OverlapCircle(fangsPos.position, range, layerPlayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(fangsPos.position, range);
     }
 }

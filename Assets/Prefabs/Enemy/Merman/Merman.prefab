@@ -264,7 +264,7 @@ MonoBehaviour:
   feetPos: {fileID: 4001848287260302129}
   ground:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
   typeMove: 0
   MoveRate: 0.7
   canon: {fileID: 4001848288092656200}

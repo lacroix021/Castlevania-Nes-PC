@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 9
+  maxHealth: 12
   isDead: 0
   deadEffect: {fileID: 4426222619085448371, guid: 5aa3b75c2630ee540852bde2ad67d014,
     type: 3}
@@ -644,6 +644,13 @@ MonoBehaviour:
     type: 3}
   tail: {fileID: 7202929786540941364}
   myDirecton: 0
+  targetOrientation: {x: 0, y: 0, z: 0}
+  inRange: 0
+  range: 1.7
+  force: 1500
+  layerPlayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!212 &7202929785278079272
 SpriteRenderer:
   m_ObjectHideFlags: 0
