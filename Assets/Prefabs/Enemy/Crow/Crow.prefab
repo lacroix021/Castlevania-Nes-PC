@@ -56,6 +56,9 @@ MonoBehaviour:
     type: 3}
   sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
+  original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
+  sprRenderer: {fileID: 4509971724063332651}
 --- !u!114 &4509971724063332654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,8 +93,6 @@ MonoBehaviour:
     m_Bits: 1024
   posCheckRate: 1
   positionAttack: {x: 0, y: 0, z: 0}
-  cycleWidth: 30
-  frecuency: 6
 --- !u!212 &4509971724063332651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5940939149445475190, guid: a0f8bffe781238241a1fb7d56a18ba3b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

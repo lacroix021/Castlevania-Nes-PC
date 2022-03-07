@@ -65,6 +65,7 @@ public class SimonController : MonoBehaviour
     public static SimonController instance;
 
     public bool pauseGame;
+    public bool cancelInput;
 
     private void Awake()
     {
@@ -89,7 +90,7 @@ public class SimonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.GamePaused)
+        if (!gameManager.gamePaused)
         {
             InputManager();
             Animations();
@@ -154,7 +155,7 @@ public class SimonController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!gameManager.GamePaused)
+        if (!gameManager.gamePaused)
         {
             if (context.performed && isGrounded && !isCrouch && canMove)
             {
@@ -195,9 +196,14 @@ public class SimonController : MonoBehaviour
         }
     }
 
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        cancelInput = context.performed;
+    }
+
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!gameManager.GamePaused)
+        if (!gameManager.gamePaused)
         {
             if (context.performed && !animSlide && canMove && !climbing && !animSub)
             {
@@ -244,7 +250,7 @@ public class SimonController : MonoBehaviour
 
     void Movement()
     {
-        if (!gameManager.GamePaused)
+        if (!gameManager.gamePaused)
         {
             //detiene el deslizamiento si ibamos moviendonos y atacamos repentinamente
             if (animAttack && isGrounded)
@@ -266,26 +272,19 @@ public class SimonController : MonoBehaviour
 
     void NormalizeSlope()
     {
-        // Attempt vertical normalization
-        if (isGrounded && canMove)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, thisGround);
-            Debug.DrawRay(transform.position, Vector2.down * 0.2f, Color.green);
-            
-            if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
-            {
-                onSlope = true;
-                // Apply the opposite force against the slope force 
-                // You will need to provide your own slopeFriction to stabalize movement
-                rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * slopeFriction), rb.velocity.y);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, thisGround);
+        Debug.DrawRay(transform.position, Vector2.down * 0.2f, Color.green);
 
-            }
-            else if(hit.collider != null && hit.normal.x < 0.1f)
-            {
-                onSlope = false;
-            }
+        if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
+        {
+            onSlope = true;
+            colliderFeet.gameObject.SetActive(true);
+            // Apply the opposite force against the slope force 
+            // You will need to provide your own slopeFriction to stabalize movement
+            rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * slopeFriction), rb.velocity.y);
+
         }
-        else
+        else if (hit.collider != null && hit.normal.x < 0.1f)
         {
             onSlope = false;
         }
@@ -293,7 +292,11 @@ public class SimonController : MonoBehaviour
 
     void Animations()
     {
-        anim.SetFloat("VelX", Mathf.Abs(h));
+        if (canMove)
+        {
+            anim.SetFloat("VelX", Mathf.Abs(h));
+        }
+       
         anim.SetBool("Grounded", isGrounded);
         anim.SetBool("Crouch", isCrouch);
         anim.SetBool("InStair", inStair);

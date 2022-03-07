@@ -62,7 +62,7 @@ public class SubWeaponSystem : MonoBehaviour
     public void InputSubWep(InputAction.CallbackContext context)
     {
 
-        if (!gmanager.GamePaused)
+        if (!gmanager.gamePaused)
         {
             if (context.performed && datosJugador.haveSub && pController.canMove)
             {

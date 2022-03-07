@@ -37,7 +37,10 @@ public class HealthBoss : MonoBehaviour
 
     BossMapManager bossManager;
 
-    
+    public SpriteRenderer sprRend;
+    public Material original;
+    public Material blink;
+
 
     private void Awake()
     {
@@ -207,15 +210,18 @@ public class HealthBoss : MonoBehaviour
             //cambiar la chispa de daño por un shader que
             //vuelva blanco al sprite y lo retorne a la normalidad
             //spawnear la chispa indicando que si hubo daño
-            GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+            //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+            //Destroy(spark, 0.3f);
 
-            Destroy(spark, 0.3f);
+            StartCoroutine(FlashBlink());
             Death();
         }
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
         {
             //spawnear la chispa indicando que si hubo daño
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
+
+            /*
             if (col.transform.position.x < mycollider.bounds.min.x)
                 boundX = col.transform.position.x + 0.1f;
             else if (col.transform.position.x > mycollider.bounds.min.x)
@@ -228,7 +234,9 @@ public class HealthBoss : MonoBehaviour
 
             GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
             Destroy(spark, 0.3f);
-            
+            */
+            StartCoroutine(FlashBlink());
+
             TakeDamage(col.GetComponent<DamageSubWeapon>().damage);
             Death();
         }
@@ -247,6 +255,7 @@ public class HealthBoss : MonoBehaviour
 
                     AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
 
+                    /*
                     if (collision.transform.position.x < mycollider.bounds.min.x)
                         boundX = collision.transform.position.x + 0.1f;
                     else if (collision.transform.position.x > mycollider.bounds.min.x)
@@ -259,12 +268,20 @@ public class HealthBoss : MonoBehaviour
 
                     GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
                     Destroy(spark, 0.3f);
-
+                    */
+                    StartCoroutine(FlashBlink());
                     TakeDamage(collision.GetComponent<DamageSubWeapon>().damage);
                     Death();
                     nextBurnHolyTime = Time.time + 1f / burnRate;
                 }
             }
         }
+    }
+
+    IEnumerator FlashBlink()
+    {
+        sprRend.material = blink;
+        yield return new WaitForSeconds(0.2f);
+        sprRend.material = original;
     }
 }

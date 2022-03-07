@@ -54,6 +54,9 @@ MonoBehaviour:
     type: 3}
   sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
+  original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
+  sprRenderer: {fileID: 6466424083573737150}
 --- !u!114 &6798464163904997073
 MonoBehaviour:
   m_ObjectHideFlags: 0

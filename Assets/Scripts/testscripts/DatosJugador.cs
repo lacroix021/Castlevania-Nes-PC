@@ -92,7 +92,9 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart38;  
     public bool mapPart38B;  
     public bool mapPart39;  
-    public bool mapPart40;  
+    public bool mapPart40;
+    public bool mapPart41;
+    public bool mapPart42;
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]
@@ -117,4 +119,14 @@ public class DatosJugador : MonoBehaviour
     public bool pitActive;
     public bool floorBrokenLevel3;
     public bool wallBrokenLevel3;
+
+    [Header("TELETRANSPORTADORES")]
+    public bool teleport1;
+    public bool teleport2;
+    public bool teleport3;
+    public bool teleport4;
+    public bool teleport5;
+    public bool teleport6;
+    public bool teleport7;
+
 }

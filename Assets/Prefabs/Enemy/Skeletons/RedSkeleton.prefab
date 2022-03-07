@@ -321,6 +321,8 @@ MonoBehaviour:
   playerColl: {fileID: 0}
   muriendo: 0
   reconstruyendo: 0
+  original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
 --- !u!212 &813249461705863249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -359,7 +361,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 40604218622424081, guid: a0f8bffe781238241a1fb7d56a18ba3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

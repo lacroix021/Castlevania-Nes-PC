@@ -21,6 +21,10 @@ public class Health : MonoBehaviour
     private float boundX;
     private float boundY;
 
+    public Material original;
+    public Material blink;
+    public SpriteRenderer sprRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +67,7 @@ public class Health : MonoBehaviour
         {
             //spawnear la chispa indicando que si hubo daño
 
+            StartCoroutine(FlashDamage());
             TakeDamage(col.GetComponent<DamagePlayer>().damage);
             Death();
             
@@ -70,7 +75,7 @@ public class Health : MonoBehaviour
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
         {
             //spawnear la chispa indicando que si hubo daño
-            
+            /*
             if(col.transform.position.x < mycollider.bounds.min.x)
                 boundX = col.transform.position.x + 0.1f;
             else if (col.transform.position.x > mycollider.bounds.min.x)
@@ -83,6 +88,8 @@ public class Health : MonoBehaviour
 
             GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
             Destroy(spark, 0.3f);
+            */
+            StartCoroutine(FlashDamage());
 
             TakeDamage(col.GetComponent<DamageSubWeapon>().damage);
             Death();
@@ -99,7 +106,7 @@ public class Health : MonoBehaviour
                 if (Time.time >= nextBurnHolyTime)
                 {
                     //spawnear la chispa indicando que si hubo daño
-
+                    /*
                     if (collision.transform.position.x < mycollider.bounds.min.x)
                         boundX = collision.transform.position.x + 0.1f;
                     else if (collision.transform.position.x > mycollider.bounds.min.x)
@@ -112,6 +119,8 @@ public class Health : MonoBehaviour
 
                     GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
                     Destroy(spark, 0.3f);
+                    */
+                    StartCoroutine(FlashDamage());
 
                     TakeDamage(collision.GetComponent<DamageSubWeapon>().damage);
                     Death();
@@ -119,5 +128,12 @@ public class Health : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator FlashDamage()
+    {
+        sprRenderer.material = blink;
+        yield return new WaitForSeconds(0.2f);
+        sprRenderer.material = original;
     }
 }

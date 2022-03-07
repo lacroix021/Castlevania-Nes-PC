@@ -10,6 +10,7 @@ public class OrbEnd : MonoBehaviour
     Collider2D myColl;
     GuardarCargar guardarCargar;
     DatosJugador datosJugador;
+    GameManager gManager;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class OrbEnd : MonoBehaviour
         myColl = GetComponent<Collider2D>();
         guardarCargar = GameManager.gameManager.GetComponent<GuardarCargar>();
         datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
+        gManager = GameManager.gameManager;
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -42,7 +44,10 @@ public class OrbEnd : MonoBehaviour
     void LastSave()
     {
         guardarCargar.GuardarInformacion();
-        PlayerPrefs.SetFloat("TimePlayed", Time.time);
+        PlayerPrefs.SetFloat("Seconds", gManager.seconds);
+        PlayerPrefs.SetFloat("Minutes", gManager.minutes);
+        PlayerPrefs.SetFloat("Hours", gManager.hours);
+
         PlayerPrefs.SetInt("GoldPlayer", datosJugador.gold);
         PlayerPrefs.SetInt("Saves", datosJugador.Saves);
         PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);

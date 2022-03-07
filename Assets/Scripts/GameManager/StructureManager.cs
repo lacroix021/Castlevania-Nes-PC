@@ -21,6 +21,15 @@ public class StructureManager : MonoBehaviour
     public int roomsActive;
     public int roomsTotal;
 
+    //teletransportes
+    public AnkOfLife ankTeleport1;
+    public AnkOfLife ankTeleport2;
+    public AnkOfLife ankTeleport3;
+    public AnkOfLife ankTeleport4;
+    public AnkOfLife ankTeleport5;
+    public AnkOfLife ankTeleport6;
+    public AnkOfLife ankTeleport7;
+
     //a medida que ponga mas paredes rompibles o mas secciones de mapa, se deben agregar a este archivo en sus respectivos campos
     private void Start()
     {
@@ -41,6 +50,14 @@ public class StructureManager : MonoBehaviour
         datosJugador.wallBroken2 = wallBrkn2.wasBroken;
         datosJugador.wallBroken3 = wallBrkn3.wasBroken;
         datosJugador.wallBroken4 = wallBrkn4.wasBroken;
+        //
+        datosJugador.teleport1 = ankTeleport1.isActive;
+        datosJugador.teleport2 = ankTeleport2.isActive;
+        datosJugador.teleport3 = ankTeleport3.isActive;
+        datosJugador.teleport4 = ankTeleport4.isActive;
+        datosJugador.teleport5 = ankTeleport5.isActive;
+        datosJugador.teleport6 = ankTeleport6.isActive;
+        datosJugador.teleport7 = ankTeleport7.isActive;
     }
 
     public void BrokenWallsOnLoadGame()
@@ -52,6 +69,14 @@ public class StructureManager : MonoBehaviour
         wallBrkn2.wasBroken = datosJugador.wallBroken2;
         wallBrkn3.wasBroken = datosJugador.wallBroken3;
         wallBrkn4.wasBroken = datosJugador.wallBroken4;
+        //
+        ankTeleport1.isActive = datosJugador.teleport1;
+        ankTeleport2.isActive = datosJugador.teleport2;
+        ankTeleport3.isActive = datosJugador.teleport3;
+        ankTeleport4.isActive = datosJugador.teleport4;
+        ankTeleport5.isActive = datosJugador.teleport5;
+        ankTeleport6.isActive = datosJugador.teleport6;
+        ankTeleport7.isActive = datosJugador.teleport7;
     }
 
     public void BrokenWallsOnStartGame()
@@ -63,7 +88,16 @@ public class StructureManager : MonoBehaviour
         wallBrkn2.wasBroken = false;
         wallBrkn3.wasBroken = false;
         wallBrkn4.wasBroken = false;
-        
+        //
+        ankTeleport1.isActive = false;
+        ankTeleport2.isActive = false;
+        ankTeleport3.isActive = false;
+        ankTeleport4.isActive = false;
+        ankTeleport5.isActive = false;
+        ankTeleport6.isActive = false;
+        ankTeleport7.isActive = false;
+
+
         CheckWalls();
     }
 
@@ -73,6 +107,14 @@ public class StructureManager : MonoBehaviour
         wallBrkn2 = GameObject.Find("BrokenWallManager2").GetComponent<BrokenWallManager>();
         wallBrkn3 = GameObject.Find("BrokenWallManager3").GetComponent<BrokenWallManager>();
         wallBrkn4 = GameObject.Find("BrokenWallManager4").GetComponent<BrokenWallManager>();
+
+        ankTeleport1 = GameObject.Find("Ank").GetComponent<AnkOfLife>();
+        ankTeleport2 = GameObject.Find("Ank2").GetComponent<AnkOfLife>();
+        ankTeleport3 = GameObject.Find("Ank3").GetComponent<AnkOfLife>();
+        ankTeleport4 = GameObject.Find("Ank4").GetComponent<AnkOfLife>();
+        ankTeleport5 = GameObject.Find("Ank5").GetComponent<AnkOfLife>();
+        ankTeleport6 = GameObject.Find("Ank6").GetComponent<AnkOfLife>();
+        ankTeleport7 = GameObject.Find("Ank7").GetComponent<AnkOfLife>();
     }
 
     void FindMapParts()
@@ -129,6 +171,8 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart39 = mapParts[41].mapActive;    
             datosJugador.mapPart40 = mapParts[42].mapActive;    
             datosJugador.mapPart38B = mapParts[43].mapActive;   //saveRoom PreDracula 
+            datosJugador.mapPart41 = mapParts[44].mapActive;   //Extra Room startGameUp 
+            datosJugador.mapPart42 = mapParts[45].mapActive;   //Extra Room startGameUp 
         }
     }
 
@@ -180,6 +224,8 @@ public class StructureManager : MonoBehaviour
         mapParts[41].mapActive = datosJugador.mapPart39;    
         mapParts[42].mapActive = datosJugador.mapPart40;    
         mapParts[43].mapActive = datosJugador.mapPart38B;   //saveRoom Predracula 
+        mapParts[44].mapActive = datosJugador.mapPart41;   //Extra Room startGameUp
+        mapParts[45].mapActive = datosJugador.mapPart42;   //Extra Room startGameUp
     }
 
     public void MapPartsStartGame()
@@ -189,7 +235,6 @@ public class StructureManager : MonoBehaviour
         for (int i = 0; i < mapParts.Length; i++)
         {
             mapParts[i].mapActive = false;
-            
         }
 
         CheckMap();

@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     
 
     public GameObject panelPause;
-    public bool GamePaused;
+    public bool gamePaused;
 
     [Header("SPRITES COMPLEMENTO")]
     public Image imgSub;
@@ -97,6 +97,30 @@ public class GameManager : MonoBehaviour
     public ActivateMusic[] musicMap;
     public GameObject[] audios;
 
+    //Save & Teleport Menu
+    [Header("Save Teleport Menu")]
+    public GameObject saveTeleportUI;
+    public bool teleportMenu;
+    public Button saveBtn;
+    public Collider2D collPlayer;
+    public ParticleSystem particleA;
+    public ParticleSystem particleB;
+    public Text nameTeleporter;
+    public AnkOfLife [] teleports;
+
+    public GameObject teleportsPanel;
+
+    //teleport buttons
+    public GameObject teleportBtn1;
+    public GameObject teleportBtn2;
+    public GameObject teleportBtn3;
+    public GameObject teleportBtn4;
+    public GameObject teleportBtn5;
+    public GameObject teleportBtn6;
+    public GameObject teleportBtn7;
+
+    public Animator teleportFadeAnim;
+
     private void Awake()
     {
         if(GameManager.gameManager == null)
@@ -138,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (playerHealth.currentHealth > 0)
+        if (playerHealth.currentHealth > 0 && !teleportMenu)
         {
             if (panelPause.activeSelf == false)
             {
@@ -147,7 +171,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.effectsVol = -20;
                 Time.timeScale = 0;
                 panelPause.SetActive(true);
-                GamePaused = true;
+                gamePaused = true;
                 /////////////////////////////////////////////////////////
                 buttonNav.Select();
 
@@ -164,7 +188,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.effectsVol = -2;
                 Time.timeScale = 1;
                 panelPause.SetActive(false);
-                GamePaused = false;
+                gamePaused = false;
                 navigationMode = false;
                 buttonQuit.enabled = true;
 
@@ -185,6 +209,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         TimeClock();
+        TeleportMenu();
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
         
 
@@ -225,8 +250,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         AudioManager.instance.masterVol = 0;
         AudioManager.instance.effectsVol = -2;
-        GamePaused = false;
+        gamePaused = false;
         panelPause.SetActive(false);
+        teleportMenu = false;
         SceneManager.LoadScene(0);
         startGame = false;
     }
@@ -413,8 +439,6 @@ public class GameManager : MonoBehaviour
 
         if (!instancePlayer)
         {
-            //instancePlayer = Instantiate(playerPrefab, datosJugador.posPlayer, Quaternion.identity);
-            //instancePlayer.name = playerPrefab.name;
             Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat("LastPositionX"), PlayerPrefs.GetFloat("LastPositionY"));
             instancePlayer = GameObject.FindGameObjectWithTag("Player");
             seconds = PlayerPrefs.GetFloat("Seconds");
@@ -442,8 +466,6 @@ public class GameManager : MonoBehaviour
         
         if (!instancePlayer)
         {
-            //instancePlayer = Instantiate(playerPrefab, startPositionPlayer.position, Quaternion.identity);
-            //instancePlayer.name = playerPrefab.name;
             instancePlayer = GameObject.FindGameObjectWithTag("Player");
             instancePlayer.transform.position = startPositionPlayer.position;
             instancePlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -526,5 +548,191 @@ public class GameManager : MonoBehaviour
         //timeSSTxt.text = seconds.ToString("F0");
         //timeMMTxt.text = minutes.ToString("F0");
         //timeHHTxt.text = hours.ToString("F0");
+    }
+   
+    void TeleportMenu()
+    {
+        if (teleportMenu && !gameManager.gamePaused)
+        {
+            gamePaused = true;
+            Time.timeScale = 0;
+            saveTeleportUI.SetActive(true);
+            teleports = GameObject.FindObjectsOfType<AnkOfLife>();
+        }
+        else if(!teleportMenu && panelPause.activeSelf == false)
+        {
+            gamePaused = false;
+            Time.timeScale = 1;
+            saveTeleportUI.SetActive(false);
+        }
+    }
+
+    public void SaveInput()
+    {
+        particleA.Play();
+        particleB.Play();
+        //funcion de guardado
+        SaveGame();
+        datosJugador.Saves += 1;
+        PlayerPrefs.SetFloat("Seconds", seconds);
+        PlayerPrefs.SetFloat("Minutes", minutes);
+        PlayerPrefs.SetFloat("Hours", hours);
+        PlayerPrefs.SetInt("GoldPlayer", datosJugador.gold);
+        PlayerPrefs.SetInt("Saves", datosJugador.Saves);
+        PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);
+        PlayerPrefs.SetFloat("LastPositionX", collPlayer.transform.position.x);
+        PlayerPrefs.SetFloat("LastPositionY", collPlayer.transform.position.y);
+        PlayerPrefs.SetFloat("LastPositionZ", collPlayer.transform.position.z);
+        
+        guardarCargar.GuardarInformacion();
+        teleportMenu = false;
+    }
+
+    void SaveGame()
+    {
+        AudioManager.instance.PlayAudio(AudioManager.instance.saveSound);
+        //cura al jugador al guardar
+        playerHealth.healing = true;
+        playerHealth.vidaACurar = datosJugador.maxHealth;
+    }
+
+    public void TeleportBtn()
+    {
+        if(teleportsPanel.activeSelf == false)
+        {
+            ControlTeleportsActive();
+            teleportsPanel.SetActive(true);
+            saveTeleportUI.SetActive(false);
+        }
+        else
+        {
+            teleportsPanel.SetActive(false);
+            saveTeleportUI.SetActive(true);
+            saveBtn.Select();
+        }
+    }
+
+    IEnumerator StartFadeTele(Vector2 position)
+    {
+        yield return new WaitForSeconds(1.4f);
+        instancePlayer.transform.position = position;
+        instancePlayer.GetComponent<SimonController>().canMove = true;
+    }
+    
+    public void TeleportGarden()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport1.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportChapel()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport2.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportIvory()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport3.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportPitfall()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport4.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportPrison()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport5.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportAbyss()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport6.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+    public void TeleportHope()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+        StartCoroutine(StartFadeTele(structureManager.ankTeleport7.transform.position));
+        AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
+    }
+
+   
+
+    void ControlTeleportsActive()
+    {
+        if (!datosJugador.teleport1)
+            teleportBtn1.SetActive(false);
+        else
+            teleportBtn1.SetActive(true);
+
+        if (!datosJugador.teleport2)
+            teleportBtn2.SetActive(false);
+        else
+            teleportBtn2.SetActive(true);
+
+        if (!datosJugador.teleport3)
+            teleportBtn3.SetActive(false);
+        else
+            teleportBtn3.SetActive(true);
+
+        if (!datosJugador.teleport4)
+            teleportBtn4.SetActive(false);
+        else
+            teleportBtn4.SetActive(true);
+
+        if (!datosJugador.teleport5)
+            teleportBtn5.SetActive(false);
+        else
+            teleportBtn5.SetActive(true);
+
+        if (!datosJugador.teleport6)
+            teleportBtn6.SetActive(false);
+        else
+            teleportBtn6.SetActive(true);
+
+        if (!datosJugador.teleport7)
+            teleportBtn7.SetActive(false);
+        else
+            teleportBtn7.SetActive(true);
     }
 }

@@ -19,6 +19,7 @@ public class RedSkeletonController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    SpriteRenderer spr;
 
     float nextFlipTime;
     public float flipRate;
@@ -32,12 +33,16 @@ public class RedSkeletonController : MonoBehaviour
     public bool muriendo;
     public bool reconstruyendo;
 
+    public Material original;
+    public Material blink;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         mycollider = GetComponent<Collider2D>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -163,11 +168,19 @@ public class RedSkeletonController : MonoBehaviour
         if (collision.CompareTag("Weapon"))
         {
             AudioManager.instance.PlayAudio(AudioManager.instance.hit);
-            GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-            Destroy(spark, 0.3f);
+            //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+            //Destroy(spark, 0.3f);
+            StartCoroutine(FlashBlink());
             die = true;
             StartCoroutine(Revive());
         }
+    }
+
+    IEnumerator FlashBlink()
+    {
+        spr.material = blink;
+        yield return new WaitForSeconds(0.5f);
+        spr.material = original;
     }
 
     public void Muerto()

@@ -32,8 +32,6 @@ public class SkeletonController : MonoBehaviour
     public Collider2D feetPos;
 
     public LayerMask layerGround;
-    
-
 
     Rigidbody2D rb;
     Animator anim;
@@ -167,11 +165,11 @@ public class SkeletonController : MonoBehaviour
 
             TypeMove();
             //escoger la direccion del jugador
-            if (playerPos.position.x < transform.position.x)
+            if (playerPos.position.x < transform.position.x - 0.4f)
             {
                 direction = -1;
             }
-            else if (playerPos.position.x > transform.position.x)
+            else if (playerPos.position.x  > transform.position.x + 0.4f)
             {
                 direction = 1;
             }

@@ -9,9 +9,6 @@ public class AnkOfLife : MonoBehaviour
     public ParticleSystem particleB;
 
     GameManager gManager;
-    HealthPlayer playerHealth;
-
-    AudioSource aSource;
 
     /// <summary>
     //funcion senoidal
@@ -22,26 +19,15 @@ public class AnkOfLife : MonoBehaviour
     float timeSaveRate;
     public float saveRate;
 
-
-    /*probando nuevo metodo de guardado*/
-    GuardarCargar guardarCargar;
-    DatosJugador datosJugador;
-
-    /**********************************/
-    
+    public Collider2D collPlayer;
+    public bool isActive;
+    public string nameTp;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
         gManager = GameManager.gameManager;
-        datosJugador = gManager.GetComponent<DatosJugador>();
         posY = transform.position.y;
-        aSource = GetComponent<AudioSource>();
-
-        /**/
-        guardarCargar = gManager.GetComponent<GuardarCargar>();
-        /**/
     }
 
     private void FixedUpdate()
@@ -59,40 +45,17 @@ public class AnkOfLife : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D coll)
     {
-        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().activating)
+        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().activating && !gManager.gamePaused)
         {
-            if(Time.time >= timeSaveRate)
-            {
-                particleA.Play();
-                particleB.Play();
-                //funcion de guardado
-                SaveGame();
-                datosJugador.Saves += 1;
-                PlayerPrefs.SetFloat("Seconds", gManager.seconds);
-                PlayerPrefs.SetFloat("Minutes", gManager.minutes);
-                PlayerPrefs.SetFloat("Hours", gManager.hours);
-                PlayerPrefs.SetInt("GoldPlayer", datosJugador.gold);
-                PlayerPrefs.SetInt("Saves", datosJugador.Saves);
-                PlayerPrefs.SetFloat("MapPercent", datosJugador.percentMap);
-                PlayerPrefs.SetFloat("LastPositionX", coll.transform.position.x);
-                PlayerPrefs.SetFloat("LastPositionY", coll.transform.position.y);
-                PlayerPrefs.SetFloat("LastPositionZ", coll.transform.position.z);
-                timeSaveRate = Time.time + 1 / saveRate;
-                /**/
-                guardarCargar.GuardarInformacion();
-                
-                /**/
-            }
+            isActive = true;
+            gManager.collPlayer = coll;
+            gManager.particleA = particleA;
+            gManager.particleB = particleB;
+            gManager.nameTeleporter.text = nameTp;
+
+            //activar menu de guardado o teletransporte
+            gManager.teleportMenu = true;
+            gManager.GetComponentInChildren<StructureManager>().CheckWalls();
         }
-    }
-
-    void SaveGame()
-    {
-        aSource.loop = false;
-        aSource.Play();
-
-        //cura al jugador al guardar
-        playerHealth.healing = true;
-        playerHealth.vidaACurar = datosJugador.maxHealth;
     }
 }

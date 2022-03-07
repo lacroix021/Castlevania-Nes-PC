@@ -30,7 +30,9 @@ public class AudioManager : MonoBehaviour
         lifeLost,
         batsFlying,
         slide,
-        end;
+        end,
+        saveSound,
+        teleport;
 
     public static AudioManager instance;
 

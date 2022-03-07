@@ -355,6 +355,7 @@ MonoBehaviour:
   slide: {fileID: 6200000, guid: 50dd2b5b6aba5374bb27dda7d7f71ae8, type: 2}
   sticky: {fileID: 6200000, guid: d9219948c6850524d9f0fcbac1a3583d, type: 2}
   pauseGame: 0
+  cancelInput: 0
 --- !u!212 &8837055334543314094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -716,6 +717,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f695cc99-af49-44f4-aa74-d66e9911b4f4
     m_ActionName: Controller/YAxisCross[/DualShock3GamepadHID/rightStick,/Keyboard/leftShift,/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8837055334543314088}
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: df225ecc-248b-4a29-9c2a-ef2c814ce844
+    m_ActionName: Controller/Cancel[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller

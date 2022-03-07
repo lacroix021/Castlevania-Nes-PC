@@ -82,6 +82,9 @@ MonoBehaviour:
     type: 3}
   sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
+  original: {fileID: 0}
+  blink: {fileID: 0}
+  sprRenderer: {fileID: 0}
 --- !u!114 &1842371752900733194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +149,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6568183116899429346, guid: a26b431de41c3e847bab6c3ca199176a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -211,6 +211,29 @@ public class InfiniteEnemyController : MonoBehaviour
                             nextSpawnTime = Time.time + 1f / spawnRate;
                         }
                     }
+                    else if (bounds[11].activeInHierarchy == true || bounds[12].activeInHierarchy == true)
+                    {
+                        //enemyPrefab = Hawk;
+                        spawnRate = 0.1f;
+
+                        if (Time.time >= nextSpawnTime)
+                        {
+                            int num = Random.Range(0, 2);
+
+                            if (num == 0)
+                            {
+                                GameObject instancedEnemy = Instantiate(hawkPrefab, new Vector2(posCUp.position.x, posCUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+                            else if (num == 1)
+                            {
+                                GameObject instancedEnemy = Instantiate(hawkPrefab, new Vector2(posDUp.position.x, posDUp.position.y), Quaternion.identity);
+                                instancedEnemy.transform.parent = fatherBound;
+                            }
+
+                            nextSpawnTime = Time.time + 1f / spawnRate;
+                        }
+                    }
                     //aqui agregaria otro tipo de enemigos dependiendo el bound, tener en cuenta el numero de bound en el array hecho manualmente
                     //agregar los halcones en su respectivo boundary con los puntos C y D que son spawners exclusivos para ellos
                 }
