@@ -278,7 +278,7 @@ public class SimonController : MonoBehaviour
         if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
         {
             onSlope = true;
-            colliderFeet.gameObject.SetActive(true);
+            //colliderFeet.gameObject.SetActive(true);
             // Apply the opposite force against the slope force 
             // You will need to provide your own slopeFriction to stabalize movement
             rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * slopeFriction), rb.velocity.y);

@@ -95,6 +95,10 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart40;
     public bool mapPart41;
     public bool mapPart42;
+    public bool mapPart43;  //new zone extraA_1
+    public bool mapPart44;  //new zone extraA_2
+    public bool mapPart45;  //new zone extraA_3
+    public bool mapPart46;  //new zone extraA_4 Boss
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]

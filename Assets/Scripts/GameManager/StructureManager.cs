@@ -173,6 +173,10 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart38B = mapParts[43].mapActive;   //saveRoom PreDracula 
             datosJugador.mapPart41 = mapParts[44].mapActive;   //Extra Room startGameUp 
             datosJugador.mapPart42 = mapParts[45].mapActive;   //Extra Room startGameUp 
+            datosJugador.mapPart43 = mapParts[46].mapActive;   //ExtraA_1 room1 new zone 
+            datosJugador.mapPart44 = mapParts[47].mapActive;   //ExtraA_2 room2 new zone 
+            datosJugador.mapPart45 = mapParts[48].mapActive;   //ExtraA_3 room3 new zone 
+            datosJugador.mapPart46 = mapParts[49].mapActive;   //ExtraA_4 room4 Boss
         }
     }
 
@@ -226,6 +230,10 @@ public class StructureManager : MonoBehaviour
         mapParts[43].mapActive = datosJugador.mapPart38B;   //saveRoom Predracula 
         mapParts[44].mapActive = datosJugador.mapPart41;   //Extra Room startGameUp
         mapParts[45].mapActive = datosJugador.mapPart42;   //Extra Room startGameUp
+        mapParts[46].mapActive = datosJugador.mapPart43;   //ExtraA_1 room1 new zone
+        mapParts[47].mapActive = datosJugador.mapPart44;   //ExtraA_2 room2 new zone
+        mapParts[48].mapActive = datosJugador.mapPart45;   //ExtraA_3 room3 new zone
+        mapParts[49].mapActive = datosJugador.mapPart46;   //ExtraA_4 room4 nBoss
     }
 
     public void MapPartsStartGame()
