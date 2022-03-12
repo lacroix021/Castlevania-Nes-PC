@@ -257,6 +257,18 @@ TextureImporter:
   - first:
       213: -1683622448972634484
     second: simon_belmont_Spr_10
+  - first:
+      213: 1820733821122021697
+    second: Doppelganger_Axe
+  - first:
+      213: 8486584564089078638
+    second: Doppelganger_Knife
+  - first:
+      213: -5919408588119507279
+    second: Doppelganger_Bottle
+  - first:
+      213: 4363019825984660849
+    second: Doppelganger_Cross
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1101,90 +1113,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: simon belmont_Spr_57
-      rect:
-        serializedVersion: 2
-        x: 355
-        y: 392
-        width: 16
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a8cefadf3adc5ba0800000000000000
-      internalID: -6098759827574568800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon belmont_Spr_59
-      rect:
-        serializedVersion: 2
-        x: 419
-        y: 389
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89188d63806d39c70800000000000000
-      internalID: 8976753813047771544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon belmont_Spr_61
-      rect:
-        serializedVersion: 2
-        x: 516
-        y: 390
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61426d91c231f7c10800000000000000
-      internalID: 2053381035237188630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon belmont_Spr_65
-      rect:
-        serializedVersion: 2
-        x: 588
-        y: 388
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39e2b90605afc9d50800000000000000
-      internalID: 6745541565019270803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: simon belmont_Spr_66
       rect:
         serializedVersion: 2
@@ -1395,27 +1323,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: simon belmont_Spr_76
-      rect:
-        serializedVersion: 2
-        x: 575
-        y: 353
-        width: 224
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 343ac62543a456410800000000000000
-      internalID: 1469662441987941187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: simon belmont_Spr_77
       rect:
         serializedVersion: 2
@@ -1432,27 +1339,6 @@ TextureImporter:
       bones: []
       spriteID: 677de88808420a720800000000000000
       internalID: 2855322298218370934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon belmont_Spr_58
-      rect:
-        serializedVersion: 2
-        x: 575
-        y: 353
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5148dd9ea2382c50800000000000000
-      internalID: 6640613376111690078
       vertices: []
       indices: 
       edges: []
@@ -1516,90 +1402,6 @@ TextureImporter:
       bones: []
       spriteID: 31b5f033572470bc0800000000000000
       internalID: -3817009088037954797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon_belmont_Spr_3
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 309
-        width: 23
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5ab01f6312313190800000000000000
-      internalID: -7984545605302044070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon_belmont_Spr_4
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 309
-        width: 23
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8884bbbf45c14fe80800000000000000
-      internalID: -8145854674680199032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon_belmont_Spr_5
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 309
-        width: 23
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08aba5d9f181704a0800000000000000
-      internalID: -6627301802589373824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: simon_belmont_Spr_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 309
-        width: 23
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6f15e5838c041180800000000000000
-      internalID: -9145671184256000149
       vertices: []
       indices: 
       edges: []
@@ -1684,6 +1486,90 @@ TextureImporter:
       bones: []
       spriteID: c86ec198d4292a8e0800000000000000
       internalID: -1683622448972634484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doppelganger_Axe
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 330
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149848e73cb844910800000000000000
+      internalID: 1820733821122021697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doppelganger_Knife
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 334
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63c7da72b766c570800000000000000
+      internalID: 8486584564089078638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doppelganger_Bottle
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 334
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be7db060490adda0800000000000000
+      internalID: -5919408588119507279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doppelganger_Cross
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 331
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1756dcb5a6f8c8c30800000000000000
+      internalID: 4363019825984660849
       vertices: []
       indices: 
       edges: []

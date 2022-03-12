@@ -51,6 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadow: {fileID: 4215677648446250531, guid: 2aad9eda6520cb44388c78c9adc7f65f, type: 3}
   shadowTime: 0.04
+  shadowColorAxe: {r: 0.11189575, g: 0.109803915, b: 1, a: 0.38431373}
+  shadowColorAxePow: {r: 1, g: 0, b: 0.15517235, a: 0.45490196}
+  shadowColorCross: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &6440670645779939579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,11 +68,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeSup: 1
   damage: 3
-  knife: 0
-  axe: 1
-  holyWater: 0
-  holyFire: 0
-  cross: 0
 --- !u!114 &5601664015668229522
 MonoBehaviour:
   m_ObjectHideFlags: 0

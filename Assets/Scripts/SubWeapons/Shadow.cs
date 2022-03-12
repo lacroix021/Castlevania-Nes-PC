@@ -8,7 +8,9 @@ public class Shadow : MonoBehaviour
     private float shadowTimeCD;
     public float shadowTime;
     float z = 0;
-
+    public Color shadowColorAxe;
+    public Color shadowColorAxePow;
+    public Color shadowColorCross;
     DatosJugador datosJugador;
     // Start is called before the first frame update
     void Start()
@@ -41,16 +43,16 @@ public class Shadow : MonoBehaviour
 
         if(datosJugador.multiplierPow == 2 && datosJugador.typeSub == 1)
         {
-            currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(10, 0, 0, 0.6f);
+            currentShadow.GetComponent<SpriteRenderer>().color = shadowColorAxePow;
         }
         else
         {
-            currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(10, 0, 10, 0.3f);
+            currentShadow.GetComponent<SpriteRenderer>().color = shadowColorAxe;
         }
 
         if(datosJugador.typeSub == 3)
         {
-            currentShadow.GetComponent<SpriteRenderer>().color = new Vector4(0.3f, 0.5f, 1, 0.6f);
+            currentShadow.GetComponent<SpriteRenderer>().color = shadowColorCross;
         }
     }
 }
