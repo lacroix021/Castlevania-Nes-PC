@@ -16,6 +16,11 @@ public class SimonController : MonoBehaviour
     public LayerMask thisGround;
     public float limitY;
     public float slopeFriction = 0.01f;
+    public float rayLenght;
+    RaycastHit2D hitA;
+    RaycastHit2D hitB;
+    public Transform feetA;
+    public Transform feetB;
 
     float nextAttackTime = 0f;
     public float attackRate = 2f;
@@ -98,6 +103,7 @@ public class SimonController : MonoBehaviour
         
         Attacking();
         ClimbingChain();
+        CheckGround();
 
         animAttack = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         animCrouchAttack = anim.GetCurrentAnimatorStateInfo(0).IsTag("CrouchAttack");
@@ -123,7 +129,7 @@ public class SimonController : MonoBehaviour
         JumpControll();
         Slide();
         NormalizeSlope();
-        CheckGround();
+        
 
         //cambio de material de fisicas
         if (rb.velocity.x != 0 && !animSub)
@@ -272,19 +278,21 @@ public class SimonController : MonoBehaviour
 
     void NormalizeSlope()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, thisGround);
-        Debug.DrawRay(transform.position, Vector2.down * 0.2f, Color.green);
+        hitA = Physics2D.Raycast(feetA.position, Vector2.down, rayLenght, thisGround);
+        hitB = Physics2D.Raycast(feetB.position, Vector2.down, rayLenght, thisGround);
+        Debug.DrawRay(feetA.position, Vector2.down * rayLenght, Color.green);
+        Debug.DrawRay(feetB.position, Vector2.down * rayLenght, Color.green);
 
-        if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
+        if (hitA.collider != null && Mathf.Abs(hitA.normal.x) > 0.1f || hitB.collider != null && Mathf.Abs(hitB.normal.x) > 0.1f)
         {
             onSlope = true;
-            //colliderFeet.gameObject.SetActive(true);
             // Apply the opposite force against the slope force 
             // You will need to provide your own slopeFriction to stabalize movement
-            rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * slopeFriction), rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x - (hitA.normal.x * slopeFriction), rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x - (hitB.normal.x * slopeFriction), rb.velocity.y);
 
         }
-        else if (hit.collider != null && hit.normal.x < 0.1f)
+        else if (hitA.collider != null && hitA.normal.x < 0.1f || hitB.collider != null && hitB.normal.x < 0.1f)
         {
             onSlope = false;
         }
@@ -369,11 +377,11 @@ public class SimonController : MonoBehaviour
         isGrounded = Physics2D.IsTouchingLayers(colliderFeet, thisGround);
         
         //se inactiva el detector de piso cuando se salta y se activa nuevamente cuando va cayendo el jugador
-        if(!isGrounded && rb.velocity.y > 0)
+        if(!isGrounded && rb.velocity.y > 0 && hitA.collider == null && hitB.collider == null)
         {
             colliderFeet.gameObject.SetActive(false);
         }
-        else if(rb.velocity.y <= 0f || onSlope)
+        else if(hitA.collider != null || hitB.collider != null)
         {
             colliderFeet.gameObject.SetActive(true);
         }
