@@ -116,6 +116,7 @@ public class DatosJugador : MonoBehaviour
     public bool bossMummyB;
     public bool bossFranken;
     public bool bossDeath;
+    public bool bossDoppelganger;
 
     //estado de eventos del mapa
     //cuando se agreguen mas eventos, tambien agregar su respectivo booleano

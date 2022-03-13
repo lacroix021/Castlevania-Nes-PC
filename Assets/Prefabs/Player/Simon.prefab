@@ -304,6 +304,8 @@ MonoBehaviour:
   vidaACurar: 0
   damaged: 0
   healing: 0
+  blood: {fileID: 4936639888438766894, guid: 9f3a6efb0e1629d41a256ada79c8c007, type: 3}
+  bloodEmiter: {fileID: 8837055335758887420}
 --- !u!114 &8837055334543314088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1360,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2085547381
   m_SortingLayer: -1
-  m_SortingOrder: -17
+  m_SortingOrder: -10
   m_Sprite: {fileID: -715081830187464666, guid: bb776addc675dbf49a3b58e05baf8469,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

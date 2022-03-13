@@ -13,7 +13,8 @@ public class HealthBoss : MonoBehaviour
         BossFranky,
         BossDeath,
         BossDracula,
-        BeastDracula
+        BeastDracula,
+        Doppelganger
     };
 
     public typeBoss boss;
@@ -41,6 +42,7 @@ public class HealthBoss : MonoBehaviour
     public Material original;
     public Material blink;
 
+    DoppelgangerController doppelController;
 
     private void Awake()
     {
@@ -54,6 +56,11 @@ public class HealthBoss : MonoBehaviour
 
         bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
         mycollider = GetComponent<BoxCollider2D>();
+
+        if(boss == typeBoss.Doppelganger)
+        {
+            doppelController = GetComponent<DoppelgangerController>();
+        }
     }
 
     public void HealthCheck()
@@ -119,6 +126,13 @@ public class HealthBoss : MonoBehaviour
                 GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().battle = false;
 
             }
+            else if (boss == typeBoss.Doppelganger)
+            {
+                isDead = true;
+                //se apaga el modo batalla para que la musica vuelva a la normalidad
+                GameObject.Find("StageExtraA").GetComponent<ActivateMusic>().battle = false;
+
+            }
             else if(GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadA &&
                 GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>().isDeadB)
             {
@@ -127,16 +141,41 @@ public class HealthBoss : MonoBehaviour
         }
     }
 
+    IEnumerator AnimDieDoppelganger()
+    {
+        yield return new WaitForSeconds(2);
+        GameObject instance = Instantiate(deadEffect, transform.position, Quaternion.identity);
+        GetComponent<LootBoss>().DropLoot();
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator WaitToGround()
+    {
+        yield return new WaitUntil(() => doppelController.isGrounded);
+        doppelController.rb.bodyType = RigidbodyType2D.Static;
+        doppelController.myCollider.enabled = false;
+        
+        StartCoroutine(AnimDieDoppelganger());
+    }
     void Death()
     {
         if (isDead)
         {
-            if(boss != typeBoss.BossDracula)
+            if(boss == typeBoss.BossDracula || boss == typeBoss.Doppelganger)
+            {
+                if (boss == typeBoss.Doppelganger)
+                {
+                    doppelController.canMove = false;
+                    doppelController.anim.SetBool("Die", isDead);
+                    StartCoroutine(WaitToGround());
+                }
+            }
+            else
             {
                 GameObject instance = Instantiate(deadEffect, transform.position, Quaternion.identity);
+                GetComponent<LootBoss>().DropLoot();
             }
-
-            GetComponent<LootBoss>().DropLoot();
+            
             //activador de evento de Pit
             //guardar tambien esto en el manager al salvar el juego
 
@@ -181,12 +220,14 @@ public class HealthBoss : MonoBehaviour
             {
                 //poner evento de momia si lo hay
             }
-            
-            
 
             //poner algo en el pit para que valga la pena el retroceso
 
-            if(boss != typeBoss.BossDracula)
+            if(boss == typeBoss.BossDracula || boss == typeBoss.Doppelganger)
+            {
+                return;
+            }
+            else
             {
                 Destroy(this.gameObject);
             }
@@ -195,7 +236,6 @@ public class HealthBoss : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        
         currentHealth -= damage;
         HealthCheck();
     }
@@ -207,11 +247,6 @@ public class HealthBoss : MonoBehaviour
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
             
             TakeDamage(col.GetComponent<DamagePlayer>().damage);
-            //cambiar la chispa de daño por un shader que
-            //vuelva blanco al sprite y lo retorne a la normalidad
-            //spawnear la chispa indicando que si hubo daño
-            //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-            //Destroy(spark, 0.3f);
 
             StartCoroutine(FlashBlink());
             Death();
@@ -221,20 +256,6 @@ public class HealthBoss : MonoBehaviour
             //spawnear la chispa indicando que si hubo daño
             AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
 
-            /*
-            if (col.transform.position.x < mycollider.bounds.min.x)
-                boundX = col.transform.position.x + 0.1f;
-            else if (col.transform.position.x > mycollider.bounds.min.x)
-                boundX = col.transform.position.x - 0.1f;
-
-            if (col.transform.position.y < mycollider.bounds.min.y)
-                boundY = col.transform.position.y + 0.1f;
-            else if (col.transform.position.y > mycollider.bounds.min.y)
-                boundY = col.transform.position.y - 0.1f;
-
-            GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
-            Destroy(spark, 0.3f);
-            */
             StartCoroutine(FlashBlink());
 
             TakeDamage(col.GetComponent<DamageSubWeapon>().damage);
@@ -251,24 +272,8 @@ public class HealthBoss : MonoBehaviour
             {
                 if (Time.time >= nextBurnHolyTime)
                 {
-                    //spawnear la chispa indicando que si hubo daño
-
                     AudioManager.instance.PlayAudio(AudioManager.instance.makeDamageBoss);
-
-                    /*
-                    if (collision.transform.position.x < mycollider.bounds.min.x)
-                        boundX = collision.transform.position.x + 0.1f;
-                    else if (collision.transform.position.x > mycollider.bounds.min.x)
-                        boundX = collision.transform.position.x - 0.1f;
-
-                    if (collision.transform.position.y < mycollider.bounds.min.y)
-                        boundY = collision.transform.position.y + 0.1f;
-                    else if (collision.transform.position.y > mycollider.bounds.min.y)
-                        boundY = collision.transform.position.y - 0.1f;
-
-                    GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
-                    Destroy(spark, 0.3f);
-                    */
+                    
                     StartCoroutine(FlashBlink());
                     TakeDamage(collision.GetComponent<DamageSubWeapon>().damage);
                     Death();

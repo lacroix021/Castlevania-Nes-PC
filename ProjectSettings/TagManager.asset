@@ -17,6 +17,7 @@ TagManager:
   - HeadPlayer
   - PosPlayer
   - MusicBox
+  - Trap
   layers:
   - Default
   - TransparentFX

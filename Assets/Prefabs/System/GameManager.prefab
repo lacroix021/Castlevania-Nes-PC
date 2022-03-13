@@ -2708,7 +2708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5518960983593791533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9299,6 +9299,7 @@ MonoBehaviour:
   ceilingMummies: {fileID: 0}
   frankenSpawner: {fileID: 0}
   deathSpawner: {fileID: 0}
+  doppelSpawner: {fileID: 0}
 --- !u!1 &7679297433986115960
 GameObject:
   m_ObjectHideFlags: 0
@@ -9503,6 +9504,12 @@ MonoBehaviour:
   mapPart38B: 0
   mapPart39: 0
   mapPart40: 0
+  mapPart41: 0
+  mapPart42: 0
+  mapPart43: 0
+  mapPart44: 0
+  mapPart45: 0
+  mapPart46: 0
   wallBroken1: 0
   wallBroken2: 0
   wallBroken3: 0
@@ -9513,6 +9520,7 @@ MonoBehaviour:
   bossMummyB: 0
   bossFranken: 0
   bossDeath: 0
+  bossDoppelganger: 0
   pitActive: 0
   floorBrokenLevel3: 0
   wallBrokenLevel3: 0

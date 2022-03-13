@@ -32,6 +32,8 @@ public class RangeAttackDoppelganger : MonoBehaviour
     public GameObject prefabICrushAxe;
     GameObject instanceCrush;
 
+    float randomTypeTime;
+    public float randomTypeRate;
 
 
     // Start is called before the first frame update
@@ -50,45 +52,17 @@ public class RangeAttackDoppelganger : MonoBehaviour
 
     void InputController()
     {
-        if (enemyController.distanceAttackRange && enemyController.canMove)
+        if(Time.time >= randomTypeTime)
         {
-            if (enemyController.isGrounded)
-            {
-                enemyController.rb.velocity = new Vector2(0, 0);
-            }
+            typeSub = Random.Range(0, 6);   //randomiza el tipo de sub arma de 0 a 3, mayor que eso es sin subarmas
+
+            randomTypeTime = Time.time + 1 / randomTypeRate;
+        }
+
+        if (enemyController.distanceAttackRange && enemyController.canMove && !enemyController.isSlide)
+        {
             //Dagas y cooldown
-            if (typeSub == 0 && enemyController.v < 0.1f)
-            {
-                if (Time.time >= nextSubTime)
-                {
-                    enemyController.anim.SetTrigger("Sub");
-                    enemyController.rb.velocity = new Vector2(0, enemyController.rb.velocity.y);
-                    nextSubTime = Time.time + 1f / subRate;
-                }
-            }
-            //achas y cooldown
-            else if (typeSub == 1 && enemyController.v < 0.1f)
-            {
-                if (Time.time >= nextSubTime)
-                {
-                    enemyController.anim.SetTrigger("Sub");
-                    enemyController.rb.velocity = new Vector2(0, enemyController.rb.velocity.y);
-                    
-                    nextSubTime = Time.time + 1f / subRate;
-                }
-            }
-            //agua bendita y cooldown
-            else if (typeSub == 2 && enemyController.v < 0.1f)
-            {
-                if (Time.time >= nextSubTime)
-                {
-                    enemyController.anim.SetTrigger("Sub");
-                    enemyController.rb.velocity = new Vector2(0, enemyController.rb.velocity.y);
-                    nextSubTime = Time.time + 1f / subRate;
-                }
-            }
-            //cruz y cooldown
-            else if (typeSub == 3 && enemyController.v < 0.1f)
+            if (typeSub < 4)
             {
                 if (Time.time >= nextSubTime)
                 {
@@ -120,7 +94,10 @@ public class RangeAttackDoppelganger : MonoBehaviour
 
     void InstantiateDSubWeapon()
     {
-        Instantiate(subWeapons[typeSub], subPos.position, Quaternion.identity);
+        if(typeSub < 4)
+        {
+            Instantiate(subWeapons[typeSub], subPos.position, Quaternion.identity);
+        }
     }
 
 

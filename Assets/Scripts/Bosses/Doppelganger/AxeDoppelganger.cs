@@ -51,7 +51,8 @@ public class AxeDoppelganger : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
-            Instantiate(blood, coll.transform.position, Quaternion.identity);
+            Transform newPos = GameObject.Find("CeilingCheck").transform;
+            Instantiate(blood, newPos.position, Quaternion.identity);
         }
     }
 }

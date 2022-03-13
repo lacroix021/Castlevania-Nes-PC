@@ -82,9 +82,9 @@ MonoBehaviour:
     type: 3}
   sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
-  original: {fileID: 0}
-  blink: {fileID: 0}
-  sprRenderer: {fileID: 0}
+  original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
+  sprRenderer: {fileID: 1842371752900733189}
 --- !u!114 &1842371752900733194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: 400
+  blood: {fileID: 4936639888438766894, guid: 9f3a6efb0e1629d41a256ada79c8c007, type: 3}
 --- !u!212 &1842371752900733189
 SpriteRenderer:
   m_ObjectHideFlags: 0

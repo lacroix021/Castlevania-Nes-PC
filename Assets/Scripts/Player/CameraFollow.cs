@@ -11,6 +11,12 @@ public class CameraFollow : MonoBehaviour
     private Transform player;
 
 
+    //
+    public Vector3 offset;
+    [Range(1, 10)]
+    public float smoothFactor;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +28,14 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FollowPlayer();
+        //FollowPlayer();
         //AspectRatioBoxChange();
         //Debug.Log(Camera.main.aspect);    //para saber que medidas tiene el aspecto
+    }
+
+    private void FixedUpdate()
+    {
+        FollowPlayer();
     }
 
     /*
@@ -87,14 +98,18 @@ public class CameraFollow : MonoBehaviour
 
     void FollowPlayer()
     {
+
         var boundary = GameObject.Find("Boundary");
         if (boundary)
         {
             var bounds = boundary.GetComponent<BoxCollider2D>().bounds;
             var p = this.player;
+            Vector3 targetPosition = p.position + offset;
+            Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothFactor * Time.fixedDeltaTime);
+
             if (p == null) return;
-            transform.position = new Vector3(Mathf.Clamp(p.position.x, bounds.min.x + cameraBox.size.x / 2, bounds.max.x - cameraBox.size.x / 2),
-                                             Mathf.Clamp(p.position.y, bounds.min.y + cameraBox.size.y / 2, bounds.max.y - cameraBox.size.y / 2),
+            transform.position = new Vector3(Mathf.Clamp(smoothPosition.x, bounds.min.x + cameraBox.size.x / 2, bounds.max.x - cameraBox.size.x / 2),
+                                             Mathf.Clamp(smoothPosition.y, bounds.min.y + cameraBox.size.y / 2, bounds.max.y - cameraBox.size.y / 2),
                                              transform.position.z);
         }
     }

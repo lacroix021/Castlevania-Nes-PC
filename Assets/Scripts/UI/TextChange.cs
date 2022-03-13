@@ -16,7 +16,7 @@ public class TextChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentHealth = GameObject.Find("Death").GetComponent<HealthBoss>();
+        
         text.text = currentHealth.currentHealth.ToString("F0");
     }
 }

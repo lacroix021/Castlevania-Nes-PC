@@ -69,7 +69,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipStandA.enabled = false;
                 colliderStand.size = new Vector2(0.24f, 0.05012715f);
                 colliderStand.offset = new Vector2(-0.25f, 0.2124948f);
-                damageStand.damage = DamageA;
+                //damageStand.damage = DamageA;
                 whipStand.sprite = whip1FrameA;
                 whip2Stand.sprite = whip1FrameB;
                 whip3Stand.sprite = whip1FrameC;
@@ -80,7 +80,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipCrouchA.enabled = false;
                 colliderCrouch.size = new Vector2(0.2595174f, 0.1309329f);
                 colliderCrouch.offset = new Vector2(-0.2397587f, 0.1179131f);
-                damageCrouch.damage = DamageA;
+                //damageCrouch.damage = DamageA;
                 whipCrouch.sprite = whip1FrameA;
                 whip2Crouch.sprite = whip1FrameB;
                 whip3Crouch.sprite = whip1FrameC;
@@ -94,7 +94,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipStandA.enabled = false;
                 colliderStand.size = new Vector2(0.24f, 0.05012715f);
                 colliderStand.offset = new Vector2(-0.25f, 0.2124948f);
-                damageStand.damage = DamageB;
+                //damageStand.damage = DamageB;
                 whipStand.sprite = whip2FrameA;
                 whip2Stand.sprite = whip2FrameB;
                 whip3Stand.sprite = whip2FrameC;
@@ -105,7 +105,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipCrouchA.enabled = false;
                 colliderCrouch.size = new Vector2(0.2498835f, 0.1309329f);
                 colliderCrouch.offset = new Vector2(-0.2349418f, 0.1179131f);
-                damageCrouch.damage = DamageB;
+                //damageCrouch.damage = DamageB;
                 whipCrouch.sprite = whip2FrameA;
                 whip2Crouch.sprite = whip2FrameB;
                 whip3Crouch.sprite = whip2FrameC;
@@ -119,7 +119,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipStandA.enabled = true;
                 colliderStand.size = new Vector2(0.3791183f, 0.09986368f);
                 colliderStand.offset = new Vector2(-0.3195592f, 0.2f);
-                damageStand.damage = DamageC;
+                //damageStand.damage = DamageC;
                 whipStand.sprite = whip2FrameA;
                 whip2Stand.sprite = whip2FrameB;
                 whip3Stand.sprite = whip3FrameC;
@@ -130,7 +130,7 @@ public class TypeWhip : MonoBehaviour
                 animWhipCrouchA.enabled = true;
                 colliderCrouch.size = new Vector2(0.4046696f, 0.1391528f);
                 colliderCrouch.offset = new Vector2(-0.3123348f, 0.09631589f);
-                damageCrouch.damage = DamageC;
+                //damageCrouch.damage = DamageC;
                 whipCrouch.sprite = whip2FrameA;
                 whip2Crouch.sprite = whip2FrameB;
                 whip3Crouch.sprite = whip3FrameC;

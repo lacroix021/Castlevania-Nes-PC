@@ -22,6 +22,12 @@ public class KnifeDoppelganger : MonoBehaviour
         direction = GameObject.FindObjectOfType<DoppelgangerController>().direction;
         rb = GetComponent<Rigidbody2D>();
         impulse = true;
+
+        if (direction == 1)
+            transform.localScale = new Vector3(1, 1, 1);
+        else
+            transform.localScale = new Vector3(-1, 1, 1);
+
         Destroy(this.gameObject, lifeTime);
     }
 
@@ -38,6 +44,15 @@ public class KnifeDoppelganger : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(direction * speed * Time.fixedDeltaTime, rb.velocity.y), ForceMode2D.Impulse);
             impulse = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.CompareTag("Player"))
+        {
+            Transform newPos = GameObject.Find("CeilingCheck").transform;
+            Instantiate(blood, newPos.position, Quaternion.identity);
         }
     }
 }

@@ -28,7 +28,8 @@ public class HealthPlayer : MonoBehaviour
 
     float colPosX;
 
-
+    public GameObject blood;
+    public Transform bloodEmiter;
     
 
     // Start is called before the first frame update
@@ -152,17 +153,27 @@ public class HealthPlayer : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
+        if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable || col.CompareTag("Trap") && currentHealth > 0 && !isInvulnerable)
         {
             Herido(col.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
+
+            if (col.CompareTag("Trap"))
+            {
+                Instantiate(blood, bloodEmiter.position, Quaternion.identity);
+            }
         }
     }
     
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable)
+        if (col.CompareTag("Enemy") && currentHealth > 0 && !isInvulnerable || col.CompareTag("Trap") && currentHealth > 0 && !isInvulnerable)
         {
             Herido(col.GetComponent<DamageTouch>().damageTouch, col.transform.position.x);
+
+            if (col.CompareTag("Trap"))
+            {
+                Instantiate(blood, bloodEmiter.position, Quaternion.identity);
+            }
         }
     }
 

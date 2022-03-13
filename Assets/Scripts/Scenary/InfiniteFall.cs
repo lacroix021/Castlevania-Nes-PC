@@ -7,6 +7,7 @@ public class InfiniteFall : MonoBehaviour
 
     public Transform posInfA;
     public int cant;
+    public int times;
     public float timer;
 
     public bool inside;
@@ -39,7 +40,7 @@ public class InfiniteFall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && cant != 5)
+        if (collision.CompareTag("Player") && cant != times)
         {
             collision.transform.position = new Vector3(collision.transform.position.x, posInfA.position.y, 0);
             cant += 1;

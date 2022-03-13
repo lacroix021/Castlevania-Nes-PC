@@ -27,14 +27,18 @@ public class DoppelgangerController : MonoBehaviour
     public float fallMultiplier;
     public float lowJumpMultiplier;
 
+    float nextJumpTime = 0f;
+    public float jumpRate = 0.5f;
+
+    float jumpOrSlideTime = 0f;
+    public float jumpOrSlideRate = 0.5f;
 
     [Header("VARIABLES INFORMATIVAS")]
     public float direction;
     public bool activating;
     public float h;
     public float v;
-    public float hRStick;
-    public float vRStick;
+    
     [SerializeField] bool isJump;
     public bool isGrounded;
     public bool onSlope;
@@ -55,6 +59,7 @@ public class DoppelgangerController : MonoBehaviour
     public bool playerInRange;
     public bool meleeAttackRange;
     public bool distanceAttackRange;
+    public int jumpOrSlide;
 
 
     /*****************************/
@@ -69,14 +74,9 @@ public class DoppelgangerController : MonoBehaviour
 
     GameManager gameManager;
 
-
-
-    public bool pauseGame;
-    public bool cancelInput;
-
-
     //**//
     SimonController player;
+    HealthBoss hBoss;
 
     //**//
     
@@ -87,6 +87,7 @@ public class DoppelgangerController : MonoBehaviour
         moveSpeedBase = moveSpeed;
         moveSlopeSpeed = moveSpeed / 1.3f;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonController>();
+        hBoss = GetComponent<HealthBoss>();
 
     }
 
@@ -140,90 +141,10 @@ public class DoppelgangerController : MonoBehaviour
         }
     }
 
-    //NEW INPUTS
-    /*
-    public void Move(InputAction.CallbackContext context)
-    {
-        h = context.ReadValue<Vector2>().x;
-        v = context.ReadValue<Vector2>().y;
-    }
-
-    public void RightStick(InputAction.CallbackContext context)
-    {
-        hRStick = context.ReadValue<Vector2>().x;
-        vRStick = context.ReadValue<Vector2>().y;
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (!gameManager.gamePaused)
-        {
-            if (context.performed && isGrounded && !isCrouch && canMove)
-            {
-                isJump = true;
-            }
-            //salto controlado
-            if (context.canceled && rb.velocity.y > 0f)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            }
-
-            if (isCrouch && isGrounded && !isSlide && canMove && !inStair)
-            {
-                //slide
-                if (context.performed && !animCrouchAttack && !animAttack && !animSub && !animSubCrouch)
-                {
-                    if (Time.time >= nextSlideTime)
-                    {
-                        isSlide = true;
-                        AudioManager.instance.PlayAudio(AudioManager.instance.slide);
-                        nextSlideTime = Time.time + 1f / slideRate;
-                    }
-                }
-            }
-        }
-    }
-
-    public void ActiveMode(InputAction.CallbackContext context)
-    {
-        activating = context.performed;
-    }
-
-    public void PauseGame(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            gameManager.PauseGame();
-        }
-    }
-
-    public void Cancel(InputAction.CallbackContext context)
-    {
-        cancelInput = context.performed;
-    }
-
-    public void Attack(InputAction.CallbackContext context)
-    {
-        if (!gameManager.gamePaused)
-        {
-            if (context.performed && !animSlide && canMove && !climbing && !animSub)
-            {
-                if (Time.time >= nextAttackTime)
-                {
-                    isAttack = true;
-                    AudioManager.instance.PlayAudio(AudioManager.instance.attack);
-
-                    nextAttackTime = Time.time + 1f / attackRate;
-                }
-            }
-        }
-    }
-
-    */
-
     void InputControllers()
     {
-        if (meleeAttackRange)
+        //ataque basico
+        if (meleeAttackRange && !isSlide && canMove)
         {
             if (Time.time >= nextAttackTime)
             {
@@ -234,21 +155,57 @@ public class DoppelgangerController : MonoBehaviour
             }
         }
 
+        //jugador en rango movimiento de persecusion
         if (playerInRange)
         {
-            if(player.transform.position.x > transform.position.x +0.3f)
+            if(player.transform.position.x > transform.position.x +0.3f && !isSlide && canMove)
             {
                 h = 1;
             }
-            else if(player.transform.position.x < transform.position.x -0.3f)
+            else if(player.transform.position.x < transform.position.x -0.3f && !isSlide && canMove)
             {
                 h = -1;
             }
-        }
 
-        //corregir, pensar mejor los movimientos base, esta muy encima del jugador y no deja hacer nada
+            if (!player.isGrounded && isGrounded && canMove)
+            {
+                StartCoroutine(TimerBool());
+            }
+        }
+        else
+        {
+            h = 0;
+        }
     }
 
+    IEnumerator TimerBool()
+    {
+        //este booleano debe desactivarse en dicha funcion donde se use
+        yield return new WaitForSeconds(0.4f);
+        if(Time.time >= jumpOrSlideTime)
+        {
+            jumpOrSlide = Random.Range(0, 5);
+            jumpOrSlideTime = Time.time + 1 / jumpOrSlideRate;
+        }
+
+        if (jumpOrSlide != 0)
+        {
+            if(Time.time >= nextJumpTime)
+            {
+                isJump = true;
+                nextJumpTime = Time.time + 1 / jumpRate;
+            }
+        }
+        else
+        {
+            if (Time.time >= nextSlideTime && isGrounded && !animSub)
+            {
+                isSlide = true;
+                AudioManager.instance.PlayAudio(AudioManager.instance.slide);
+                nextSlideTime = Time.time + 1f / slideRate;
+            }
+        }
+    }
     void InputManager()
     {
         //agachado
@@ -315,7 +272,7 @@ public class DoppelgangerController : MonoBehaviour
         if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
         {
             onSlope = true;
-            //colliderFeet.gameObject.SetActive(true);
+            
             // Apply the opposite force against the slope force 
             // You will need to provide your own slopeFriction to stabalize movement
             rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * slopeFriction), rb.velocity.y);
@@ -381,13 +338,19 @@ public class DoppelgangerController : MonoBehaviour
     {
         if (isSlide)
         {
+            v = -1;
             rb.velocity = Vector2.zero;
 
             if (transform.localScale.x == -1)
                 rb.AddForce(new Vector2(slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
             else if (transform.localScale.x == 1)
                 rb.AddForce(new Vector2(-slideForce * Time.deltaTime, rb.velocity.y), ForceMode2D.Impulse);
+            
             StartCoroutine(StopSlide());
+        }
+        else
+        {
+            v = 0;
         }
     }
 
@@ -439,6 +402,16 @@ public class DoppelgangerController : MonoBehaviour
         else
         {
             distanceAttackRange = false;
+        }
+
+        if (!playerInRange)
+        {
+            if(hBoss.currentHealth < hBoss.maxHealth)
+                hBoss.currentHealth += 1 * Time.deltaTime;
+        }
+        if(playerInRange && hBoss.currentHealth > 0)
+        {
+            GameObject.Find("StageExtraA").GetComponent<ActivateMusic>().battle = true;
         }
     }
 }
