@@ -99,6 +99,11 @@ public class DatosJugador : MonoBehaviour
     public bool mapPart44;  //new zone extraA_2
     public bool mapPart45;  //new zone extraA_3
     public bool mapPart46;  //new zone extraA_4 Boss
+    public bool mapPart47;  //new zone extraB_1
+    public bool mapPart48;  //new zone extraB_2
+    public bool mapPart49;  //new zone extraB_3
+    public bool mapPart50;  //new zone extraB_4
+    public bool mapPart51;  //new zone extraB_5
 
     //estado de paredes rompibles del mapa
     [Header("PAREDES ROMPIBLES DEL MAPA")]
@@ -117,6 +122,7 @@ public class DatosJugador : MonoBehaviour
     public bool bossFranken;
     public bool bossDeath;
     public bool bossDoppelganger;
+    public bool bossLegion;
 
     //estado de eventos del mapa
     //cuando se agreguen mas eventos, tambien agregar su respectivo booleano

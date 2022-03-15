@@ -55,8 +55,8 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-        Destroy(spark, 0.3f);
+        //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
+        //Destroy(spark, 0.3f);
         currentHealth -= damage;
         HealthCheck();
     }

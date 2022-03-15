@@ -13,6 +13,7 @@ public class BossMapManager : MonoBehaviour
     public BossSpawner frankenSpawner;
     public BossSpawner deathSpawner;
     public BossSpawner doppelSpawner;
+    public LegionSpawner legionSpawner;
 
     //a medida que se agregan mas boss al juego, tambien agregar sus respectivos estados en este archivo
     //se deben agregar al CheckBoss(), BossMapOnLoadGame(), BossMapOnStartGame(), FindBossSpawner()
@@ -32,6 +33,7 @@ public class BossMapManager : MonoBehaviour
         datosJugador.bossFranken = frankenSpawner.isDead;
         datosJugador.bossDeath = deathSpawner.isDead;
         datosJugador.bossDoppelganger = doppelSpawner.isDead;
+        datosJugador.bossLegion = legionSpawner.defeated;
     }
 
     public void BossMapOnLoadGame()
@@ -47,6 +49,7 @@ public class BossMapManager : MonoBehaviour
         frankenSpawner.isDead = datosJugador.bossFranken;
         deathSpawner.isDead = datosJugador.bossDeath;
         doppelSpawner.isDead = datosJugador.bossDoppelganger;
+        legionSpawner.defeated = datosJugador.bossLegion;
     }
 
     public void BossMapOnStartGame()
@@ -62,6 +65,7 @@ public class BossMapManager : MonoBehaviour
         frankenSpawner.isDead = false;
         deathSpawner.isDead = false;
         doppelSpawner.isDead = false;
+        legionSpawner.defeated = false;
 
         CheckBoss();
     }
@@ -75,5 +79,6 @@ public class BossMapManager : MonoBehaviour
         frankenSpawner = GameObject.Find("BossFrankenSpawner").GetComponent<BossSpawner>();
         deathSpawner = GameObject.Find("BossDeathSpawner").GetComponent<BossSpawner>();
         doppelSpawner = GameObject.Find("DoppelSpawner").GetComponent<BossSpawner>();
+        legionSpawner = GameObject.Find("LegionSpawner").GetComponent<LegionSpawner>();
     }
 }

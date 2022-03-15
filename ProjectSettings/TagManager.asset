@@ -18,6 +18,7 @@ TagManager:
   - PosPlayer
   - MusicBox
   - Trap
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - Background
   - NoCollision
   - Obstacle
-  - 
+  - NoTouch
   - 
   - 
   - 

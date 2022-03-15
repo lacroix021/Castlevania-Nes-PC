@@ -177,6 +177,11 @@ public class StructureManager : MonoBehaviour
             datosJugador.mapPart44 = mapParts[47].mapActive;   //ExtraA_2 room2 new zone 
             datosJugador.mapPart45 = mapParts[48].mapActive;   //ExtraA_3 room3 new zone 
             datosJugador.mapPart46 = mapParts[49].mapActive;   //ExtraA_4 room4 Boss
+            datosJugador.mapPart47 = mapParts[50].mapActive;   //ExtraB_1 room1
+            datosJugador.mapPart48 = mapParts[51].mapActive;   //ExtraB_2 room2
+            datosJugador.mapPart49 = mapParts[52].mapActive;   //ExtraB_3 room3
+            datosJugador.mapPart50 = mapParts[53].mapActive;   //ExtraB_4 room4
+            datosJugador.mapPart51 = mapParts[54].mapActive;   //ExtraB_5 room5
         }
     }
 
@@ -234,6 +239,11 @@ public class StructureManager : MonoBehaviour
         mapParts[47].mapActive = datosJugador.mapPart44;   //ExtraA_2 room2 new zone
         mapParts[48].mapActive = datosJugador.mapPart45;   //ExtraA_3 room3 new zone
         mapParts[49].mapActive = datosJugador.mapPart46;   //ExtraA_4 room4 nBoss
+        mapParts[50].mapActive = datosJugador.mapPart47;   //ExtraB_1 room1
+        mapParts[51].mapActive = datosJugador.mapPart48;   //ExtraB_2 room2
+        mapParts[52].mapActive = datosJugador.mapPart49;   //ExtraB_3 room3
+        mapParts[53].mapActive = datosJugador.mapPart50;   //ExtraB_4 room4
+        mapParts[54].mapActive = datosJugador.mapPart51;   //ExtraB_5 room5 nBoss
     }
 
     public void MapPartsStartGame()

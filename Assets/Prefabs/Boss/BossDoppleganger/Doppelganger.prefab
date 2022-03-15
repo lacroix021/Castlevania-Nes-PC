@@ -148,8 +148,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5212593018392173281}
-  - component: {fileID: 5212593018392173285}
   - component: {fileID: 5212593018392173295}
+  - component: {fileID: 3709226652491730477}
   - component: {fileID: 5212593018392173287}
   - component: {fileID: 5212593018392173286}
   m_Layer: 9
@@ -176,51 +176,6 @@ Transform:
   m_Father: {fileID: 5212593018405427102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5212593018392173285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5212593018392173280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f084a2e1e99e3794cbec8f9fef0aaa57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageA: 1
-  DamageB: 2
-  DamageC: 3
-  whipStand: {fileID: 5212593018719188834}
-  whip2Stand: {fileID: 5212593019446157443}
-  whip3Stand: {fileID: 5212593019465236594}
-  whipCrouch: {fileID: 5212593018454911172}
-  whip2Crouch: {fileID: 5212593019155990550}
-  whip3Crouch: {fileID: 5212593018777229933}
-  whip1FrameA: {fileID: 2194544221306360518, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip1FrameB: {fileID: -2352448243966215779, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip1FrameC: {fileID: 8580178878230638695, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip2FrameA: {fileID: 4584412059690828682, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip2FrameB: {fileID: 2745006238152187578, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip2FrameC: {fileID: -563759372876038372, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  whip3FrameC: {fileID: -3288854198551946612, guid: bb776addc675dbf49a3b58e05baf8469,
-    type: 3}
-  damageStand: {fileID: 0}
-  damageCrouch: {fileID: 0}
-  colliderStand: {fileID: 5212593018392173287}
-  colliderCrouch: {fileID: 5212593020192632777}
-  animWhipStand: {fileID: 5212593019465236595}
-  animWhipCrouch: {fileID: 5212593018777229923}
-  animWhipStandB: {fileID: 5212593019446157440}
-  animWhipCrouchB: {fileID: 5212593019155990551}
-  animWhipStandA: {fileID: 5212593018719188835}
-  animWhipCrouchA: {fileID: 5212593018454911173}
 --- !u!114 &5212593018392173295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +189,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTouch: 3
+--- !u!114 &3709226652491730477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212593018392173280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87aefa251144c4a409bfa427ae31ec49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whipStand: {fileID: 5212593018719188834}
+  whip2Stand: {fileID: 5212593019446157443}
+  whip3Stand: {fileID: 5212593019465236594}
+  whipCrouch: {fileID: 5212593018454911172}
+  whip2Crouch: {fileID: 5212593019155990550}
+  whip3Crouch: {fileID: 5212593018777229933}
+  whip1FrameA: {fileID: 2194544221306360518, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip1FrameB: {fileID: -2352448243966215779, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip1FrameC: {fileID: 8580178878230638695, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip2FrameA: {fileID: 4584412059690828682, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip2FrameB: {fileID: 2745006238152187578, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip2FrameC: {fileID: -563759372876038372, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  whip3FrameC: {fileID: 1582924439781044290, guid: 0dad7c0c842cdb44fb1c017bbdf4038e,
+    type: 3}
+  colliderStand: {fileID: 5212593018392173287}
+  colliderCrouch: {fileID: 5212593020192632777}
+  animWhipStand: {fileID: 5212593018719188835}
+  animWhipCrouch: {fileID: 5212593018454911173}
+  animWhipStandB: {fileID: 5212593019465236595}
+  animWhipCrouchB: {fileID: 5212593018777229923}
+  animWhipStandA: {fileID: 5212593019446157440}
+  animWhipCrouchA: {fileID: 5212593019155990551}
 --- !u!61 &5212593018392173287
 BoxCollider2D:
   m_ObjectHideFlags: 0

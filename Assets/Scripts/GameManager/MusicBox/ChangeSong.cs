@@ -11,7 +11,8 @@ public class ChangeSong : MonoBehaviour
         level4,
         level5,
         level7,
-        extraA
+        extraA,
+        extraB
     };
     public levels Level;
 
@@ -70,9 +71,9 @@ public class ChangeSong : MonoBehaviour
             audioSource.Play();
         }
 
-        if(Level == levels.extraA)
+        if (Level == levels.extraB)
         {
-            yield return new WaitForSeconds(8.333f);
+            yield return new WaitForSeconds(7.692f);
             audioSource.clip = loop;
             audioSource.loop = true;
             audioSource.Play();
