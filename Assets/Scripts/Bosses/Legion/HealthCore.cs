@@ -10,6 +10,8 @@ public class HealthCore : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spr;
     Collider2D myColl;
+    LegionSpawner legionSpawner;
+    LegionController legionControl;
 
     public Material original;
     public Material blink;
@@ -31,6 +33,8 @@ public class HealthCore : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         myColl = GetComponent<Collider2D>();
         currentHealth = maxHealth;
+        legionSpawner = GameObject.Find("LegionSpawner").GetComponent<LegionSpawner>();
+        legionControl = GameObject.FindObjectOfType<LegionController>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class HealthCore : MonoBehaviour
     {
         if (isDead)
         {
+            legionSpawner.defeated = true;
             this.gameObject.layer = 19;
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.zero;
@@ -75,7 +80,7 @@ public class HealthCore : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         Instantiate(deadEffect, transform.position, Quaternion.identity);
         Instantiate(itemLoot, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        Destroy(legionControl.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -97,7 +102,9 @@ public class HealthCore : MonoBehaviour
     {
         if (coll.CompareTag("Weapon") && currentHealth > 0 && coll.gameObject.GetComponent<DamageSubWeapon>())
         {
-            if (coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross)
+            if (coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire 
+                || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross 
+                || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.axe)
             {
                 if (Time.time >= nextBurnHolyTime)
                 {

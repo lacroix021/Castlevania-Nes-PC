@@ -37,12 +37,11 @@ public class LegionSpawner : MonoBehaviour
             legionBoss.transform.parent = boundaryFather.transform;
             particleA.Play();
             particleB.Play();
+        }
 
-            if (legionBoss.GetComponentInChildren<HealthCore>().isDead)
-            {
-                defeated = true;
-                GameObject.Find("StageExtraB").GetComponent<ActivateMusic>().battle = false;
-            }
+        if (defeated)
+        {
+            GameObject.Find("StageExtraB").GetComponent<ActivateMusic>().battle = false;
         }
 
         //cuando el activador sea true, activar los particle system y spawnear al prefab del boss, y este subira a su posicion establecida y empezara la pelea

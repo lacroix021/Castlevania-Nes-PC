@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 8996301989315366084
     second: level4_4
+  - first:
+      213: -1196346756617145238
+    second: level4_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,7 +185,7 @@ TextureImporter:
         width: 32
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,6 +193,27 @@ TextureImporter:
       bones: []
       spriteID: 4cc484daef849dc70800000000000000
       internalID: 8996301989315366084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level4_5
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 161
+        width: 32
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a64f4af96f8b56fe0800000000000000
+      internalID: -1196346756617145238
       vertices: []
       indices: 
       edges: []

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607630425050028898}
+  - component: {fileID: 163180040096790551}
   - component: {fileID: 6293062718829919362}
   - component: {fileID: 6740673904772003811}
   - component: {fileID: 8607630425050028902}
@@ -31,12 +32,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607630425050028896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.897602, y: 0.9354759, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163180040096790551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607630425050028896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de7aa694004514b881ecc830a6d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 9179994228114891051, guid: 5f2e4ccadf24fa942b8f680fc6a0a3b5, type: 3}
+  - {fileID: 2588131348261959572, guid: ba0efb48562e85940b31396fdf881cbf, type: 3}
+  num: 0
+  possibility: 0
 --- !u!114 &6293062718829919362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +91,7 @@ MonoBehaviour:
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
   sprRenderer: {fileID: 8607630425050028899}
+  haveLoot: 1
 --- !u!114 &8607630425050028902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3950509318397098275, guid: 1f88716b684ce5a42888edf9680ae6aa,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

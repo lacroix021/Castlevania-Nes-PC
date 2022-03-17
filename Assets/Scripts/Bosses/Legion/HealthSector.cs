@@ -17,7 +17,7 @@ public class HealthSector : MonoBehaviour
     public bool isDead;
 
     float nextBurnHolyTime;
-    public float burnRate;
+    public float damageRate;
 
     public GameObject deadEffect;
 
@@ -40,14 +40,6 @@ public class HealthSector : MonoBehaviour
         myColl = GetComponent<Collider2D>();
         currentHealth = maxHealth;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
 
     public void HealthCheck()
     {
@@ -108,13 +100,15 @@ public class HealthSector : MonoBehaviour
     {
         if (coll.CompareTag("Weapon") && currentHealth > 0 && coll.gameObject.GetComponent<DamageSubWeapon>())
         {
-            if (coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross)
+            if (coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire 
+                || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross
+                || coll.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.axe)
             {
                 if (Time.time >= nextBurnHolyTime)
                 {
                     StartCoroutine(FlashDamage());
                     TakeDamage(coll.GetComponent<DamageSubWeapon>().damage);
-                    nextBurnHolyTime = Time.time + 1f / burnRate;
+                    nextBurnHolyTime = Time.time + 1f / damageRate;
                 }
             }
         }

@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8231295118111878786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8231295116422683046}
@@ -101,6 +101,7 @@ MonoBehaviour:
   chestGoldV: 7000
   healthMaxV: 5
   porkHealthV: 10
+  shitakeHealthV: 10
 --- !u!212 &8231295118111878813
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -16,20 +16,22 @@ public class Health : MonoBehaviour
 
     public GameObject sparkDamage;
 
-    private BoxCollider2D mycollider;
-
-    private float boundX;
-    private float boundY;
-
     public Material original;
     public Material blink;
     public SpriteRenderer sprRenderer;
+
+    public bool haveLoot = false;
+    PosibleLoot posibleLoot;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        mycollider = GetComponent<BoxCollider2D>();
+
+        if (haveLoot)
+        {
+            posibleLoot = GetComponent<PosibleLoot>();
+        }
     }
 
     public void HealthCheck()
@@ -49,14 +51,17 @@ public class Health : MonoBehaviour
         {
             GameObject instance = Instantiate(deadEffect, transform.position, Quaternion.identity);
 
+            if (haveLoot)
+            {
+                posibleLoot.DropLoot();
+            }
+
             Destroy(this.gameObject);
         }
     }
 
     public void TakeDamage(float damage)
     {
-        //GameObject spark = Instantiate(sparkDamage, transform.position, Quaternion.identity);
-        //Destroy(spark, 0.3f);
         currentHealth -= damage;
         HealthCheck();
     }
@@ -65,8 +70,6 @@ public class Health : MonoBehaviour
     {
         if(col.CompareTag("Weapon") && currentHealth > 0 && col.GetComponent<DamagePlayer>())
         {
-            //spawnear la chispa indicando que si hubo daño
-
             StartCoroutine(FlashDamage());
             TakeDamage(col.GetComponent<DamagePlayer>().damage);
             Death();
@@ -74,21 +77,6 @@ public class Health : MonoBehaviour
         }
         else if (col.CompareTag("Weapon") && currentHealth > 0 && col.gameObject.GetComponent<DamageSubWeapon>())
         {
-            //spawnear la chispa indicando que si hubo daño
-            /*
-            if(col.transform.position.x < mycollider.bounds.min.x)
-                boundX = col.transform.position.x + 0.1f;
-            else if (col.transform.position.x > mycollider.bounds.min.x)
-                boundX = col.transform.position.x - 0.1f;
-
-            if (col.transform.position.y < mycollider.bounds.min.y)
-                boundY = col.transform.position.y + 0.1f;
-            else if (col.transform.position.y > mycollider.bounds.min.y)
-                boundY = col.transform.position.y - 0.1f;
-
-            GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
-            Destroy(spark, 0.3f);
-            */
             StartCoroutine(FlashDamage());
 
             TakeDamage(col.GetComponent<DamageSubWeapon>().damage);
@@ -101,27 +89,12 @@ public class Health : MonoBehaviour
     {
         if (collision.CompareTag("Weapon") && currentHealth > 0 && collision.gameObject.GetComponent<DamageSubWeapon>())
         {
-            if (collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire || collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross)
+            if (collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.holyFire 
+                || collision.gameObject.GetComponent<DamageSubWeapon>().TypeSup == DamageSubWeapon.typeSub.cross)
             {
                 if (Time.time >= nextBurnHolyTime)
                 {
-                    //spawnear la chispa indicando que si hubo daño
-                    /*
-                    if (collision.transform.position.x < mycollider.bounds.min.x)
-                        boundX = collision.transform.position.x + 0.1f;
-                    else if (collision.transform.position.x > mycollider.bounds.min.x)
-                        boundX = collision.transform.position.x - 0.1f;
-
-                    if (collision.transform.position.y < mycollider.bounds.min.y)
-                        boundY = collision.transform.position.y + 0.1f;
-                    else if (collision.transform.position.y > mycollider.bounds.min.y)
-                        boundY = collision.transform.position.y - 0.1f;
-
-                    GameObject spark = Instantiate(sparkDamage, new Vector2(boundX, boundY), Quaternion.identity);
-                    Destroy(spark, 0.3f);
-                    */
                     StartCoroutine(FlashDamage());
-
                     TakeDamage(collision.GetComponent<DamageSubWeapon>().damage);
                     Death();
                     nextBurnHolyTime = Time.time + 1f / burnRate;

@@ -4806,8 +4806,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -643246781
+  m_SortingLayer: 1
   m_SortingOrder: 6
   m_RenderMode: 0
   m_SortMode: 0
@@ -9559,8 +9559,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -643246781
+  m_SortingLayer: 1
   m_SortingOrder: 6
   m_RenderMode: 0
   m_SortMode: 0
@@ -9609,7 +9609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719950148627100503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8719950149113683384}
@@ -9704,3 +9704,4 @@ MonoBehaviour:
   defeated: 0
   particleA: {fileID: 8719950148550296945}
   particleB: {fileID: 8719950148002703155}
+  boundaryFather: {fileID: 0}
