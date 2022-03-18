@@ -33,7 +33,23 @@ public class EndingController : MonoBehaviour
     [Header("CREDITS")]
     public GameObject names;
     public string[] credits;
-    public int num;
+
+    //
+    string credit0 = "Directed by \n Ramshy";
+    string credit1 = "Screenplay by \n Vram Stoker \n music by \n James banana";
+    string credit2 = "The Cast \n Dracula \n Ramshy";
+    string credit3 = "Death \n Belo Lugosi \n Frankenstein \n Boris Karloffice";
+    string credit4 = "Mummyman \n Love Chaney Jr \n Medusa \n Barber Sherry";
+    string credit5 = "Doppelganger, Legion \n Ramshy & SmithyGCN";
+    string credit6 = "Vampire Bat \n Mix Schrecks \n HunchBack \n Love Chaney";
+    string credit7 = "FishMan \n Green Stranger \n Armor \n Cafebar Read";
+    string credit8 = "Skeleton \n Andre Moral \n Zombie \n Jone Candies";
+    string credit9 = "And the hero \n Simon Belmondo";
+    string credit10 = "You played the greatest role in this story.";
+    string credit11 = "Thank you \n for playing.";
+    //
+
+    int num;
     float nextChangeName;
     public float changeNameRate;
 
@@ -43,8 +59,23 @@ public class EndingController : MonoBehaviour
         num = 0;
         posX = castleImg.transform.localPosition.x;
         StartCoroutine(StopDestroy());
+
         
+
+        credits[0] = credit0;
+        credits[1] = credit1;
+        credits[2] = credit2;
+        credits[3] = credit3;
+        credits[4] = credit4;
+        credits[5] = credit5;
+        credits[6] = credit6;
+        credits[7] = credit7;
+        credits[8] = credit8;
+        credits[9] = credit9;
+        credits[10] = credit10;
+        credits[11] = credit11;
     }
+    //corregir creditos de forma optima, e incluir a algunos subscriptores;
 
     // Update is called once per frame
     void Update()
@@ -155,8 +186,6 @@ public class EndingController : MonoBehaviour
                     break;
             }
 
-            
-
             nextChangeName = Time.time + 1 / changeNameRate;
         }
 
@@ -165,7 +194,7 @@ public class EndingController : MonoBehaviour
     IEnumerator Fades()
     {
         names.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         names.SetActive(false);
     }
 }

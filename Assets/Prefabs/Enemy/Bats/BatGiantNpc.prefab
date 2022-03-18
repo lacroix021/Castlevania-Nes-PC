@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 618154585528930437}
   - component: {fileID: 618154585528930436}
   - component: {fileID: 618154585528930435}
+  - component: {fileID: 517484402499729939}
   m_Layer: 9
   m_Name: BatGiantNpc
   m_TagString: Enemy
@@ -59,6 +60,7 @@ MonoBehaviour:
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
   sprRenderer: {fileID: 618154585528930438}
+  haveLoot: 1
 --- !u!114 &618154585528930441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +210,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &517484402499729939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618154585528930434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de7aa694004514b881ecc830a6d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 9179994228114891051, guid: 5f2e4ccadf24fa942b8f680fc6a0a3b5, type: 3}
+  - {fileID: 9179994228114891051, guid: 5f2e4ccadf24fa942b8f680fc6a0a3b5, type: 3}
+  - {fileID: 2588131348261959572, guid: ba0efb48562e85940b31396fdf881cbf, type: 3}
+  num: 0
+  possibility: 0

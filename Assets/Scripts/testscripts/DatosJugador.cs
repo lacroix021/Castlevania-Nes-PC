@@ -44,6 +44,12 @@ public class DatosJugador : MonoBehaviour
     public bool wasCaughtItem2;
     public bool wasCaughtItem3;
     public bool wasCaughtItem4;
+    public bool wasCaughtItem5;
+    public bool wasCaughtItem6;
+    public bool wasCaughtItem7;
+    public bool wasCaughtItem8;
+    public bool wasCaughtItem9;
+    public bool wasCaughtItem10;
 
     
 

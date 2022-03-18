@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 4001848287441037983}
   - component: {fileID: 4001848287441037955}
   - component: {fileID: 4001848287441037954}
+  - component: {fileID: 9158939963711726406}
   m_Layer: 9
   m_Name: Merman
   m_TagString: Enemy
@@ -247,6 +248,7 @@ MonoBehaviour:
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
   sprRenderer: {fileID: 4001848287441037980}
+  haveLoot: 1
 --- !u!114 &4001848287441037952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +392,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10068329, y: 0.29010385}
   m_EdgeRadius: 0
+--- !u!114 &9158939963711726406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001848287441037982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de7aa694004514b881ecc830a6d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  num: 0
+  possibility: 0
 --- !u!1 &4001848288092656203
 GameObject:
   m_ObjectHideFlags: 0

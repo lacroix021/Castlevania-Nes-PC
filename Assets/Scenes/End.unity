@@ -439,25 +439,19 @@ MonoBehaviour:
   blackscreenAnim: {fileID: 445225557}
   names: {fileID: 670935057}
   credits:
-  - Directed by            Ramshy
-  - Screenplay by           Vram Stoker              music by                  James
-    banana
-  - The Cast                     Dracula                      Ramshy
-  - Death                            Belo Lugosi                              Frankenstein                         
-    Boris Karloffice
-  - Mummyman                             Love Chaney Jr                                
-    Medusa                          Barber Sherry
-  - Vampire Bat                             Mix Schrecks                                
-    HunchBack                          Love Chaney
-  - FishMan                             Green Stranger                                
-    Armor                          Cafebar Read
-  - Skeleton                             Andre Moral                                
-    Zombie                          Jone Candies
-  - And the hero                             Simon Belmondo
-  - You played the greatest role in this story.
-  - Thank you                                   for playing.
-  num: 0
-  changeNameRate: 0.183
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  changeNameRate: 0.3
 --- !u!1 &435768764
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,12 +63,12 @@ public class PanterController : MonoBehaviour
 
     void Flip()
     {
-        if (playerPos.position.x > transform.position.x && isGrounded)
+        if (playerPos.position.x > transform.position.x + 0.4f && isGrounded)
         {
             dir = 1;
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (playerPos.position.x < transform.position.x && isGrounded)
+        else if (playerPos.position.x < transform.position.x - 0.4f && isGrounded)
         {
             dir = -1;
             transform.localScale = new Vector3(1, 1, 1);

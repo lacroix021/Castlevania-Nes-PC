@@ -266,7 +266,7 @@ public class SimonController : MonoBehaviour
             //movimiento normal
             if (!animAttack && !animCrouchAttack && !isCrouch && canMove && !animSub)
             {
-                rb.velocity = new Vector2(h * moveSpeed * Time.deltaTime, rb.velocity.y);
+                rb.velocity = new Vector2(h * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
             }
         }
         //limitador de velocidad de caida PROBAR EN SALTOS NORMALES YA QUE SE PROBO CON EL PRECIPICIO DE NIVEL 3
@@ -328,9 +328,9 @@ public class SimonController : MonoBehaviour
     void ClimbingChain()
     {
         if (climbing && activating)
-        {
+        {//corregir velocidad de escalado de cadenas
             rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, v * (moveSlopeSpeed -10) * Time.deltaTime);
+            rb.velocity = new Vector2(rb.velocity.x, v * (moveSlopeSpeed /2.5f) * Time.fixedDeltaTime);
         }
         else
         {

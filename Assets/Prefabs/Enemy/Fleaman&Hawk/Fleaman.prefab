@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2885088787893341624}
   - component: {fileID: 2885088787893341625}
   - component: {fileID: 2885088787893341626}
+  - component: {fileID: -1652339150084903936}
   m_Layer: 9
   m_Name: Fleaman
   m_TagString: Enemy
@@ -225,6 +226,7 @@ MonoBehaviour:
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
   sprRenderer: {fileID: 2885088787893341623}
+  haveLoot: 1
 --- !u!114 &2885088787893341620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,3 +386,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1137175, y: 0.1378274}
   m_EdgeRadius: 0
+--- !u!114 &-1652339150084903936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885088787893341627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de7aa694004514b881ecc830a6d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 8389370524574794408, guid: 6435bce4ce7b761429c0e3586826054e, type: 3}
+  num: 0
+  possibility: 0

@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 
 
     //
-    public Vector3 offset;
+    //public Vector3 offset;
     [Range(1, 10)]
     public float smoothFactor;
 
@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         cameraBox = GetComponent<BoxCollider2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("HeadPlayer").GetComponent<Transform>();
     }
 
 
@@ -104,7 +104,7 @@ public class CameraFollow : MonoBehaviour
         {
             var bounds = boundary.GetComponent<BoxCollider2D>().bounds;
             var p = this.player;
-            Vector3 targetPosition = p.position + offset;
+            Vector3 targetPosition = p.position;
             Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothFactor * Time.fixedDeltaTime);
 
             if (p == null) return;

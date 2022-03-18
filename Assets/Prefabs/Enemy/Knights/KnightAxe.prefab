@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 7675119942641790621}
   - component: {fileID: 7675119942641790610}
   - component: {fileID: 7675119942641790622}
+  - component: {fileID: 5468219045604142252}
   m_Layer: 9
   m_Name: KnightAxe
   m_TagString: Enemy
@@ -183,6 +184,7 @@ MonoBehaviour:
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   blink: {fileID: 2100000, guid: f8d9c6fe32a11b74786638b4eb74d307, type: 2}
   sprRenderer: {fileID: 7675119942641790620}
+  haveLoot: 1
 --- !u!114 &7675119942641790617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,3 +326,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5468219045604142252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675119942641790611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de7aa694004514b881ecc830a6d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 7464480803622590303, guid: c14751e01319616449f354c7bae73de5, type: 3}
+  - {fileID: 9179994228114891051, guid: 5f2e4ccadf24fa942b8f680fc6a0a3b5, type: 3}
+  - {fileID: 2844573586074994992, guid: 1dc7ba7f376474e4ba6861068d6b2246, type: 3}
+  num: 0
+  possibility: 0
