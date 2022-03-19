@@ -6,13 +6,13 @@ public class PurpleBatController : MonoBehaviour
 {
     public float impulse;
     public float moveSpeed;
-    public float radius;
     [SerializeField] Vector3 posPlayer;
     public LayerMask layerPlayer;
     Rigidbody2D rb;
     Animator anim;
     float direction;
     bool inRange;
+    public Collider2D checker;
     bool attack;
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class PurpleBatController : MonoBehaviour
 
     void RangeChecker()
     {
-        inRange = Physics2D.OverlapCircle(transform.position, radius, layerPlayer);
+        inRange = Physics2D.IsTouchingLayers(checker, layerPlayer);
 
         if (inRange)
         {
@@ -58,7 +58,7 @@ public class PurpleBatController : MonoBehaviour
                 direction = -1;
             }
 
-            radius = 0;
+            checker.enabled = false;
         }
     }
 
@@ -74,16 +74,5 @@ public class PurpleBatController : MonoBehaviour
                 rb.velocity = new Vector2(direction * impulse * Time.deltaTime, rb.velocity.y);
             }
         }
-    }
-
-
-    private void OnDrawGizmos()
-    {
-        if (inRange)
-            Gizmos.color = Color.red;
-        else
-            Gizmos.color = Color.green;
-
-        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

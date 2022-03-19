@@ -36,26 +36,38 @@ public class EndingController : MonoBehaviour
 
     //
     string credit0 = "Directed by \n Ramshy";
-    string credit1 = "Screenplay by \n Vram Stoker \n music by \n James banana";
-    string credit2 = "The Cast \n Dracula \n Ramshy";
-    string credit3 = "Death \n Belo Lugosi \n Frankenstein \n Boris Karloffice";
-    string credit4 = "Mummyman \n Love Chaney Jr \n Medusa \n Barber Sherry";
-    string credit5 = "Doppelganger, Legion \n Ramshy & SmithyGCN";
-    string credit6 = "Vampire Bat \n Mix Schrecks \n HunchBack \n Love Chaney";
-    string credit7 = "FishMan \n Green Stranger \n Armor \n Cafebar Read";
-    string credit8 = "Skeleton \n Andre Moral \n Zombie \n Jone Candies";
+    string credit1 = "Screenplay by \n Vram Stoker \n Music by \n James banana \nYoutube - MikaeruRashon \nYoutube - Wyatt";
+    string credit2 = "The Cast \n Dracula, Doppelganger \nRamshy - Christopher Bee\nDeath - Belo Lugosi \n Frankenstein - Boris Karloffice";
+    string credit3 = "Mummyman - Love Chaney Jr \n Medusa - Barber Sherry \nLegion - Ramshy & SmithyGCN";
+    string credit4 = "Vampire Bat - Mix Schrecks \n HunchBack - Love Chaney \nFishMan - Green Stranger \n Armor - Cafebar Read";
+    string credit5 = "Skeleton - Andre Moral \n Zombie - Jone Candies";
+    string credit6 = "Thanks for the support \nGerman Bautista \nDennis Castlesampa \nFrancisco Dworaczuk \nFreddy Ponce";
+    string credit7 = "Thanks for the support \nChristian Paris \nGuerrero Martinez \nComunity CastlevaniaLatino";
+    string credit8 = "Thanks for the support \nMy Wife & my Son \nI love you for eternity";
     string credit9 = "And the hero \n Simon Belmondo";
     string credit10 = "You played the greatest role in this story.";
     string credit11 = "Thank you \n for playing.";
     //
 
     int num;
-    float nextChangeName;
-    public float changeNameRate;
+
+    public float timing;
+    public float timeChange;
+
+    public Image flearider;
+
+    public float newScaleX;
+    public float newScaleY;
+    public float newPosX;
+    public float newPosY;
+    public float multiplier;
+    public float timeFlea;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeFlea = 0;
+        timing = 0;
         num = 0;
         posX = castleImg.transform.localPosition.x;
         StartCoroutine(StopDestroy());
@@ -74,6 +86,7 @@ public class EndingController : MonoBehaviour
         credits[9] = credit9;
         credits[10] = credit10;
         credits[11] = credit11;
+
     }
     //corregir creditos de forma optima, e incluir a algunos subscriptores;
 
@@ -82,6 +95,8 @@ public class EndingController : MonoBehaviour
     {
         CastleDestroy();
         Credits();
+
+        TrayectoryFleaRider();
     }
 
     void CastleDestroy()
@@ -97,7 +112,7 @@ public class EndingController : MonoBehaviour
         yield return new WaitForSeconds(8);
         castleSound.Pause();
         musicEnd.Play();
-        yield return new WaitForSeconds(52f);
+        yield return new WaitForSeconds(musicEnd.clip.length);
         scoreObj.SetActive(true);
         FixValuesPlayer();
         yield return new WaitForSeconds(8f);
@@ -111,8 +126,8 @@ public class EndingController : MonoBehaviour
         numSavesTxt.text = PlayerPrefs.GetInt("Saves").ToString();
         numGoldTxt.text = PlayerPrefs.GetInt("GoldPlayer").ToString();
         secondsTimeTxt.text = PlayerPrefs.GetFloat("Seconds")<10? "0" + PlayerPrefs.GetFloat("Seconds").ToString("F0"): PlayerPrefs.GetFloat("Seconds").ToString("F0");
-        minutesTimeTxt.text = PlayerPrefs.GetFloat("Minutes")<10? "0" + PlayerPrefs.GetFloat("Minutes").ToString("F0"): PlayerPrefs.GetFloat("Minutes").ToString("F0");
-        hoursTimeTxt.text = PlayerPrefs.GetFloat("Hours")<10? "0" + PlayerPrefs.GetFloat("Hours").ToString("F0"): PlayerPrefs.GetFloat("Hours").ToString("F0");
+        minutesTimeTxt.text = PlayerPrefs.GetFloat("Minutes")<10? "0" + PlayerPrefs.GetFloat("Minutes").ToString("F0") + " :" : PlayerPrefs.GetFloat("Minutes").ToString("F0") + " :";
+        hoursTimeTxt.text = PlayerPrefs.GetFloat("Hours")<10? "0" + PlayerPrefs.GetFloat("Hours").ToString("F0") + " :" : PlayerPrefs.GetFloat("Hours").ToString("F0") + " :";
     }
 
     //pendiente agregar los nombres de los creditos
@@ -122,71 +137,55 @@ public class EndingController : MonoBehaviour
 
     void Credits()
     {
-        if(Time.time >= nextChangeName)
-        {
-            switch (num)
-            {
-                case 0:
-                    names.GetComponent<Text>().text = credits[0];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 1:
-                    names.GetComponent<Text>().text = credits[1];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 2:
-                    names.GetComponent<Text>().text = credits[2];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 3:
-                    names.GetComponent<Text>().text = credits[3];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 4:
-                    names.GetComponent<Text>().text = credits[4];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 5:
-                    names.GetComponent<Text>().text = credits[5];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 6:
-                    names.GetComponent<Text>().text = credits[6];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 7:
-                    names.GetComponent<Text>().text = credits[7];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 8:
-                    names.GetComponent<Text>().text = credits[8];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 9:
-                    names.GetComponent<Text>().text = credits[9];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 10:
-                    names.GetComponent<Text>().text = credits[10];
-                    num += 1;
-                    StartCoroutine(Fades());
-                    break;
-                case 11:
-                    names.SetActive(false);
-                    break;
-            }
+        timing += Time.deltaTime * 1;
 
-            nextChangeName = Time.time + 1 / changeNameRate;
+        if(timing >= timeChange)
+        {
+            num++;
+            timing = 0;
+        }
+
+        switch (num)
+        {
+            case 0:
+                names.GetComponent<Text>().text = credits[0];
+                break;
+            case 1:
+                names.GetComponent<Text>().text = credits[1];
+                break;
+            case 2:
+                names.GetComponent<Text>().text = credits[2];
+                break;
+            case 3:
+                names.GetComponent<Text>().text = credits[3];
+                break;
+            case 4:
+                names.GetComponent<Text>().text = credits[4];
+                break;
+            case 5:
+                names.GetComponent<Text>().text = credits[5];
+                break;
+            case 6:
+                names.GetComponent<Text>().text = credits[6];
+                break;
+            case 7:
+                names.GetComponent<Text>().text = credits[7];
+                break;
+            case 8:
+                names.GetComponent<Text>().text = credits[8];
+                break;
+            case 9:
+                names.GetComponent<Text>().text = credits[9];
+                break;
+            case 10:
+                names.GetComponent<Text>().text = credits[10];
+                break;
+            case 11:
+                names.GetComponent<Text>().text = credits[11];
+                break;
+            case 12:
+                names.SetActive(false);
+                break;
         }
 
     }
@@ -194,7 +193,39 @@ public class EndingController : MonoBehaviour
     IEnumerator Fades()
     {
         names.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timeChange);
         names.SetActive(false);
+    }
+
+    void TrayectoryFleaRider()
+    {
+        newScaleX += Time.deltaTime * multiplier;
+        newScaleY += Time.deltaTime * multiplier;
+        flearider.transform.localScale = new Vector3(transform.localScale.x + newScaleX, transform.localScale.y + newScaleY, transform.localScale.z);
+
+        if(timeFlea < 7)
+        {
+            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x - 0.5f, flearider.transform.localPosition.y - 0.3f, 0);
+        }
+
+        timeFlea += Time.deltaTime * 1;
+
+        if(timeFlea >= 7 && timeFlea <= 24)
+        {
+            multiplier = 1.3f;
+            flearider.transform.eulerAngles = new Vector3(0, 180, 0);
+            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x + 0.25f, flearider.transform.localPosition.y + 0.2f, 0);
+        }
+
+        if(timeFlea >= 10 && timeFlea <= 24)
+        {
+            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x + 0.5f, flearider.transform.localPosition.y + 0.2f, 0);
+        }
+
+        if(timeFlea >= 25)
+        {
+            flearider.enabled = false;
+            multiplier = 0;
+        }
     }
 }

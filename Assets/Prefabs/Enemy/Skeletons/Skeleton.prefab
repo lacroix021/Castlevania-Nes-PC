@@ -258,6 +258,7 @@ MonoBehaviour:
   typeMove: 0
   bonePrefab: {fileID: 814529187059765128, guid: 3d7530962b92b4c41ba53c1243d4861f,
     type: 3}
+  slide: {fileID: 6200000, guid: 50dd2b5b6aba5374bb27dda7d7f71ae8, type: 2}
 --- !u!212 &4252450690092448406
 SpriteRenderer:
   m_ObjectHideFlags: 0

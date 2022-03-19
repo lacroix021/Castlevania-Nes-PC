@@ -52,6 +52,9 @@ public class SkeletonController : MonoBehaviour
     public GameObject bonePrefab;
     GameObject boneThrowed;
 
+    public PhysicsMaterial2D slide;
+    Collider2D myColl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,7 @@ public class SkeletonController : MonoBehaviour
         boneHand.GetComponent<SpriteRenderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        myColl = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -83,7 +87,10 @@ public class SkeletonController : MonoBehaviour
     void Movement()
     {
         if (rb.velocity.x != 0)
+        {
             anim.SetBool("Walk", true);
+            //myColl.sharedMaterial = slide;
+        }
         else
             anim.SetBool("Walk", false);
         if(!inRange)
@@ -189,8 +196,13 @@ public class SkeletonController : MonoBehaviour
         }
 
         isGrounded = Physics2D.IsTouchingLayers(feetPos, layerGround);
-        if(isGrounded)
+        if (isGrounded)
+        {
             moveSpeed = 25f;
+            myColl.sharedMaterial = null;
+        }
+        else
+            myColl.sharedMaterial = slide;
 
         noHole = Physics2D.IsTouchingLayers(holeDetector, layerGround);
         thereIsWall = Physics2D.IsTouchingLayers(wallDetector, layerGround);

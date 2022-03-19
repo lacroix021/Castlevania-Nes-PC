@@ -19,7 +19,7 @@ public class BatGiantNpcController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerPos = GameObject.FindGameObjectWithTag("HeadPlayer").GetComponent<Transform>();
     }
 
     private void OnDisable()
