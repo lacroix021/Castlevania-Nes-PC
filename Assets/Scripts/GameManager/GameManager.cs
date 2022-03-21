@@ -621,82 +621,63 @@ public class GameManager : MonoBehaviour
     
     public void TeleportGarden()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport1.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportChapel()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport2.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportIvory()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport3.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportPitfall()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport4.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportPrison()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport5.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportAbyss()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport6.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
     public void TeleportHope()
     {
-        teleportFadeAnim.SetTrigger("StartTele");
-        instancePlayer.GetComponent<SimonController>().canMove = false;
-        teleportsPanel.SetActive(false);
-        saveTeleportUI.SetActive(false);
-        teleportMenu = false;
+        InactiveToTeleport();
         StartCoroutine(StartFadeTele(structureManager.ankTeleport7.transform.position));
         AudioManager.instance.PlayAudio(AudioManager.instance.teleport);
     }
 
-   
+   void InactiveToTeleport()
+    {
+        teleportFadeAnim.SetTrigger("StartTele");
+        instancePlayer.GetComponent<SimonController>().canMove = false;     //para dejar quieto al pendejo
+        instancePlayer.GetComponent<SimonController>().rb.velocity = Vector2.zero;  //para dejar quieto al pendejo
+        instancePlayer.GetComponent<SimonController>().anim.SetFloat("VelX", 0);    //para dejar quieto al pendejo
+        teleportsPanel.SetActive(false);
+        saveTeleportUI.SetActive(false);
+        teleportMenu = false;
+    }
 
     void ControlTeleportsActive()
     {

@@ -12,7 +12,7 @@ public class BossMapManager : MonoBehaviour
     public CeilingSpawnerMummies ceilingMummies;
     public BossSpawner frankenSpawner;
     public BossSpawner deathSpawner;
-    public BossSpawner doppelSpawner;
+    public DoppelGangerSpawner doppelSpawner;
     public LegionSpawner legionSpawner;
 
     //a medida que se agregan mas boss al juego, tambien agregar sus respectivos estados en este archivo
@@ -32,7 +32,7 @@ public class BossMapManager : MonoBehaviour
         datosJugador.wallBrokenLevel3 = ceilingMummies.wallBroken;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
         datosJugador.bossFranken = frankenSpawner.isDead;
         datosJugador.bossDeath = deathSpawner.isDead;
-        datosJugador.bossDoppelganger = doppelSpawner.isDead;
+        datosJugador.bossDoppelganger = doppelSpawner.defeated;
         datosJugador.bossLegion = legionSpawner.defeated;
     }
 
@@ -48,7 +48,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.wallBroken = datosJugador.wallBrokenLevel3;  //SE DEBE MIGRAR AL STRUCTURE MANAGER
         frankenSpawner.isDead = datosJugador.bossFranken;
         deathSpawner.isDead = datosJugador.bossDeath;
-        doppelSpawner.isDead = datosJugador.bossDoppelganger;
+        doppelSpawner.defeated = datosJugador.bossDoppelganger;
         legionSpawner.defeated = datosJugador.bossLegion;
     }
 
@@ -64,7 +64,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies.wallBroken = false;     //evento de pared rota en nivel3 SE DEBE MIGRAR AL STRUCTURE MANAGER}
         frankenSpawner.isDead = false;
         deathSpawner.isDead = false;
-        doppelSpawner.isDead = false;
+        doppelSpawner.defeated = false;
         legionSpawner.defeated = false;
 
         CheckBoss();
@@ -78,7 +78,7 @@ public class BossMapManager : MonoBehaviour
         ceilingMummies = GameObject.Find("CeilingMummies").GetComponent<CeilingSpawnerMummies>();
         frankenSpawner = GameObject.Find("BossFrankenSpawner").GetComponent<BossSpawner>();
         deathSpawner = GameObject.Find("BossDeathSpawner").GetComponent<BossSpawner>();
-        doppelSpawner = GameObject.Find("DoppelSpawner").GetComponent<BossSpawner>();
+        doppelSpawner = GameObject.Find("DoppelSpawner").GetComponent<DoppelGangerSpawner>();
         legionSpawner = GameObject.Find("LegionSpawner").GetComponent<LegionSpawner>();
     }
 }

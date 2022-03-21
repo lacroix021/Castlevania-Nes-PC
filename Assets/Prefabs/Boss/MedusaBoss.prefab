@@ -114,11 +114,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: 1
   currentHealth: 0
-  maxHealth: 50
+  maxHealth: 70
   isDead: 0
   deadEffect: {fileID: 4301122253200025113, guid: f6f1a8809f98f1c4fbaeddce0f85bcf5,
-    type: 3}
-  sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
   sprRend: {fileID: 7586320417999232315}
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

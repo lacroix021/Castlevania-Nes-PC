@@ -152,9 +152,9 @@ public class ControlMenu : MonoBehaviour
         Application.OpenURL("https://paypal.me/RamshyCorp");
     }
     
-    public void ButtonNequi()
+    public void ButtonPatreon()
     {
-        Application.OpenURL("https://www.facebook.com/photo.php?fbid=355507613052009");
+        Application.OpenURL("https://www.patreon.com/ramshycorp");
     }
     
 }

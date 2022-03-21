@@ -27,14 +27,16 @@ public class FleamanController : MonoBehaviour
     public int typeMove;
     float nextMoveTime;
     public float moveRate;
-    
 
+    public PhysicsMaterial2D slide;
+    Collider2D myColl;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        myColl = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,15 @@ public class FleamanController : MonoBehaviour
         isGrounded = Physics2D.IsTouchingLayers(feetPos, thisGround);
 
         inRange = Physics2D.IsTouchingLayers(detector, layerPlayer);
+
+        if (!isGrounded)
+        {
+            myColl.sharedMaterial = slide;
+        }
+        else
+        {
+            myColl.sharedMaterial = null;
+        }
     }
 
     

@@ -26,12 +26,13 @@ public class MovePlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //movimiento senoidal
-        timer = timer + (frecuency / 100);
-        xSen = Mathf.Sin(timer);
-        transform.position = new Vector3(posX + (xSen * cycleWidth), transform.position.y, transform.position.z);
-
-        
+        if (!GameManager.gameManager.gamePaused)
+        {
+            //movimiento senoidal
+            timer = timer + (frecuency / 100);
+            xSen = Mathf.Sin(timer);
+            transform.position = new Vector3(posX + (xSen * cycleWidth), transform.position.y, transform.position.z);
+        }
     }
 
     void Transporting()

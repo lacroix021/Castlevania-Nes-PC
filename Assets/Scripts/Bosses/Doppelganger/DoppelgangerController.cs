@@ -90,6 +90,10 @@ public class DoppelgangerController : MonoBehaviour
         hBoss = GetComponent<HealthBoss>();
 
     }
+    private void OnDisable()
+    {
+        Destroy(this.gameObject);
+    }
 
     // Update is called once per frame
     void Update()

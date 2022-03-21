@@ -11,7 +11,7 @@ public class BossSpawner : MonoBehaviour
     [Tooltip("esta casilla indica al manager si el Boss que se spawnea ya fue derrotado o no")]
     public bool isDead;
 
-    private int numSpawns;
+    public int numSpawns;
 
     BossMapManager bossManager;
 

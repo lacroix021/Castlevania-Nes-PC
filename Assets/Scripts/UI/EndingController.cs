@@ -63,6 +63,15 @@ public class EndingController : MonoBehaviour
     public float multiplier;
     public float timeFlea;
 
+    public Transform waypointA;
+    public Transform waypointB;
+    public Transform waypointC;
+    public float speedFlea;
+
+    public bool pathA;
+    public bool pathB;
+    public bool pathC;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,8 +80,6 @@ public class EndingController : MonoBehaviour
         num = 0;
         posX = castleImg.transform.localPosition.x;
         StartCoroutine(StopDestroy());
-
-        
 
         credits[0] = credit0;
         credits[1] = credit1;
@@ -203,29 +210,92 @@ public class EndingController : MonoBehaviour
         newScaleY += Time.deltaTime * multiplier;
         flearider.transform.localScale = new Vector3(transform.localScale.x + newScaleX, transform.localScale.y + newScaleY, transform.localScale.z);
 
-        if(timeFlea < 7)
+
+        if (pathA)
         {
-            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x - 0.5f, flearider.transform.localPosition.y - 0.3f, 0);
+            flearider.transform.position = Vector3.MoveTowards(flearider.transform.position, waypointA.position, speedFlea * Time.fixedDeltaTime);
+
+        }
+
+        if(flearider.transform.position == waypointA.position)
+        {
+            pathA = false;
+            pathB = true;
+            pathC = false;
+        }
+
+        if (pathB)
+        {
+            flearider.transform.position = Vector3.MoveTowards(flearider.transform.position, waypointB.position, speedFlea * Time.fixedDeltaTime);
+            flearider.transform.eulerAngles = new Vector3(0, 180, 0);
+            speedFlea = 35;
+            multiplier = 1.1f;
+        }
+
+        if(flearider.transform.position == waypointB.position)
+        {
+            pathA = false;
+            pathB = false;
+            pathC = true;
+        }
+
+        if (pathC)
+        {
+            flearider.transform.position = Vector3.MoveTowards(flearider.transform.position, waypointC.position, speedFlea * Time.fixedDeltaTime);
+            speedFlea = 150;
+            multiplier = 3f;
+        }
+
+        if(flearider.transform.position == waypointC.position)
+        {
+            pathA = false;
+            pathB = false;
+            pathC = false;
+
+            flearider.enabled = false;
+            multiplier = 0;
+        }
+
+        if (timeFlea < 6)
+        {
+            /*
+            flearider.transform.position = new Vector3(flearider.transform.position.x - (50f * Time.fixedDeltaTime),
+                flearider.transform.position.y - (20f * Time.fixedDeltaTime), 
+                0);
+            */
+
         }
 
         timeFlea += Time.deltaTime * 1;
 
-        if(timeFlea >= 7 && timeFlea <= 24)
+        if(timeFlea >= 6 && timeFlea <= 24)
         {
+            /*
             multiplier = 1.3f;
             flearider.transform.eulerAngles = new Vector3(0, 180, 0);
-            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x + 0.25f, flearider.transform.localPosition.y + 0.2f, 0);
+            flearider.transform.position = new Vector3(flearider.transform.position.x + (35f * Time.fixedDeltaTime), 
+                flearider.transform.position.y + (15f * Time.fixedDeltaTime), 
+                0);
+            */
+
         }
 
         if(timeFlea >= 10 && timeFlea <= 24)
         {
-            flearider.transform.localPosition = new Vector3(flearider.transform.localPosition.x + 0.5f, flearider.transform.localPosition.y + 0.2f, 0);
+            /*
+            flearider.transform.position = new Vector3(flearider.transform.position.x + (50f * Time.fixedDeltaTime), 
+                flearider.transform.position.y + (25f * Time.fixedDeltaTime), 
+                0);
+            */
+
         }
 
         if(timeFlea >= 25)
         {
+            /*
             flearider.enabled = false;
             multiplier = 0;
+            */
         }
     }
 }

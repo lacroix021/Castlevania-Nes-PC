@@ -43,8 +43,11 @@ public class ItemController : MonoBehaviour
     GameManager gManager;
     DatosJugador datosJugador;
     HealthPlayer pHealth;
-    
-    
+
+    public bool touched;
+
+    public Collider2D collision;
+    public LayerMask layerPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -57,10 +60,16 @@ public class ItemController : MonoBehaviour
             pHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
     }
 
-   
-    private void OnCollisionEnter2D(Collision2D col)
+    private void Update()
     {
-        if(col.gameObject.CompareTag("Player"))
+        CollisionDetector();
+    }
+
+    void CollisionDetector()
+    {
+        touched = Physics2D.IsTouchingLayers(collision, layerPlayer);
+
+        if (touched)
         {
             switch (TypeItem)
             {

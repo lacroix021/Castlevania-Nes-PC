@@ -369,11 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: 8
   currentHealth: 0
-  maxHealth: 120
+  maxHealth: 150
   isDead: 0
   deadEffect: {fileID: 4301122253200025113, guid: f6f1a8809f98f1c4fbaeddce0f85bcf5,
-    type: 3}
-  sparkDamage: {fileID: 8135431939514545149, guid: d44172a8346199548b67386da24f1fb5,
     type: 3}
   sprRend: {fileID: 5212593018405427097}
   original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -572,7 +570,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4

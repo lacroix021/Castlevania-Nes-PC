@@ -43,31 +43,31 @@ public class Door : MonoBehaviour
                 break;
             case 1:
                 keyNeeded = datosJugador.blueKey;
-                gManager.doorMessajeTxt.text = "Need Blue key";
+                gManager.doorMessajeTxt.text = "Need Ocean key";
                 break;
             case 2:
                 keyNeeded = datosJugador.cianKey;
-                gManager.doorMessajeTxt.text = "Need Cian key";
+                gManager.doorMessajeTxt.text = "Need Sky key";
                 break;
             case 3:
                 keyNeeded = datosJugador.redKey;
-                gManager.doorMessajeTxt.text = "Need Red key";
+                gManager.doorMessajeTxt.text = "Need Blood key";
                 break;
             case 4:
                 keyNeeded = datosJugador.yellowKey;
-                gManager.doorMessajeTxt.text = "Need Yellow key";
+                gManager.doorMessajeTxt.text = "Need Gold key";
                 break;
             case 5:
                 keyNeeded = datosJugador.pinkKey;
-                gManager.doorMessajeTxt.text = "Need Pink key";
+                gManager.doorMessajeTxt.text = "Need Soul key";
                 break;
             case 6:
                 keyNeeded = datosJugador.greenKey;
-                gManager.doorMessajeTxt.text = "Need Green key";
+                gManager.doorMessajeTxt.text = "Need Jade key";
                 break;
             case 7:
-                keyNeeded = datosJugador.underConstruction;
-                gManager.doorMessajeTxt.text = "Area under construction";
+                keyNeeded = datosJugador.locked;
+                gManager.doorMessajeTxt.text = "Door Locked";
                 break;
         }
     }

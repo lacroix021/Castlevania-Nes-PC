@@ -29,13 +29,6 @@ public class HealthBoss : MonoBehaviour
     private float nextBurnHolyTime;
     private float burnRate = 2.5f;
 
-    public GameObject sparkDamage;
-
-    private BoxCollider2D mycollider;
-
-    float boundX;
-    float boundY;
-
     BossMapManager bossManager;
 
     public SpriteRenderer sprRend;
@@ -55,7 +48,6 @@ public class HealthBoss : MonoBehaviour
         //DESCOMENTAREAR bossManager AL SALIR DE LAS PRUEBAS
 
         bossManager = GameManager.gameManager.GetComponentInChildren<BossMapManager>();
-        mycollider = GetComponent<BoxCollider2D>();
 
         if(boss == typeBoss.Doppelganger)
         {
@@ -129,6 +121,7 @@ public class HealthBoss : MonoBehaviour
             else if (boss == typeBoss.Doppelganger)
             {
                 isDead = true;
+                GameObject.FindObjectOfType<DoppelGangerSpawner>().defeated = true;
                 //se apaga el modo batalla para que la musica vuelva a la normalidad
                 GameObject.Find("StageExtraA").GetComponent<ActivateMusic>().battle = false;
 

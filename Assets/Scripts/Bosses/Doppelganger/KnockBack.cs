@@ -8,11 +8,15 @@ public class KnockBack : MonoBehaviour
     DoppelgangerController enemyController;
     HealthBoss healthBoss;
     float colPosX;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         enemyController = GetComponent<DoppelgangerController>();
         healthBoss = GetComponent<HealthBoss>();
+        
     }
 
     void Retroceso()
@@ -29,7 +33,7 @@ public class KnockBack : MonoBehaviour
         {
             enemyController.rb.AddForce(new Vector2(forceKnockback * Time.fixedDeltaTime, 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
         }
-
+        
         StartCoroutine(MoveAgain());
     }
 

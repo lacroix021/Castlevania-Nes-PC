@@ -29,7 +29,7 @@ public class DatosJugador : MonoBehaviour
     public bool yellowKey = false;
     public bool pinkKey = false;
     public bool greenKey = false;
-    public bool underConstruction = false;
+    public bool locked = false;
     //latigos
     public int typeWhip;
     //subarmas
