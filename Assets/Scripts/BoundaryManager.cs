@@ -23,14 +23,11 @@ public class BoundaryManager : MonoBehaviour
         }
     }   //la posicion del jugador
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         managerBox = GetComponent<BoxCollider2D>();
-        structureManager = GameObject.Find("GameManager").GetComponentInChildren<StructureManager>();
+        structureManager = GameManager.gameManager.GetComponentInChildren<StructureManager>();
     }
 
     // Update is called once per frame
@@ -42,10 +39,17 @@ public class BoundaryManager : MonoBehaviour
     void ManageBoundary()
     {
         if (player == null) return;
-        if (managerBox.bounds.min.x < player.position.x && player.position.x < managerBox.bounds.max.x && managerBox.bounds.min.y < player.position.y && player.position.y < managerBox.bounds.max.y)
+
+        if (managerBox.bounds.min.x < player.position.x 
+            && player.position.x < managerBox.bounds.max.x 
+            && managerBox.bounds.min.y < player.position.y 
+            && player.position.y < managerBox.bounds.max.y)
         {
             boundary.SetActive(true);
-            //se agrego este partMap para crear el mapa del juego, se podria agregar un array manual en el GameManager para que cuente la totalidad de partMap y si al final tiene todo el mapa marque un 100%
+            //se agrego este partMap para crear el mapa del juego, 
+            //se podria agregar un array manual en el GameManager 
+            //para que cuente la totalidad de partMap
+            //y si al final tiene todo el mapa marque un 100%
             
             mapActive = true;
             

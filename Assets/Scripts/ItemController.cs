@@ -49,6 +49,12 @@ public class ItemController : MonoBehaviour
     public Collider2D collision;
     public LayerMask layerPlayer;
 
+    [Tooltip("Este objeto solo saldra si es un lifemax o algun contenedor de dinero")]
+    public GameObject floatingObject;
+    GameObject valueInstanced;
+    [Tooltip("esta posicion es donde aparecera las particulas del lifemax o el valor del dinero recogido, no afecta otros items")]
+    public Transform positionValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,22 +95,27 @@ public class ItemController : MonoBehaviour
                     break;
                 case tipeItem.goldRed:
                     AudioManager.instance.PlayAudio(AudioManager.instance.grabGold);
+                    valueInstanced = Instantiate(floatingObject, positionValue.position, Quaternion.identity);
                     datosJugador.gold += goldRedV;
                     break;
                 case tipeItem.goldPurple:
                     AudioManager.instance.PlayAudio(AudioManager.instance.grabGold);
+                    valueInstanced = Instantiate(floatingObject, positionValue.position, Quaternion.identity);
                     datosJugador.gold += goldPurpleV;
                     break;
                 case tipeItem.goldWhite:
                     AudioManager.instance.PlayAudio(AudioManager.instance.grabGold);
+                    valueInstanced = Instantiate(floatingObject, positionValue.position, Quaternion.identity);
                     datosJugador.gold += goldWhiteV;
                     break;
                 case tipeItem.chestGold:
                     AudioManager.instance.PlayAudio(AudioManager.instance.grabGold);
+                    valueInstanced = Instantiate(floatingObject, positionValue.position, Quaternion.identity);
                     datosJugador.gold += chestGoldV;
                     break;
                 case tipeItem.lifeMax:
                     AudioManager.instance.PlayAudio(AudioManager.instance.lifeMax);
+                    valueInstanced = Instantiate(floatingObject, positionValue.position, Quaternion.Euler(-90, 0, 0));  //particulas
                     datosJugador.maxHealth += healthMaxV;
                     pHealth.vidaACurar = datosJugador.maxHealth;
                     pHealth.healing = true;

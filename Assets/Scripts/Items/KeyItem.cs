@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyItem : MonoBehaviour
 {
     
-    public enum tipeKey
+    public enum typeKey
     {
         blueKey,
         cianKey,
@@ -14,11 +14,16 @@ public class KeyItem : MonoBehaviour
         pinkKey,
         greenKey
     };
+
     [Header("TIPO DE LLAVE")]
-    public tipeKey TipeKey;
+    public typeKey TypeKey;
 
     GameManager gManager;
     DatosJugador datosJugador;
+
+    bool touched;
+    public LayerMask layerPlayer;
+    public Collider2D coll;
 
     // Start is called before the first frame update
     void Start()
@@ -28,50 +33,42 @@ public class KeyItem : MonoBehaviour
         datosJugador = gManager.GetComponent<DatosJugador>();
     }
 
-    
-
-    private void OnCollisionEnter2D(Collision2D col)
+    private void Update()
     {
-        if (col.gameObject.CompareTag("Player"))
+        TakeController();
+    }
+
+    void TakeController()
+    {
+        touched = Physics2D.IsTouchingLayers(coll, layerPlayer);
+
+        if (touched)
         {
             AudioManager.instance.PlayAudio(AudioManager.instance.grabItem);
 
-            if (TipeKey == tipeKey.blueKey)
+            switch (TypeKey)
             {
-                //añadir al llavero
-                datosJugador.blueKey = true;
-                Destroy(this.gameObject);
+                case typeKey.blueKey:
+                    datosJugador.blueKey = true;
+                    break;
+                case typeKey.cianKey:
+                    datosJugador.cianKey = true;
+                    break;
+                case typeKey.redKey:
+                    datosJugador.redKey = true;
+                    break;
+                case typeKey.yellowKey:
+                    datosJugador.yellowKey = true;
+                    break;
+                case typeKey.pinkKey:
+                    datosJugador.pinkKey = true;
+                    break;
+                case typeKey.greenKey:
+                    datosJugador.greenKey = true;
+                    break;
             }
-            else if (TipeKey == tipeKey.cianKey)
-            {
-                //añadir al llavero
-                datosJugador.cianKey = true;
-                Destroy(this.gameObject);
-            }
-            else if (TipeKey == tipeKey.redKey)
-            {
-                //añadir al llavero
-                datosJugador.redKey = true;
-                Destroy(this.gameObject);
-            }
-            else if (TipeKey == tipeKey.yellowKey)
-            {
-                //añadir al llavero
-                datosJugador.yellowKey = true;
-                Destroy(this.gameObject);
-            }
-            else if (TipeKey == tipeKey.pinkKey)
-            {
-                //añadir al llavero
-                datosJugador.pinkKey = true;
-                Destroy(this.gameObject);
-            }
-            else if (TipeKey == tipeKey.greenKey)
-            {
-                //añadir al llavero
-                datosJugador.greenKey = true;
-                Destroy(this.gameObject);
-            }
+
+            Destroy(this.gameObject);
         }
     }
 }

@@ -12,6 +12,11 @@ public class OrbEnd : MonoBehaviour
     DatosJugador datosJugador;
     GameManager gManager;
 
+    bool touched;
+    public LayerMask layerPlayer;
+    public Collider2D coll;
+
+
     private void Start()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -21,13 +26,20 @@ public class OrbEnd : MonoBehaviour
         datosJugador = GameManager.gameManager.GetComponent<DatosJugador>();
         gManager = GameManager.gameManager;
     }
-    private void OnCollisionEnter2D(Collision2D col)
+
+    private void Update()
     {
-        if (col.gameObject.CompareTag("Player"))
+        TakenController();
+    }
+
+    void TakenController()
+    {
+        touched = Physics2D.IsTouchingLayers(coll, layerPlayer);
+
+        if (touched)
         {
             spr.enabled = false;
-            rb.bodyType = RigidbodyType2D.Static;
-            myColl.enabled = false;
+            coll.gameObject.layer = 19;
             GameObject.Find("Stage7Music").GetComponent<ActivateMusic>().completeMusic.GetComponent<AudioSource>().Play();
             LastSave();
             StartCoroutine(WaitEnd());

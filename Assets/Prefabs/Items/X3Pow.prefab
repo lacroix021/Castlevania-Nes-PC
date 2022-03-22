@@ -61,6 +61,8 @@ MonoBehaviour:
   layerPlayer:
     serializedVersion: 2
     m_Bits: 1024
+  floatingObject: {fileID: 0}
+  positionValue: {fileID: 0}
 --- !u!212 &3413892791574758841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +129,7 @@ Rigidbody2D:
   m_Mass: 0.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
