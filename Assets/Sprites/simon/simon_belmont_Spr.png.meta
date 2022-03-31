@@ -257,6 +257,9 @@ TextureImporter:
   - first:
       213: -1683622448972634484
     second: simon_belmont_Spr_10
+  - first:
+      213: 8822106424254707682
+    second: simon_belmont_Spr_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1579,6 +1582,27 @@ TextureImporter:
       bones: []
       spriteID: c86ec198d4292a8e0800000000000000
       internalID: -1683622448972634484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simon_belmont_Spr_11
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 310
+        width: 173
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e7b4642d0b6e6a70800000000000000
+      internalID: 8822106424254707682
       vertices: []
       indices: 
       edges: []

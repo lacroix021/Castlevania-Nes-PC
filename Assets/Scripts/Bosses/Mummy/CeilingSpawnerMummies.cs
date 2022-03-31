@@ -153,60 +153,15 @@ public class CeilingSpawnerMummies : MonoBehaviour
                 wallBreakable[1].bodyType = RigidbodyType2D.Dynamic;
                 wallBreakable[2].bodyType = RigidbodyType2D.Dynamic;
             }
-            
-            //esta estructura tambien debe ir registrada en el structure manager para el save y load
-            //tambien poner en el event manager como la estructura de piso se cae, esto nos da oportunidad para crear nuevas zonas en el mapa
-            //con la misma excusa de que se rompieron las paredes al derrotar a las momias
         }
 
 
         if (interruptorOn)
         {
-            //ambas momias mueren, activar ruptura del piso
-            //StartCoroutine(FallFloor());
-
             platformBreakable.SetActive(false);
             platformBreakableB.SetActive(false);
         }
     }
-
-    /*
-    IEnumerator FallFloor()
-    {
-        for (int i = 0; i < breakeableFloor.Length; i++)
-        {
-            if (!breakeableFloor[i] == null)
-            {
-                breakeableFloor[8].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[9].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[7].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[10].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[6].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[11].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[5].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[12].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[4].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[13].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[3].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[14].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[2].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[15].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[1].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[16].bodyType = RigidbodyType2D.Dynamic;
-                yield return new WaitForSeconds(0.1f);
-                breakeableFloor[0].bodyType = RigidbodyType2D.Dynamic;
-                breakeableFloor[17].bodyType = RigidbodyType2D.Dynamic;
-            }
-        }
-    }
-    */
 
     IEnumerator Sismo()
     {
@@ -218,7 +173,7 @@ public class CeilingSpawnerMummies : MonoBehaviour
     {
         insideInterruptor = Physics2D.IsTouchingLayers(colInterruptor, layerPlayer);
 
-        if(insideInterruptor && playerController.activating)
+        if(insideInterruptor && playerController.v > 0)
         {
             animSwitch.SetBool("SwitchOn", true);
             StartCoroutine(Sismo());

@@ -45,7 +45,7 @@ public class AnkOfLife : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D coll)
     {
-        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().activating && !gManager.gamePaused)
+        if(coll.CompareTag("Player") && coll.GetComponent<SimonController>().v > 0 && !gManager.gamePaused)
         {
             isActive = true;
             gManager.collPlayer = coll;

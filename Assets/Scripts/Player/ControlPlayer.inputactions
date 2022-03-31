@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Activate",
-                    "type": "Button",
-                    "id": "f7be3ee2-9302-475b-a2da-1210499dd954",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "3d8984bc-121e-4b45-8418-a871fc4c9b04",
@@ -252,28 +243,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Fire2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7a7b819a-7e30-47b3-affe-c0e2bd3a8429",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "31ffaf7e-6ccc-4e2e-8416-2a67dff0ac34",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

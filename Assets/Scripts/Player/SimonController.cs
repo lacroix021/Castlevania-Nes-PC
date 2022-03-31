@@ -189,10 +189,7 @@ public class SimonController : MonoBehaviour
         }
     }
 
-    public void ActiveMode(InputAction.CallbackContext context)
-    {
-        activating = context.performed;
-    }
+    
 
     public void PauseGame(InputAction.CallbackContext context)
     {
@@ -327,7 +324,7 @@ public class SimonController : MonoBehaviour
 
     void ClimbingChain()
     {
-        if (climbing && activating)
+        if (climbing)
         {//corregir velocidad de escalado de cadenas
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, v * (moveSlopeSpeed /2.5f) * Time.fixedDeltaTime);

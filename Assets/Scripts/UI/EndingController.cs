@@ -42,7 +42,7 @@ public class EndingController : MonoBehaviour
     string credit4 = "Vampire Bat - Mix Schrecks \n HunchBack - Love Chaney \nFishMan - Green Stranger \n Armor - Cafebar Read";
     string credit5 = "Skeleton - Andre Moral \n Zombie - Jone Candies";
     string credit6 = "Thanks for the support \nGerman Bautista \nDennis Castlesampa \nFrancisco Dworaczuk \nFreddy Ponce";
-    string credit7 = "Thanks for the support \nChristian Paris \nGuerrero Martinez \nComunity CastlevaniaLatino";
+    string credit7 = "Thanks for the support \nChristian Paris \nGuerrero Martinez \nComunity CastlevaniaLatino \nFamily KiriLand";
     string credit8 = "Thanks for the support \nMy Wife & my Son \nI love you for eternity";
     string credit9 = "And the hero \n Simon Belmondo";
     string credit10 = "You played the greatest role in this story.";

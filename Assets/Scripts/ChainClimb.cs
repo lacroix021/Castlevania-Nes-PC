@@ -27,7 +27,7 @@ public class ChainClimb : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("GrabChain") &&
-            collision.GetComponentInParent<SimonController>().activating && 
+            collision.GetComponentInParent<SimonController>().v != 0 && 
             collision.GetComponentInParent<HealthPlayer>().currentHealth > 0)
         {
             pController.climbing = true;
